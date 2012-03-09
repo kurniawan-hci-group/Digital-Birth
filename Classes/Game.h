@@ -10,7 +10,21 @@
 
 
 @interface Game : NSObject {
-
+	Lady *_lady;
 }
+
+-(int)getBabyHR;
+-(bool)babyIsDistressed;
+
+-(int)getFocus;
+-(int)getEnergy;
+-(int)getSupport; 
+-(int)getCopingNum; 
+-(int)getDilation;
+-(int)getEffacement; //want to use effacement?
+
+//Deal with actions
+-(bool)havingContraction;
+
 
 @end
