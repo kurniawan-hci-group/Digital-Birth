@@ -16,6 +16,7 @@
 		CE77D321150A7A92008CEFDA /* Lady.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D320150A7A92008CEFDA /* Lady.m */; };
 		CE77D324150A7A99008CEFDA /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D323150A7A99008CEFDA /* Baby.m */; };
 		CE77D327150A7AAA008CEFDA /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D326150A7AAA008CEFDA /* Game.m */; };
+		CE77D337150AC96D008CEFDA /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D336150AC96D008CEFDA /* Action.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		CE77D323150A7A99008CEFDA /* Baby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baby.m; sourceTree = "<group>"; };
 		CE77D325150A7AAA008CEFDA /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		CE77D326150A7AAA008CEFDA /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		CE77D335150AC96D008CEFDA /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		CE77D336150AC96D008CEFDA /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				CE77D323150A7A99008CEFDA /* Baby.m */,
 				CE77D325150A7AAA008CEFDA /* Game.h */,
 				CE77D326150A7AAA008CEFDA /* Game.m */,
+				CE77D335150AC96D008CEFDA /* Action.h */,
+				CE77D336150AC96D008CEFDA /* Action.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 				CE77D321150A7A92008CEFDA /* Lady.m in Sources */,
 				CE77D324150A7A99008CEFDA /* Baby.m in Sources */,
 				CE77D327150A7AAA008CEFDA /* Game.m in Sources */,
+				CE77D337150AC96D008CEFDA /* Action.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
