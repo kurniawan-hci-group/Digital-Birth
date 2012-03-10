@@ -28,4 +28,6 @@
 @property int effacement;
 @property bool hadBaby;
 
+-(Lady*)startLabor;
+
 @end

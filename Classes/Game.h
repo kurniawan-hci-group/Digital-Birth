@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Lady.h"
 
 @interface Game : NSObject {
 	Lady *_lady;
 }
 
-@property Lady *lady;
+@property (retain) Lady *lady;
 
 -(int)getBabyHR;
 -(bool)babyIsDistressed;
@@ -28,7 +28,7 @@
 
 -(int)getContractionNum; //0 no contraction, 255 contraction peak
 -(bool)hadBaby;
--(void)perormAction:(*Action) action;
+//-(void)perormAction:(*Action) action;
 
 
 

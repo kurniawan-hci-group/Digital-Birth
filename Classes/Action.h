@@ -11,15 +11,15 @@
 
 @interface Action : NSObject {
 	int _actionId;
-	NSString _actionName;
-	NSString _description;
+	NSString *_actionName;
+	NSString *_description;
 	double _effectRate;
 	double _successRate;
-	NSString _prosString;
-	NSString _consString;
+	NSString *_prosString;
+	NSString *_consString;
 	
 }
-
+/*
 @property int actionId;
 @property (copy) actionName;
 @property (copy) NSString description;
@@ -27,5 +27,6 @@
 @property double successRate;
 @property (copy) NSString _prosString;
 @property (copy) NSString _consString;
-
+*/
+ 
 @end
