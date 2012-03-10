@@ -11,4 +11,12 @@
 
 @implementation Lady
 
+@synthesize focus = _focus;
+@synthesize energy = _energy;
+@synthesize support = _support;
+@synthesize copingNum = _copingNum;
+@synthesize dilation = _dilation;
+@synthesize effecement = _effacement;
+@synthesize hadBaby  = _hadBaby;
+
 @end

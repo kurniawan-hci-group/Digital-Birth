@@ -11,4 +11,8 @@
 
 @implementation Baby
 
+@synthesize heartRate = _heartRate;
+@synthesize inDistress = _inDistress;
+
+
 @end

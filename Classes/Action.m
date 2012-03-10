@@ -11,7 +11,7 @@
 
 @implementation Action
 
-@synthesize actionID = _actionID;
+@synthesize actionID = _actionId;
 @synthesize actionName = _actionName;
 @synthesize description = _description;
 @synthesize effectRate = _effectRate;

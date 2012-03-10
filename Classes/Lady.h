@@ -10,7 +10,22 @@
 
 
 @interface Lady : NSObject {
-
+	int _focus;
+	int _energy;
+	int _support;
+	int _copingNum;
+	int _dilation;
+	int _effacement;
+	bool _hadBaby;
+	
 }
+
+@property int focus;
+@property int energy;
+@property int support;
+@property int copingNum;
+@property int dilation;
+@property int effacement;
+@property bool hadBaby;
 
 @end

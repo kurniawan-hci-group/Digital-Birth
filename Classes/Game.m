@@ -11,4 +11,10 @@
 
 @implementation Game
 
+@synthesize lady = _lady;
+
+-(void)dealloc {
+	[_lady release];
+}
+
 @end

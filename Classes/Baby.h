@@ -10,7 +10,12 @@
 
 
 @interface Baby : NSObject {
-
+	int _heartRate;
+	bool _inDistress;
 }
+
+@property int heartRate;
+
+-(void)inDistress;
 
 @end
