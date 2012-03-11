@@ -13,13 +13,6 @@
 
 @synthesize lady = _lady;
 
-/*
-int main(int argc, const char * argv[]) {
-	NSLog(@"Hey There");
-	
-	return 0;
-}*/
-
 -(id)init {
 	if(self = [super init]) {
 		self.lady = [Lady new];
@@ -27,6 +20,50 @@ int main(int argc, const char * argv[]) {
 	}
 	return self;
 }
+
+-(int)getBabyHR {
+	return self.lady.baby.heartRate;
+}
+
+-(bool)babyIsDistressed {
+	return [self.lady.baby isDistressed];
+}
+
+-(int)getFocus {
+	return self.lady.focus;
+}
+
+-(int)getEnergy {
+	return self.lady.energy;
+}
+
+-(int)getSupport {
+	return self.lady.support;
+}
+
+-(int)getCopingNum {
+	return self.lady.copingNum;
+}
+
+-(int)getDilation {
+	return self.lady.dilation;
+}
+
+-(int)getEffacement {
+	return self.lady.effacement;
+}
+
+-(int)getContractionNum { //0 no contraction, 255 contraction peak
+	return self.lady.contractionNum;
+}
+-(bool)hadBaby {
+	return self.lady.hadBaby;
+}
+
+//-(void)perormAction:(*Action) action {
+//
+//}
+
 
 -(void)dealloc {
 	[_lady release];

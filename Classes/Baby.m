@@ -27,7 +27,7 @@
 }
 
 
--(bool)isDistressed {
+-(bool)inDistress {
 	if (self.heartRate > 120 && self.heartRate < 180) {
 		return NO;
 	} else {

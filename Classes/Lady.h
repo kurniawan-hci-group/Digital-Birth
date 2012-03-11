@@ -10,6 +10,7 @@
 
 
 @interface Lady : NSObject {
+	Baby *_baby;
 	int _focus;
 	int _energy;
 	int _support;
@@ -17,9 +18,10 @@
 	int _dilation;
 	int _effacement;
 	bool _hadBaby;
-	
+	int _contractionNum;
 }
 
+@property (retain) Baby baby;
 @property int focus;
 @property int energy;
 @property int support;
@@ -27,6 +29,7 @@
 @property int dilation;
 @property int effacement;
 @property bool hadBaby;
+@property int contractionNum;
 
 -(Lady*)startLabor;
 

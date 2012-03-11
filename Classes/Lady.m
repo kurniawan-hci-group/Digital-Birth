@@ -10,6 +10,7 @@
 
 @implementation Lady
 
+@synthesize baby = _baby;
 @synthesize focus = _focus;
 @synthesize energy = _energy;
 @synthesize support = _support;
@@ -17,6 +18,7 @@
 @synthesize dilation = _dilation;
 @synthesize effacement = _effacement;
 @synthesize hadBaby  = _hadBaby;
+@synthesize contractionNum = _contractionNum;
 
 //randomly choose number between 1 and 10
 -(int)getInitialCopingNum {
@@ -31,6 +33,7 @@
 
 -(id)init {
 	if(self = [super init]) {
+		self.baby = [Baby init];
 		self.focus = 255;
 		self.energy = 255;
 		self.support = 255;
@@ -38,10 +41,14 @@
 		self.dilation = 1;
 		self.effacement = 1; //???
 		self.hadBaby = NO;
+		self.contractionNum = 0;
 	}
 	return self;
 }
 
-
+-(void)dealloc {
+	[super dealloc];
+	[_baby release];
+}
 
 @end
