@@ -10,8 +10,8 @@
 
 
 @implementation Action
-/*
-@synthesize actionID = _actionId;
+
+@synthesize actionId = _actionId;
 @synthesize actionName = _actionName;
 @synthesize description = _description;
 @synthesize effectRate = _effectRate;
@@ -20,8 +20,8 @@
 @synthesize consString = _consString;
 
 
--(Action*)setID:(int) ID setName:(NSString) name setDesc:(NSString) desc setEffect:(int) eRate
-	 setSuccess:(int) sRate setPros:(NSString) pros setCons:(NSString) cons {
+-(Action*)setID:(int) ID setName:(NSString*) name setDesc:(NSString*) desc setEffect:(int) eRate
+	 setSuccess:(int) sRate setPros:(NSString*) pros setCons:(NSString*) cons {
 	self.actionId = ID;
 	self.actionName = name;
 	self.description = desc;
@@ -45,7 +45,5 @@
 	}
 	return self;
 }
-
-*/
 
 @end

@@ -19,14 +19,14 @@
 	NSString *_consString;
 	
 }
-/*
+
 @property int actionId;
-@property (copy) actionName;
-@property (copy) NSString description;
+@property (copy) NSString *actionName;
+@property (copy) NSString *description;
 @property double effectRate;
 @property double successRate;
-@property (copy) NSString _prosString;
-@property (copy) NSString _consString;
-*/
+@property (copy) NSString *prosString;
+@property (copy) NSString *consString;
+
  
 @end
