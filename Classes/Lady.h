@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Baby.h"
 
 @interface Lady : NSObject {
 	Baby *_baby;
@@ -21,7 +21,7 @@
 	int _contractionNum;
 }
 
-@property (retain) Baby baby;
+@property (retain) Baby *baby;
 @property int focus;
 @property int energy;
 @property int support;

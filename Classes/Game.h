@@ -25,7 +25,6 @@
 -(int)getDilation;
 -(int)getEffacement;
 
-
 -(int)getContractionNum; //0 no contraction, 255 contraction peak
 -(bool)hadBaby;
 //-(void)perormAction:(*Action) action;
