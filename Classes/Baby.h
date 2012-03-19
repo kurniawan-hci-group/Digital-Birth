@@ -16,6 +16,6 @@
 
 @property int heartRate;
 
--(void)inDistress;
+-(bool)inDistress;
 
 @end

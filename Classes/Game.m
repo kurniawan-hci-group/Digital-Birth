@@ -16,7 +16,6 @@
 -(id)init {
 	if(self = [super init]) {
 		self.lady = [Lady new];
-		[self.lady startLabor];
 	}
 	return self;
 }
@@ -26,7 +25,7 @@
 }
 
 -(bool)babyIsDistressed {
-	return [self.lady.baby isDistressed];
+	return [[self.lady baby] inDistress];
 }
 
 -(int)getFocus {

@@ -33,7 +33,7 @@
 
 -(id)init {
 	if(self = [super init]) {
-		self.baby = [Baby init];
+		self.baby = [Baby new];
 		self.focus = 255;
 		self.energy = 255;
 		self.support = 255;
@@ -44,6 +44,10 @@
 		self.contractionNum = 0;
 	}
 	return self;
+}
+
+-(void)startLabor {
+	
 }
 
 -(void)dealloc {

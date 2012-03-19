@@ -31,6 +31,6 @@
 @property bool hadBaby;
 @property int contractionNum;
 
--(Lady*)startLabor;
+-(void)startLabor;
 
 @end

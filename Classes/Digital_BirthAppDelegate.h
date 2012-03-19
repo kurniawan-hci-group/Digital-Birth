@@ -10,9 +10,11 @@
 
 @interface Digital_BirthAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
+	IBOutlet UINavigationController *testViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (retain) IBOutlet UINavigationController *testViewController;
 
 @end
 

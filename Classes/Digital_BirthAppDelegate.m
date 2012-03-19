@@ -11,6 +11,7 @@
 @implementation Digital_BirthAppDelegate
 
 @synthesize window;
+@synthesize testViewController;
 
 
 #pragma mark -
@@ -19,9 +20,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
     // Override point for customization after application launch.
-    
-    [self.window makeKeyAndVisible];
-    
+    [self.window addSubview:[testViewController view]];
+	[self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -75,6 +75,7 @@
 
 
 - (void)dealloc {
+	[testViewController release];
     [window release];
     [super dealloc];
 }
