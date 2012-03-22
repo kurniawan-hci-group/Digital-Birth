@@ -12,8 +12,10 @@
 
 @interface TestViewController : UIViewController {
 	Game *_game;
+	NSTimer *_contractionTimer;
 }
 
-@property (retain) Game *game;
+@property (nonatomic, retain) Game *game;
+@property (nonatomic, retain) NSTimer *contractionTimer;
 
 @end
