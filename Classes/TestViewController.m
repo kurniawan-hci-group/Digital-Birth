@@ -11,7 +11,7 @@
 @implementation TestViewController
 
 @synthesize game = _game;
-@synthesize contractionTimer = _contractionTimer;
+@synthesize startsContractionsTimer = _startsContractionsTimer;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -46,8 +46,7 @@
 	self.game = [Game new]; //must keep
 	NSLog(@"focus %d", [self.game getFocus]);
 	NSLog(@"energy %d", [self.game getEnergy]);
-	//self.contractionTimer = [NSTimer scheduledTimerWithTimeInterval:15 invocation:<#(NSInvocation *)invocation#> repeats:YES];
-	self.contractionTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
+	self.startsContractionsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
 	
 }
 
@@ -76,6 +75,8 @@
 
 - (void)dealloc {
     [super dealloc];
+	[_game release];
+	[_startsContractionsTimer release];
 }
 
 

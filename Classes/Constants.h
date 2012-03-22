@@ -10,4 +10,4 @@
 #define ACTIVE     1
 #define TRANSITION 2
 #define PUSHING    3
-#define BORN       4
+#define BABYBORN   4
