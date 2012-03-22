@@ -7,6 +7,7 @@
 //
 
 #import "Lady.h"
+#import "Constants.h"
 
 @implementation Lady
 
@@ -19,6 +20,7 @@
 @synthesize effacement = _effacement;
 @synthesize hadBaby  = _hadBaby;
 @synthesize contractionNum = _contractionNum;
+@synthesize stateOfLabor = _stateOfLabor;
 
 //randomly choose number between 1 and 10
 -(int)getInitialCopingNum {
@@ -42,6 +44,7 @@
 		self.effacement = 1; //???
 		self.hadBaby = NO;
 		self.contractionNum = 0;
+		self.stateOfLabor = EARLY;
 	}
 	return self;
 }

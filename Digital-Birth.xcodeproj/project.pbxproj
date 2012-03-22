@@ -35,6 +35,7 @@
 		CE3F60CC15155A6900AD6C63 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		CE3F60CD15155A6900AD6C63 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		CE3F60CE15155A6900AD6C63 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TestViewController.xib; path = Classes/TestViewController.xib; sourceTree = "<group>"; };
+		CE3F619D151AB4EE00AD6C63 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		CE77D31F150A7A92008CEFDA /* Lady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lady.h; sourceTree = "<group>"; };
 		CE77D320150A7A92008CEFDA /* Lady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lady.m; sourceTree = "<group>"; };
 		CE77D322150A7A99008CEFDA /* Baby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baby.h; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 				CE77D326150A7AAA008CEFDA /* Game.m */,
 				CE77D335150AC96D008CEFDA /* Action.h */,
 				CE77D336150AC96D008CEFDA /* Action.m */,
+				CE3F619D151AB4EE00AD6C63 /* Constants.h */,
 			);
 			name = Model;
 			sourceTree = "<group>";

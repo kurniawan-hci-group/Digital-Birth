@@ -20,6 +20,11 @@
 	return self;
 }
 
+
+-(void)handleTimerTick {
+	
+}
+
 -(int)getBabyHR {
 	return self.lady.baby.heartRate;
 }

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Baby.h"
 
+
 @interface Lady : NSObject {
 	Baby *_baby;
 	int _focus;
@@ -19,6 +20,7 @@
 	int _effacement;
 	bool _hadBaby;
 	int _contractionNum;
+	int _stateOfLabor;
 }
 
 @property (retain) Baby *baby;
@@ -30,6 +32,7 @@
 @property int effacement;
 @property bool hadBaby;
 @property int contractionNum;
+@property int stateOfLabor;
 
 -(void)startLabor;
 

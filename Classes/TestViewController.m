@@ -27,6 +27,7 @@
 
 -(void)timerTicked:(NSTimer*)timer {
 	NSLog(@"ticked");
+	[self.game handleTimerTick];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

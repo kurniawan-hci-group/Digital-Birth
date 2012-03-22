@@ -15,6 +15,8 @@
 
 @property (retain) Lady *lady;
 
+-(void)handleTimerTick;
+
 -(int)getBabyHR;
 -(bool)babyIsDistressed;
 
