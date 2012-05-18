@@ -25,6 +25,7 @@
 	int rand = arc4random() %100;
 	if(!self.lady.havingContraction) {
 		if (rand  < self.lady.chanceOfContraction) {
+			NSLog(@"Rand: %d Chance: %d", rand, self.lady.chanceOfContraction);
 			[self.lady startContraction];
 			
 		} else {

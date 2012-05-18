@@ -12,9 +12,9 @@
 
 @interface Lady : NSObject {
 	Baby *_baby;
-	int _focus;
+	int _focus; //bar from 0 to 4 bad to good
 	int _energy;
-	int _support;
+	int _support;//from 0 to 100
 	int _copingNum;
 	int _dilation;
 	int _effacement;
@@ -25,6 +25,8 @@
 	int _chanceOfContraction;
 	bool _havingContraction;
 	bool _incrContraction;
+	NSDate *_start;
+	//NSTimeInterval _timeSinceLastContraction;
 	NSTimer *_contractionTimer;
 }
 
@@ -41,6 +43,8 @@
 @property int chanceOfContraction;
 @property bool havingContraction;
 @property bool incrContraction;
+@property (nonatomic, retain) NSDate *start;
+//@property NSTimeInterval timeSinceLastContraction;
 @property (nonatomic, retain) NSTimer *contractionTimer;
 
 -(void)startLabor;

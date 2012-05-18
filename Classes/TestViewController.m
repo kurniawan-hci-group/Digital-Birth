@@ -46,7 +46,7 @@
 	self.game = [Game new]; //must keep
 	NSLog(@"focus %d", [self.game getFocus]);
 	NSLog(@"energy %d", [self.game getEnergy]);
-	self.startsContractionsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
+	self.startsContractionsTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerTicked:) userInfo:nil repeats:YES];
 	
 }
 
