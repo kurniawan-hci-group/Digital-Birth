@@ -12,19 +12,77 @@
 
 @synthesize window;
 @synthesize testViewController;
+@synthesize background;
+@synthesize viewController;
+@synthesize mainGameController;
+@synthesize buttonsViewController;
+@synthesize viewControllerFHR;
 
 
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    
-    // Override point for customization after application launch.
-    [self.window addSubview:[testViewController view]];
+- (void)applicationDidFinishLaunching:(UIApplication *)application{
+	
+	//Begin Zak's code snippet
+	NSLog(@"Preparing to deploy screen");
+	
+	UIApplication *myApp = [UIApplication sharedApplication ];
+	[myApp setStatusBarStyle: UIStatusBarStyleBlackTranslucent ];
+	CGRect screenBounds = [ [ UIScreen mainScreen ] bounds ];
+	
+	
+	self.window = [ [ [ UIWindow alloc] initWithFrame:screenBounds ] autorelease ];
+	self.background = [ [ [ UIImageView alloc] initWithFrame:screenBounds ] autorelease ];
+	//window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	window.backgroundColor = [UIColor whiteColor];
+    //[self.window addSubview:[testViewController view]];
 	[self.window makeKeyAndVisible];
-    return YES;
+	// End Zak's snippet
+	
+	//Code commented by Zak here. Uncomment to tinker <3
+	DigitalBirthViewController *aViewController = [[DigitalBirthViewController alloc]
+												   initWithNibName:@"DigitalBirth" 
+												   bundle: [NSBundle mainBundle]];
+	self.viewController = aViewController;
+	[viewController release];
+	
+	[window addSubview:[viewController view]];
+	//[window addSubview:[mainController view]];
+	[window addSubview:[buttonsController view]];
+	[window addSubview:[fhrController view]];
+	[window center];
+	[window makeKeyAndVisible];
+	[window becomeFirstResponder];
+	
+	/*	womanView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 480, 320)];
+	 womanView.image = [UIImage imageNamed:@"Mommy.png"];
+	 [womanView setTransform:CGAffineTransformMakeRotation(M_PI/-2.0)];
+	 womanView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	 womanView.contentMode = UIViewContentModeScaleAspectFill;
+	 [window addSubview:womanView];
+	 [window sendSubviewToBack:womanView];*/
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelay:1.0];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:window cache:YES];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(startAnimationDone:finished:context:)];
+	[UIView commitAnimations];
+	NSLog(@"SCREEN ENGAGED. FIRE ZEE MISSILES!");
 }
 
+-(void)startupAnimationDone: (NSString *)animationID finished:(NSNumber *)finished context: (void *)context {
+	//	NSLog (@"start Anim");
+	//	[womanView removeFromSuperview];
+	//	[window sendSubviewToBack:womanView];
+	//	womanView.alpha = 0.1;
+	//	[womanView release];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     /*
@@ -75,7 +133,11 @@
 
 
 - (void)dealloc {
-	[testViewController release];
+	//[testViewController release];
+	[mainController release];
+	[ButtonsViewController release];
+	[FHRViewController release];
+	[viewController release];
     [window release];
     [super dealloc];
 }
