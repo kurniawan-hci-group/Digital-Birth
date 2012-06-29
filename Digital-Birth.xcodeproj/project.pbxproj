@@ -13,6 +13,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		86941DEC159D24A4002B6EC9 /* DigitalBirthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */; };
+		86941DF2159D24B8002B6EC9 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */; };
+		86941DF3159D24B8002B6EC9 /* FHRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DF1159D24B8002B6EC9 /* FHRViewController.m */; };
 		CE24B76E1542025D00BB1400 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		CE24B76F1542026500BB1400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		CE24B7701542026D00BB1400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -35,6 +38,12 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Digital_Birth_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digital_Birth_Prefix.pch; sourceTree = "<group>"; };
+		86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalBirthViewController.m; sourceTree = "<group>"; };
+		86941DED159D24B8002B6EC9 /* ButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
+		86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
+		86941DEF159D24B8002B6EC9 /* DigitalBirthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalBirthViewController.h; sourceTree = "<group>"; };
+		86941DF0159D24B8002B6EC9 /* FHRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRViewController.h; sourceTree = "<group>"; };
+		86941DF1159D24B8002B6EC9 /* FHRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHRViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Digital_Birth-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Digital_Birth-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CE24B7401541FC9B00BB1400 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE24B7421541FC9B00BB1400 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
@@ -82,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CE77D31E150A7A76008CEFDA /* Model */,
+				86941E3B159E4B89002B6EC9 /* Controller */,
 				1D3623240D0F684500981E51 /* Digital_BirthAppDelegate.h */,
 				1D3623250D0F684500981E51 /* Digital_BirthAppDelegate.m */,
 				CE3F60CC15155A6900AD6C63 /* TestViewController.h */,
@@ -139,6 +149,19 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		86941E3B159E4B89002B6EC9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				86941DED159D24B8002B6EC9 /* ButtonsViewController.h */,
+				86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */,
+				86941DEF159D24B8002B6EC9 /* DigitalBirthViewController.h */,
+				86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */,
+				86941DF0159D24B8002B6EC9 /* FHRViewController.h */,
+				86941DF1159D24B8002B6EC9 /* FHRViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		CE77D31E150A7A76008CEFDA /* Model */ = {
@@ -201,6 +224,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Digital-Birth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -253,6 +279,9 @@
 				CE77D337150AC96D008CEFDA /* Action.m in Sources */,
 				CE3F60CF15155A6900AD6C63 /* TestViewController.m in Sources */,
 				CE52A61F1566B04F005A36BE /* Contraction.m in Sources */,
+				86941DEC159D24A4002B6EC9 /* DigitalBirthViewController.m in Sources */,
+				86941DF2159D24B8002B6EC9 /* ButtonsViewController.m in Sources */,
+				86941DF3159D24B8002B6EC9 /* FHRViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +340,6 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -325,7 +353,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -355,7 +382,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
 				SDKROOT = iphoneos;
 			};
@@ -373,7 +399,6 @@
 					"\"$(SRCROOT)/../../Downloads\"",
 					"\"$(DEVELOPER_DIR)\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "Tests-Info.plist";
@@ -384,7 +409,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = Tests;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
