@@ -7,191 +7,160 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* Digital_BirthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Digital_BirthAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		86941DEC159D24A4002B6EC9 /* DigitalBirthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */; };
-		86941DF2159D24B8002B6EC9 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */; };
-		86941DF3159D24B8002B6EC9 /* FHRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86941DF1159D24B8002B6EC9 /* FHRViewController.m */; };
-		CE24B76E1542025D00BB1400 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		CE24B76F1542026500BB1400 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		CE24B7701542026D00BB1400 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		CE3F60CF15155A6900AD6C63 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3F60CD15155A6900AD6C63 /* TestViewController.m */; };
-		CE3F60D015155A6900AD6C63 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3F60CE15155A6900AD6C63 /* TestViewController.xib */; };
-		CE52A61F1566B04F005A36BE /* Contraction.m in Sources */ = {isa = PBXBuildFile; fileRef = CE52A61E1566B04F005A36BE /* Contraction.m */; };
-		CE77D321150A7A92008CEFDA /* Lady.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D320150A7A92008CEFDA /* Lady.m */; };
-		CE77D324150A7A99008CEFDA /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D323150A7A99008CEFDA /* Baby.m */; };
-		CE77D327150A7AAA008CEFDA /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D326150A7AAA008CEFDA /* Game.m */; };
-		CE77D337150AC96D008CEFDA /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77D336150AC96D008CEFDA /* Action.m */; };
+		860623B315A2622B008C6100 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860623B215A2622B008C6100 /* UIKit.framework */; };
+		860623B515A2622B008C6100 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860623B415A2622B008C6100 /* Foundation.framework */; };
+		860623B715A2622B008C6100 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 860623B615A2622B008C6100 /* CoreGraphics.framework */; };
+		860623BD15A2622B008C6100 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 860623BB15A2622B008C6100 /* InfoPlist.strings */; };
+		860623BF15A2622B008C6100 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623BE15A2622B008C6100 /* main.m */; };
+		860623C315A2622B008C6100 /* DigitalBirthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623C215A2622B008C6100 /* DigitalBirthAppDelegate.m */; };
+		860623CC15A2623E008C6100 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623CA15A2623E008C6100 /* RootViewController.m */; };
+		860623CD15A2623E008C6100 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860623CB15A2623E008C6100 /* RootViewController.xib */; };
+		860623E915A26E38008C6100 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623DF15A26E38008C6100 /* Action.m */; };
+		860623EA15A26E38008C6100 /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E115A26E38008C6100 /* Baby.m */; };
+		860623EC15A26E38008C6100 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E615A26E38008C6100 /* Game.m */; };
+		860623ED15A26E38008C6100 /* Lady.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E815A26E38008C6100 /* Lady.m */; };
+		86458C5215A3CC5B00196ED3 /* Mommy.png in Resources */ = {isa = PBXBuildFile; fileRef = 86458C5115A3CC5B00196ED3 /* Mommy.png */; };
+		86458C5815A543B800196ED3 /* focus_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 86458C5415A543B800196ED3 /* focus_0.png */; };
+		86458C5915A543B800196ED3 /* focus_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 86458C5515A543B800196ED3 /* focus_1.png */; };
+		86458C5A15A543B800196ED3 /* focus_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86458C5615A543B800196ED3 /* focus_2.png */; };
+		86458C5B15A543B800196ED3 /* focus_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 86458C5715A543B800196ED3 /* focus_3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* Digital_BirthAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digital_BirthAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* Digital_BirthAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Digital_BirthAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Digital-Birth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital-Birth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* Digital_Birth_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Digital_Birth_Prefix.pch; sourceTree = "<group>"; };
-		86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DigitalBirthViewController.m; sourceTree = "<group>"; };
-		86941DED159D24B8002B6EC9 /* ButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
-		86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
-		86941DEF159D24B8002B6EC9 /* DigitalBirthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DigitalBirthViewController.h; sourceTree = "<group>"; };
-		86941DF0159D24B8002B6EC9 /* FHRViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FHRViewController.h; sourceTree = "<group>"; };
-		86941DF1159D24B8002B6EC9 /* FHRViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FHRViewController.m; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Digital_Birth-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Digital_Birth-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		CE24B7401541FC9B00BB1400 /* Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tests.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE24B7421541FC9B00BB1400 /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		CE3F60CC15155A6900AD6C63 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		CE3F60CD15155A6900AD6C63 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		CE3F60CE15155A6900AD6C63 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TestViewController.xib; path = Classes/TestViewController.xib; sourceTree = "<group>"; };
-		CE3F619D151AB4EE00AD6C63 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		CE52A61D1566B04F005A36BE /* Contraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contraction.h; sourceTree = "<group>"; };
-		CE52A61E1566B04F005A36BE /* Contraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contraction.m; sourceTree = "<group>"; };
-		CE77D31F150A7A92008CEFDA /* Lady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lady.h; sourceTree = "<group>"; };
-		CE77D320150A7A92008CEFDA /* Lady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lady.m; sourceTree = "<group>"; };
-		CE77D322150A7A99008CEFDA /* Baby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Baby.h; sourceTree = "<group>"; };
-		CE77D323150A7A99008CEFDA /* Baby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Baby.m; sourceTree = "<group>"; };
-		CE77D325150A7AAA008CEFDA /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		CE77D326150A7AAA008CEFDA /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
-		CE77D335150AC96D008CEFDA /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
-		CE77D336150AC96D008CEFDA /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
+		860623AE15A2622B008C6100 /* Digital-Birth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Digital-Birth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		860623B215A2622B008C6100 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		860623B415A2622B008C6100 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		860623B615A2622B008C6100 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		860623BA15A2622B008C6100 /* Digital-Birth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Digital-Birth-Info.plist"; sourceTree = "<group>"; };
+		860623BC15A2622B008C6100 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		860623BE15A2622B008C6100 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		860623C015A2622B008C6100 /* Digital-Birth-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Digital-Birth-Prefix.pch"; sourceTree = "<group>"; };
+		860623C115A2622B008C6100 /* DigitalBirthAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DigitalBirthAppDelegate.h; sourceTree = "<group>"; };
+		860623C215A2622B008C6100 /* DigitalBirthAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DigitalBirthAppDelegate.m; sourceTree = "<group>"; };
+		860623C915A2623E008C6100 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
+		860623CA15A2623E008C6100 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
+		860623CB15A2623E008C6100 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = ../RootViewController.xib; sourceTree = "<group>"; };
+		860623DE15A26E38008C6100 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = ../Action.h; sourceTree = "<group>"; };
+		860623DF15A26E38008C6100 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = ../Action.m; sourceTree = "<group>"; };
+		860623E015A26E38008C6100 /* Baby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Baby.h; path = ../Baby.h; sourceTree = "<group>"; };
+		860623E115A26E38008C6100 /* Baby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Baby.m; path = ../Baby.m; sourceTree = "<group>"; };
+		860623E215A26E38008C6100 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Constants.h; sourceTree = "<group>"; };
+		860623E515A26E38008C6100 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../Game.h; sourceTree = "<group>"; };
+		860623E615A26E38008C6100 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = ../Game.m; sourceTree = "<group>"; };
+		860623E715A26E38008C6100 /* Lady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Lady.h; path = ../Lady.h; sourceTree = "<group>"; };
+		860623E815A26E38008C6100 /* Lady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Lady.m; path = ../Lady.m; sourceTree = "<group>"; };
+		86458C5115A3CC5B00196ED3 /* Mommy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mommy.png; sourceTree = "<group>"; };
+		86458C5415A543B800196ED3 /* focus_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus_0.png; sourceTree = "<group>"; };
+		86458C5515A543B800196ED3 /* focus_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus_1.png; sourceTree = "<group>"; };
+		86458C5615A543B800196ED3 /* focus_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus_2.png; sourceTree = "<group>"; };
+		86458C5715A543B800196ED3 /* focus_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = focus_3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+		860623AB15A2622B008C6100 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24B73E1541FC9B00BB1400 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CE24B76E1542025D00BB1400 /* CoreGraphics.framework in Frameworks */,
-				CE24B76F1542026500BB1400 /* Foundation.framework in Frameworks */,
-				CE24B7701542026D00BB1400 /* UIKit.framework in Frameworks */,
+				860623B315A2622B008C6100 /* UIKit.framework in Frameworks */,
+				860623B515A2622B008C6100 /* Foundation.framework in Frameworks */,
+				860623B715A2622B008C6100 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		860623A315A2622B008C6100 = {
 			isa = PBXGroup;
 			children = (
-				CE77D31E150A7A76008CEFDA /* Model */,
-				86941E3B159E4B89002B6EC9 /* Controller */,
-				1D3623240D0F684500981E51 /* Digital_BirthAppDelegate.h */,
-				1D3623250D0F684500981E51 /* Digital_BirthAppDelegate.m */,
-				CE3F60CC15155A6900AD6C63 /* TestViewController.h */,
-				CE3F60CD15155A6900AD6C63 /* TestViewController.m */,
+				860623B815A2622B008C6100 /* Digital-Birth */,
+				860623B115A2622B008C6100 /* Frameworks */,
+				860623AF15A2622B008C6100 /* Products */,
 			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
+		860623AF15A2622B008C6100 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Digital-Birth.app */,
-				CE24B7401541FC9B00BB1400 /* Tests.app */,
+				860623AE15A2622B008C6100 /* Digital-Birth.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		860623B115A2622B008C6100 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
-				CE24B7421541FC9B00BB1400 /* Tests-Info.plist */,
-			);
-			name = CustomTemplate;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32CA4F630368D1EE00C91783 /* Digital_Birth_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				CE3F60CE15155A6900AD6C63 /* TestViewController.xib */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Digital_Birth-Info.plist */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				860623B215A2622B008C6100 /* UIKit.framework */,
+				860623B415A2622B008C6100 /* Foundation.framework */,
+				860623B615A2622B008C6100 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		86941E3B159E4B89002B6EC9 /* Controller */ = {
+		860623B815A2622B008C6100 /* Digital-Birth */ = {
 			isa = PBXGroup;
 			children = (
-				86941DED159D24B8002B6EC9 /* ButtonsViewController.h */,
-				86941DEE159D24B8002B6EC9 /* ButtonsViewController.m */,
-				86941DEF159D24B8002B6EC9 /* DigitalBirthViewController.h */,
-				86941DEB159D24A4002B6EC9 /* DigitalBirthViewController.m */,
-				86941DF0159D24B8002B6EC9 /* FHRViewController.h */,
-				86941DF1159D24B8002B6EC9 /* FHRViewController.m */,
+				860623EF15A26E69008C6100 /* View Controllers */,
+				860623EE15A26E50008C6100 /* Back-End */,
+				860623C115A2622B008C6100 /* DigitalBirthAppDelegate.h */,
+				860623C215A2622B008C6100 /* DigitalBirthAppDelegate.m */,
+				860623B915A2622B008C6100 /* Supporting Files */,
 			);
-			name = Controller;
+			path = "Digital-Birth";
 			sourceTree = "<group>";
 		};
-		CE77D31E150A7A76008CEFDA /* Model */ = {
+		860623B915A2622B008C6100 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE77D31F150A7A92008CEFDA /* Lady.h */,
-				CE77D320150A7A92008CEFDA /* Lady.m */,
-				CE77D322150A7A99008CEFDA /* Baby.h */,
-				CE77D323150A7A99008CEFDA /* Baby.m */,
-				CE77D325150A7AAA008CEFDA /* Game.h */,
-				CE77D326150A7AAA008CEFDA /* Game.m */,
-				CE77D335150AC96D008CEFDA /* Action.h */,
-				CE77D336150AC96D008CEFDA /* Action.m */,
-				CE52A61D1566B04F005A36BE /* Contraction.h */,
-				CE52A61E1566B04F005A36BE /* Contraction.m */,
-				CE3F619D151AB4EE00AD6C63 /* Constants.h */,
+				86458C5415A543B800196ED3 /* focus_0.png */,
+				86458C5515A543B800196ED3 /* focus_1.png */,
+				86458C5615A543B800196ED3 /* focus_2.png */,
+				86458C5715A543B800196ED3 /* focus_3.png */,
+				86458C5115A3CC5B00196ED3 /* Mommy.png */,
+				860623BA15A2622B008C6100 /* Digital-Birth-Info.plist */,
+				860623BB15A2622B008C6100 /* InfoPlist.strings */,
+				860623BE15A2622B008C6100 /* main.m */,
+				860623C015A2622B008C6100 /* Digital-Birth-Prefix.pch */,
 			);
-			name = Model;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		860623EE15A26E50008C6100 /* Back-End */ = {
+			isa = PBXGroup;
+			children = (
+				860623DE15A26E38008C6100 /* Action.h */,
+				860623DF15A26E38008C6100 /* Action.m */,
+				860623E015A26E38008C6100 /* Baby.h */,
+				860623E115A26E38008C6100 /* Baby.m */,
+				860623E215A26E38008C6100 /* Constants.h */,
+				860623E515A26E38008C6100 /* Game.h */,
+				860623E615A26E38008C6100 /* Game.m */,
+				860623E715A26E38008C6100 /* Lady.h */,
+				860623E815A26E38008C6100 /* Lady.m */,
+			);
+			name = "Back-End";
+			sourceTree = "<group>";
+		};
+		860623EF15A26E69008C6100 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				860623C915A2623E008C6100 /* RootViewController.h */,
+				860623CA15A2623E008C6100 /* RootViewController.m */,
+				860623CB15A2623E008C6100 /* RootViewController.xib */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Digital-Birth */ = {
+		860623AD15A2622B008C6100 /* Digital-Birth */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Digital-Birth" */;
+			buildConfigurationList = 860623C615A2622B008C6100 /* Build configuration list for PBXNativeTarget "Digital-Birth" */;
 			buildPhases = (
-				1D60588D0D05DD3D006BFB54 /* Resources */,
-				1D60588E0D05DD3D006BFB54 /* Sources */,
-				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				860623AA15A2622B008C6100 /* Sources */,
+				860623AB15A2622B008C6100 /* Frameworks */,
+				860623AC15A2622B008C6100 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -199,253 +168,169 @@
 			);
 			name = "Digital-Birth";
 			productName = "Digital-Birth";
-			productReference = 1D6058910D05DD3D006BFB54 /* Digital-Birth.app */;
-			productType = "com.apple.product-type.application";
-		};
-		CE24B73F1541FC9B00BB1400 /* Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE24B7451541FC9B00BB1400 /* Build configuration list for PBXNativeTarget "Tests" */;
-			buildPhases = (
-				CE24B73C1541FC9B00BB1400 /* Resources */,
-				CE24B73D1541FC9B00BB1400 /* Sources */,
-				CE24B73E1541FC9B00BB1400 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Tests;
-			productName = Tests;
-			productReference = CE24B7401541FC9B00BB1400 /* Tests.app */;
+			productReference = 860623AE15A2622B008C6100 /* Digital-Birth.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		29B97313FDCFA39411CA2CEA /* Project object */ = {
+		860623A515A2622B008C6100 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Digital-Birth" */;
+			buildConfigurationList = 860623A815A2622B008C6100 /* Build configuration list for PBXProject "Digital-Birth" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
-			hasScannedForEncodings = 1;
+			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 860623A315A2622B008C6100;
+			productRefGroup = 860623AF15A2622B008C6100 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Digital-Birth */,
-				CE24B73F1541FC9B00BB1400 /* Tests */,
+				860623AD15A2622B008C6100 /* Digital-Birth */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+		860623AC15A2622B008C6100 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				CE3F60D015155A6900AD6C63 /* TestViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24B73C1541FC9B00BB1400 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				860623BD15A2622B008C6100 /* InfoPlist.strings in Resources */,
+				860623CD15A2623E008C6100 /* RootViewController.xib in Resources */,
+				86458C5215A3CC5B00196ED3 /* Mommy.png in Resources */,
+				86458C5815A543B800196ED3 /* focus_0.png in Resources */,
+				86458C5915A543B800196ED3 /* focus_1.png in Resources */,
+				86458C5A15A543B800196ED3 /* focus_2.png in Resources */,
+				86458C5B15A543B800196ED3 /* focus_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+		860623AA15A2622B008C6100 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* Digital_BirthAppDelegate.m in Sources */,
-				CE77D321150A7A92008CEFDA /* Lady.m in Sources */,
-				CE77D324150A7A99008CEFDA /* Baby.m in Sources */,
-				CE77D327150A7AAA008CEFDA /* Game.m in Sources */,
-				CE77D337150AC96D008CEFDA /* Action.m in Sources */,
-				CE3F60CF15155A6900AD6C63 /* TestViewController.m in Sources */,
-				CE52A61F1566B04F005A36BE /* Contraction.m in Sources */,
-				86941DEC159D24A4002B6EC9 /* DigitalBirthViewController.m in Sources */,
-				86941DF2159D24B8002B6EC9 /* ButtonsViewController.m in Sources */,
-				86941DF3159D24B8002B6EC9 /* FHRViewController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24B73D1541FC9B00BB1400 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				860623BF15A2622B008C6100 /* main.m in Sources */,
+				860623C315A2622B008C6100 /* DigitalBirthAppDelegate.m in Sources */,
+				860623CC15A2623E008C6100 /* RootViewController.m in Sources */,
+				860623E915A26E38008C6100 /* Action.m in Sources */,
+				860623EA15A26E38008C6100 /* Baby.m in Sources */,
+				860623EC15A26E38008C6100 /* Game.m in Sources */,
+				860623ED15A26E38008C6100 /* Lady.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		860623BB15A2622B008C6100 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				860623BC15A2622B008C6100 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		1D6058940D05DD3E006BFB54 /* Debug */ = {
+		860623C415A2622B008C6100 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(DEVELOPER_DIR)\"",
-				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Digital_Birth_Prefix.pch;
-				INFOPLIST_FILE = "Digital_Birth-Info.plist";
-				PRODUCT_NAME = "Digital-Birth";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		1D6058950D05DD3E006BFB54 /* Release */ = {
+		860623C515A2622B008C6100 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(DEVELOPER_DIR)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Digital_Birth_Prefix.pch;
-				INFOPLIST_FILE = "Digital_Birth-Info.plist";
-				PRODUCT_NAME = "Digital-Birth";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		C01FCF4F08A954540054247B /* Debug */ = {
+		860623C715A2622B008C6100 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = iphoneos;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Digital-Birth/Digital-Birth-Prefix.pch";
+				INFOPLIST_FILE = "Digital-Birth/Digital-Birth-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		C01FCF5008A954540054247B /* Release */ = {
+		860623C815A2622B008C6100 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
-		CE24B7431541FC9B00BB1400 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(DEVELOPER_DIR)\"",
-				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Tests-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
-				PRODUCT_NAME = Tests;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		CE24B7441541FC9B00BB1400 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../Downloads\"",
-					"\"$(DEVELOPER_DIR)\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
-				INFOPLIST_FILE = "Tests-Info.plist";
-				INSTALL_PATH = "$(HOME)/Applications";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					UIKit,
-				);
-				PRODUCT_NAME = Tests;
-				SDKROOT = iphoneos;
-				ZERO_LINK = NO;
+				GCC_PREFIX_HEADER = "Digital-Birth/Digital-Birth-Prefix.pch";
+				INFOPLIST_FILE = "Digital-Birth/Digital-Birth-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Digital-Birth" */ = {
+		860623A815A2622B008C6100 /* Build configuration list for PBXProject "Digital-Birth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D6058940D05DD3E006BFB54 /* Debug */,
-				1D6058950D05DD3E006BFB54 /* Release */,
+				860623C415A2622B008C6100 /* Debug */,
+				860623C515A2622B008C6100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Digital-Birth" */ = {
+		860623C615A2622B008C6100 /* Build configuration list for PBXNativeTarget "Digital-Birth" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C01FCF4F08A954540054247B /* Debug */,
-				C01FCF5008A954540054247B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE24B7451541FC9B00BB1400 /* Build configuration list for PBXNativeTarget "Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE24B7431541FC9B00BB1400 /* Debug */,
-				CE24B7441541FC9B00BB1400 /* Release */,
+				860623C715A2622B008C6100 /* Debug */,
+				860623C815A2622B008C6100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+	rootObject = 860623A515A2622B008C6100 /* Project object */;
 }
