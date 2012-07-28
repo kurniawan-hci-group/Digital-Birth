@@ -11,26 +11,33 @@
 
 @implementation Baby
 
-@synthesize heartRate = _heartRate;
+@synthesize heartRate;
+//@synthesize inDistress;
 
 //TODO
 -(int)getNormalHR {
-	//return random num btw 120 and 810
+	//return random num btw 120 and 180
 	return 130;
 }
 
--(id)init {
-	if (self = [super init]) {
+-(id)init
+{
+	if (self = [super init])
+	{
 		self.heartRate = [self getNormalHR];
 	}
 	return self;
 }
 
 
--(bool)inDistress {
-	if (self.heartRate > 120 && self.heartRate < 180) {
+-(bool)inDistress
+{
+	if (self.heartRate > 120 && self.heartRate < 180)
+	{
 		return NO;
-	} else {
+	}
+	else
+	{
 		return YES;
 	}
 }

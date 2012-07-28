@@ -8,66 +8,145 @@
 
 #import <Foundation/Foundation.h>
 #import "Baby.h"
+#import "Contraction.h"
+#import "Action.h"
+
+typedef enum
+{
+	EARLY,
+	ACTIVE,
+	LATE_ACTIVE,
+	TRANSITION,
+	PUSHING,
+	BABYBORN
+} laborStage;
+
+typedef enum
+{
+	WALK,
+	STAND,
+	SLOW_DANCE,
+	LEAN_ON_WALL,
+	ROCKING_CHAIR,
+	SIT_BACKWARDS_ON_CHAIR,
+	SIT_ON_BIRTH_BALL,
+	LUNGE_ON_STAIR,
+	KNEEL,
+	SQUAT,
+	CRAWL,
+	LIE_ON_SIDE,
+	ALL_FOURS,
+	TOILET,
+	BOTTOM_IN_AIR
+} positionType;
+
+#define NUM_POSITIONS	15
+
+@interface Stats : NSObject
+{
+	// Initial stats ("factors") — these influence how the woman responds to various actions
+	
+	float desiredSupport;
+	
+	float likesBeingTouched;
+	float startingEnergy;
+	float hatesNoise;
+	float fastLabor;
+	float painThreshold;
+	float needy;
+	float visualSensitivity;
+	float smellSensitivity;
+	float focusSkill;
+	
+	bool doesNotLikeYou;
+	bool everythingIsAwesome;
+}
+
+@property (readonly) float desiredSupport;
+
+@property (readonly) float likesBeingTouched;
+@property (readonly) float startingEnergy;
+@property (readonly) float hatesNoise;
+@property (readonly) float fastLabor;
+@property (readonly) float painThreshold;
+@property (readonly) float needy;
+@property (readonly) float visualSensitivity;
+@property (readonly) float smellSensitivity;
+@property (readonly) float focusSkill;
+
+@property (readonly) bool doesNotLikeYou;
+@property (readonly) bool everythingIsAwesome;
+
+@end
+
 
 @interface Lady : NSObject
 {
 	Baby *baby;
 
 	float support;
-	float tiredness;
-	float hunger;
-	int focus;
+//	float supportWindow;
+	
+	float coping;
+	float energy;
+//	float focus;
 	float dilation;
+	positionType position;
 
 	float effacement;
-	int station;
+	float station;
 	
+	bool watersReleased;
 	bool hadBaby;
 	
-	//	int energy;
-	//	int copingNum;
+	laborStage stateOfLabor;
+	float laborStageDuration;
 	
-	int strengthOfContractions;
+	// Initial stats ("factors").
+//	NSMutableDictionary* factors;
+	Stats* factors;
 
-	int contractionNum;
-	int stateOfLabor;
-	int chanceOfContraction;
-	bool havingContraction;
-	bool incrContraction;
-	NSDate *start;
-	//NSTimeInterval _timeSinceLastContraction;
-	NSTimer *contractionTimer;
+	// Variables for the contraction model.
+	float timeToNextContraction;
+	float maxContractionStrength;
+	float contractionDuration;
+	float contractionFrequency;
+	NSTimer* contractionTimer;
+	NSMutableArray* currentContractions;
+
+	NSDate* laborStartTime;
+	
 }
 
-@property (nonatomic, retain) Baby *baby;
+@property (nonatomic, readonly) Baby *baby;
 
-@property float support;
-@property float tiredness;
-@property float hunger;
-@property int focus;
-@property float dilation;
+@property (readonly) float support;
+@property (readonly) float supportWindow;
+@property (readonly) float desiredSupport;
 
-@property float effacement;
-@property int station;
+@property (readonly) float coping;
+@property (readonly) float energy;
+//@property (readonly) float focus;
+@property (readonly) float dilation;
+@property (readonly) positionType position;
 
-@property bool hadBaby;
+@property (readonly) float effacement;
+@property (readonly) float station;
 
-//@property int energy;
-//@property int copingNum;
+@property (readonly) bool watersReleased;
+@property (readonly) bool hadBaby;
 
-@property int strengthOfContractions;
+@property (readonly) laborStage stateOfLabor;
 
-@property int contractionNum;
-@property int stateOfLabor;
-@property int chanceOfContraction;
-@property bool havingContraction;
-@property bool incrContraction;
-@property (nonatomic, retain) NSDate *start;
-//@property NSTimeInterval timeSinceLastContraction;
-@property (nonatomic, retain) NSTimer *contractionTimer;
+@property (readonly) int contractionStrength;
+@property (readonly) bool havingContraction;
+
+@property (nonatomic, readonly) NSDate* laborStartTime;
+@property (readonly) NSTimeInterval laborDuration;
 
 -(void)startLabor;
--(void)startContraction;
--(void)increaseChanceOfContraction;
+-(void)endLabor;
+-(void)timerTick;
+-(bool)applyAction:(Action*)action;
 
 @end

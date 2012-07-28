@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Baby : NSObject {
-	int _heartRate;
-	bool _inDistress;
+@interface Baby : NSObject
+{
+	int heartRate;
+//	bool inDistress;
 }
 
 @property int heartRate;
+//@property bool inDistress;
 
--(bool)inDistress;
+-(bool) inDistress;
 
 @end

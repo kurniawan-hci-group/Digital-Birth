@@ -8,38 +8,50 @@
 
 #import <Foundation/Foundation.h>
 #import "Lady.h"
+#import "Action.h"
+
+typedef enum
+{
+	IN_PROGRESS,
+	LOST_GAME,
+	WON_GAME
+} gameStatusType;
 
 @interface Game : NSObject
 {
 	Lady *lady;
+	gameStatusType gameStatus;
+	int playerScore;
+	NSTimer* gameTimer;
 }
 
-@property (retain) Lady *lady;
+@property (readonly) Lady *lady;
+@property (readonly) gameStatusType gameStatus;
+@property (readonly) int playerScore;
+@property (readonly) NSTimer* gameTimer;
 
--(void)handleTimerTick;
+-(void)startGame;
+-(void)performAction:(NSString*)actionName;
 
 -(int)getBabyHR;
 -(bool)babyIsDistressed;
 
--(int)getSupport; 
--(int)getHunger;
--(int)getTiredness;
--(int)getFocus;
-//-(int)getCopingNum; 
+-(float)getSupport;
+-(float)getDesiredSupport;
+-(float)getSupportWindow;
 
+-(int)getCoping;
+-(float)getEnergy;
+//-(int)getFocus;
 -(int)getDilation;
+-(positionType)getPosition;
 
--(int)getEffacement;
+-(float)getEffacement;
 -(int)getStation;
 
 -(int)getContractionStrength;
 
-//-(int)getContractionNum; //0 no contraction, 255 contraction peak
+-(bool)watersReleased;
 -(bool)hadBaby;
-//-(void)perormAction:(*Action) action;
-
-
-
-
 
 @end
