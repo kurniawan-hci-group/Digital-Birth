@@ -15,7 +15,6 @@
 		860623C315A2622B008C6100 /* DigitalBirthAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623C215A2622B008C6100 /* DigitalBirthAppDelegate.m */; };
 		860623CC15A2623E008C6100 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623CA15A2623E008C6100 /* RootViewController.m */; };
 		860623CD15A2623E008C6100 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 860623CB15A2623E008C6100 /* RootViewController.xib */; };
-		860623E915A26E38008C6100 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623DF15A26E38008C6100 /* Action.m */; };
 		860623EA15A26E38008C6100 /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E115A26E38008C6100 /* Baby.m */; };
 		860623EC15A26E38008C6100 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E615A26E38008C6100 /* Game.m */; };
 		860623ED15A26E38008C6100 /* Lady.m in Sources */ = {isa = PBXBuildFile; fileRef = 860623E815A26E38008C6100 /* Lady.m */; };
@@ -34,6 +33,20 @@
 		86CFDD2315C2538400EDADC0 /* dilation10.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD1815C2538400EDADC0 /* dilation10.png */; };
 		86CFDD2515C2549400EDADC0 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD2415C2549400EDADC0 /* background.png */; };
 		86CFDD2715C25B4800EDADC0 /* woman_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD2615C25B4800EDADC0 /* woman_normal.png */; };
+		86CFDD5A15C4A41000EDADC0 /* Actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD5915C4A40F00EDADC0 /* Actions.plist */; };
+		86CFDD5C15C4CE6300EDADC0 /* lightTouchMassage.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD5B15C4CE6300EDADC0 /* lightTouchMassage.png */; };
+		86CFDD5E15C4CEE900EDADC0 /* lightTouchMassage_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD5D15C4CEE900EDADC0 /* lightTouchMassage_disabled.png */; };
+		86CFDD6A15C4E37A00EDADC0 /* acupressure_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD5F15C4E37900EDADC0 /* acupressure_disabled.png */; };
+		86CFDD6B15C4E37A00EDADC0 /* aromatherapy_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6015C4E37900EDADC0 /* aromatherapy_disabled.png */; };
+		86CFDD6C15C4E37A00EDADC0 /* birthBallStool_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6115C4E37900EDADC0 /* birthBallStool_disabled.png */; };
+		86CFDD6D15C4E37A00EDADC0 /* coldCloth_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6215C4E37900EDADC0 /* coldCloth_disabled.png */; };
+		86CFDD6E15C4E37A00EDADC0 /* compliment_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6315C4E37A00EDADC0 /* compliment_disabled.png */; };
+		86CFDD6F15C4E37A00EDADC0 /* encourage_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6415C4E37A00EDADC0 /* encourage_disabled.png */; };
+		86CFDD7015C4E37A00EDADC0 /* heatPack_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6515C4E37A00EDADC0 /* heatPack_disabled.png */; };
+		86CFDD7115C4E37A00EDADC0 /* kiss_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6615C4E37A00EDADC0 /* kiss_disabled.png */; };
+		86CFDD7215C4E37A00EDADC0 /* playMusic_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6715C4E37A00EDADC0 /* playMusic_disabled.png */; };
+		86CFDD7315C4E37A00EDADC0 /* rhythmicBreathing_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6815C4E37A00EDADC0 /* rhythmicBreathing_disabled.png */; };
+		86CFDD7415C4E37A00EDADC0 /* visualization_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CFDD6915C4E37A00EDADC0 /* visualization_disabled.png */; };
 		86D4491B15ABCF6E00B642B1 /* ButtonBarHandle.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D4491A15ABCF6E00B642B1 /* ButtonBarHandle.png */; };
 		86D4491D15ABD13200B642B1 /* ContractionMonitorHandle.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D4491C15ABD13200B642B1 /* ContractionMonitorHandle.png */; };
 		86D4491F15ABDCD000B642B1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D4491E15ABDCD000B642B1 /* MediaPlayer.framework */; };
@@ -70,8 +83,6 @@
 		860623C915A2623E008C6100 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../RootViewController.h; sourceTree = "<group>"; };
 		860623CA15A2623E008C6100 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../RootViewController.m; sourceTree = "<group>"; };
 		860623CB15A2623E008C6100 /* RootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootViewController.xib; path = ../RootViewController.xib; sourceTree = "<group>"; };
-		860623DE15A26E38008C6100 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = ../Action.h; sourceTree = "<group>"; };
-		860623DF15A26E38008C6100 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Action.m; path = ../Action.m; sourceTree = "<group>"; };
 		860623E015A26E38008C6100 /* Baby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Baby.h; path = ../Baby.h; sourceTree = "<group>"; };
 		860623E115A26E38008C6100 /* Baby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Baby.m; path = ../Baby.m; sourceTree = "<group>"; };
 		860623E215A26E38008C6100 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Constants.h; sourceTree = "<group>"; };
@@ -96,6 +107,20 @@
 		86CFDD1815C2538400EDADC0 /* dilation10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dilation10.png; sourceTree = "<group>"; };
 		86CFDD2415C2549400EDADC0 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		86CFDD2615C25B4800EDADC0 /* woman_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = woman_normal.png; sourceTree = "<group>"; };
+		86CFDD5915C4A40F00EDADC0 /* Actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Actions.plist; sourceTree = "<group>"; };
+		86CFDD5B15C4CE6300EDADC0 /* lightTouchMassage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightTouchMassage.png; sourceTree = "<group>"; };
+		86CFDD5D15C4CEE900EDADC0 /* lightTouchMassage_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightTouchMassage_disabled.png; sourceTree = "<group>"; };
+		86CFDD5F15C4E37900EDADC0 /* acupressure_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = acupressure_disabled.png; sourceTree = "<group>"; };
+		86CFDD6015C4E37900EDADC0 /* aromatherapy_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aromatherapy_disabled.png; sourceTree = "<group>"; };
+		86CFDD6115C4E37900EDADC0 /* birthBallStool_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = birthBallStool_disabled.png; sourceTree = "<group>"; };
+		86CFDD6215C4E37900EDADC0 /* coldCloth_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coldCloth_disabled.png; sourceTree = "<group>"; };
+		86CFDD6315C4E37A00EDADC0 /* compliment_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compliment_disabled.png; sourceTree = "<group>"; };
+		86CFDD6415C4E37A00EDADC0 /* encourage_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = encourage_disabled.png; sourceTree = "<group>"; };
+		86CFDD6515C4E37A00EDADC0 /* heatPack_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatPack_disabled.png; sourceTree = "<group>"; };
+		86CFDD6615C4E37A00EDADC0 /* kiss_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kiss_disabled.png; sourceTree = "<group>"; };
+		86CFDD6715C4E37A00EDADC0 /* playMusic_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playMusic_disabled.png; sourceTree = "<group>"; };
+		86CFDD6815C4E37A00EDADC0 /* rhythmicBreathing_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rhythmicBreathing_disabled.png; sourceTree = "<group>"; };
+		86CFDD6915C4E37A00EDADC0 /* visualization_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visualization_disabled.png; sourceTree = "<group>"; };
 		86D4491A15ABCF6E00B642B1 /* ButtonBarHandle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBarHandle.png; sourceTree = "<group>"; };
 		86D4491C15ABD13200B642B1 /* ContractionMonitorHandle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ContractionMonitorHandle.png; sourceTree = "<group>"; };
 		86D4491E15ABDCD000B642B1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -196,8 +221,6 @@
 		860623EE15A26E50008C6100 /* Back-End */ = {
 			isa = PBXGroup;
 			children = (
-				860623DE15A26E38008C6100 /* Action.h */,
-				860623DF15A26E38008C6100 /* Action.m */,
 				860623E015A26E38008C6100 /* Baby.h */,
 				860623E115A26E38008C6100 /* Baby.m */,
 				860623E215A26E38008C6100 /* Constants.h */,
@@ -209,6 +232,7 @@
 				860623E815A26E38008C6100 /* Lady.m */,
 				86C4785715B547600063DC66 /* Contraction.h */,
 				86C4785815B547600063DC66 /* Contraction.m */,
+				86CFDD5915C4A40F00EDADC0 /* Actions.plist */,
 			);
 			name = "Back-End";
 			sourceTree = "<group>";
@@ -259,6 +283,19 @@
 		86D4492115ABE28600B642B1 /* Button Icons */ = {
 			isa = PBXGroup;
 			children = (
+				86CFDD5F15C4E37900EDADC0 /* acupressure_disabled.png */,
+				86CFDD6015C4E37900EDADC0 /* aromatherapy_disabled.png */,
+				86CFDD6115C4E37900EDADC0 /* birthBallStool_disabled.png */,
+				86CFDD6215C4E37900EDADC0 /* coldCloth_disabled.png */,
+				86CFDD6315C4E37A00EDADC0 /* compliment_disabled.png */,
+				86CFDD6415C4E37A00EDADC0 /* encourage_disabled.png */,
+				86CFDD6515C4E37A00EDADC0 /* heatPack_disabled.png */,
+				86CFDD6615C4E37A00EDADC0 /* kiss_disabled.png */,
+				86CFDD6715C4E37A00EDADC0 /* playMusic_disabled.png */,
+				86CFDD6815C4E37A00EDADC0 /* rhythmicBreathing_disabled.png */,
+				86CFDD6915C4E37A00EDADC0 /* visualization_disabled.png */,
+				86CFDD5D15C4CEE900EDADC0 /* lightTouchMassage_disabled.png */,
+				86CFDD5B15C4CE6300EDADC0 /* lightTouchMassage.png */,
 				86D4494A15B38D5900B642B1 /* acupressure.png */,
 				86D4494B15B38D5900B642B1 /* aromatherapy.png */,
 				86D4494C15B38D5900B642B1 /* birthBallStool.png */,
@@ -382,6 +419,20 @@
 				86CFDD2315C2538400EDADC0 /* dilation10.png in Resources */,
 				86CFDD2515C2549400EDADC0 /* background.png in Resources */,
 				86CFDD2715C25B4800EDADC0 /* woman_normal.png in Resources */,
+				86CFDD5A15C4A41000EDADC0 /* Actions.plist in Resources */,
+				86CFDD5C15C4CE6300EDADC0 /* lightTouchMassage.png in Resources */,
+				86CFDD5E15C4CEE900EDADC0 /* lightTouchMassage_disabled.png in Resources */,
+				86CFDD6A15C4E37A00EDADC0 /* acupressure_disabled.png in Resources */,
+				86CFDD6B15C4E37A00EDADC0 /* aromatherapy_disabled.png in Resources */,
+				86CFDD6C15C4E37A00EDADC0 /* birthBallStool_disabled.png in Resources */,
+				86CFDD6D15C4E37A00EDADC0 /* coldCloth_disabled.png in Resources */,
+				86CFDD6E15C4E37A00EDADC0 /* compliment_disabled.png in Resources */,
+				86CFDD6F15C4E37A00EDADC0 /* encourage_disabled.png in Resources */,
+				86CFDD7015C4E37A00EDADC0 /* heatPack_disabled.png in Resources */,
+				86CFDD7115C4E37A00EDADC0 /* kiss_disabled.png in Resources */,
+				86CFDD7215C4E37A00EDADC0 /* playMusic_disabled.png in Resources */,
+				86CFDD7315C4E37A00EDADC0 /* rhythmicBreathing_disabled.png in Resources */,
+				86CFDD7415C4E37A00EDADC0 /* visualization_disabled.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +446,6 @@
 				860623BF15A2622B008C6100 /* main.m in Sources */,
 				860623C315A2622B008C6100 /* DigitalBirthAppDelegate.m in Sources */,
 				860623CC15A2623E008C6100 /* RootViewController.m in Sources */,
-				860623E915A26E38008C6100 /* Action.m in Sources */,
 				860623EA15A26E38008C6100 /* Baby.m in Sources */,
 				860623EC15A26E38008C6100 /* Game.m in Sources */,
 				860623ED15A26E38008C6100 /* Lady.m in Sources */,

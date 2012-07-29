@@ -10,7 +10,7 @@
 #import "Lady.h"
 #import "Constants.h"
 
-static NSMutableDictionary* actionList;
+static NSDictionary* actionList;
 
 @implementation Game
 
@@ -28,15 +28,21 @@ static NSMutableDictionary* actionList;
 		lady = [[Lady alloc] init];
 		gameStatus = IN_PROGRESS;
 		
-		actionList = [[NSMutableDictionary alloc] init];
+		NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
+		actionList = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+		if(actionList)
+			printf("Action list loaded successfully.\n");
+		else
+			printf("Could not load action list!\n");
+		[actionList retain];
 
-		// Code to load the actions from a file (xml?) and add them to the actionList.
-		// For now, the following placeholder test code.
-		Action* action;
-		action = [[Action alloc] init];
-//		action.supportEffect = 0.01 * MAX_SUPPORT;
-		[actionList setObject:action forKey:@"lightTouchMassage"];
-		[action release];
+//		// Code to load the actions from a file (xml?) and add them to the actionList.
+//		// For now, the following placeholder test code.
+//		Action* action;
+//		action = [[Action alloc] init];
+////		action.supportEffect = 0.01 * MAX_SUPPORT;
+//		[actionList setObject:action forKey:@"lightTouchMassage"];
+//		[action release];
 	}
 	return self;
 }
@@ -103,6 +109,11 @@ static NSMutableDictionary* actionList;
 	}
 	else
 		printf("action with name \"%s\" not found\n", [actionName UTF8String]);
+}
+
+-(NSTimeInterval)getCooldown:(NSString*)actionName
+{
+	return (NSTimeInterval) [[[actionList objectForKey:actionName] objectForKey:@"cooldown"] floatValue];
 }
 
 #pragma mark - Accessors

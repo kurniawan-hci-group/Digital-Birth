@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Baby.h"
 #import "Contraction.h"
-#import "Action.h"
 
 typedef enum
 {
@@ -147,6 +146,6 @@ typedef enum
 -(void)startLabor;
 -(void)endLabor;
 -(void)timerTick;
--(bool)applyAction:(Action*)action;
+-(bool)applyAction:(NSDictionary*)action;
 
 @end

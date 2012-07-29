@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Lady.h"
-#import "Action.h"
 
 typedef enum
 {
@@ -32,6 +31,7 @@ typedef enum
 
 -(void)startGame;
 -(void)performAction:(NSString*)actionName;
+-(NSTimeInterval)getCooldown:(NSString*)actionName;
 
 -(int)getBabyHR;
 -(bool)babyIsDistressed;

@@ -591,9 +591,108 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 #pragma mark - Button sub-panel actions
 
-- (IBAction)lightTouchMassageButtonPressed
+-(void)enableButtonNow:(UIButton*) button
 {
-	[self.game performAction:@"lightTouchMassage"];	
+	button.enabled = YES;
+}
+
+-(void)enableButtonAfterCooldown: (UIButton*) button : (NSTimeInterval) cooldown
+{
+	NSMethodSignature* sig = [self methodSignatureForSelector:@selector(enableButtonNow:)];
+	NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+	[inv setSelector:@selector(enableButtonNow:)];
+	[inv setTarget:self];
+	[inv setArgument:&button atIndex:2];
+	NSTimer* enableTimer;
+	enableTimer = [NSTimer scheduledTimerWithTimeInterval:(cooldown * GAME_TIMER_TICK) invocation:inv repeats:NO];	
+}
+
+- (IBAction)lightTouchMassageButtonPressed:(id)sender
+{
+	[game performAction:@"lightTouchMassage"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"lightTouchMassage"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)acupressureButtonPressed:(id)sender
+{
+	[game performAction:@"acupressure"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"acupressure"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)heatPackButtonPressed:(id)sender
+{
+	[game performAction:@"heatPack"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"heatPack"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)coldClothButtonPressed:(id)sender
+{
+	[game performAction:@"coldCloth"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"coldCloth"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)ragDollButtonPressed:(id)sender
+{
+	[game performAction:@"ragDoll"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"ragDoll"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)aromatherapyButtonPressed:(id)sender
+{
+	[game performAction:@"aromatherapy"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"aromatherapy"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)playMusicButtonPressed:(id)sender
+{
+	[game performAction:@"playMusic"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"playMusic"];
+	[self enableButtonAfterCooldown:sender:cooldown];
+}
+
+- (IBAction)visualizationButtonPressed:(id)sender
+{
+	[game performAction:@"visualization"];
+	
+	((UIButton*) sender).enabled = NO;
+	
+	// Re-enable the button after the cooldown elapses.
+	NSTimeInterval cooldown = [game getCooldown:@"visualization"];
+	[self enableButtonAfterCooldown:sender:cooldown];
 }
 
 - (IBAction)heatPackButtonTouched

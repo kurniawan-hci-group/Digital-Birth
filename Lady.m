@@ -182,15 +182,6 @@
 
 #pragma mark - methods: other
 
-// *** generateRandomTime: ***
-//
-// This function generates the time to the next contraction.
-// Generated times form a bell-shaped curve around the contractionFrequency.
-// "variance" is not the mathematical variance (squared deviation), but rather 
-// just the maximum variation, positive or negative, of the generated value
-// from the contractionFrequency. Variance depends on state of labor, and does not
-// itself vary with the contractionFrequency.
-
 -(void)startLabor
 {
 	printf("starting labor\n");	
@@ -463,11 +454,11 @@
 	printf("%d contractions have happened\n", contractions_happened);
 }
 
--(bool)applyAction:(Action*)action
+-(bool)applyAction:(NSDictionary*)action
 {
 	// Return true if action successfully applied, false otherwise.
 	
-	printf("attempting to apply action: %s\n", [action.name UTF8String]);
+	printf("attempting to apply action: %s\n", [[action objectForKey:@"name"] UTF8String]);
 	
 	// Generate modifier (multiplier) on action effects by composing (somehow!)
 	// all factors by which this action is affected.
@@ -479,13 +470,13 @@
 	// Apply effects of actions.
 	// Don't forget to do this probabilistically, based on failure chance from
 	// labor stage!
-	support += action.supportEffect * aggregatedFactorMultiplier;
-	coping += action.copingEffect * aggregatedFactorMultiplier;
-	energy += action.energyEffect * aggregatedFactorMultiplier;
+	support += [[action objectForKey:@"supportEffect"] floatValue] * aggregatedFactorMultiplier;
+//	coping += action.copingEffect * aggregatedFactorMultiplier;
+//	energy += action.energyEffect * aggregatedFactorMultiplier;
 //	focus += action.focusEffect * aggregatedFactorMultiplier;
-	dilation += action.dilationEffect * aggregatedFactorMultiplier;
-	maxContractionStrength += action.contractionStrengthEffect * aggregatedFactorMultiplier;
-	contractionFrequency += action.contractionFrequencyEffect * aggregatedFactorMultiplier;
+//	dilation += action.dilationEffect * aggregatedFactorMultiplier;
+//	maxContractionStrength += action.contractionStrengthEffect * aggregatedFactorMultiplier;
+//	contractionFrequency += action.contractionFrequencyEffect * aggregatedFactorMultiplier;
 	
 	return false;
 }

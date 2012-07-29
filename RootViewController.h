@@ -118,7 +118,14 @@ typedef enum
 // Actions for buttons on the sub-panels.
 
 // Actions for buttons on the relaxation sub-panel.
-- (IBAction)lightTouchMassageButtonPressed;
+- (IBAction)lightTouchMassageButtonPressed:(id)sender;
+- (IBAction)acupressureButtonPressed:(id)sender;
+- (IBAction)heatPackButtonPressed:(id)sender;
+- (IBAction)coldClothButtonPressed:(id)sender;
+- (IBAction)ragDollButtonPressed:(id)sender;
+- (IBAction)aromatherapyButtonPressed:(id)sender;
+- (IBAction)playMusicButtonPressed:(id)sender;
+- (IBAction)visualizationButtonPressed:(id)sender;
 
 - (IBAction)heatPackButtonTouched;
 
