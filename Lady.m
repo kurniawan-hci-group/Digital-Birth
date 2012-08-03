@@ -10,21 +10,35 @@
 #import "Constants.h"
 #import "Functions.h"
 
+NSString* laborStageString(laborStageType stage)
+{
+	switch (stage) {
+		case EARLY:
+			return @"EARLY";
+			break;
+		case ACTIVE:
+			return @"ACTIVE";
+			break;
+		case LATE_ACTIVE:
+			return @"LATE_ACTIVE";
+			break;
+		case TRANSITION:
+			return @"TRANSITION";
+			break;
+		case PUSHING:
+			return @"PUSHING";
+			break;
+		case BABYBORN:
+			return @"BABYBORN";
+			break;
+		default:
+			break;
+	}
+}
+
 #pragma mark - Stats class implementation
 
 @implementation Stats
-
-@synthesize desiredSupport;
-
-@synthesize likesBeingTouched;
-@synthesize startingEnergy;
-@synthesize hatesNoise;
-@synthesize fastLabor;
-@synthesize painThreshold;
-@synthesize needy;
-@synthesize visualSensitivity;
-@synthesize smellSensitivity;
-@synthesize focusSkill;
 
 @synthesize doesNotLikeYou;
 @synthesize everythingIsAwesome;
@@ -33,29 +47,6 @@
 {
 	if(self = [super init])
 	{
-		desiredSupport = arc4random() % (int) MAX_SUPPORT;
-		printf("%f\n", desiredSupport);
-		
-		startingEnergy = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", startingEnergy);
-
-		likesBeingTouched = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", likesBeingTouched);
-		hatesNoise = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", hatesNoise);
-		fastLabor = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", fastLabor);
-		painThreshold = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", painThreshold);
-		needy = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", needy);
-		visualSensitivity = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", visualSensitivity);
-		smellSensitivity = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", smellSensitivity);
-		focusSkill = (double) arc4random() / ARC4RANDOM_MAX;
-		printf("%f\n", focusSkill);
-		
 		doesNotLikeYou = arc4random() % 2;
 		printf("%d\n", doesNotLikeYou);
 		everythingIsAwesome = arc4random() % 2;
@@ -77,21 +68,18 @@
 
 // Variables whose values are displayed to the user (aka "displayed stats").
 @synthesize support;
+@synthesize supportWindow;
+@synthesize desiredSupport;
 
 // Getter method for supportWindow property.
--(float) supportWindow
-{
-	return (0.2 * MAX_SUPPORT) - (0.1 * dilation * 10);
-}
-
--(float)desiredSupport
-{
-	return factors.desiredSupport;
-}
+//-(float) supportWindow
+//{
+//	return 0.15 * MAX_SUPPORT;
+////	return (0.2 * MAX_SUPPORT) - (dilation * 0.01 * MAX_SUPPORT);
+//}
 
 @synthesize coping;
 @synthesize energy;
-//@synthesize focus;
 @synthesize dilation;
 @synthesize position;
 
@@ -105,7 +93,7 @@
 // Have we had the baby already? (i.e. are we done?)
 @synthesize hadBaby;
 
-@synthesize stateOfLabor;
+@synthesize laborStage;
 
 // Getter method for contractionStrength property.
 -(int) contractionStrength
@@ -130,7 +118,7 @@
 // Getter method for laborDuration property.
 -(NSTimeInterval) laborDuration
 {
-	return [laborStartTime timeIntervalSinceNow];
+	return [laborStartTime timeIntervalSinceNow] * -1;
 }
 
 #pragma mark - methods: object lifetime
@@ -142,14 +130,23 @@
 		baby = [[Baby alloc] init];
 		
 		// Generate initial stats here.
-		factors = [[Stats alloc] init];
-		
-		support = factors.desiredSupport;
-//		supportWindow = 0.2 * MAX_SUPPORT;
+//		factors = [[Stats alloc] init];
+		NSString* factorsListPath = [[NSBundle mainBundle] pathForResource:@"Factors" ofType:@"plist"];
+		NSArray* temp_factors = [NSArray arrayWithContentsOfFile:factorsListPath];
+//		if(temp_factors)
+//			printf("Factors list loaded successfully.\n");
+//		else
+//			printf("Could not load factors list!\n");
+		factors = [[NSMutableDictionary alloc] init];
+		for(NSString* factorName in temp_factors)
+			[factors setObject:[NSNumber numberWithFloat:((double) arc4random() / ARC4RANDOM_MAX)] forKey:factorName];
+			
+		desiredSupport = [[factors objectForKey:@"initialDesiredSupport"] floatValue] * MAX_SUPPORT;
+		support = desiredSupport;
+		supportWindow = (0.1 + 0.1 * ((double) arc4random() / ARC4RANDOM_MAX)) * MAX_SUPPORT;
 		
 		coping = MAX_COPING;
-		energy = MAX_ENERGY * factors.startingEnergy;
-//		focus = MAX_FOCUS;
+		energy = MAX_ENERGY * (double) arc4random() / ARC4RANDOM_MAX;
 		dilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
 		position = SIT_BACKWARDS_ON_CHAIR;
 		
@@ -158,7 +155,7 @@
 		
 		hadBaby = NO;
 		
-		stateOfLabor = EARLY;
+		laborStage = EARLY;
 		laborStageDuration = get_random_float_with_variance(12, 4) * 60 * 60; // 12 hours average.
 		// It might be as low as 2... model that somehow.
 		
@@ -231,7 +228,7 @@
 	
 	// Randomly determine contraction duration, with current avg duration
 	// and with a variance depending on stage of labor.
-	switch (stateOfLabor)
+	switch (laborStage)
 	{
 		case EARLY:
 			variance = 0.0;
@@ -253,7 +250,7 @@
 	
 	// Randomly determine time to next contraction, with current frequency
 	// and with a variance depending on stage of labor.
-	switch (stateOfLabor)
+	switch (laborStage)
 	{
 		case EARLY:
 			variance = 8 * 60.0;
@@ -294,16 +291,10 @@
 			
 			contractions_happened++;
 			
-			// If all happening contractions have ended, 
-			// replenish half of the focus lost during a contraction.
-			// NOTE: this formula is half of the average total focus lost during a contraction.
-//			focus += 0.4 * (double) MAX_FOCUS / (M_PI * maxContractionStrength);
-
-			// If all happening contractions have ended, 
-			// replenish half of the coping lost during a contraction.
-			// NOTE: this formula is half of the average total focus lost during a contraction.
+			// If a contraction has ended, replenish half of the coping lost during the contraction.
+			// NOTE: this formula is half of the average total coping lost during a contraction.
 			printf("coping before replenishment: %f\n", coping);
-			coping += 0.4 * (2 * MAX_COPING * maxContractionStrength) / ((double) MAX_POSSIBLE_CONTRACTION_STRENGTH * M_PI);
+			coping += 0.4 * (1.0 - 0.5 * [[factors objectForKey:@"painTolerance"] floatValue]) * (2 * MAX_COPING * maxContractionStrength) / ((double) MAX_POSSIBLE_CONTRACTION_STRENGTH * M_PI);
 			printf("coping after replenishment: %f\n", coping);
 
 		}
@@ -315,12 +306,12 @@
 	// Check for labor phase change;
 	// generate length of labor phase, when entering said phase;
 	// update contraction frequency and duration
-	switch (stateOfLabor)
+	switch (laborStage)
 	{
 		case EARLY:
 			if(dilation >= 4.0)
 			{
-				stateOfLabor = ACTIVE;
+				laborStage = ACTIVE;
 				laborStageDuration = get_random_float_with_variance(8, 2) * 60 * 60; // 8 hours.
 				percent_increase = 0.15;
 				contractionFrequency *= 4.0/12.0;
@@ -331,7 +322,7 @@
 		case ACTIVE:
 			if(dilation >= 6.0)
 			{
-				stateOfLabor = LATE_ACTIVE;
+				laborStage = LATE_ACTIVE;
 				laborStageDuration = get_random_float_with_variance(4, 1) * 60 * 60; // 4 hours.
 				percent_increase = 0.25;
 				contractionFrequency *= 3.0/4.0;
@@ -342,7 +333,7 @@
 		case LATE_ACTIVE:
 			if(dilation >= 8.0 && dilation < 10.0)
 			{
-				stateOfLabor = TRANSITION;
+				laborStage = TRANSITION;
 				laborStageDuration = 1 * 60 * 60; // 1 hour.
 				percent_increase = 0.0;
 				contractionFrequency *= 2.0/3.0;
@@ -352,7 +343,7 @@
 		case TRANSITION:
 			if(dilation >= 10.0)
 			{
-				stateOfLabor = PUSHING;
+				laborStage = PUSHING;
 				contractionFrequency *= 5.0/2.0;
 				contractionDuration = 120;
 				station += (double) arc4random() / ARC4RANDOM_MAX;
@@ -361,7 +352,7 @@
 		case PUSHING:
 			if(station >= 3.0)
 			{
-				stateOfLabor = BABYBORN;
+				laborStage = BABYBORN;
 				hadBaby = YES;
 			}
 			break;
@@ -375,9 +366,9 @@
 //	printf("contractions happening: %d\n", currentContractions.count);
 	
 	// Dilate, if having contraction and not already fully dilated.
-	if(stateOfLabor != PUSHING && self.havingContraction)
+	if(laborStage != PUSHING && self.havingContraction)
 	{
-		switch(stateOfLabor)
+		switch(laborStage)
 		{
 			// MAGIC NUMBERS. DO NOT TOUCH.
 			// Numbers are explained in comments, but that doesn't mean you can touch them.
@@ -423,7 +414,7 @@
 	}
 
 	// If pushing (and thus already fully dilated), descend baby instead.
-	if(stateOfLabor == PUSHING && self.havingContraction)
+	if(laborStage == PUSHING && self.havingContraction)
 	{
 		// MAGIC NUMBERS. DO NOT TOUCH.
 		// Numbers are explained in comments, but that doesn't mean you can touch them.
@@ -440,18 +431,41 @@
 	support = MAX(support - MAX_SUPPORT * 0.001, 0);
 	energy = MAX(energy - MAX_ENERGY * 0.001, 0);
 	
-	// Decrease focus if having contraction.
-//	if(self.havingContraction)
-//		focus = MAX(focus - ((MAX_FOCUS * (double) self.contractionStrength / MAX_POSSIBLE_CONTRACTION_STRENGTH) / contractionDuration), 0);
-	
 	// Decrease coping level if having contraction.
 	if(self.havingContraction)
-		coping = MAX(coping - ((MAX_COPING * (double) self.contractionStrength / MAX_POSSIBLE_CONTRACTION_STRENGTH) / contractionDuration), 0);
+		coping = MAX(coping - ((1.0 - 0.5 * [[factors objectForKey:@"painTolerance"] floatValue]) * (MAX_COPING * (double) self.contractionStrength / MAX_POSSIBLE_CONTRACTION_STRENGTH) / contractionDuration), 0);
 	printf("coping: %f\n", coping);
+	
+	// Adjust coping level based on support.
+	float copingAdjustmentFactor = (supportWindow - ABS(support - desiredSupport)) / supportWindow;
+	coping = MIN(coping + 0.001 * MAX_COPING * copingAdjustmentFactor, MAX_COPING);
+	
+	// Adjust desired support based on coping.
+	desiredSupport = MIN([[factors objectForKey:@"initialDesiredSupport"] floatValue] * MAX_SUPPORT * (2.0 - (coping / (float) MAX_COPING)), MAX_SUPPORT);
 	
 	ticks++;
 	printf("%d ticks\n", ticks);
 	printf("%d contractions have happened\n", contractions_happened);
+}
+
+-(void)applyActionEffects:(NSMutableDictionary*)effectsOfAction
+{
+	support += [[effectsOfAction objectForKey:@"supportEffect"] floatValue];
+	energy += [[effectsOfAction objectForKey:@"energyEffect"] floatValue];
+	maxContractionStrength += [[effectsOfAction objectForKey:@"contractionStrengthEffect"] floatValue];
+	contractionFrequency += [[effectsOfAction objectForKey:@"supportEffect"] floatValue];
+}
+
+-(void)actionTickWithEffects:(NSMutableDictionary*)effectsOfAction timer:(NSTimer*)timer
+{
+	[self applyActionEffects:effectsOfAction];
+	
+	int num_ticks = [[effectsOfAction objectForKey:@"num_ticks"] intValue];
+	num_ticks--;
+	if(num_ticks == 0)
+		[timer invalidate];
+	else
+		[effectsOfAction setObject:[NSNumber numberWithInt:num_ticks] forKey:@"num_ticks"];
 }
 
 -(bool)applyAction:(NSDictionary*)action
@@ -460,25 +474,56 @@
 	
 	printf("attempting to apply action: %s\n", [[action objectForKey:@"name"] UTF8String]);
 	
-	// Generate modifier (multiplier) on action effects by composing (somehow!)
+	// Return false if not enough energy.
+	if(energy + [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] < 0.0)
+		return false;
+
+	// Look through the action's "affecting factors" set and find any relevant ones.
+	// Generate modifier (multiplier) on action effects by averaging in
 	// all factors by which this action is affected.
 	float aggregatedFactorMultiplier = 1;
+	for(NSString* factorName in [action objectForKey:@"factorEffects"])
+		aggregatedFactorMultiplier += [[factors objectForKey:factorName] floatValue];
+	aggregatedFactorMultiplier /= [[action objectForKey:@"factorEffects"] count] + 1;
 	
-	// First, look through the action's "affecting factors" set and find any
-	// relevant ones.
+	// Get number of ticks. If action is instant (duration = 0), only 1 tick.
+	NSNumber* num_ticks;
+	if([[action objectForKey:@"duration"] intValue] == 0)
+		num_ticks = [NSNumber numberWithInt:1];
+	else
+		num_ticks = [NSNumber numberWithInt:[[action objectForKey:@"duration"] intValue]];
 	
-	// Apply effects of actions.
-	// Don't forget to do this probabilistically, based on failure chance from
-	// labor stage!
-	support += [[action objectForKey:@"supportEffect"] floatValue] * aggregatedFactorMultiplier;
-//	coping += action.copingEffect * aggregatedFactorMultiplier;
-//	energy += action.energyEffect * aggregatedFactorMultiplier;
-//	focus += action.focusEffect * aggregatedFactorMultiplier;
-//	dilation += action.dilationEffect * aggregatedFactorMultiplier;
-//	maxContractionStrength += action.contractionStrengthEffect * aggregatedFactorMultiplier;
-//	contractionFrequency += action.contractionFrequencyEffect * aggregatedFactorMultiplier;
+	// Calculate effects of action.
+	NSNumber* supportEffect = [NSNumber numberWithFloat: [[[action objectForKey:@"supportEffect"] objectForKey:laborStageString(laborStage)] floatValue] * MAX_SUPPORT * aggregatedFactorMultiplier / [num_ticks intValue]];
+	NSNumber* energyEffect = [NSNumber numberWithFloat: [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] * MAX_ENERGY * aggregatedFactorMultiplier / [num_ticks intValue]];
+	NSNumber* contractionStrengthEffect = [NSNumber numberWithFloat: [[[action objectForKey:@"contractionStrengthEffect"] objectForKey:laborStageString(laborStage)] floatValue] * aggregatedFactorMultiplier / [num_ticks intValue]];
+	NSNumber* contractionFrequencyEffect = [NSNumber numberWithFloat: [[[action objectForKey:@"contractionFrequencyEffect"] objectForKey:laborStageString(laborStage)] floatValue] * aggregatedFactorMultiplier / [num_ticks intValue]];
 	
-	return false;
+	NSMutableDictionary* effectsOfAction = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+									 supportEffect, @"supportEffect", 
+									 energyEffect, @"energyEffect", 
+									 contractionStrengthEffect, @"contractionStrengthEffect", 
+									 contractionFrequencyEffect, @"contractionFrequencyEffect", 
+									 num_ticks, @"num_ticks", nil];
+	
+	// If only 1 tick, simply apply the action.
+	if([num_ticks intValue] == 1)
+	{
+		[self applyActionEffects:effectsOfAction];
+	}
+	// If > 1 tick, generate an invocation with effectsOfAction and apply effects with a timer.
+	else
+	{
+		NSMethodSignature* sig = [self methodSignatureForSelector:@selector(actionTickWithEffects:timer:)];
+		NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+		NSTimer* actionTickTimer = [NSTimer timerWithTimeInterval:GAME_TIMER_TICK invocation:inv repeats:YES];
+		[inv setSelector:@selector(actionTickWithEffects:timer:)];
+		[inv setTarget:self];
+		[inv setArgument:&effectsOfAction atIndex:2];
+		[inv setArgument:&actionTickTimer atIndex:3];
+		[[NSRunLoop currentRunLoop] addTimer:actionTickTimer forMode:NSDefaultRunLoopMode];
+	}
+	return true;
 }
 
 @end

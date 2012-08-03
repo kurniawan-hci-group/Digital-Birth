@@ -7,32 +7,41 @@
 //
 
 #import "DigitalBirthAppDelegate.h"
+#import "Flurry.h"
+
+void uncaughtExceptionHandler(NSException *exception)
+{
+	[Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
+}
 
 @implementation DigitalBirthAppDelegate
 
 @synthesize window;
-@synthesize rootViewController;
-@synthesize game;
+//@synthesize gameViewController;
+//@synthesize game;
 
 -(void)dealloc
 {
 	[window release];
-	[rootViewController release];
-	[game release];
+//	[gameViewController release];
+//	[game release];
     [super dealloc];
 }
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	game = [[Game alloc] init];
+	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+	[Flurry startSession:@"9PVJFKFSD4KYRFH4BW8M"];
 	
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	self.window.backgroundColor = [UIColor whiteColor];
 	
-	rootViewController = [[RootViewController alloc] init];
-	rootViewController.game = game;
-	window.rootViewController = rootViewController;
-	[rootViewController release];
+//	GameViewController* gameViewController = [[GameViewController alloc] init];
+//	window.rootViewController = gameViewController;
+//	[gameViewController release];
+	MenuViewController* menuViewController = [[MenuViewController alloc] init];
+	window.rootViewController = menuViewController;
+	[menuViewController release];
 	
     [self.window makeKeyAndVisible];
 	

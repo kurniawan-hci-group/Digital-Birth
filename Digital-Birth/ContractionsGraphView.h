@@ -10,12 +10,8 @@
 
 @interface ContractionsGraphView : UIView
 {
-//	Line* latestGraphLine;
 	UIBezierPath* graph;
 }
-
-//@property (nonatomic, retain) Line* latestGraphLine;
-@property (nonatomic, retain) UIBezierPath* graph;
 
 -(void) drawDataPoint:(CGFloat)value;
 

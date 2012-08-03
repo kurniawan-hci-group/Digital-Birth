@@ -1,0 +1,1003 @@
+TDigital-Birth
+v4
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Info.plist Digital-Birth/Digital-Birth-Info.plist
+cProcessPCH /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth Digital-Birth/Digital-Birth-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth normal i386
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk
+c000000004FE643F40000000000000110
+t1340490740
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004E72F1F200000000002F4210
+t1316155890
+s3097104
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004E72F1CC0000000000245480
+t1316155852
+s2380928
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004E72F2960000000000353830
+t1316156054
+s3487792
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c000000004E7808D3000000000023A3F0
+t1316489427
+s2335728
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004E7806AB00000000008F7390
+t1316488875
+s9401232
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m
+c000000004FF8C9A8000000000000020D
+t1341704616
+s525
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m
+c00000000501620FC0000000000000EF7
+t1343627516
+s3831
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m
+c00000000501496E50000000000003912
+t1343526629
+s14610
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m
+c0000000050161FD8000000000000590A
+t1343627224
+s22794
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.xib
+c00000000501619770000000000022570
+t1343625591
+s140656
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/Actions.plist
+c000000005014A619000000000000017B
+t1343530521
+s379
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/ButtonBarHandle.png
+c00000000501309F6000000000000017F
+t1343425014
+s383
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m
+c000000005010D8780000000000000554
+t1343281272
+s1364
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionMonitorHandle.png
+c00000000501305CF000000000000015C
+t1343423951
+s348
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m
+c0000000050122F2300000000000006C5
+t1343368995
+s1733
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m
+c000000005016195A0000000000000830
+t1343625562
+s2096
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m
+c00000000501617610000000000001669
+t1343625057
+s5737
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/Digital-Birth-Prefix.pch
+c000000004FF22AAB0000000000000143
+t1341270699
+s323
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m
+c000000005016D24C00000000000003F3
+t1343672908
+s1011
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/Flurry/libFlurry.a
+c000000005016CF6000000000001B7E0C
+t1343672160
+s1801740
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m
+c000000005015B0F0000000000000037A
+t1343598832
+s890
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m
+c000000004FFD000800000000000012EA
+t1341980680
+s4842
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m
+c000000004FFD00080000000000000EF4
+t1341980680
+s3828
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/acupressure.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/acupressure_disabled.png
+c000000005014AB0600000000000010BA
+t1343531782
+s4282
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/aromatherapy.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/aromatherapy_disabled.png
+c000000005014AB060000000000001419
+t1343531782
+s5145
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/background.png
+c0000000050121CA90000000000015E75
+t1343364265
+s89717
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/birthBallStool.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/birthBallStool_disabled.png
+c000000005014AB060000000000001169
+t1343531782
+s4457
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/coldCloth.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/coldCloth_disabled.png
+c000000005014AB0600000000000012C7
+t1343531782
+s4807
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/compliment.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/compliment_disabled.png
+c000000005014AB060000000000000E8B
+t1343531782
+s3723
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation0.png
+c0000000050132DA40000000000000C42
+t1343434148
+s3138
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation1.png
+c0000000050132DC20000000000001231
+t1343434178
+s4657
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation10.png
+c0000000050132E920000000000000E99
+t1343434386
+s3737
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation2.png
+c0000000050132DD60000000000001222
+t1343434198
+s4642
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation3.png
+c0000000050132DF000000000000011E0
+t1343434224
+s4576
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation4.png
+c0000000050132E080000000000001167
+t1343434248
+s4455
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation5.png
+c0000000050132E280000000000000F9D
+t1343434280
+s3997
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation6.png
+c0000000050132E380000000000001119
+t1343434296
+s4377
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation7.png
+c0000000050132E4E000000000000113C
+t1343434318
+s4412
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation8.png
+c0000000050132E60000000000000113B
+t1343434336
+s4411
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/dilation9.png
+c0000000050132E700000000000000FE4
+t1343434352
+s4068
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/en.lproj/InfoPlist.strings
+c000000004FF22AAB000000000000002D
+t1341270699
+s45
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/encourage.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/encourage_disabled.png
+c000000005014AB060000000000000DED
+t1343531782
+s3565
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/heatPack.aif
+c000000004FFC6D5B0000000000008750
+t1341943131
+s34640
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/heatPack.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/heatPack_disabled.png
+c000000005014AB0600000000000010F0
+t1343531782
+s4336
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/kiss.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/kiss_disabled.png
+c000000005014AB0700000000000015BC
+t1343531783
+s5564
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/lightTouchMassage.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/lightTouchMassage_disabled.png
+c000000005014988F00000000000014E0
+t1343527055
+s5344
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m
+c000000004FF22AAB000000000000016B
+t1341270699
+s363
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/playMusic.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/playMusic_disabled.png
+c000000005014AB0700000000000012E7
+t1343531783
+s4839
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/rhythmicBreathing.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/rhythmicBreathing_disabled.png
+c000000005014AB0700000000000013CB
+t1343531783
+s5067
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/visualization.png
+c000000004FF60C680000000000003090
+t1341525096
+s12432
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/visualization_disabled.png
+c000000005014AB07000000000000153F
+t1343531783
+s5439
+
+N/Users/obormot/Documents/Digital-Birth/Digital-Birth/woman_normal.png
+c00000000501224360000000000003852
+t1343366198
+s14418
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app.dSYM
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Actions.plist
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/ButtonBarHandle.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/ContractionMonitorHandle.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Info.plist
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/PkgInfo
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/RootViewController.nib
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/acupressure.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/acupressure_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/aromatherapy.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/aromatherapy_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/background.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/birthBallStool.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/birthBallStool_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/coldCloth.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/coldCloth_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/compliment.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/compliment_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation0.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation1.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation10.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation2.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation3.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation4.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation5.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation6.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation7.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation8.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/dilation9.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/en.lproj/InfoPlist.strings
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/encourage.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/encourage_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/heatPack.aif
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/heatPack.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/heatPack_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/kiss.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/kiss_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/lightTouchMassage.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/lightTouchMassage_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/playMusic.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/playMusic_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/rhythmicBreathing.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/rhythmicBreathing_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/visualization.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/visualization_disabled.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/woman_normal.png
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Digital-Birth.LinkFileList
+c000000005016D39B000000000000073D
+t1343673243
+s1853
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o
+t2
+s0
+
+N/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o
+t2
+s0
+
+N/var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth
+t2
+s0
+
+NDigital-Birth/Digital-Birth-Info.plist
+c0000000050136CDB000000000000062C
+t1343450331
+s1580
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m
+r0
+
+CBuild AST from /Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m
+r0
+
+CCheck dependencies
+r0
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciese9632e1b0bc7b541^ebfe451b0bc7b541^---0#1#0#--18"Check dependencies36"368055A5-BEF6-4F25-812D-CB5476711FB5-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.543122
+e365366043.579787
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.mb3258b1b0bc7b541^3274941b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m0000000000000000^2778"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o Digital-Birth/../Baby.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Baby.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Baby.o36"44ABDB5C-9CE3-44B5-B186-2F7523147FBA-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.667767
+e365366043.708611
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection74"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m2f19ab1b0bc7b541^6a6ab51b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@82"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m0000000000000000^2807"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o Digital-Birth/Contraction.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/Contraction.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Contraction.o36"D23BB058-6F55-41F3-BDC6-49B40F7F3AE7-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.630945
+e365366043.696973
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m48a4a11b0bc7b541^6a6db21b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@92"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m0000000000000000^2857"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o Digital-Birth/ContractionsGraphView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/ContractionsGraphView.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/ContractionsGraphView.o36"9608D857-D70B-4049-B675-476B9C7EA06F-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.755531
+e365366043.815645
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m6283c11b0bc7b541^a3ced01b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@83"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m0000000000000000^2812"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o Digital-Birth/DBEnergyView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBEnergyView.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBEnergyView.o36"74B2A81D-056E-474A-B573-AEBE59D89B46-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.737908
+e365366043.810989
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m7d05bd1b0bc7b541^4e9dcf1b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@90"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m0000000000000000^2847"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o Digital-Birth/DBSlidingWindowView.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/DBSlidingWindowView.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DBSlidingWindowView.o36"4AD69959-FBF8-4B58-9521-81A14D4819AA-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.543115
+e365366043.666427
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m1c298b1b0bc7b541^d6e3aa1b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@94"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m0000000000000000^2867"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o Digital-Birth/DigitalBirthAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/DigitalBirthAppDelegate.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/DigitalBirthAppDelegate.o36"ADEBC241-A4C0-47F5-BE70-827DB6330AA6-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.698186
+e365366043.736672
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection72"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m5de0b21b0bc7b541^4297bc1b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@80"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m0000000000000000^2797"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o Digital-Birth/Functions.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/Functions.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Functions.o36"0D9A124A-4158-4ACA-A1D4-95F732771669-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.581005
+e365366043.630425
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m3ae6941b0bc7b541^8863a11b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m0000000000000000^2778"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o Digital-Birth/../Game.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Game.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Game.o36"E0C0CE3B-FD53-4569-A00F-26A0B7BAD174-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.630756
+e365366043.704820
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection70"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m5aa0a11b0bc7b541^af7ab41b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@78"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m0000000000000000^2778"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o Digital-Birth/../Lady.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/../Lady.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Lady.o36"B9CF7FA0-EA8C-46E9-A4AF-24EE0CAB5843-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.706039
+e365366043.778947
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection77"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.mdee3b41b0bc7b541^3469c71b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@85"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m0000000000000000^2822"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o Digital-Birth/OBShapedButton.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/OBShapedButton.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/OBShapedButton.o36"C842E175-9801-4252-92E8-07EF4F86DAE4-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.543105
+e365366043.753813
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection84"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m5b268b1b0bc7b541^48fac01b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@92"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m0000000000000000^2848"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o Digital-Birth/../RootViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/RootViewController.o36"BFDD1C3C-FB6C-4EFE-956F-F8C07928D6C0-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.709817
+e365366043.754349
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection83"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.mf3e5b51b0bc7b541^6023c11b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@91"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m0000000000000000^2852"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o Digital-Birth/UIImage+ColorAtPixel.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/UIImage+ColorAtPixel.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/UIImage+ColorAtPixel.o36"331D0CF5-1F81-4E5A-94A3-1C9DDB091D3A-
+
+CCompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o /Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.542959
+e365366043.629560
+r1
+xCompileC
+xbuild/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o
+x/Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection67"Compile /Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m2a1a8b1b0bc7b541^e82ea11b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@75"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m0000000000000000^2772"CompileC build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o Digital-Birth/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -include /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch -MMD -MT dependencies -MF /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.d -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/main.m -o /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/main.o36"4741AB02-7E22-4367-82B5-47D3BB147356-
+
+CCompileXIB /Users/obormot/Documents/Digital-Birth/Digital-Birth/../RootViewController.xib
+r0
+
+CCopyPlistFile /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Actions.plist Digital-Birth/Actions.plist
+r0
+
+CCopyStringsFile /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/en.lproj/InfoPlist.strings Digital-Birth/en.lproj/InfoPlist.strings
+r0
+
+CCpResource Digital-Birth/ButtonBarHandle.png build/Debug-iphonesimulator/Digital-Birth.app/ButtonBarHandle.png
+r0
+
+CCpResource Digital-Birth/ContractionMonitorHandle.png build/Debug-iphonesimulator/Digital-Birth.app/ContractionMonitorHandle.png
+r0
+
+CCpResource Digital-Birth/acupressure.png build/Debug-iphonesimulator/Digital-Birth.app/acupressure.png
+r0
+
+CCpResource Digital-Birth/acupressure_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/acupressure_disabled.png
+r0
+
+CCpResource Digital-Birth/aromatherapy.png build/Debug-iphonesimulator/Digital-Birth.app/aromatherapy.png
+r0
+
+CCpResource Digital-Birth/aromatherapy_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/aromatherapy_disabled.png
+r0
+
+CCpResource Digital-Birth/background.png build/Debug-iphonesimulator/Digital-Birth.app/background.png
+r0
+
+CCpResource Digital-Birth/birthBallStool.png build/Debug-iphonesimulator/Digital-Birth.app/birthBallStool.png
+r0
+
+CCpResource Digital-Birth/birthBallStool_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/birthBallStool_disabled.png
+r0
+
+CCpResource Digital-Birth/coldCloth.png build/Debug-iphonesimulator/Digital-Birth.app/coldCloth.png
+r0
+
+CCpResource Digital-Birth/coldCloth_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/coldCloth_disabled.png
+r0
+
+CCpResource Digital-Birth/compliment.png build/Debug-iphonesimulator/Digital-Birth.app/compliment.png
+r0
+
+CCpResource Digital-Birth/compliment_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/compliment_disabled.png
+r0
+
+CCpResource Digital-Birth/dilation0.png build/Debug-iphonesimulator/Digital-Birth.app/dilation0.png
+r0
+
+CCpResource Digital-Birth/dilation1.png build/Debug-iphonesimulator/Digital-Birth.app/dilation1.png
+r0
+
+CCpResource Digital-Birth/dilation10.png build/Debug-iphonesimulator/Digital-Birth.app/dilation10.png
+r0
+
+CCpResource Digital-Birth/dilation2.png build/Debug-iphonesimulator/Digital-Birth.app/dilation2.png
+r0
+
+CCpResource Digital-Birth/dilation3.png build/Debug-iphonesimulator/Digital-Birth.app/dilation3.png
+r0
+
+CCpResource Digital-Birth/dilation4.png build/Debug-iphonesimulator/Digital-Birth.app/dilation4.png
+r0
+
+CCpResource Digital-Birth/dilation5.png build/Debug-iphonesimulator/Digital-Birth.app/dilation5.png
+r0
+
+CCpResource Digital-Birth/dilation6.png build/Debug-iphonesimulator/Digital-Birth.app/dilation6.png
+r0
+
+CCpResource Digital-Birth/dilation7.png build/Debug-iphonesimulator/Digital-Birth.app/dilation7.png
+r0
+
+CCpResource Digital-Birth/dilation8.png build/Debug-iphonesimulator/Digital-Birth.app/dilation8.png
+r0
+
+CCpResource Digital-Birth/dilation9.png build/Debug-iphonesimulator/Digital-Birth.app/dilation9.png
+r0
+
+CCpResource Digital-Birth/encourage.png build/Debug-iphonesimulator/Digital-Birth.app/encourage.png
+r0
+
+CCpResource Digital-Birth/encourage_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/encourage_disabled.png
+r0
+
+CCpResource Digital-Birth/heatPack.aif build/Debug-iphonesimulator/Digital-Birth.app/heatPack.aif
+r0
+
+CCpResource Digital-Birth/heatPack.png build/Debug-iphonesimulator/Digital-Birth.app/heatPack.png
+r0
+
+CCpResource Digital-Birth/heatPack_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/heatPack_disabled.png
+r0
+
+CCpResource Digital-Birth/kiss.png build/Debug-iphonesimulator/Digital-Birth.app/kiss.png
+r0
+
+CCpResource Digital-Birth/kiss_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/kiss_disabled.png
+r0
+
+CCpResource Digital-Birth/lightTouchMassage.png build/Debug-iphonesimulator/Digital-Birth.app/lightTouchMassage.png
+r0
+
+CCpResource Digital-Birth/lightTouchMassage_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/lightTouchMassage_disabled.png
+r0
+
+CCpResource Digital-Birth/playMusic.png build/Debug-iphonesimulator/Digital-Birth.app/playMusic.png
+r0
+
+CCpResource Digital-Birth/playMusic_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/playMusic_disabled.png
+r0
+
+CCpResource Digital-Birth/rhythmicBreathing.png build/Debug-iphonesimulator/Digital-Birth.app/rhythmicBreathing.png
+r0
+
+CCpResource Digital-Birth/rhythmicBreathing_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/rhythmicBreathing_disabled.png
+r0
+
+CCpResource Digital-Birth/visualization.png build/Debug-iphonesimulator/Digital-Birth.app/visualization.png
+r0
+
+CCpResource Digital-Birth/visualization_disabled.png build/Debug-iphonesimulator/Digital-Birth.app/visualization_disabled.png
+r0
+
+CCpResource Digital-Birth/woman_normal.png build/Debug-iphonesimulator/Digital-Birth.app/woman_normal.png
+r0
+
+CGenerateDSYMFile /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app.dSYM /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth
+r0
+
+CLd /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth normal i386
+s365366043.816809
+e365366043.874561
+r0
+xLd
+x/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth
+xnormal
+xi386
+oUndefined symbols for architecture i386:
+o  "_SCNetworkReachabilitySetCallback", referenced from:
+o      -[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)
+o  "_SCNetworkReachabilityScheduleWithRunLoop", referenced from:
+o      -[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)
+o  "_SCNetworkReachabilityUnscheduleFromRunLoop", referenced from:
+o      -[FlurryReachability flurryStopNotifier] in libFlurry.a(FlurryReachability.o)
+o  "_SCNetworkReachabilityCreateWithName", referenced from:
+o      +[FlurryReachability flurryReachabilityWithHostName:] in libFlurry.a(FlurryReachability.o)
+o  "_SCNetworkReachabilityCreateWithAddress", referenced from:
+o      +[FlurryReachability flurryReachabilityWithAddress:] in libFlurry.a(FlurryReachability.o)
+o  "_SCNetworkReachabilityGetFlags", referenced from:
+o      -[FlurryReachability flurryCurrentReachabilityStatus] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryReachable] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryConnectionRequired] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryConnectionOnDemand] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryUserInterventionRequired] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryReachableViaWWAN] in libFlurry.a(FlurryReachability.o)
+o      -[FlurryReachability isFlurryReachableViaWiFi] in libFlurry.a(FlurryReachability.o)
+o      ...
+old: symbol(s) not found for architecture i386
+oclang: error: linker command failed with exit code 1 (use -v to see invocation)
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Link /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth772dd11b0bc7b541^66dddf1b0bc7b541^-1626"Undefined symbols for architecture i386:  "_SCNetworkReachabilitySetCallback", referenced from:      -[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)  "_SCNetworkReachabilityScheduleWithRunLoop", referenced from:      -[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)  "_SCNetworkReachabilityUnscheduleFromRunLoop", referenced from:      -[FlurryReachability flurryStopNotifier] in libFlurry.a(FlurryReachability.o)  "_SCNetworkReachabilityCreateWithName", referenced from:      +[FlurryReachability flurryReachabilityWithHostName:] in libFlurry.a(FlurryReachability.o)  "_SCNetworkReachabilityCreateWithAddress", referenced from:      +[FlurryReachability flurryReachabilityWithAddress:] in libFlurry.a(FlurryReachability.o)  "_SCNetworkReachabilityGetFlags", referenced from:      -[FlurryReachability flurryCurrentReachabilityStatus] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryReachable] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryConnectionRequired] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryConnectionOnDemand] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryUserInterventionRequired] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryReachableViaWWAN] in libFlurry.a(FlurryReachability.o)      -[FlurryReachability isFlurryReachableViaWiFi] in libFlurry.a(FlurryReachability.o)      ...ld: symbol(s) not found for architecture i386clang: error: linker command failed with exit code 1 (use -v to see invocation)21(21%IDEActivityLogMessage2@53""_SCNetworkReachabilitySetCallback", referenced from:-365366043#41#56#-2#-23%DVTTextDocumentLocation3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@78"-[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)-365366043#97#85#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@61""_SCNetworkReachabilityScheduleWithRunLoop", referenced from:-365366043#182#64#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@78"-[FlurryReachability flurryStartNotifier] in libFlurry.a(FlurryReachability.o)-365366043#246#85#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@63""_SCNetworkReachabilityUnscheduleFromRunLoop", referenced from:-365366043#331#66#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@77"-[FlurryReachability flurryStopNotifier] in libFlurry.a(FlurryReachability.o)-365366043#397#84#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@56""_SCNetworkReachabilityCreateWithName", referenced from:-365366043#481#59#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@90"+[FlurryReachability flurryReachabilityWithHostName:] in libFlurry.a(FlurryReachability.o)-365366043#540#97#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@59""_SCNetworkReachabilityCreateWithAddress", referenced from:-365366043#637#62#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@89"+[FlurryReachability flurryReachabilityWithAddress:] in libFlurry.a(FlurryReachability.o)-365366043#699#96#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@50""_SCNetworkReachabilityGetFlags", referenced from:-365366043#795#53#-2#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#30"Apple Mach-O Linker (ld) Error--2@90"-[FlurryReachability flurryCurrentReachabilityStatus] in libFlurry.a(FlurryReachability.o)-365366043#848#97#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@76"-[FlurryReachability isFlurryReachable] in libFlurry.a(FlurryReachability.o)-365366043#945#83#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@85"-[FlurryReachability isFlurryConnectionRequired] in libFlurry.a(FlurryReachability.o)-365366043#1028#92#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@85"-[FlurryReachability isFlurryConnectionOnDemand] in libFlurry.a(FlurryReachability.o)-365366043#1120#92#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@91"-[FlurryReachability isFlurryUserInterventionRequired] in libFlurry.a(FlurryReachability.o)-365366043#1212#98#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@83"-[FlurryReachability isFlurryReachableViaWWAN] in libFlurry.a(FlurryReachability.o)-365366043#1310#90#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@83"-[FlurryReachability isFlurryReachableViaWiFi] in libFlurry.a(FlurryReachability.o)-365366043#1400#90#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@3"...-365366043#1490#10#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@41"Symbol(s) not found for architecture i386-365366043#1500#46#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--2@79"Clang: error: linker command failed with exit code 1 (use -v to see invocation)-365366043#1546#80#-0#-3@-0000000000000000^18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#18446744073709551615#0#31"Apple Mach-O Linker (ld) Notice--0#0#0#--1191"Ld build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth normal i386    cd /Users/obormot/Documents/Digital-Birth    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -L/Users/obormot/Documents/Digital-Birth/Digital-Birth/Flurry -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -filelist /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Objects-normal/i386/Digital-Birth.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -no_implicit_dylibs -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -framework AudioToolbox -framework MediaPlayer -framework UIKit -framework Foundation -framework CoreGraphics -lFlurry -o /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Digital-Birth36"61562B9F-D5E5-4975-B715-05321BB82489-
+
+CProcessInfoPlistFile /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Info.plist Digital-Birth/Digital-Birth-Info.plist
+s365366043.285146
+e365366043.292817
+r1
+xProcessInfoPlistFile
+x/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Info.plist
+xDigital-Birth/Digital-Birth-Info.plist
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection46"Process Digital-Birth/Digital-Birth-Info.plist4c18491b0bc7b541^412c4b1b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/Digital-Birth-Info.plist0000000000000000^628"ProcessInfoPlistFile build/Debug-iphonesimulator/Digital-Birth.app/Info.plist Digital-Birth/Digital-Birth-Info.plist    cd /Users/obormot/Documents/Digital-Birth    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Digital-Birth/Digital-Birth-Info.plist -genpkginfo /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app/Info.plist36"7C497941-3D10-4202-A84D-5047A0A5AE32-
+
+CProcessPCH /Users/obormot/Library/Developer/Xcode/DerivedData/Digital-Birth-hhtzxtipojczqwguichedmwpustc/Index/PrecompiledHeaders/Digital-Birth-Prefix-dwptddjdpecmzdfuqfsbppxipdey_ast/Digital-Birth-Prefix.pch.pth Digital-Birth/Digital-Birth-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth Digital-Birth/Digital-Birth-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s365366043.296024
+e365366043.541403
+r1
+xProcessPCH
+x/var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth
+xDigital-Birth/Digital-Birth-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF04#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"Precompile Digital-Birth/Digital-Birth-Prefix.pch87dd4b1b0bc7b541^5f9a8a1b0bc7b541^---0#0#0#-19%DVTDocumentLocation2@93"file://localhost/Users/obormot/Documents/Digital-Birth/Digital-Birth/Digital-Birth-Prefix.pch0000000000000000^2801"ProcessPCH /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth Digital-Birth/Digital-Birth-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/obormot/Documents/Digital-Birth    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -fdiagnostics-print-source-range-info -fdiagnostics-show-category=id -fdiagnostics-parseable-fixits -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wparentheses -Wswitch -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-shorten-64-to-32 -DDEBUG=1 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=40300 -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-generated-files.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-own-target-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-all-target-headers.hmap -iquote /Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/Digital-Birth-project-headers.hmap -I/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/include -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources/i386 -I/Users/obormot/Documents/Digital-Birth/build/Digital-Birth.build/Debug-iphonesimulator/Digital-Birth.build/DerivedSources -F/Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator -c /Users/obormot/Documents/Digital-Birth/Digital-Birth/Digital-Birth-Prefix.pch -o /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/UT/UTd2jDfHGIqhc3DJjYpAtE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Digital-Birth-Prefix-bbonpkjxaabbsiejcighfsmphyom/Digital-Birth-Prefix.pch.d36"A8B554CE-2BA6-4A84-9977-7B6C4A5843A0-
+
+CTouch /Users/obormot/Documents/Digital-Birth/build/Debug-iphonesimulator/Digital-Birth.app
+r0
+

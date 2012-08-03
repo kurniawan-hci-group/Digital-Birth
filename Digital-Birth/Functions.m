@@ -34,3 +34,10 @@ float get_random_float_with_variance(float mean, float variance)
 	
 	return mean + (variance * randomFactor);
 }
+
+CGRect rectFor1PxStroke(CGRect rect)
+{
+    return CGRectMake(rect.origin.x + 0.5, rect.origin.y + 0.5, 
+					  rect.size.width - 1, rect.size.height - 1);
+}
+

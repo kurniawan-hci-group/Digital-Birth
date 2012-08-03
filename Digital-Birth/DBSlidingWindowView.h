@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-CGRect rectFor1PxStroke(CGRect rect);
+#import "Functions.h"
 
 @interface DBSlidingWindowView : UIView
 {

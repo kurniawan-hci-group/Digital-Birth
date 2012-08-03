@@ -8,12 +8,6 @@
 
 #import "DBSlidingWindowView.h"
 
-CGRect rectFor1PxStroke(CGRect rect)
-{
-    return CGRectMake(rect.origin.x + 0.5, rect.origin.y + 0.5, 
-					  rect.size.width - 1, rect.size.height - 1);
-}
-
 @implementation DBSlidingWindowView
 
 #pragma mark - Accessors
@@ -120,6 +114,7 @@ CGRect rectFor1PxStroke(CGRect rect)
 	}
 	
 	// Draw the part of the support display that's outside the "desired support" window.
+	[outsideWindowPath removeAllPoints];
 	[outsideWindowPath moveToPoint:CGPointMake(0, 10)];
 	[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, 10)];
 	[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];

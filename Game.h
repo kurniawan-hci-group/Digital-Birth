@@ -30,7 +30,8 @@ typedef enum
 @property (readonly) NSTimer* gameTimer;
 
 -(void)startGame;
--(void)performAction:(NSString*)actionName;
+-(void)endGame;
+-(bool)performAction:(NSString*)actionName;
 -(NSTimeInterval)getCooldown:(NSString*)actionName;
 
 -(int)getBabyHR;
@@ -42,7 +43,6 @@ typedef enum
 
 -(int)getCoping;
 -(float)getEnergy;
-//-(int)getFocus;
 -(int)getDilation;
 -(positionType)getPosition;
 

@@ -9,8 +9,12 @@
 #import "Game.h"
 #import "Lady.h"
 #import "Constants.h"
+#import "Flurry.h"
 
 static NSDictionary* actionList;
+
+float GAME_TIMER_TICK;
+float CONTRACTION_TIMER_TICK;
 
 @implementation Game
 
@@ -28,26 +32,36 @@ static NSDictionary* actionList;
 		lady = [[Lady alloc] init];
 		gameStatus = IN_PROGRESS;
 		
-		NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
-		actionList = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+//		GAME_TIMER_TICK = .01;
+//		CONTRACTION_TIMER_TICK = .01;
+		
+		// Load the action list.
+		NSString* actionListPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
+		actionList = [NSDictionary dictionaryWithContentsOfFile:actionListPath];
 		if(actionList)
 			printf("Action list loaded successfully.\n");
 		else
 			printf("Could not load action list!\n");
 		[actionList retain];
-
-//		// Code to load the actions from a file (xml?) and add them to the actionList.
-//		// For now, the following placeholder test code.
-//		Action* action;
-//		action = [[Action alloc] init];
-////		action.supportEffect = 0.01 * MAX_SUPPORT;
-//		[actionList setObject:action forKey:@"lightTouchMassage"];
-//		[action release];
 	}
 	return self;
 }
 
 #pragma mark - Methods
+
+-(void)startGame
+{
+	[Flurry logEvent:@"Game_started" timed:YES];
+	
+	gameTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_TIMER_TICK target:self selector:@selector(gameTimerTick:) userInfo:nil repeats:YES];
+	
+	[self.lady startLabor];
+}
+
+-(void)endGame
+{
+	[Flurry endTimedEvent:@"Game_started" withParameters:nil];
+}
 
 -(void)gameTimerTick:(NSTimer*)timer
 {
@@ -93,22 +107,24 @@ static NSDictionary* actionList;
 		consecutive_ticks_of_bad_support = 0;
 }
 
--(void)startGame
-{
-	gameTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_TIMER_TICK target:self selector:@selector(gameTimerTick:) userInfo:nil repeats:YES];
-
-	[self.lady startLabor];
-}
-
--(void)performAction:(NSString*)actionName
+-(bool)performAction:(NSString*)actionName
 {
 	if([actionList objectForKey:actionName])
 	{
-		printf("performing action: %s\n", [actionName UTF8String]);
-		[self.lady applyAction:[actionList objectForKey:actionName]];
+		printf("attempting to perform action: %s\n", [actionName UTF8String]);
+		if([self.lady applyAction:[actionList objectForKey:actionName]])
+			return true;
+		else
+		{
+			printf("could not perform action: %s\n", [actionName UTF8String]);
+			return false;
+		}
 	}
 	else
+	{
 		printf("action with name \"%s\" not found\n", [actionName UTF8String]);
+		return false;
+	}
 }
 
 -(NSTimeInterval)getCooldown:(NSString*)actionName
@@ -154,12 +170,6 @@ static NSDictionary* actionList;
 	return self.lady.energy;
 }
 
-//-(int)getFocus
-//{
-//	// Round to the nearest integer.
-//	return (int) floor(self.lady.focus + 0.5);
-//}
-//
 -(int)getDilation
 {
 	return self.lady.dilation;
@@ -199,6 +209,7 @@ static NSDictionary* actionList;
 -(void)dealloc
 {
 	[lady release];
+	[actionList release];
 	[super dealloc];
 }
 

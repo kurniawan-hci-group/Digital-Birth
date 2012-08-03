@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RootViewController.h"
+#import "GameViewController.h"
+#import "MenuViewController.h"
 
-@class RootViewController;
+void uncaughtExceptionHandler(NSException *exception);
+
+@class GameViewController;
+@class MenuViewController;
 
 @interface DigitalBirthAppDelegate : UIResponder <UIApplicationDelegate>
-{
-	Game* _game;
-}
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain) RootViewController *rootViewController;
-@property (nonatomic, retain) Game* game;
+//@property (nonatomic, retain) GameViewController *gameViewController;
+//@property (nonatomic, retain) Game* game;
 
 @end

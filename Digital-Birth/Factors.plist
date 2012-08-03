@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>likesBeingTouched</string>
+	<string>hatesNoise</string>
+	<string>needy</string>
+	<string>visualSensitivity</string>
+	<string>smellSensitivity</string>
+	<string>focusSkill</string>
+	<string>painTolerance</string>
+	<string>initialDesiredSupport</string>
+</array>
+</plist>
