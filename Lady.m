@@ -9,6 +9,9 @@
 #import "Lady.h"
 #import "Constants.h"
 #import "Functions.h"
+#import "Flurry.h"
+
+static NSDictionary* positionList;
 
 NSString* laborStageString(laborStageType stage)
 {
@@ -37,32 +40,34 @@ NSString* laborStageString(laborStageType stage)
 }
 
 #pragma mark - Stats class implementation
-
-@implementation Stats
-
-@synthesize doesNotLikeYou;
-@synthesize everythingIsAwesome;
-
--(id)init
-{
-	if(self = [super init])
-	{
-		doesNotLikeYou = arc4random() % 2;
-		printf("%d\n", doesNotLikeYou);
-		everythingIsAwesome = arc4random() % 2;
-		printf("%d\n", everythingIsAwesome);
-	}
-	return self;
-}
-
-@end
-
+//
+//@implementation Stats
+//
+//@synthesize doesNotLikeYou;
+//@synthesize everythingIsAwesome;
+//
+//-(id)init
+//{
+//	if(self = [super init])
+//	{
+//		doesNotLikeYou = arc4random() % 2;
+//		printf("%d\n", doesNotLikeYou);
+//		everythingIsAwesome = arc4random() % 2;
+//		printf("%d\n", everythingIsAwesome);
+//	}
+//	return self;
+//}
+//
+//@end
+//
 
 #pragma mark - Lady class implementation
 
 @implementation Lady
 
 #pragma mark - properties & accessors
+
+@synthesize delegate;
 
 @synthesize baby;
 
@@ -121,7 +126,16 @@ NSString* laborStageString(laborStageType stage)
 	return [laborStartTime timeIntervalSinceNow] * -1;
 }
 
-#pragma mark - methods: object lifetime
+#pragma mark - helper methods
+
+-(NSString*)getRandomPosition
+{
+	NSArray* allPositions = [positionList allKeys];
+	int num_positions = [allPositions count];
+	return [allPositions objectAtIndex:(arc4random() % num_positions)];
+}
+
+#pragma mark - object lifetime
 
 -(id)init
 {
@@ -148,7 +162,17 @@ NSString* laborStageString(laborStageType stage)
 		coping = MAX_COPING;
 		energy = MAX_ENERGY * (double) arc4random() / ARC4RANDOM_MAX;
 		dilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
-		position = SIT_BACKWARDS_ON_CHAIR;
+		
+		// Load position list.
+		NSString* positionListPath = [[NSBundle mainBundle] pathForResource:@"Positions" ofType:@"plist"];
+		positionList = [NSDictionary dictionaryWithContentsOfFile:positionListPath];
+		if(positionList)
+			printf("Position list loaded successfully.\n");
+		else
+			printf("Could not load position list!\n");
+		[positionList retain];
+
+		position = [self getRandomPosition];
 		
 		effacement = 0.0;
 		station = -2;
@@ -162,7 +186,7 @@ NSString* laborStageString(laborStageType stage)
 		maxContractionStrength = 50.0;
 		contractionDuration = 60.0;
 		contractionFrequency = TWELVEMIN;
-		
+		contractionsWithoutPositionSwitch = 0;
 		currentContractions = [[NSMutableArray alloc] init];
 	}
 	return self;
@@ -196,7 +220,7 @@ NSString* laborStageString(laborStageType stage)
 }
 
 // Selector for contractionTimer.
--(void)startContraction: (NSTimer*)timer
+-(void)startContraction:(NSTimer*)timer
 {
 	static float total_time_between_contractions = 0;
 	static int num_contractions = 0;
@@ -205,19 +229,18 @@ NSString* laborStageString(laborStageType stage)
 	float thisContractionDuration;
 	float thisContractionStrength;
 	
-	static int contractions_without_position_switch = 0;
-	
 	// If the woman spends several contractions in a row in the same position, she decides to change position.
 	// (Being in the same position for an extended period of time gets uncomfortable.)
-	if(contractions_without_position_switch < 4 + arc4random() % 2)
-		contractions_without_position_switch++;
+	if(contractionsWithoutPositionSwitch < 4 + arc4random() % 2)
+		contractionsWithoutPositionSwitch++;
 	else
 	{
 		// Change positions.
-		printf("It has been %d contractions without a position switch. Changing position.\n", contractions_without_position_switch);
-		position = arc4random() % NUM_POSITIONS;
+		printf("It has been %d contractions without a position switch. Changing position.\n", contractionsWithoutPositionSwitch);
+		NSDictionary* positionChangeAction = [delegate getAction:[self getRandomPosition]];
+		[self applyAction:positionChangeAction];
 		
-		contractions_without_position_switch = 0;
+		contractionsWithoutPositionSwitch = 0;
 	}
 	
 	printf("starting a contraction\n");
@@ -296,7 +319,6 @@ NSString* laborStageString(laborStageType stage)
 			printf("coping before replenishment: %f\n", coping);
 			coping += 0.4 * (1.0 - 0.5 * [[factors objectForKey:@"painTolerance"] floatValue]) * (2 * MAX_COPING * maxContractionStrength) / ((double) MAX_POSSIBLE_CONTRACTION_STRENGTH * M_PI);
 			printf("coping after replenishment: %f\n", coping);
-
 		}
 
 	// How much stronger contractions get over this period of labor.
@@ -317,6 +339,9 @@ NSString* laborStageString(laborStageType stage)
 				contractionFrequency *= 4.0/12.0;
 				contractionDuration = 60;
 				station++;
+				
+				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
+				[Flurry logEvent:@"reachedActiveLabor" withParameters:params];
 			}
 			break;
 		case ACTIVE:
@@ -328,6 +353,9 @@ NSString* laborStageString(laborStageType stage)
 				contractionFrequency *= 3.0/4.0;
 				contractionDuration = 105;
 				station++;
+				
+				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
+				[Flurry logEvent:@"reachedLateActiveLabor" withParameters:params];
 			}
 			break;
 		case LATE_ACTIVE:
@@ -338,6 +366,9 @@ NSString* laborStageString(laborStageType stage)
 				percent_increase = 0.0;
 				contractionFrequency *= 2.0/3.0;
 				contractionDuration = 105;
+				
+				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
+				[Flurry logEvent:@"reachedTransition" withParameters:params];
 			}
 			break;
 		case TRANSITION:
@@ -347,12 +378,19 @@ NSString* laborStageString(laborStageType stage)
 				contractionFrequency *= 5.0/2.0;
 				contractionDuration = 120;
 				station += (double) arc4random() / ARC4RANDOM_MAX;
+				
+				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
+				[Flurry logEvent:@"reachedPushing" withParameters:params];
 			}
 			break;
 		case PUSHING:
 			if(station >= 3.0)
 			{
 				laborStage = BABYBORN;
+				
+				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
+				[Flurry logEvent:@"hadBaby" withParameters:params];
+				
 				hadBaby = YES;
 			}
 			break;
@@ -428,8 +466,8 @@ NSString* laborStageString(laborStageType stage)
 	}
 
 	// Tick down (update) stats.
-	support = MAX(support - MAX_SUPPORT * 0.001, 0);
-	energy = MAX(energy - MAX_ENERGY * 0.001, 0);
+	support = MIN(MAX(support - MAX_SUPPORT * 0.001, 0), MAX_SUPPORT);
+	energy = MIN(MAX(energy - MAX_ENERGY * 0.001, 0), MAX_ENERGY);
 	
 	// Decrease coping level if having contraction.
 	if(self.havingContraction)
@@ -463,20 +501,33 @@ NSString* laborStageString(laborStageType stage)
 	int num_ticks = [[effectsOfAction objectForKey:@"num_ticks"] intValue];
 	num_ticks--;
 	if(num_ticks == 0)
+	{
 		[timer invalidate];
+		[currentActions removeObjectForKey:[effectsOfAction objectForKey:@"name"]];
+	}
 	else
+		// Update the number of ticks to the new (decremented) value.
 		[effectsOfAction setObject:[NSNumber numberWithInt:num_ticks] forKey:@"num_ticks"];
+	
+	// If the action drains energy and we're already at 0 energy, stop the action.
+	if(energy == 0 && [[effectsOfAction objectForKey:@"energyEffect"] floatValue] < 0)
+	{
+		[timer invalidate];
+		[currentActions removeObjectForKey:[effectsOfAction objectForKey:@"name"]];
+	}
 }
 
 -(bool)applyAction:(NSDictionary*)action
 {
-	// Return true if action successfully applied, false otherwise.
+	// Return false if not eligible for action.
+	if(![self eligibleForAction:action])
+		return false;
 	
 	printf("attempting to apply action: %s\n", [[action objectForKey:@"name"] UTF8String]);
 	
 	// Return false if not enough energy.
-	if(energy + [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] < 0.0)
-		return false;
+//	if(energy + [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] < 0.0)
+//		return false;
 
 	// Look through the action's "affecting factors" set and find any relevant ones.
 	// Generate modifier (multiplier) on action effects by averaging in
@@ -504,7 +555,8 @@ NSString* laborStageString(laborStageType stage)
 									 energyEffect, @"energyEffect", 
 									 contractionStrengthEffect, @"contractionStrengthEffect", 
 									 contractionFrequencyEffect, @"contractionFrequencyEffect", 
-									 num_ticks, @"num_ticks", nil];
+									 num_ticks, @"num_ticks",
+									 [action objectForKey:@"name"], @"name", nil];
 	
 	// If only 1 tick, simply apply the action.
 	if([num_ticks intValue] == 1)
@@ -522,7 +574,31 @@ NSString* laborStageString(laborStageType stage)
 		[inv setArgument:&effectsOfAction atIndex:2];
 		[inv setArgument:&actionTickTimer atIndex:3];
 		[[NSRunLoop currentRunLoop] addTimer:actionTickTimer forMode:NSDefaultRunLoopMode];
+		
+		// Add the action to currentActions.
+		[currentActions setObject:action forKey:[action objectForKey:@"name"]];
 	}
+	
+	// If the action is a position change action, change the current position.
+	if([(NSString*)[action objectForKey:@"category"] isEqualToString:@"position"])
+	{
+		position = [action objectForKey:@"name"];
+		contractionsWithoutPositionSwitch = 0;
+	}
+	
+	return true;
+}
+
+-(bool)eligibleForAction:(NSDictionary*)action
+{
+	// Return false if not enough energy.
+	if(energy + [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] < 0.0)
+		return false;
+	
+	// Return false if this action does nothing in this labor stage.
+	if(!([[[action objectForKey:@"supportEffect"] objectForKey:laborStageString(laborStage)] floatValue] || [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] || [[[action objectForKey:@"contractionStrengthEffect"] objectForKey:laborStageString(laborStage)] floatValue] || [[[action objectForKey:@"contractionFrequencyEffect"] objectForKey:laborStageString(laborStage)] floatValue]))
+		return false;
+	
 	return true;
 }
 

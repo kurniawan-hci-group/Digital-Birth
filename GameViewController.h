@@ -14,6 +14,10 @@
 #import "ContractionsGraphView.h"
 #import "DBSlidingWindowView.h"
 #import "DBEnergyView.h"
+#import "DBActionButton.h"
+
+#define ACTION_BUTTON_SIZE 56
+#define ACTION_BUTTON_SPACING 6
 
 typedef enum
 {
@@ -33,7 +37,7 @@ typedef enum
 
 @end
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController <GameDelegate>
 {
 	id <GameViewDelegate> delegate;
 	
@@ -41,7 +45,13 @@ typedef enum
 	
 	bool buttonsPanelExpanded;
 	bool contractionsPanelExpanded;
-	bool quitBoxExpanded;
+//	bool quitBoxExpanded;
+	
+	NSMutableDictionary* actionButtons;
+//	NSMutableDictionary* buttonActionInvocations;
+//	NSMutableDictionary* buttonSoundInvocations;
+	
+//	NSMutableArray* actionsOnCooldown;
 	
 	NSTimer* displayTimer;
 	SystemSoundID audioEffect;
@@ -65,7 +75,10 @@ typedef enum
 
 #pragma mark - Displayed stats
 
+@property (retain, nonatomic) IBOutlet UIImageView *copingDisplay;
+
 @property (retain, nonatomic) IBOutlet DBSlidingWindowView *supportDisplay;
+@property (retain, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
 @property (nonatomic, retain) IBOutlet DBEnergyView *energyDisplay;
 
 // The display area showing the mother.
@@ -133,61 +146,8 @@ typedef enum
 - (IBAction)getHelpActionsButtonPressed:(id)sender;
 
 #pragma mark - Sub-panel button actions
-// Relaxation sub-panel.
-- (IBAction)lightTouchMassageButtonPressed:(id)sender;
-- (IBAction)heatPackButtonPressed:(id)sender;
-- (IBAction)heatPackButtonTouched;
-- (IBAction)coolClothButtonPressed:(id)sender;
-- (IBAction)ragDollButtonPressed:(id)sender;
-- (IBAction)aromatherapyButtonPressed:(id)sender;
-- (IBAction)playMusicButtonPressed:(id)sender;
-- (IBAction)visualizationButtonPressed:(id)sender;
-- (IBAction)showerButtonPressed:(id)sender;
-- (IBAction)tubButtonPressed:(id)sender;
-
-// Breathing sub-panel.
-- (IBAction)deepBreathingButtonPressed:(id)sender;
-- (IBAction)countUpDownButtonPressed:(id)sender;
-- (IBAction)rhythmicBreathingButtonPressed:(id)sender;
-
-// Be together sub-panel.
-- (IBAction)TVButtonPressed:(id)sender;
-- (IBAction)movieButtonPressed:(id)sender;
-- (IBAction)gamesButtonPressed:(id)sender;
-- (IBAction)callFriendsButtonPressed:(id)sender;
-- (IBAction)snuggleButtonPressed:(id)sender;
-- (IBAction)kissButtonPressed:(id)sender;
-- (IBAction)sexButtonPressed:(id)sender;
-- (IBAction)rubTummyButtonPressed:(id)sender;
-
-// Positions sub-panel.
-- (IBAction)walkButtonPressed:(id)sender;
-- (IBAction)standButtonPressed:(id)sender;
-- (IBAction)slowDanceButtonPressed:(id)sender;
-- (IBAction)leanOnWallButtonPressed:(id)sender;
-- (IBAction)rockingChairButtonPressed:(id)sender;
-- (IBAction)sitBackOnChairButtonPressed:(id)sender;
-- (IBAction)sitOnBirthBallButtonPressed:(id)sender;
-- (IBAction)lungeOnStairButtonPressed:(id)sender;
-- (IBAction)kneelButtonpressed:(id)sender;
-- (IBAction)squatButtonPressed:(id)sender;
-- (IBAction)sitButtonPressed:(id)sender;
-- (IBAction)lieOnSideButtonPressed:(id)sender;
-- (IBAction)lieOnBackButtonPressed:(id)sender;
-- (IBAction)allFoursButtonPressed:(id)sender;
-- (IBAction)buttInAirButtonPressed:(id)sender;
-- (IBAction)toiletButtonPressed:(id)sender;
-
-// Verbal care sub-panel.
-- (IBAction)affirmationButtonPressed:(id)sender;
-- (IBAction)encourageButtonPressed:(id)sender;
-- (IBAction)complimentButtonPressed:(id)sender;
-- (IBAction)saySomethingNiceButtonPressed:(id)sender;
-- (IBAction)remindOfBabyButtonPressed:(id)sender;
-
-// Help sub-panel.
-- (IBAction)askNurseButtonPressed:(id)sender;
-- (IBAction)askDoulaButtonPressed:(id)sender;
+-(void)actionButtonPressed:(DBActionButton*)button;
+-(void)actionButtonTouched:(DBActionButton*)button;
 
 - (void) toggleButtonSubPanel:(topLevelButton) button;
 - (void) hideAllButtonSubPanels;

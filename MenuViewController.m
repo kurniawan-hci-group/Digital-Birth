@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "GameViewController.h"
+#import "Constants.h"
 
 @implementation MenuViewController
 
@@ -15,12 +16,16 @@
 @synthesize gameSpeedLabel;
 @synthesize gameSpeedExplanationLabel;
 
+@synthesize startingDilation;
+@synthesize startingDilationLabel;
+
 -(id)init
 {
 	if(self = [super init])
 	{
 		printf("Initializing menu controller.\n");
 		gameSpeed = 1;
+		startingDilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
 	}
 	return self;
 }
@@ -37,6 +42,7 @@
 {
 	[gameSpeedLabel release];
 	[gameSpeedExplanationLabel release];
+	[startingDilationLabel release];
 	[super dealloc];
 }
 
@@ -51,18 +57,26 @@
 		gameSpeedExplanationLabel.hidden = YES;
 }
 
+-(void)displayStartingDilation
+{
+	NSString* startingDilationDisplayString = [NSString stringWithFormat:@"%i cm ", (int) startingDilation];
+	startingDilationLabel.text = startingDilationDisplayString;
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	[self displayGameSpeed];
+	[self displayStartingDilation];
 }
 
 - (void)viewDidUnload
 {
 	[self setGameSpeedLabel:nil];
 	[self setGameSpeedExplanationLabel:nil];
+	[self setStartingDilationLabel:nil];
     [super viewDidUnload];
 }
 
@@ -84,9 +98,15 @@
 //	[self presentViewController:gameViewController animated:YES completion:nil];
 }
 
-- (IBAction)gameSpeedStepperChanged:(id)sender
+- (IBAction)gameSpeedSliderChanged:(id)sender
 {
 	gameSpeed = [(UISlider*)sender value];
 	[self displayGameSpeed];
+}
+
+- (IBAction)startingDilationSliderChanged:(id)sender
+{
+	startingDilation = [(UISlider*)sender value];
+	[self displayStartingDilation];
 }
 @end

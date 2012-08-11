@@ -11,17 +11,19 @@
 #import "Constants.h"
 #import "Flurry.h"
 
-static NSDictionary* actionList;
+//static NSDictionary* actionList;
 
 float GAME_TIMER_TICK;
 float CONTRACTION_TIMER_TICK;
 
 @implementation Game
 
-@synthesize lady;
+@synthesize delegate;
+
 @synthesize gameStatus;
 @synthesize playerScore;
-@synthesize gameTimer;
+
+@synthesize actionList;
 
 #pragma mark - Object lifetime
 
@@ -30,6 +32,7 @@ float CONTRACTION_TIMER_TICK;
 	if(self = [super init])
 	{
 		lady = [[Lady alloc] init];
+		lady.delegate = self;
 		gameStatus = IN_PROGRESS;
 		
 //		GAME_TIMER_TICK = .01;
@@ -51,16 +54,18 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)startGame
 {
-	[Flurry logEvent:@"Game_started" timed:YES];
+	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:(int) (1.0/GAME_TIMER_TICK)], @"gameSpeed", nil];
+	[Flurry logEvent:@"Game_started" withParameters:params timed:YES];
 	
 	gameTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_TIMER_TICK target:self selector:@selector(gameTimerTick:) userInfo:nil repeats:YES];
 	
-	[self.lady startLabor];
+	[lady startLabor];
 }
 
 -(void)endGame
 {
-	[Flurry endTimedEvent:@"Game_started" withParameters:nil];
+	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:lady.laborDuration], @"laborDuration", nil];
+	[Flurry endTimedEvent:@"Game_started" withParameters:params];
 }
 
 -(void)gameTimerTick:(NSTimer*)timer
@@ -112,7 +117,7 @@ float CONTRACTION_TIMER_TICK;
 	if([actionList objectForKey:actionName])
 	{
 		printf("attempting to perform action: %s\n", [actionName UTF8String]);
-		if([self.lady applyAction:[actionList objectForKey:actionName]])
+		if([lady applyAction:[actionList objectForKey:actionName]])
 			return true;
 		else
 		{
@@ -132,78 +137,91 @@ float CONTRACTION_TIMER_TICK;
 	return (NSTimeInterval) [[[actionList objectForKey:actionName] objectForKey:@"cooldown"] floatValue];
 }
 
+-(bool)canPerformAction:(NSString*)actionName
+{
+	if(![lady eligibleForAction:[actionList objectForKey:actionName]])
+		return false;
+	
+	return true;
+}
+
+-(NSDictionary*)getAction:(NSString*)actionName
+{
+	return [actionList objectForKey:actionName];
+}
+
 #pragma mark - Accessors
 
 -(int)getBabyHR
 {
-	return self.lady.baby.heartRate;
+	return lady.baby.heartRate;
 }
 
 -(bool)babyIsDistressed
 {
-	return self.lady.baby.inDistress;
+	return lady.baby.inDistress;
 }
 
 -(float)getSupport
 {
-	return self.lady.support;
+	return lady.support;
 }
 
 -(float)getDesiredSupport
 {
-	return self.lady.desiredSupport;
+	return lady.desiredSupport;
 }
 
 -(float)getSupportWindow
 {
-	return self.lady.supportWindow;
+	return lady.supportWindow;
 }
 
 -(int)getCoping
 {
 	// Round to the nearest integer.
-	return (int) floor(self.lady.coping + 0.5);
+	return (int) floor(lady.coping + 0.5);
 }
 
 -(float)getEnergy
 {
-	return self.lady.energy;
+	return lady.energy;
 }
 
 -(int)getDilation
 {
-	return self.lady.dilation;
+	return lady.dilation;
 }
 
--(positionType)getPosition
+-(NSString*)getPosition
 {
-	return self.lady.position;
+	return lady.position;
 }
 
 -(float)getEffacement
 {
-	return self.lady.effacement <= 1.0 ? self.lady.effacement : 1.0;
+	return lady.effacement <= 1.0 ? lady.effacement : 1.0;
 }
 
 -(int)getStation
 {
 	// Round to the nearest integer.
-	return (int) floor(self.lady.station + 0.5);
+	return (int) floor(lady.station + 0.5);
 }
 
 -(int)getContractionStrength
 {
-	return self.lady.contractionStrength;
+	return lady.contractionStrength;
 }
 
 -(bool)hadBaby
 {
-	return self.lady.hadBaby;
+	return lady.hadBaby;
 }
 
 -(bool)watersReleased
 {
-	return self.lady.watersReleased;
+	return lady.watersReleased;
 }
 
 -(void)dealloc

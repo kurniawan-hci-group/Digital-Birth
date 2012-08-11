@@ -14,5 +14,6 @@
 int get_random_int_with_variance(int mean, int variance);
 float get_random_float_with_variance(float mean, float variance);
 
+// Makes a rect into a non-anti-aliased rect that will be exactly 1 pixel wide.
 CGRect rectFor1PxStroke(CGRect rect);
 

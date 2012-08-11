@@ -12,10 +12,14 @@
 @interface MenuViewController : UIViewController <GameViewDelegate>
 
 - (IBAction)newGameButtonPressed;
-- (IBAction)gameSpeedStepperChanged:(id)sender;
+- (IBAction)gameSpeedSliderChanged:(id)sender;
+- (IBAction)startingDilationSliderChanged:(id)sender;
 
 @property (nonatomic) int gameSpeed;
 @property (retain, nonatomic) IBOutlet UILabel *gameSpeedLabel;
 @property (retain, nonatomic) IBOutlet UILabel *gameSpeedExplanationLabel;
+
+@property (nonatomic) float startingDilation;
+@property (retain, nonatomic) IBOutlet UILabel *startingDilationLabel;
 
 @end

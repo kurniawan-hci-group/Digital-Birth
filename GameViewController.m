@@ -24,7 +24,9 @@
 @synthesize buttonsPanelExpanded;
 @synthesize contractionsPanelExpanded;
 
+@synthesize copingDisplay;
 @synthesize supportDisplay;
+@synthesize supportDisplayTooltip;
 @synthesize energyDisplay;
 
 @synthesize momPicView;
@@ -63,6 +65,7 @@
 - (void)dealloc
 {
 	[game release];
+	[actionButtons release];
 
 	[supportDisplay release];
 	[energyDisplay release];
@@ -106,40 +109,69 @@
 	[gameOverGradeDisplay release];
 	[quitView release];
 	[quitViewHandle release];
+	[supportDisplayTooltip release];
+	[copingDisplay release];
 	[super dealloc];
 }
 
-#pragma mark - Object lifetime
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self)
-//	{
-//        printf("Initializing game controller with nib.\n");
-//		game = [[Game alloc] init];
-//    }
-//    return self;
-//}
-//
 -(id)init
 {
 	if(self = [super init])
 	{
 		printf("Initializing game controller.\n");
 		game = [[Game alloc] init];
+		game.delegate = self;
+		
+		// Create action buttons.
+		actionButtons = [[NSMutableDictionary alloc] init];
+		for(NSString* actionName in game.actionList)
+		{
+			DBActionButton* button = [[DBActionButton alloc] init];
+			button.name = actionName;
+			[button addTarget:self action:@selector(actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+			[button addTarget:self action:@selector(actionButtonTouched:) forControlEvents:UIControlEventTouchDown];
+			[actionButtons setObject:button forKey:actionName];
+		}
+		[actionButtons retain];
+		
+		// Create invocations to trigger actionButtonPressed method with
+		// appropriate argument (the action name).
+//		buttonActionInvocations = [[NSMutableDictionary alloc] init];
+//		for(NSString* actionName in game.actionList)
+//		{
+//			NSMethodSignature* sig = [self methodSignatureForSelector:@selector(actionButtonPressed:)];
+//			NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+//			[inv setSelector:@selector(actionButtonPressed:)];
+//			[inv setTarget:self];
+//			[inv setArgument:&actionName atIndex:2];
+//			[buttonActionInvocations setObject:inv forKey:actionName];
+//			[(DBActionButton*)[actionButtons objectForKey:actionName] addTarget:[buttonActionInvocations objectForKey:actionName] action:@selector(invoke) forControlEvents:UIControlEventTouchUpInside];
+//		}
+//		[buttonActionInvocations retain];
+		
+		// Create invocations to trigger playSound method with 
+		// appropriate argument (the action name).
+//		buttonSoundInvocations = [[NSMutableDictionary alloc] init];
+//		for(NSString* actionName in game.actionList)
+//		{
+//			NSMethodSignature* sig = [self methodSignatureForSelector:@selector(playSound::)];
+//			NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+//			[inv setSelector:@selector(playSound::)];
+//			[inv setTarget:self];
+//			[inv setArgument:&actionName atIndex:2];
+//			static NSString* ext = @"aif";
+//			[inv setArgument:&ext atIndex:3];
+//			[buttonSoundInvocations setObject:inv forKey:actionName];
+//			[(DBActionButton*)[actionButtons objectForKey:actionName] addTarget:[buttonSoundInvocations objectForKey:actionName] action:@selector(invoke) forControlEvents:UIControlEventTouchDown];
+//		}
+//		[buttonSoundInvocations retain];
+		
+//		actionsOnCooldown = [[NSMutableArray alloc] init];
+//		[actionsOnCooldown retain];
 	}
 	return self;
 }
 
-//-(id)initWithCoder:(NSCoder *)aDecoder
-//{
-//	if(self = [super initWithCoder:aDecoder])
-//	{
-//		printf("Initializing game controller with coder.\n");
-//	}
-//	return self;
-//}
-//
 #pragma mark - Helper Methods
 -(void) displaySupport
 {
@@ -150,15 +182,8 @@
 
 -(void) displayCoping
 {
-	switch (game.getCoping)
-	{
-//		case <#constant#>:
-//			<#statements#>
-//			break;
-//			
-//		default:
-//			break;
-	}
+	NSString* copingImageName = [NSString stringWithFormat:@"coping%i.png", game.getCoping];
+	[copingDisplay setImage:[UIImage imageNamed:copingImageName]];
 }
 
 -(void) displayEnergy
@@ -166,27 +191,6 @@
 	[energyDisplay setEnergyLevel:(float) [game getEnergy] / MAX_ENERGY];
 }
 
-//-(void) displayFocus
-//{
-//	switch(game.getFocus)
-//	{
-//		case 0:
-//			self.focusDisplayView.image = [UIImage imageNamed:@"focus_0.png"];
-//			break;
-//		case 1:
-//			self.focusDisplayView.image = [UIImage imageNamed:@"focus_1.png"];
-//			break;
-//		case 2:
-//			self.focusDisplayView.image = [UIImage imageNamed:@"focus_2.png"];
-//			break;
-//		case 3:
-//			self.focusDisplayView.image = [UIImage imageNamed:@"focus_3.png"];
-//			break;
-//		default:
-//			break;
-//	}
-//}
-//
 -(void) displayDilation
 {
 	NSString* dilationDisplayString = [NSString stringWithFormat:@"%i cm", [game getDilation]];
@@ -202,10 +206,10 @@
 
 -(void) displayContractionStrength
 {
-	NSString* contractionStrengthDisplayString = [NSString stringWithFormat:@"%i", game.lady.contractionStrength];
+	NSString* contractionStrengthDisplayString = [NSString stringWithFormat:@"%i", game.getContractionStrength];
 	self.contractionsDisplay.text = contractionStrengthDisplayString;
 	
-	[self.contractionsGraphView drawDataPoint:game.lady.contractionStrength];
+	[self.contractionsGraphView drawDataPoint:game.getContractionStrength];
 }
 
 -(void)toggleButtonSubPanel:(UIScrollView*)panel expand:(BOOL)expand
@@ -431,9 +435,22 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	[self displaySupport];
 	[self displayEnergy];
+	[self displayCoping];
 	[self displayDilation];
 	[self displayPosition];
 	[self displayContractionStrength];
+	
+	if(game.getContractionStrength > 0)
+		// Show glow or whatever. 
+		;
+	
+	for(NSString* actionName in actionButtons)
+	{
+		if(![game canPerformAction:actionName])
+			((DBActionButton*)[actionButtons objectForKey:actionName]).enabled = NO;
+		else if (((DBActionButton*)[actionButtons objectForKey:actionName]).onCooldown == NO)
+			((DBActionButton*)[actionButtons objectForKey:actionName]).enabled = YES;
+	}
 }
 
 #pragma mark - View lifecycle
@@ -491,7 +508,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	CGRect quitBoxPosition = CGRectMake(screenRect.size.height - quitViewHandle.frame.size.width, 0, quitView.frame.size.width, quitView.frame.size.height);
 	[quitView setFrame:quitBoxPosition];
 	[self.view addSubview:quitView];
-	quitBoxExpanded = NO;
+//	quitBoxExpanded = NO;
 	
 	// Add swipe gesture recognizers to quit box handle.
 	UISwipeGestureRecognizer* quitSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(quitHandleSlideOut:)];
@@ -523,7 +540,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self.view addSubview:relaxButtonsScrollView];
 	relaxButtonsScrollView.hidden = YES;
 	[relaxButtonsScrollView addSubview:relaxButtonsView];
-	relaxButtonsScrollView.contentSize = relaxButtonsView.frame.size;
+//	relaxButtonsScrollView.contentSize = relaxButtonsView.frame.size;
 	
 	// Add breathing buttons sub-panel.
 	CGRect breatheButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - breatheButtonsScrollView.frame.size.height - statusBarFrame.size.width, breatheButtonsScrollView.frame.size.width, breatheButtonsScrollView.frame.size.height);
@@ -565,8 +582,96 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[getHelpButtonsScrollView addSubview:getHelpButtonsView];
 	getHelpButtonsScrollView.contentSize = getHelpButtonsView.frame.size;
 	
+	// Add buttons on sub-panels.
+	NSMutableDictionary* buttonGroups = [[NSMutableDictionary alloc] initWithCapacity:6];
+	for(NSString* actionName in actionButtons)
+	{
+		NSString* buttonCategory = [[game.actionList objectForKey:actionName] objectForKey:@"category"];
+
+		// If there's not already a button group for this category, make one, initializing it with the button.
+		// If there is, add the button to said group.
+		if(![buttonGroups objectForKey:buttonCategory])
+			[buttonGroups setObject:[NSMutableArray arrayWithObject:[actionButtons objectForKey:actionName]] forKey:buttonCategory];
+		else
+			[(NSMutableArray*)[buttonGroups objectForKey:buttonCategory] addObject:[actionButtons objectForKey:actionName]];
+		
+		// Load and set button images, for normal and disabled state.
+		// Normal image is ACTION_NAME.png; disabled image is ACTION_NAME_disabled.png.
+ 		NSString* imageName = [NSString stringWithFormat:@"%s.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
+		[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+		NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
+		[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
+		
+		printf("action name: %s; image name: %s; disabled image name: %s, button category: %s\n", [actionName UTF8String], [imageName UTF8String], [imageName_disabled UTF8String], [buttonCategory UTF8String]);
+		
+		UIView* theButtonPanel;
+		if([buttonCategory isEqualToString:@"relax"])
+		{
+			theButtonPanel = relaxButtonsView;
+		}
+		else if([buttonCategory isEqualToString:@"breathe"])
+		{
+			theButtonPanel = breatheButtonsView;
+		}
+		else if([buttonCategory isEqualToString:@"beTogether"])
+		{
+			theButtonPanel = beTogetherButtonsView;
+		}
+		else if([buttonCategory isEqualToString:@"positions"])
+		{
+			theButtonPanel = positionsButtonsView;
+		}
+		else if([buttonCategory isEqualToString:@"verbalCare"])
+		{
+			theButtonPanel = verbalCareButtonsView;
+		}
+		else if([buttonCategory isEqualToString:@"help"])
+		{
+			theButtonPanel = getHelpButtonsView;
+		}
+		
+		CGRect buttonFrame = CGRectMake(ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * ([(NSMutableArray*)[buttonGroups objectForKey:buttonCategory] count] - 1), ACTION_BUTTON_SPACING, ACTION_BUTTON_SIZE, ACTION_BUTTON_SIZE);
+		((DBActionButton*)[actionButtons objectForKey:actionName]).frame = buttonFrame;
+		[theButtonPanel addSubview:[actionButtons objectForKey:actionName]];
+		
+	}
+	
+	// Set sizes of button sub-panel views according to number of buttons.
+	CGRect buttonsViewFrame;
+	
+	buttonsViewFrame = CGRectMake(relaxButtonsView.frame.origin.x, relaxButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"relax"] count], relaxButtonsView.frame.size.height);
+	relaxButtonsView.frame = buttonsViewFrame;
+	relaxButtonsScrollView.contentSize = relaxButtonsView.frame.size;
+	
+	buttonsViewFrame = CGRectMake(breatheButtonsView.frame.origin.x, breatheButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"breathe"] count], breatheButtonsView.frame.size.height);
+	breatheButtonsView.frame = buttonsViewFrame;
+	breatheButtonsScrollView.contentSize = breatheButtonsView.frame.size;
+	
+	buttonsViewFrame = CGRectMake(beTogetherButtonsView.frame.origin.x, beTogetherButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"beTogether"] count], beTogetherButtonsView.frame.size.height);
+	beTogetherButtonsView.frame = buttonsViewFrame;
+	beTogetherButtonsScrollView.contentSize = beTogetherButtonsView.frame.size;
+	
+	buttonsViewFrame = CGRectMake(positionsButtonsView.frame.origin.x, positionsButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"positions"] count], positionsButtonsView.frame.size.height);
+	positionsButtonsView.frame = buttonsViewFrame;
+	positionsButtonsScrollView.contentSize = positionsButtonsView.frame.size;
+	
+	buttonsViewFrame = CGRectMake(verbalCareButtonsView.frame.origin.x, verbalCareButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"verbalCare"] count], verbalCareButtonsView.frame.size.height);
+	verbalCareButtonsView.frame = buttonsViewFrame;
+	verbalCareButtonsScrollView.contentSize = verbalCareButtonsView.frame.size;
+	
+	buttonsViewFrame = CGRectMake(getHelpButtonsView.frame.origin.x, getHelpButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"help"] count], getHelpButtonsView.frame.size.height);
+	getHelpButtonsView.frame = buttonsViewFrame;
+	getHelpButtonsScrollView.contentSize = getHelpButtonsView.frame.size;
+	
 	dilationLabelPopupView.layer.cornerRadius = 8;
 	dilationLabelPopupView.layer.masksToBounds = YES;
+	
+	supportDisplayTooltip.layer.cornerRadius = 6;
+	supportDisplayTooltip.layer.masksToBounds = YES;
+	
+	// Add tap gesture recognizer to support display (to pop up tooltip).
+	UITapGestureRecognizer* supportDisplayTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(supportDisplayPressed)];
+	[supportDisplay addGestureRecognizer:supportDisplayTapped];
 	
 	// Possibly put this elsewhere, triggered from a "start game" button?
 
@@ -574,6 +679,8 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self startDisplayTimer];
 	// Start the game timer.	
 	[self.game startGame];
+	
+	[buttonGroups release];
 }
 
 - (void)viewDidUnload
@@ -613,6 +720,8 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setGameOverGradeDisplay:nil];
 	[self setQuitView:nil];
 	[self setQuitViewHandle:nil];
+	[self setSupportDisplayTooltip:nil];
+	[self setCopingDisplay:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view to relieve memory usage
 }
@@ -638,13 +747,22 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 - (IBAction)quitHandleSlideOut:(UIGestureRecognizer *)sender
 {
 	[self toggleQuitBox:YES];
-	quitBoxExpanded = YES;
+//	quitBoxExpanded = YES;
+	
+	NSMethodSignature* sig = [self methodSignatureForSelector:@selector(toggleQuitBox:)];
+	NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
+	[inv setSelector:@selector(toggleQuitBox:)];
+	[inv setTarget:self];
+	bool toggle = NO;
+	[inv setArgument:&toggle atIndex:2];
+	NSTimer* slideInTimer;
+	slideInTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 invocation:inv repeats:NO];
 }
 
 - (IBAction)quitHandleSlideIn:(UIGestureRecognizer *)sender
 {
 	[self toggleQuitBox:NO];
-	quitBoxExpanded = NO;
+//	quitBoxExpanded = NO;
 }
 
 - (IBAction)buttonHandleSlideOut:(UIGestureRecognizer *)sender
@@ -721,15 +839,35 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     [UIView commitAnimations];
 }
 
+-(IBAction)supportDisplayPressed
+{
+	supportDisplayTooltip.alpha = 1.0;
+	
+	[self performSelector:@selector(fadeOutTooltip:) withObject:supportDisplayTooltip afterDelay:2.0];
+}
+
+-(void)fadeOutTooltip:(UIView*)tooltip
+{
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+	
+	tooltip.alpha = 0.0;
+	
+    [UIView commitAnimations];
+}
+
 
 #pragma mark - Button sub-panel actions
 
--(void)enableButtonNow:(UIButton*) button
+-(void)enableButtonNow:(DBActionButton*) button
 {
-	button.enabled = YES;
+	button.onCooldown = NO;
+	if([game canPerformAction:button.name])
+		button.enabled = YES;
 }
 
--(void)enableButton:(UIButton*) button afterCooldown:(NSTimeInterval) cooldown
+-(void)enableButton:(DBActionButton*) button afterCooldown:(NSTimeInterval) cooldown
 {
 	NSMethodSignature* sig = [self methodSignatureForSelector:@selector(enableButtonNow:)];
 	NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
@@ -740,531 +878,24 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	enableTimer = [NSTimer scheduledTimerWithTimeInterval:(cooldown * GAME_TIMER_TICK) invocation:inv repeats:NO];	
 }
 
-- (IBAction)lightTouchMassageButtonPressed:(id)sender
+-(void)actionButtonPressed:(DBActionButton*)button
 {
-	if([game performAction:@"lightTouchMassage"])
+	printf("%s button pressed\n", [button.name UTF8String]);
+	
+	if([game performAction:button.name])
 	{
-		((UIButton*) sender).enabled = NO;
+		button.enabled = NO;
+		button.onCooldown = YES;
 		
 		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"lightTouchMassage"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-	else
-	{
-		// Play "not enough energy!" or whatever
+		NSTimeInterval cooldown = [game getCooldown:button.name];
+		[self enableButton:button afterCooldown:cooldown];
 	}
 }
 
-- (IBAction)heatPackButtonPressed:(id)sender
+-(void)actionButtonTouched:(DBActionButton*)button
 {
-	if([game performAction:@"heatPack"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"heatPack"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)heatPackButtonTouched
-{
-	printf("test1\n");
-	[self playSound:@"heatPack":@"aif"];
-}
-
-- (IBAction)coolClothButtonPressed:(id)sender
-{
-	if([game performAction:@"coolCloth"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"coolCloth"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)ragDollButtonPressed:(id)sender
-{
-	if([game performAction:@"ragDoll"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"ragDoll"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)aromatherapyButtonPressed:(id)sender
-{
-	if([game performAction:@"aromatherapy"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"aromatherapy"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)playMusicButtonPressed:(id)sender
-{
-	if([game performAction:@"playMusic"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"playMusic"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)visualizationButtonPressed:(id)sender
-{
-	if([game performAction:@"visualization"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"visualization"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)showerButtonPressed:(id)sender
-{
-	if([game performAction:@"shower"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"shower"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)tubButtonPressed:(id)sender
-{
-	if([game performAction:@"tub"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"tub"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-
-- (IBAction)deepBreathingButtonPressed:(id)sender
-{
-	if([game performAction:@"deepBreathing"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"deepBreathing"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)countUpDownButtonPressed:(id)sender
-{
-	if([game performAction:@"countUpDown"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"countUpDown"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)rhythmicBreathingButtonPressed:(id)sender
-{
-	if([game performAction:@"rhythmicBreathing"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"rhythmicBreathing"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)TVButtonPressed:(id)sender
-{
-	if([game performAction:@"TV"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"TV"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)movieButtonPressed:(id)sender
-{
-	if([game performAction:@"movie"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"movie"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)gamesButtonPressed:(id)sender
-{
-	if([game performAction:@"games"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"games"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)callFriendsButtonPressed:(id)sender
-{
-	if([game performAction:@"callFriends"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"callFriends"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)snuggleButtonPressed:(id)sender
-{
-	if([game performAction:@"snuggle"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"snuggle"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)kissButtonPressed:(id)sender
-{
-	if([game performAction:@"kiss"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"kiss"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)sexButtonPressed:(id)sender
-{
-	if([game performAction:@"sex"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"sex"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)rubTummyButtonPressed:(id)sender
-{
-	if([game performAction:@"rubTummy"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"rubTummy"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)walkButtonPressed:(id)sender
-{
-	if([game performAction:@"walk"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"walk"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)standButtonPressed:(id)sender
-{
-	if([game performAction:@"stand"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"stand"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)slowDanceButtonPressed:(id)sender
-{
-	if([game performAction:@"slowDance"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"slowDance"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)leanOnWallButtonPressed:(id)sender
-{
-	if([game performAction:@"leanOnWall"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"leanOnWall"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)rockingChairButtonPressed:(id)sender
-{
-	if([game performAction:@"rockingChair"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"rockingChair"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)sitBackOnChairButtonPressed:(id)sender
-{
-	if([game performAction:@"sitBackOnChair"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"sitBackOnChair"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)sitOnBirthBallButtonPressed:(id)sender
-{
-	if([game performAction:@"sitOnBirthBall"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"sitOnBirthBall"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)lungeOnStairButtonPressed:(id)sender
-{
-	if([game performAction:@"lungeOnStair"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"lungeOnStair"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)kneelButtonpressed:(id)sender
-{
-	if([game performAction:@"kneel"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"kneel"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)squatButtonPressed:(id)sender
-{
-	if([game performAction:@"squat"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"squat"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)sitButtonPressed:(id)sender
-{
-	if([game performAction:@"sit"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"sit"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)lieOnSideButtonPressed:(id)sender
-{
-	if([game performAction:@"countUpDown"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"countUpDown"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)lieOnBackButtonPressed:(id)sender
-{
-	if([game performAction:@"lieOnBack"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"lieOnBack"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)allFoursButtonPressed:(id)sender
-{
-	if([game performAction:@"allFours"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"allFours"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)buttInAirButtonPressed:(id)sender
-{
-	if([game performAction:@"buttInAir"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"buttInAir"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)toiletButtonPressed:(id)sender
-{
-	if([game performAction:@"toilet"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"toilet"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)affirmationButtonPressed:(id)sender
-{
-	if([game performAction:@"affirmation"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"affirmation"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)encourageButtonPressed:(id)sender
-{
-	if([game performAction:@"encourage"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"encourage"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)complimentButtonPressed:(id)sender
-{
-	if([game performAction:@"compliment"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"compliment"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)saySomethingNiceButtonPressed:(id)sender
-{
-	if([game performAction:@"saySomethingNice"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"saySomethingNice"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)remindOfBabyButtonPressed:(id)sender
-{
-	if([game performAction:@"remindOfBaby"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"remindOfBaby"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)askNurseButtonPressed:(id)sender
-{
-	if([game performAction:@"askNurse"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"askNurse"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
-}
-
-- (IBAction)askDoulaButtonPressed:(id)sender
-{
-	if([game performAction:@"askDoula"])
-	{
-		((UIButton*) sender).enabled = NO;
-		
-		// Re-enable the button after the cooldown elapses.
-		NSTimeInterval cooldown = [game getCooldown:@"askDoula"];
-		[self enableButton:sender afterCooldown:cooldown];
-	}
+	[self playSound:button.name:@"aif"];
 }
 
 @end

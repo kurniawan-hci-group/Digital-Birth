@@ -20,46 +20,53 @@ typedef enum
 	BABYBORN
 } laborStageType;
 
-typedef enum
-{
-	WALK,
-	STAND,
-	SLOW_DANCE,
-	LEAN_ON_WALL,
-	ROCKING_CHAIR,
-	SIT_BACKWARDS_ON_CHAIR,
-	SIT_ON_BIRTH_BALL,
-	LUNGE_ON_STAIR,
-	KNEEL,
-	SIT,
-	SQUAT,
-	LIE_ON_SIDE,
-	LIE_ON_BACK,
-	ALL_FOURS,
-	TOILET,
-	BOTTOM_IN_AIR
-} positionType;
+//typedef enum
+//{
+//	WALK,
+//	STAND,
+//	SLOW_DANCE,
+//	LEAN_ON_WALL,
+//	ROCKING_CHAIR,
+//	SIT_BACKWARDS_ON_CHAIR,
+//	SIT_ON_BIRTH_BALL,
+//	LUNGE_ON_STAIR,
+//	KNEEL,
+//	SIT,
+//	SQUAT,
+//	LIE_ON_SIDE,
+//	LIE_ON_BACK,
+//	ALL_FOURS,
+//	TOILET,
+//	BOTTOM_IN_AIR
+//} positionType;
+//
+//#define NUM_POSITIONS	16
+//
+//@interface Stats : NSObject
+//{
+//	// Initial stats ("factors") — these influence how the woman responds to various actions
+//	
+//	float initialDesiredSupport;
+//	
+//	bool doesNotLikeYou;
+//	bool everythingIsAwesome;
+//}
+//
+//@property (readonly) bool doesNotLikeYou;
+//@property (readonly) bool everythingIsAwesome;
+//
+//@end
+//
+@protocol LadyDelegate <NSObject>
 
-#define NUM_POSITIONS	16
-
-@interface Stats : NSObject
-{
-	// Initial stats ("factors") — these influence how the woman responds to various actions
-	
-	float initialDesiredSupport;
-	
-	bool doesNotLikeYou;
-	bool everythingIsAwesome;
-}
-
-@property (readonly) bool doesNotLikeYou;
-@property (readonly) bool everythingIsAwesome;
+-(NSDictionary*)getAction:(NSString*)actionName;
 
 @end
 
-
 @interface Lady : NSObject
 {
+	id <LadyDelegate> delegate;
+	
 	Baby* baby;
 
 	float support;
@@ -69,7 +76,7 @@ typedef enum
 	float coping;
 	float energy;
 	float dilation;
-	positionType position;
+	NSString* position;
 
 	float effacement;
 	float station;
@@ -91,9 +98,15 @@ typedef enum
 	float contractionFrequency;
 	NSTimer* contractionTimer;
 	NSMutableArray* currentContractions;
+	int contractionsWithoutPositionSwitch;
+	
+	// Ongoing actions!
+	NSMutableDictionary* currentActions;
 
 	NSDate* laborStartTime;
 }
+
+@property (nonatomic, assign) id delegate;
 
 @property (nonatomic, readonly) Baby *baby;
 
@@ -104,7 +117,7 @@ typedef enum
 @property (readonly) float coping;
 @property (readonly) float energy;
 @property (readonly) float dilation;
-@property (readonly) positionType position;
+@property (readonly) NSString* position;
 
 @property (readonly) float effacement;
 @property (readonly) float station;
@@ -124,5 +137,6 @@ typedef enum
 -(void)endLabor;
 -(void)timerTick;
 -(bool)applyAction:(NSDictionary*)action;
+-(bool)eligibleForAction:(NSDictionary*)action;
 
 @end

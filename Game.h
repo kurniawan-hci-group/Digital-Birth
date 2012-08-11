@@ -16,42 +16,53 @@ typedef enum
 	WON_GAME
 } gameStatusType;
 
-@interface Game : NSObject
+@protocol GameDelegate <NSObject>
+
+
+
+@end
+
+@interface Game : NSObject <LadyDelegate>
 {
-	Lady *lady;
+	id <GameDelegate> delegate;
+	
+	Lady* lady;
+	NSDictionary* actionList;
+	
 	gameStatusType gameStatus;
 	int playerScore;
+	
 	NSTimer* gameTimer;
 }
 
-@property (readonly) Lady *lady;
+@property (nonatomic, assign) id delegate;
+
 @property (readonly) gameStatusType gameStatus;
 @property (readonly) int playerScore;
-@property (readonly) NSTimer* gameTimer;
+
+@property (readonly) NSDictionary* actionList;
+
+@property (readonly, getter = getBabyHR) int babyHR;
+@property (readonly, getter = babyIsDistressed) bool babyIsDistressed;
+@property (readonly, getter = getSupport) float support;
+@property (readonly, getter = getDesiredSupport) float desiredSupport;
+@property (readonly, getter = getSupportWindow) float supportWindow;
+@property (readonly, getter = getCoping) int coping;
+@property (readonly, getter = getEnergy) float energy;
+@property (readonly, getter = getDilation) int dilation;
+@property (readonly, getter = getPosition) NSString* position;
+@property (readonly, getter = getEffacement) float effacement;
+@property (readonly, getter = getStation) int station;
+@property (readonly, getter = getContractionStrength) int contractionStrength;
+@property (readonly, getter = watersReleased) bool watersReleased;
+@property (readonly, getter = hadBaby) bool hadBaby;
 
 -(void)startGame;
 -(void)endGame;
 -(bool)performAction:(NSString*)actionName;
 -(NSTimeInterval)getCooldown:(NSString*)actionName;
+-(bool)canPerformAction:(NSString*)actionName;
 
--(int)getBabyHR;
--(bool)babyIsDistressed;
-
--(float)getSupport;
--(float)getDesiredSupport;
--(float)getSupportWindow;
-
--(int)getCoping;
--(float)getEnergy;
--(int)getDilation;
--(positionType)getPosition;
-
--(float)getEffacement;
--(int)getStation;
-
--(int)getContractionStrength;
-
--(bool)watersReleased;
--(bool)hadBaby;
+-(NSDictionary*)getAction:(NSString*)actionName;
 
 @end
