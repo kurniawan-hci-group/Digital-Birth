@@ -145,9 +145,28 @@ float CONTRACTION_TIMER_TICK;
 	return true;
 }
 
+#pragma mark - Delegate methods
+
 -(NSDictionary*)getAction:(NSString*)actionName
 {
 	return [actionList objectForKey:actionName];
+}
+
+-(void)contractionStarted
+{
+	// Pass along to the delegate (the view controller) that a contraction has started.
+	[delegate contractionStarted];
+}
+
+-(void)contractionEnded
+{
+	[delegate contractionEnded];
+}
+
+-(void)positionChanged
+{
+	// Instruct the delegate (the view controller) to update display of the woman's position.
+	[delegate displayPosition];
 }
 
 #pragma mark - Accessors

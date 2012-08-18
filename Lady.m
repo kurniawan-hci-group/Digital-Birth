@@ -144,7 +144,6 @@ NSString* laborStageString(laborStageType stage)
 		baby = [[Baby alloc] init];
 		
 		// Generate initial stats here.
-//		factors = [[Stats alloc] init];
 		NSString* factorsListPath = [[NSBundle mainBundle] pathForResource:@"Factors" ofType:@"plist"];
 		NSArray* temp_factors = [NSArray arrayWithContentsOfFile:factorsListPath];
 //		if(temp_factors)
@@ -172,7 +171,7 @@ NSString* laborStageString(laborStageType stage)
 			printf("Could not load position list!\n");
 		[positionList retain];
 
-		position = [self getRandomPosition];
+		position = @"lieOnSide";
 		
 		effacement = 0.0;
 		station = -2;
@@ -188,6 +187,9 @@ NSString* laborStageString(laborStageType stage)
 		contractionFrequency = TWELVEMIN;
 		contractionsWithoutPositionSwitch = 0;
 		currentContractions = [[NSMutableArray alloc] init];
+		
+		currentActions = [[NSMutableDictionary alloc] init];
+		ongoingActionTimers = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -225,7 +227,6 @@ NSString* laborStageString(laborStageType stage)
 	static float total_time_between_contractions = 0;
 	static int num_contractions = 0;
 
-	float variance;
 	float thisContractionDuration;
 	float thisContractionStrength;
 	
@@ -239,6 +240,7 @@ NSString* laborStageString(laborStageType stage)
 		printf("It has been %d contractions without a position switch. Changing position.\n", contractionsWithoutPositionSwitch);
 		NSDictionary* positionChangeAction = [delegate getAction:[self getRandomPosition]];
 		[self applyAction:positionChangeAction];
+		printf("switching to position: %s\n", [position UTF8String]);
 		
 		contractionsWithoutPositionSwitch = 0;
 	}
@@ -251,6 +253,7 @@ NSString* laborStageString(laborStageType stage)
 	
 	// Randomly determine contraction duration, with current avg duration
 	// and with a variance depending on stage of labor.
+	float variance;
 	switch (laborStage)
 	{
 		case EARLY:
@@ -270,6 +273,9 @@ NSString* laborStageString(laborStageType stage)
 	// Start the contraction.
 	[currentContractions addObject:[[Contraction alloc] initWithMax:(thisContractionStrength) andDuration:contractionDuration]];
 	[(Contraction*) [currentContractions objectAtIndex:(currentContractions.count - 1)] start];
+	
+	// Inform the delegate (the game) that the contraction has started.
+	[delegate contractionStarted];
 	
 	// Randomly determine time to next contraction, with current frequency
 	// and with a variance depending on stage of labor.
@@ -308,9 +314,14 @@ NSString* laborStageString(laborStageType stage)
 	
 	// Remove any contractions that have ended (become inactive) from currentContractions.
 	for(int i = 0; i < currentContractions.count; i++)
+	{
 		if(![[currentContractions objectAtIndex:i] isActive])
 		{
 			[currentContractions removeObjectAtIndex:i];
+			
+			// If all contractions have ended, inform the delegate (game) of this.
+			if([currentContractions count] == 0)
+				[delegate contractionEnded];
 			
 			contractions_happened++;
 			
@@ -320,7 +331,8 @@ NSString* laborStageString(laborStageType stage)
 			coping += 0.4 * (1.0 - 0.5 * [[factors objectForKey:@"painTolerance"] floatValue]) * (2 * MAX_COPING * maxContractionStrength) / ((double) MAX_POSSIBLE_CONTRACTION_STRENGTH * M_PI);
 			printf("coping after replenishment: %f\n", coping);
 		}
-
+	}
+	
 	// How much stronger contractions get over this period of labor.
 	// Default (starting value) is for early labor.
 	static float percent_increase = 0.4;
@@ -476,7 +488,7 @@ NSString* laborStageString(laborStageType stage)
 	
 	// Adjust coping level based on support.
 	float copingAdjustmentFactor = (supportWindow - ABS(support - desiredSupport)) / supportWindow;
-	coping = MIN(coping + 0.001 * MAX_COPING * copingAdjustmentFactor, MAX_COPING);
+	coping = MAX(MIN(coping + 0.001 * MAX_COPING * copingAdjustmentFactor, MAX_COPING), 0);
 	
 	// Adjust desired support based on coping.
 	desiredSupport = MIN([[factors objectForKey:@"initialDesiredSupport"] floatValue] * MAX_SUPPORT * (2.0 - (coping / (float) MAX_COPING)), MAX_SUPPORT);
@@ -519,16 +531,26 @@ NSString* laborStageString(laborStageType stage)
 
 -(bool)applyAction:(NSDictionary*)action
 {
-	// Return false if not eligible for action.
-	if(![self eligibleForAction:action])
-		return false;
-	
 	printf("attempting to apply action: %s\n", [[action objectForKey:@"name"] UTF8String]);
 	
-	// Return false if not enough energy.
-//	if(energy + [[[action objectForKey:@"energyEffect"] objectForKey:laborStageString(laborStage)] floatValue] < 0.0)
-//		return false;
-
+	// Return false if not eligible for action.
+	if(![self eligibleForAction:action])
+	{
+		printf("failed to apply action.\n");
+		return false;
+	}
+	
+	// If there are any other actions with the same tags, cancel the other action.
+	for(NSString* ongoingActionName in currentActions)
+	{
+		if(actionsShareTags([currentActions objectForKey:ongoingActionName], action))
+		{
+			[(NSTimer*)[ongoingActionTimers objectForKey:ongoingActionName] invalidate];
+			[ongoingActionTimers removeObjectForKey:ongoingActionName];
+			[currentActions removeObjectForKey:ongoingActionName];
+		}
+	}
+	
 	// Look through the action's "affecting factors" set and find any relevant ones.
 	// Generate modifier (multiplier) on action effects by averaging in
 	// all factors by which this action is affected.
@@ -577,14 +599,28 @@ NSString* laborStageString(laborStageType stage)
 		
 		// Add the action to currentActions.
 		[currentActions setObject:action forKey:[action objectForKey:@"name"]];
+		[ongoingActionTimers setObject:actionTickTimer forKey:[action objectForKey:@"name"]];
 	}
 	
+	// *** SPECIAL CASES ***
+	
 	// If the action is a position change action, change the current position.
-	if([(NSString*)[action objectForKey:@"category"] isEqualToString:@"position"])
+	if(isPosition(action))
 	{
 		position = [action objectForKey:@"name"];
 		contractionsWithoutPositionSwitch = 0;
+		
+		// Inform the delegate (the game) that position has been changed.
+		[delegate positionChanged];
 	}
+	
+	// If the action is rubTummy, immediately begin the next contraction.
+	if([(NSString*)[action objectForKey:@"name"] isEqualToString:@"rubTummy"])
+	{
+		[contractionTimer fire];
+	}
+	
+	// *** END SPECIAL CASES ***
 	
 	return true;
 }

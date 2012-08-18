@@ -49,7 +49,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">background.png</string>
+							<string key="NSResourceName">background_bed_up.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="947173980">
@@ -121,16 +121,14 @@
 					<object class="IBUIImageView" id="292289578">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{286, 56}, {123, 244}}</string>
+						<string key="NSFrame">{{266, 56}, {161, 244}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<int key="IBUIContentMode">4</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">woman_normal.png</string>
+							<string key="NSResourceName">sit_position.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="876498671">
@@ -303,6 +301,7 @@
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="148187344"/>
+						<float key="IBUIAlpha">0.5</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -495,7 +494,6 @@
 						<string key="NSFrame">{{404, 7}, {66, 66}}</string>
 						<reference key="NSSuperview" ref="81243215"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -532,7 +530,6 @@
 						<string key="NSFrame">{{456, 0}, {24, 260}}</string>
 						<reference key="NSSuperview" ref="777430909"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -545,7 +542,7 @@
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="779457561"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
+				<object class="NSColor" key="IBUIBackgroundColor" id="1035762453">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
 				</object>
@@ -559,7 +556,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -572,7 +568,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -585,7 +580,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -598,7 +592,6 @@
 				<string key="NSFrameSize">{196, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -611,7 +604,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -624,7 +616,6 @@
 				<string key="NSFrameSize">{474, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -637,7 +628,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -650,7 +640,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -663,7 +652,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -676,7 +664,6 @@
 				<string key="NSFrameSize">{324, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -689,7 +676,6 @@
 				<string key="NSFrameSize">{480, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<bool key="IBUIClipsSubviews">YES</bool>
 				<bool key="IBUIMultipleTouchEnabled">YES</bool>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -702,7 +688,6 @@
 				<string key="NSFrameSize">{133, 72}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEgMC42AA</bytes>
@@ -749,7 +734,6 @@
 						<string key="NSFrame">{{384, 10}, {36, 21}}</string>
 						<reference key="NSSuperview" ref="257479999"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -843,7 +827,6 @@
 						<string key="NSFrame">{{48, 92}, {131, 38}}</string>
 						<reference key="NSSuperview" ref="709272290"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -898,61 +881,80 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIView" id="1063425127">
+			<object class="IBUIView" id="335548650">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">292</int>
+				<int key="NSvFlags">-2147483356</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="113884349">
-						<reference key="NSNextResponder" ref="1063425127"/>
+					<object class="IBUIImageView" id="1012840876">
+						<reference key="NSNextResponder" ref="335548650"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrameSize">{24, 64}</string>
-						<reference key="NSSuperview" ref="1063425127"/>
+						<string key="NSFrameSize">{218, 192}</string>
+						<reference key="NSSuperview" ref="335548650"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="385072016"/>
-						<int key="IBUIContentMode">4</int>
+						<reference key="NSNextKeyView" ref="628345964"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">QuitBoxHandle.png</string>
+							<string key="NSResourceName">resume_restart_screen_background.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="385072016">
-						<reference key="NSNextResponder" ref="1063425127"/>
+					<object class="IBUIButton" id="85977242">
+						<reference key="NSNextResponder" ref="335548650"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{24, 0}, {64, 64}}</string>
-						<reference key="NSSuperview" ref="1063425127"/>
+						<string key="NSFrame">{{33, 101}, {152, 50}}</string>
+						<reference key="NSSuperview" ref="335548650"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="IBUIBackgroundColor" ref="1035762453"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">RESUME GAME</string>
 						<reference key="IBUIHighlightedTitleColor" ref="411745061"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="219056596"/>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">BigRedX.png</string>
-						</object>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="597859012">
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont">
+						<object class="NSFont" key="IBUIFont" id="433282852">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
+					<object class="IBUIButton" id="628345964">
+						<reference key="NSNextResponder" ref="335548650"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{51, 35}, {117, 50}}</string>
+						<reference key="NSSuperview" ref="335548650"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="85977242"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">END GAME</string>
+						<reference key="IBUIHighlightedTitleColor" ref="411745061"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="219056596"/>
+						<reference key="IBUIFontDescription" ref="597859012"/>
+						<reference key="IBUIFont" ref="433282852"/>
+					</object>
 				</array>
-				<string key="NSFrameSize">{88, 64}</string>
+				<string key="NSFrameSize">{218, 192}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="113884349"/>
+				<reference key="NSNextKeyView" ref="1012840876"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -1237,22 +1239,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">quitView</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1063425127"/>
-					</object>
-					<int key="connectionID">326</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">quitViewHandle</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="113884349"/>
-					</object>
-					<int key="connectionID">327</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">supportDisplayTooltip</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="909934951"/>
@@ -1266,6 +1252,14 @@
 						<reference key="destination" ref="569228794"/>
 					</object>
 					<int key="connectionID">379</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">quitView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="335548650"/>
+					</object>
+					<int key="connectionID">383</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1341,12 +1335,21 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">quitButtonPressed</string>
-						<reference key="source" ref="385072016"/>
+						<string key="label">resumeButtonPressed</string>
+						<reference key="source" ref="85977242"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">2</int>
+						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">331</int>
+					<int key="connectionID">385</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">quitButtonPressed</string>
+						<reference key="source" ref="628345964"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">384</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1614,25 +1617,6 @@
 						<reference key="parent" ref="81243215"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">324</int>
-						<reference key="object" ref="1063425127"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="385072016"/>
-							<reference ref="113884349"/>
-						</array>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">325</int>
-						<reference key="object" ref="113884349"/>
-						<reference key="parent" ref="1063425127"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">329</int>
-						<reference key="object" ref="385072016"/>
-						<reference key="parent" ref="1063425127"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">375</int>
 						<reference key="object" ref="909934951"/>
 						<reference key="parent" ref="191373211"/>
@@ -1646,6 +1630,31 @@
 						<int key="objectID">378</int>
 						<reference key="object" ref="569228794"/>
 						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">380</int>
+						<reference key="object" ref="335548650"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="85977242"/>
+							<reference ref="628345964"/>
+							<reference ref="1012840876"/>
+						</array>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">381</int>
+						<reference key="object" ref="85977242"/>
+						<reference key="parent" ref="335548650"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">382</int>
+						<reference key="object" ref="628345964"/>
+						<reference key="parent" ref="335548650"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">386</int>
+						<reference key="object" ref="1012840876"/>
+						<reference key="parent" ref="335548650"/>
 					</object>
 				</array>
 			</object>
@@ -1685,12 +1694,13 @@
 				<string key="259.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="270.CustomClassName">DBEnergyView</string>
 				<string key="270.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="324.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="325.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="329.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="375.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="377.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="378.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="380.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="381.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="382.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="386.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1713,7 +1723,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">379</int>
+			<int key="maxID">386</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1745,101 +1755,29 @@
 					<string key="className">GameViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="TVButtonPressed:">id</string>
-						<string key="affirmationButtonPressed:">id</string>
-						<string key="allFoursButtonPressed:">id</string>
-						<string key="aromatherapyButtonPressed:">id</string>
-						<string key="askDoulaButtonPressed:">id</string>
-						<string key="askNurseButtonPressed:">id</string>
 						<string key="beTogetherActionsButtonPressed:">id</string>
 						<string key="breatheActionsButtonPressed:">id</string>
-						<string key="buttInAirButtonPressed:">id</string>
 						<string key="buttonHandleSlideIn:">UIGestureRecognizer</string>
 						<string key="buttonHandleSlideOut:">UIGestureRecognizer</string>
-						<string key="callFriendsButtonPressed:">id</string>
-						<string key="complimentButtonPressed:">id</string>
 						<string key="contractionsHandleSlideIn:">UIGestureRecognizer</string>
 						<string key="contractionsHandleSlideOut:">UIGestureRecognizer</string>
-						<string key="coolClothButtonPressed:">id</string>
-						<string key="countUpDownButtonPressed:">id</string>
-						<string key="deepBreathingButtonPressed:">id</string>
 						<string key="dilationDisplayButtonPressed:">id</string>
-						<string key="encourageButtonPressed:">id</string>
 						<string key="endGameToMainMenuButtonPressed">id</string>
-						<string key="gamesButtonPressed:">id</string>
 						<string key="getHelpActionsButtonPressed:">id</string>
-						<string key="heatPackButtonPressed:">id</string>
-						<string key="heatPackButtonTouched">id</string>
-						<string key="kissButtonPressed:">id</string>
-						<string key="kneelButtonpressed:">id</string>
-						<string key="leanOnWallButtonPressed:">id</string>
-						<string key="lieOnBackButtonPressed:">id</string>
-						<string key="lieOnSideButtonPressed:">id</string>
-						<string key="lightTouchMassageButtonPressed:">id</string>
-						<string key="lungeOnStairButtonPressed:">id</string>
-						<string key="movieButtonPressed:">id</string>
-						<string key="playMusicButtonPressed:">id</string>
+						<string key="momTummyRub:">UIGestureRecognizer</string>
 						<string key="positionsActionButtonPressed:">id</string>
 						<string key="quitButtonPressed">id</string>
-						<string key="quitHandleSlideIn:">UIGestureRecognizer</string>
-						<string key="quitHandleSlideOut:">UIGestureRecognizer</string>
-						<string key="ragDollButtonPressed:">id</string>
 						<string key="relaxActionsButtonPressed:">id</string>
-						<string key="remindOfBabyButtonPressed:">id</string>
-						<string key="rhythmicBreathingButtonPressed:">id</string>
-						<string key="rockingChairButtonPressed:">id</string>
-						<string key="rubTummyButtonPressed:">id</string>
-						<string key="saySomethingNiceButtonPressed:">id</string>
-						<string key="sexButtonPressed:">id</string>
-						<string key="showerButtonPressed:">id</string>
-						<string key="sitBackOnChairButtonPressed:">id</string>
-						<string key="sitButtonPressed:">id</string>
-						<string key="sitOnBirthBallButtonPressed:">id</string>
-						<string key="slowDanceButtonPressed:">id</string>
-						<string key="snuggleButtonPressed:">id</string>
-						<string key="squatButtonPressed:">id</string>
-						<string key="standButtonPressed:">id</string>
-						<string key="toiletButtonPressed:">id</string>
-						<string key="tubButtonPressed:">id</string>
+						<string key="resumeButtonPressed">id</string>
 						<string key="verbalCareActionsButtonPressed:">id</string>
-						<string key="visualizationButtonPressed:">id</string>
-						<string key="walkButtonPressed:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="TVButtonPressed:">
-							<string key="name">TVButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="affirmationButtonPressed:">
-							<string key="name">affirmationButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="allFoursButtonPressed:">
-							<string key="name">allFoursButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="aromatherapyButtonPressed:">
-							<string key="name">aromatherapyButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="askDoulaButtonPressed:">
-							<string key="name">askDoulaButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="askNurseButtonPressed:">
-							<string key="name">askNurseButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="beTogetherActionsButtonPressed:">
 							<string key="name">beTogetherActionsButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="breatheActionsButtonPressed:">
 							<string key="name">breatheActionsButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="buttInAirButtonPressed:">
-							<string key="name">buttInAirButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="buttonHandleSlideIn:">
@@ -1850,14 +1788,6 @@
 							<string key="name">buttonHandleSlideOut:</string>
 							<string key="candidateClassName">UIGestureRecognizer</string>
 						</object>
-						<object class="IBActionInfo" key="callFriendsButtonPressed:">
-							<string key="name">callFriendsButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="complimentButtonPressed:">
-							<string key="name">complimentButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="contractionsHandleSlideIn:">
 							<string key="name">contractionsHandleSlideIn:</string>
 							<string key="candidateClassName">UIGestureRecognizer</string>
@@ -1866,81 +1796,21 @@
 							<string key="name">contractionsHandleSlideOut:</string>
 							<string key="candidateClassName">UIGestureRecognizer</string>
 						</object>
-						<object class="IBActionInfo" key="coolClothButtonPressed:">
-							<string key="name">coolClothButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="countUpDownButtonPressed:">
-							<string key="name">countUpDownButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="deepBreathingButtonPressed:">
-							<string key="name">deepBreathingButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="dilationDisplayButtonPressed:">
 							<string key="name">dilationDisplayButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="encourageButtonPressed:">
-							<string key="name">encourageButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="endGameToMainMenuButtonPressed">
 							<string key="name">endGameToMainMenuButtonPressed</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="gamesButtonPressed:">
-							<string key="name">gamesButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="getHelpActionsButtonPressed:">
 							<string key="name">getHelpActionsButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="heatPackButtonPressed:">
-							<string key="name">heatPackButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="heatPackButtonTouched">
-							<string key="name">heatPackButtonTouched</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="kissButtonPressed:">
-							<string key="name">kissButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="kneelButtonpressed:">
-							<string key="name">kneelButtonpressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="leanOnWallButtonPressed:">
-							<string key="name">leanOnWallButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="lieOnBackButtonPressed:">
-							<string key="name">lieOnBackButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="lieOnSideButtonPressed:">
-							<string key="name">lieOnSideButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="lightTouchMassageButtonPressed:">
-							<string key="name">lightTouchMassageButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="lungeOnStairButtonPressed:">
-							<string key="name">lungeOnStairButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="movieButtonPressed:">
-							<string key="name">movieButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="playMusicButtonPressed:">
-							<string key="name">playMusicButtonPressed:</string>
-							<string key="candidateClassName">id</string>
+						<object class="IBActionInfo" key="momTummyRub:">
+							<string key="name">momTummyRub:</string>
+							<string key="candidateClassName">UIGestureRecognizer</string>
 						</object>
 						<object class="IBActionInfo" key="positionsActionButtonPressed:">
 							<string key="name">positionsActionButtonPressed:</string>
@@ -1950,96 +1820,16 @@
 							<string key="name">quitButtonPressed</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="quitHandleSlideIn:">
-							<string key="name">quitHandleSlideIn:</string>
-							<string key="candidateClassName">UIGestureRecognizer</string>
-						</object>
-						<object class="IBActionInfo" key="quitHandleSlideOut:">
-							<string key="name">quitHandleSlideOut:</string>
-							<string key="candidateClassName">UIGestureRecognizer</string>
-						</object>
-						<object class="IBActionInfo" key="ragDollButtonPressed:">
-							<string key="name">ragDollButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="relaxActionsButtonPressed:">
 							<string key="name">relaxActionsButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="remindOfBabyButtonPressed:">
-							<string key="name">remindOfBabyButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="rhythmicBreathingButtonPressed:">
-							<string key="name">rhythmicBreathingButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="rockingChairButtonPressed:">
-							<string key="name">rockingChairButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="rubTummyButtonPressed:">
-							<string key="name">rubTummyButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="saySomethingNiceButtonPressed:">
-							<string key="name">saySomethingNiceButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sexButtonPressed:">
-							<string key="name">sexButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="showerButtonPressed:">
-							<string key="name">showerButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sitBackOnChairButtonPressed:">
-							<string key="name">sitBackOnChairButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sitButtonPressed:">
-							<string key="name">sitButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="sitOnBirthBallButtonPressed:">
-							<string key="name">sitOnBirthBallButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="slowDanceButtonPressed:">
-							<string key="name">slowDanceButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="snuggleButtonPressed:">
-							<string key="name">snuggleButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="squatButtonPressed:">
-							<string key="name">squatButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="standButtonPressed:">
-							<string key="name">standButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="toiletButtonPressed:">
-							<string key="name">toiletButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="tubButtonPressed:">
-							<string key="name">tubButtonPressed:</string>
+						<object class="IBActionInfo" key="resumeButtonPressed">
+							<string key="name">resumeButtonPressed</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="verbalCareActionsButtonPressed:">
 							<string key="name">verbalCareActionsButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="visualizationButtonPressed:">
-							<string key="name">visualizationButtonPressed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="walkButtonPressed:">
-							<string key="name">walkButtonPressed:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -2072,7 +1862,6 @@
 						<string key="positionsButtonsScrollView">UIScrollView</string>
 						<string key="positionsButtonsView">UIView</string>
 						<string key="quitView">UIView</string>
-						<string key="quitViewHandle">UIImageView</string>
 						<string key="relaxActionsButton">UIButton</string>
 						<string key="relaxButtonsScrollView">UIScrollView</string>
 						<string key="relaxButtonsView">UIView</string>
@@ -2195,10 +1984,6 @@
 							<string key="name">quitView</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="quitViewHandle">
-							<string key="name">quitViewHandle</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="relaxActionsButton">
 							<string key="name">relaxActionsButton</string>
 							<string key="candidateClassName">UIButton</string>
@@ -2244,11 +2029,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="BigRedX.png">{64, 64}</string>
 			<string key="ButtonBarHandle.png">{24, 84}</string>
 			<string key="ContractionMonitorHandle.png">{24, 260}</string>
-			<string key="QuitBoxHandle.png">{24, 64}</string>
-			<string key="background.png">{480, 320}</string>
+			<string key="background_bed_up.png">{480, 320}</string>
 			<string key="beTogether.png">{64, 64}</string>
 			<string key="beTogether_disabled.png">{64, 64}</string>
 			<string key="breathe.png">{64, 64}</string>
@@ -2257,10 +2040,11 @@
 			<string key="positions.png">{64, 64}</string>
 			<string key="positions_disabled.png">{64, 64}</string>
 			<string key="relax.png">{64, 64}</string>
+			<string key="resume_restart_screen_background.png">{218, 192}</string>
+			<string key="sit_position.png">{191, 273}</string>
 			<string key="verbalCare.png">{64, 64}</string>
 			<string key="verbalCare_disabled.png">{64, 64}</string>
 			<string key="victory_screen_background.png">{226, 150}</string>
-			<string key="woman_normal.png">{123, 244}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">933</string>
 	</data>

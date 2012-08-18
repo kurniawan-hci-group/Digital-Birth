@@ -16,8 +16,8 @@
 #import "DBEnergyView.h"
 #import "DBActionButton.h"
 
-#define ACTION_BUTTON_SIZE 56
-#define ACTION_BUTTON_SPACING 6
+#define ACTION_BUTTON_SIZE		56
+#define ACTION_BUTTON_SPACING	 6
 
 typedef enum
 {
@@ -43,21 +43,20 @@ typedef enum
 	
 	Game* game;
 	
+	bool glowing;
+	
 	bool buttonsPanelExpanded;
 	bool contractionsPanelExpanded;
-//	bool quitBoxExpanded;
 	
 	NSMutableDictionary* actionButtons;
-//	NSMutableDictionary* buttonActionInvocations;
-//	NSMutableDictionary* buttonSoundInvocations;
-	
-//	NSMutableArray* actionsOnCooldown;
+	NSMutableDictionary* positionList;
 	
 	NSTimer* displayTimer;
 	SystemSoundID audioEffect;
 }
 
 @property (nonatomic, assign) id delegate;
+@property (nonatomic, retain) NSDictionary* settings;
 @property (nonatomic) float gameTimerTick;
 
 @property (retain, nonatomic) IBOutlet UIView *gameOverScreen;
@@ -65,9 +64,7 @@ typedef enum
 - (IBAction)endGameToMainMenuButtonPressed;
 
 @property (retain, nonatomic) IBOutlet UIView *quitView;
-@property (retain, nonatomic) IBOutlet UIImageView *quitViewHandle;
-- (IBAction)quitHandleSlideOut:(UIGestureRecognizer*)sender;
-- (IBAction)quitHandleSlideIn:(UIGestureRecognizer*)sender;
+- (IBAction)resumeButtonPressed;
 - (IBAction)quitButtonPressed;
 
 // Background image.
@@ -83,6 +80,7 @@ typedef enum
 
 // The display area showing the mother.
 @property (retain, nonatomic) IBOutlet UIImageView *momPicView;
+- (IBAction)momTummyRub:(UIGestureRecognizer*)sender;
 @property (retain, nonatomic) IBOutlet UIView *dilationLabelPopupView;
 @property (retain, nonatomic) IBOutlet UILabel *dilationDisplay;
 @property (retain, nonatomic) IBOutlet UIButton *dilationDisplayButton;
@@ -159,5 +157,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData);
 
 -(void)startDisplayTimer;
 -(void)displayTimerTick:(NSTimer*)timer;
+
+-(void)contractionStarted;
+-(void)contractionEnded;
+-(void)displayPosition;
 
 @end

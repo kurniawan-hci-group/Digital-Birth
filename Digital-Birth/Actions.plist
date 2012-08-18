@@ -17,7 +17,7 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.1</real>
+			<integer>0</integer>
 			<key>ACTIVE</key>
 			<real>0.05</real>
 			<key>LATE_ACTIVE</key>
@@ -90,7 +90,7 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.02</real>
+			<real>0.5</real>
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>
@@ -510,6 +510,7 @@
 		<key>tags</key>
 		<array>
 			<string>relax</string>
+			<string>position</string>
 		</array>
 		<key>description</key>
 		<string></string>
@@ -581,6 +582,7 @@
 		<key>tags</key>
 		<array>
 			<string>relax</string>
+			<string>position</string>
 		</array>
 		<key>description</key>
 		<string></string>
@@ -726,12 +728,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -803,12 +799,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -880,12 +870,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -957,12 +941,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1034,12 +1012,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1111,12 +1083,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1188,12 +1154,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1265,12 +1225,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1342,12 +1296,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1419,12 +1367,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1573,12 +1515,6 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -1650,12 +1586,77 @@
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
+		<key>supportEffect</key>
+		<dict>
+			<key>EARLY</key>
+			<integer>0</integer>
+			<key>ACTIVE</key>
+			<real>0.02</real>
+			<key>LATE_ACTIVE</key>
+			<real>0.02</real>
+			<key>TRANSITION</key>
+			<real>0.05</real>
+			<key>PUSHING</key>
+			<real>0.05</real>
+		</dict>
+		<key>energyEffect</key>
+		<dict>
+			<key>EARLY</key>
+			<real>0.07000000000000001</real>
+			<key>ACTIVE</key>
+			<integer>0</integer>
+			<key>LATE_ACTIVE</key>
+			<integer>0</integer>
+			<key>TRANSITION</key>
+			<integer>0</integer>
+			<key>PUSHING</key>
+			<integer>0</integer>
+		</dict>
+		<key>contractionStrengthEffect</key>
+		<dict>
+			<key>EARLY</key>
+			<integer>0</integer>
+			<key>ACTIVE</key>
+			<integer>0</integer>
+			<key>LATE_ACTIVE</key>
+			<integer>0</integer>
+			<key>TRANSITION</key>
+			<real>0.05</real>
+			<key>PUSHING</key>
+			<integer>0</integer>
+		</dict>
+		<key>contractionFrequencyEffect</key>
+		<dict>
+			<key>EARLY</key>
+			<integer>0</integer>
+			<key>ACTIVE</key>
+			<string></string>
+			<key>LATE_ACTIVE</key>
+			<string></string>
+			<key>TRANSITION</key>
+			<string></string>
+			<key>PUSHING</key>
+			<string></string>
+		</dict>
+		<key>factorEffects</key>
+		<array/>
+		<key>cooldown</key>
+		<real>30</real>
+		<key>duration</key>
+		<integer>0</integer>
+	</dict>
+	<key>pressureOnLowerBack</key>
+	<dict>
+		<key>name</key>
+		<string>pressureOnLowerBack</string>
+		<key>category</key>
+		<string>beTogether</string>
+		<key>tags</key>
+		<array>
+			<string>relax</string>
+		</array>
+		<key>description</key>
+		<string></string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -2100,12 +2101,12 @@
 		<key>duration</key>
 		<integer>0</integer>
 	</dict>
-	<key>sitBackOnChair</key>
+	<key>sitBackwardsOnChair</key>
 	<dict>
 		<key>name</key>
-		<string>sitBackOnChair</string>
+		<string>sitBackwardsOnChair</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2644,19 +2645,13 @@
 		<key>name</key>
 		<string>lieOnBack</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>

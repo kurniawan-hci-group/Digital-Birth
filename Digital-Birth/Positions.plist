@@ -26,6 +26,10 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>xPos</key>
+		<integer>266</integer>
+		<key>yPos</key>
+		<integer>56</integer>
 	</dict>
 	<key>sitOnBirthBall</key>
 	<dict>
@@ -36,6 +40,19 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>xPos</key>
+		<integer>266</integer>
+		<key>yPos</key>
+		<integer>56</integer>
+	</dict>
+	<key>tub</key>
+	<dict>
+		<key>type</key>
+		<string>upright</string>
+		<key>xPos</key>
+		<integer>0</integer>
+		<key>yPos</key>
+		<integer>0</integer>
 	</dict>
 	<key>lungeOnStair</key>
 	<dict>
@@ -56,11 +73,19 @@
 	<dict>
 		<key>type</key>
 		<string>horizontal</string>
+		<key>xPos</key>
+		<integer>0</integer>
+		<key>yPos</key>
+		<integer>0</integer>
 	</dict>
 	<key>lieOnBack</key>
 	<dict>
 		<key>type</key>
 		<string>horizontal</string>
+		<key>xPos</key>
+		<integer>0</integer>
+		<key>yPos</key>
+		<integer>0</integer>
 	</dict>
 	<key>allFours</key>
 	<dict>
@@ -76,6 +101,20 @@
 	<dict>
 		<key>type</key>
 		<string>inverted</string>
+	</dict>
+	<key>slowDance</key>
+	<dict>
+		<key>type</key>
+		<string></string>
+	</dict>
+	<key>shower</key>
+	<dict>
+		<key>type</key>
+		<string></string>
+		<key>xPos</key>
+		<integer>0</integer>
+		<key>yPos</key>
+		<integer>0</integer>
 	</dict>
 </dict>
 </plist>

@@ -18,7 +18,9 @@ typedef enum
 
 @protocol GameDelegate <NSObject>
 
-
+-(void)contractionStarted;
+-(void)contractionEnded;
+-(void) displayPosition;
 
 @end
 
@@ -64,5 +66,8 @@ typedef enum
 -(bool)canPerformAction:(NSString*)actionName;
 
 -(NSDictionary*)getAction:(NSString*)actionName;
+-(void)contractionStarted;
+-(void)contractionEnded;
+-(void)positionChanged;
 
 @end

@@ -41,3 +41,28 @@ CGRect rectFor1PxStroke(CGRect rect)
 					  rect.size.width - 1, rect.size.height - 1);
 }
 
+bool actionsShareTags(NSDictionary* actionOne, NSDictionary* actionTwo)
+{
+	for(NSString* tagOne in [actionOne objectForKey:@"tags"])
+	{
+		for(NSString* tagTwo in [actionTwo objectForKey:@"tags"])
+		{
+			if([tagOne isEqualToString:tagTwo])
+				return true;
+		}
+	}
+	
+	return false;
+}
+
+bool isPosition(NSDictionary* action)
+{
+	if([[action objectForKey:@"category"] isEqualToString:@"position"])
+		return true;
+	
+	for(NSString* tag in [action objectForKey:@"tags"])
+		if([tag isEqualToString:@"position"])
+		   return true;
+	
+	return false;
+}

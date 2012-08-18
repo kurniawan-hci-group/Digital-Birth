@@ -11,9 +11,20 @@
 
 @implementation GameViewController
 @synthesize quitView;
-@synthesize quitViewHandle;
 
 @synthesize delegate;
+@synthesize settings;
+
+// Accessors for gameTimerTick property.
+-(void)setGameTimerTick:(float)tick
+{
+	GAME_TIMER_TICK = tick;
+	CONTRACTION_TIMER_TICK = tick;
+}
+-(float)gameTimerTick
+{
+	return GAME_TIMER_TICK;
+}
 
 @synthesize game;
 
@@ -108,7 +119,6 @@
 	[gameOverScreen release];
 	[gameOverGradeDisplay release];
 	[quitView release];
-	[quitViewHandle release];
 	[supportDisplayTooltip release];
 	[copingDisplay release];
 	[super dealloc];
@@ -122,94 +132,64 @@
 		game = [[Game alloc] init];
 		game.delegate = self;
 		
+		// Load button cooldown images.
+		NSMutableArray* cooldownImages = [[NSMutableArray alloc] init];
+		int i = 0;
+		while([[NSFileManager defaultManager] fileExistsAtPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"cooldown%d", i] ofType:@"png"]])
+		{
+			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i++]]];
+		}
+		printf("WE HAVE LOADED *** %d *** cooldown images\n", [cooldownImages count]);
+//		for(int i = 0; i < 32; i++)
+//			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i]]];
+		
 		// Create action buttons.
-		actionButtons = [[NSMutableDictionary alloc] init];
+		actionButtons = [[[NSMutableDictionary alloc] init] retain];
 		for(NSString* actionName in game.actionList)
 		{
 			DBActionButton* button = [[DBActionButton alloc] init];
 			button.name = actionName;
+			button.cooldownAnimationImages = cooldownImages;
 			[button addTarget:self action:@selector(actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 			[button addTarget:self action:@selector(actionButtonTouched:) forControlEvents:UIControlEventTouchDown];
 			[actionButtons setObject:button forKey:actionName];
 		}
-		[actionButtons retain];
 		
-		// Create invocations to trigger actionButtonPressed method with
-		// appropriate argument (the action name).
-//		buttonActionInvocations = [[NSMutableDictionary alloc] init];
-//		for(NSString* actionName in game.actionList)
-//		{
-//			NSMethodSignature* sig = [self methodSignatureForSelector:@selector(actionButtonPressed:)];
-//			NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
-//			[inv setSelector:@selector(actionButtonPressed:)];
-//			[inv setTarget:self];
-//			[inv setArgument:&actionName atIndex:2];
-//			[buttonActionInvocations setObject:inv forKey:actionName];
-//			[(DBActionButton*)[actionButtons objectForKey:actionName] addTarget:[buttonActionInvocations objectForKey:actionName] action:@selector(invoke) forControlEvents:UIControlEventTouchUpInside];
-//		}
-//		[buttonActionInvocations retain];
+		// Load position images.
+		NSString* positionListPath = [[NSBundle mainBundle] pathForResource:@"Positions" ofType:@"plist"];
+		positionList = [[NSMutableDictionary dictionaryWithContentsOfFile:positionListPath] retain];
+		for(NSString* positionName in positionList)
+		{
+			NSString* imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%s_position", [positionName UTF8String]] ofType:@"png"];
+			if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
+			{
+				UIImage* positionImage = [UIImage imageNamed:[NSString stringWithFormat:@"%s_position.png", [positionName UTF8String]]];
+				[[positionList objectForKey:positionName] setObject:positionImage forKey:@"image"];
+				
+				NSArray* glowImages = [NSArray arrayWithObjects: 
+									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
+									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow2.png", [positionName UTF8String]]], 
+									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]], 
+									   nil];
+				[[positionList objectForKey:positionName] setObject:glowImages forKey:@"glowAnimation"];
+			}
+			
+			glowing = NO;
+		}
 		
-		// Create invocations to trigger playSound method with 
-		// appropriate argument (the action name).
-//		buttonSoundInvocations = [[NSMutableDictionary alloc] init];
-//		for(NSString* actionName in game.actionList)
-//		{
-//			NSMethodSignature* sig = [self methodSignatureForSelector:@selector(playSound::)];
-//			NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
-//			[inv setSelector:@selector(playSound::)];
-//			[inv setTarget:self];
-//			[inv setArgument:&actionName atIndex:2];
-//			static NSString* ext = @"aif";
-//			[inv setArgument:&ext atIndex:3];
-//			[buttonSoundInvocations setObject:inv forKey:actionName];
-//			[(DBActionButton*)[actionButtons objectForKey:actionName] addTarget:[buttonSoundInvocations objectForKey:actionName] action:@selector(invoke) forControlEvents:UIControlEventTouchDown];
-//		}
-//		[buttonSoundInvocations retain];
-		
-//		actionsOnCooldown = [[NSMutableArray alloc] init];
-//		[actionsOnCooldown retain];
+		if(&UIApplicationWillEnterForegroundNotification != nil)
+		{
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showResumeRestartScreen) name:UIApplicationWillEnterForegroundNotification object:nil];
+		}
 	}
 	return self;
 }
 
 #pragma mark - Helper Methods
--(void) displaySupport
+-(void)showResumeRestartScreen
 {
-	supportDisplay.targetNumber = [game getDesiredSupport] / MAX_SUPPORT;
-	supportDisplay.windowWidth = [game getSupportWindow] / MAX_SUPPORT;
-	supportDisplay.currentValue = [game getSupport] / MAX_SUPPORT;
-}
-
--(void) displayCoping
-{
-	NSString* copingImageName = [NSString stringWithFormat:@"coping%i.png", game.getCoping];
-	[copingDisplay setImage:[UIImage imageNamed:copingImageName]];
-}
-
--(void) displayEnergy
-{
-	[energyDisplay setEnergyLevel:(float) [game getEnergy] / MAX_ENERGY];
-}
-
--(void) displayDilation
-{
-	NSString* dilationDisplayString = [NSString stringWithFormat:@"%i cm", [game getDilation]];
-	self.dilationDisplay.text = dilationDisplayString;
-	NSString* buttonImageFileName = [NSString stringWithFormat:@"dilation%i.png", [game getDilation]];
-	[dilationDisplayButton setImage:[UIImage imageNamed:buttonImageFileName] forState:UIControlStateNormal];
-}
-
--(void) displayPosition
-{
-	// Code to change the picture of the woman based on her position.
-}
-
--(void) displayContractionStrength
-{
-	NSString* contractionStrengthDisplayString = [NSString stringWithFormat:@"%i", game.getContractionStrength];
-	self.contractionsDisplay.text = contractionStrengthDisplayString;
-	
-	[self.contractionsGraphView drawDataPoint:game.getContractionStrength];
+	printf("returned from background!\n");
+	quitView.hidden = NO;
 }
 
 -(void)toggleButtonSubPanel:(UIScrollView*)panel expand:(BOOL)expand
@@ -286,29 +266,6 @@
     [UIView commitAnimations];
 }
 
-- (void)toggleQuitBox:(BOOL)expand
-{
-	[UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.15];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-	
-	CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGRect quitFrame = quitView.frame;
-	CGRect handleFrame = quitViewHandle.frame;
-	
-	if (expand)
-	{
-        quitFrame.origin.x = screenRect.size.height - quitFrame.size.width;
-    }
-	else
-    {
-        quitFrame.origin.x = screenRect.size.height - handleFrame.size.width;
-    }
-	
-    [quitView setFrame:quitFrame];
-    [UIView commitAnimations];
-}
-
 - (void) hideAllButtonSubPanels
 {
 	relaxButtonsScrollView.hidden = YES;
@@ -368,7 +325,6 @@
 	AudioServicesAddSystemSoundCompletion(audioEffect, NULL, NULL, buttonSoundAudioCallback, NULL);
 
 	AudioServicesPlayAlertSound(audioEffect);
-//	[soundURL release];
 }
 
 void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
@@ -376,18 +332,65 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	AudioServicesDisposeSystemSoundID(soundID);
 }
 
-// Accessors for gameTimerTick property.
--(void)setGameTimerTick:(float)tick
+#pragma mark - Display refresh timer
+
+-(void) displaySupport
 {
-	GAME_TIMER_TICK = tick;
-	CONTRACTION_TIMER_TICK = tick;
-}
--(float)gameTimerTick
-{
-	return GAME_TIMER_TICK;
+	supportDisplay.targetNumber = [game getDesiredSupport] / MAX_SUPPORT;
+	supportDisplay.windowWidth = [game getSupportWindow] / MAX_SUPPORT;
+	supportDisplay.currentValue = [game getSupport] / MAX_SUPPORT;
 }
 
-#pragma mark - Display refresh timer
+-(void) displayCoping
+{
+	NSString* copingImageName = [NSString stringWithFormat:@"coping%i.png", game.getCoping];
+	[copingDisplay setImage:[UIImage imageNamed:copingImageName]];
+}
+
+-(void) displayEnergy
+{
+	[energyDisplay setEnergyLevel:(float) [game getEnergy] / MAX_ENERGY];
+}
+
+-(void) displayDilation
+{
+	NSString* dilationDisplayString = [NSString stringWithFormat:@"%i cm", [game getDilation]];
+	self.dilationDisplay.text = dilationDisplayString;
+	NSString* buttonImageFileName = [NSString stringWithFormat:@"dilation%i.png", [game getDilation]];
+	[dilationDisplayButton setImage:[UIImage imageNamed:buttonImageFileName] forState:UIControlStateNormal];
+}
+
+-(void) displayPosition
+{
+	// Change the picture of the woman based on her position.
+	if(!glowing)
+		momPicView.image = [[positionList objectForKey:game.getPosition] objectForKey:@"image"];
+	
+	// If we're currently having a contraction, display with glow instead.
+	else if(glowing)
+		momPicView.image = [[[positionList objectForKey:game.getPosition] objectForKey:@"glowAnimation"] objectAtIndex:2];
+	
+	// Reposition the woman appropriately.
+	CGRect momViewFrame = momPicView.frame;
+	momViewFrame.size = momPicView.image.size;
+	momViewFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"xPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"yPos"] floatValue]);
+	momPicView.frame = momViewFrame;
+	
+	// *** SPECIAL CASES ***
+	if([game.getPosition isEqualToString:@"lieOnSide"])
+		backgroundImageView.image = [UIImage imageNamed:@"background_bed_down.png"];
+//	else if([game.getPosition isEqualToString:@"lieOnBack"])
+	else
+		backgroundImageView.image = [UIImage imageNamed:@"background_bed_up.png"];	
+}
+
+-(void) displayContractionStrength
+{
+	NSString* contractionStrengthDisplayString = [NSString stringWithFormat:@"%i", game.getContractionStrength];
+	self.contractionsDisplay.text = contractionStrengthDisplayString;
+	
+	[self.contractionsGraphView drawDataPoint:game.getContractionStrength];
+}
 
 -(void)startDisplayTimer
 {
@@ -437,12 +440,8 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self displayEnergy];
 	[self displayCoping];
 	[self displayDilation];
-	[self displayPosition];
+//	[self displayPosition];
 	[self displayContractionStrength];
-	
-	if(game.getContractionStrength > 0)
-		// Show glow or whatever. 
-		;
 	
 	for(NSString* actionName in actionButtons)
 	{
@@ -462,14 +461,6 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 - (void)viewDidLoad
 {
-	// ** Hack to make the view landscape properly. **
-	// First rotate the screen:
-//	[UIApplication sharedApplication].statusBarOrientation = UIInterfaceOrientationLandscapeRight;
-	// Then rotate the view and re-align it:
-//	CGAffineTransform landscapeTransform = CGAffineTransformMakeRotation(1.570796327); // pi/2, aka 90 degrees in radians
-//	[self.view setTransform:landscapeTransform];
-	// ** End hack. **
-	
 	// Get and display status (support, energy, coping, dilation, position).
 	[self displaySupport];
 	[self displayCoping];
@@ -504,19 +495,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	// Get and display contraction strength.
 	[self displayContractionStrength];
 	
-	// *** Add quit box. ***
-	CGRect quitBoxPosition = CGRectMake(screenRect.size.height - quitViewHandle.frame.size.width, 0, quitView.frame.size.width, quitView.frame.size.height);
-	[quitView setFrame:quitBoxPosition];
+	// *** Add "restart/resume?" box. ***
+	quitView.frame = CGRectMake((screenRect.size.height / 2) - (quitView.frame.size.width / 2), (screenRect.size.width / 2) - (quitView.frame.size.height / 2) - 10, quitView.frame.size.width, quitView.frame.size.height);
 	[self.view addSubview:quitView];
-//	quitBoxExpanded = NO;
-	
-	// Add swipe gesture recognizers to quit box handle.
-	UISwipeGestureRecognizer* quitSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(quitHandleSlideOut:)];
-	[quitSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-	[quitView addGestureRecognizer:quitSwipeLeft];
-	UISwipeGestureRecognizer* quitSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(quitHandleSlideIn:)];
-	[quitSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-	[quitView addGestureRecognizer:quitSwipeRight];
 	
 	// *** Add button panel. ***
 	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - buttonsViewHandle.frame.size.width, screenRect.size.width - buttonsViewHandle.frame.size.height - statusBarFrame.size.width, buttonsView.frame.size.width, buttonsView.frame.size.height);
@@ -594,6 +575,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 			[buttonGroups setObject:[NSMutableArray arrayWithObject:[actionButtons objectForKey:actionName]] forKey:buttonCategory];
 		else
 			[(NSMutableArray*)[buttonGroups objectForKey:buttonCategory] addObject:[actionButtons objectForKey:actionName]];
+		
+		// Load and set button sounds.
+		[(DBActionButton*)[actionButtons objectForKey:actionName] setTooltipSound:actionName];
 		
 		// Load and set button images, for normal and disabled state.
 		// Normal image is ACTION_NAME.png; disabled image is ACTION_NAME_disabled.png.
@@ -673,6 +657,14 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	UITapGestureRecognizer* supportDisplayTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(supportDisplayPressed)];
 	[supportDisplay addGestureRecognizer:supportDisplayTapped];
 	
+	// Add swipe gesture recognizers to mom view (to rub tummy).
+	UISwipeGestureRecognizer* momSwipedRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(momTummyRub:)];
+	[momSwipedRight setDirection:UISwipeGestureRecognizerDirectionRight];
+	[momPicView addGestureRecognizer:momSwipedRight];
+	UISwipeGestureRecognizer* momSwipedLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(momTummyRub:)];
+	[momSwipedLeft setDirection:UISwipeGestureRecognizerDirectionRight];
+	[momPicView addGestureRecognizer:momSwipedLeft];
+	
 	// Possibly put this elsewhere, triggered from a "start game" button?
 
 	// Start the display refresh timer.
@@ -719,7 +711,6 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setGameOverScreen:nil];
 	[self setGameOverGradeDisplay:nil];
 	[self setQuitView:nil];
-	[self setQuitViewHandle:nil];
 	[self setSupportDisplayTooltip:nil];
 	[self setCopingDisplay:nil];
     [super viewDidUnload];
@@ -734,35 +725,15 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self dismissModalViewControllerAnimated:YES];
 }
 
+- (IBAction)resumeButtonPressed
+{
+	quitView.hidden = YES;
+}
+
 - (IBAction)quitButtonPressed
 {
-//	static bool really_quit = NO;
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//	if(really_quit)
-		[self dismissModalViewControllerAnimated:YES];
-//	else
-//		really_quit = YES;		
-}
-
-- (IBAction)quitHandleSlideOut:(UIGestureRecognizer *)sender
-{
-	[self toggleQuitBox:YES];
-//	quitBoxExpanded = YES;
-	
-	NSMethodSignature* sig = [self methodSignatureForSelector:@selector(toggleQuitBox:)];
-	NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
-	[inv setSelector:@selector(toggleQuitBox:)];
-	[inv setTarget:self];
-	bool toggle = NO;
-	[inv setArgument:&toggle atIndex:2];
-	NSTimer* slideInTimer;
-	slideInTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 invocation:inv repeats:NO];
-}
-
-- (IBAction)quitHandleSlideIn:(UIGestureRecognizer *)sender
-{
-	[self toggleQuitBox:NO];
-//	quitBoxExpanded = NO;
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)buttonHandleSlideOut:(UIGestureRecognizer *)sender
@@ -857,6 +828,10 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     [UIView commitAnimations];
 }
 
+-(IBAction)momTummyRub:(UIGestureRecognizer *)sender
+{
+	[self actionButtonPressed:[actionButtons objectForKey:@"rubTummy"]];
+}
 
 #pragma mark - Button sub-panel actions
 
@@ -886,6 +861,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	{
 		button.enabled = NO;
 		button.onCooldown = YES;
+		[button setCooldown:[game getCooldown:button.name]];
 		
 		// Re-enable the button after the cooldown elapses.
 		NSTimeInterval cooldown = [game getCooldown:button.name];
@@ -895,7 +871,32 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 -(void)actionButtonTouched:(DBActionButton*)button
 {
-	[self playSound:button.name:@"aif"];
+//	[self playSound:button.name:@"aif"];
+	[button playTooltipSound];
+}
+
+#pragma mark - Delegate methods
+
+-(void)contractionStarted
+{
+	if(glowing == NO)
+	{
+		glowing = YES;
+//		momPicView.animationImages = [[positionList objectForKey:game.getPosition] objectForKey:@"glowAnimation"];
+//		momPicView.animationDuration = 1.0;
+//		momPicView.animationRepeatCount = 1;
+//		[momPicView startAnimating];
+		[self displayPosition];
+	}	
+}
+
+-(void)contractionEnded
+{
+	if(glowing == YES)
+	{
+		glowing = NO;
+		[self displayPosition];
+	}
 }
 
 @end

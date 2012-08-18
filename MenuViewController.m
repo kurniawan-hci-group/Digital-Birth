@@ -89,8 +89,13 @@
 #pragma mark - Action methods
 - (IBAction)newGameButtonPressed
 {
+	NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
+							  [NSNumber numberWithFloat:startingDilation], @"startingDilation", 
+							  nil];
+	
 	GameViewController* gameViewController = [[GameViewController alloc] init];
 	gameViewController.delegate = self;
+	gameViewController.settings = settings;
 	gameViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	gameViewController.gameTimerTick = 1.0 / (float) gameSpeed;
 	

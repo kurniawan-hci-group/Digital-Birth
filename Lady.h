@@ -20,28 +20,6 @@ typedef enum
 	BABYBORN
 } laborStageType;
 
-//typedef enum
-//{
-//	WALK,
-//	STAND,
-//	SLOW_DANCE,
-//	LEAN_ON_WALL,
-//	ROCKING_CHAIR,
-//	SIT_BACKWARDS_ON_CHAIR,
-//	SIT_ON_BIRTH_BALL,
-//	LUNGE_ON_STAIR,
-//	KNEEL,
-//	SIT,
-//	SQUAT,
-//	LIE_ON_SIDE,
-//	LIE_ON_BACK,
-//	ALL_FOURS,
-//	TOILET,
-//	BOTTOM_IN_AIR
-//} positionType;
-//
-//#define NUM_POSITIONS	16
-//
 //@interface Stats : NSObject
 //{
 //	// Initial stats ("factors") — these influence how the woman responds to various actions
@@ -60,6 +38,9 @@ typedef enum
 @protocol LadyDelegate <NSObject>
 
 -(NSDictionary*)getAction:(NSString*)actionName;
+-(void)contractionStarted;
+-(void)contractionEnded;
+-(void)positionChanged;
 
 @end
 
@@ -89,7 +70,6 @@ typedef enum
 	
 	// Initial stats ("factors").
 	NSMutableDictionary* factors;
-//	Stats* factors;
 
 	// Variables for the contraction model.
 	float timeToNextContraction;
@@ -102,6 +82,7 @@ typedef enum
 	
 	// Ongoing actions!
 	NSMutableDictionary* currentActions;
+	NSMutableDictionary* ongoingActionTimers;
 
 	NSDate* laborStartTime;
 }
