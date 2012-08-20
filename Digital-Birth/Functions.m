@@ -66,3 +66,29 @@ bool isPosition(NSDictionary* action)
 	
 	return false;
 }
+
+NSString* stringForTimeInterval(NSTimeInterval interval)
+{
+	printf("	Entering stringForTimeInterval!\n");
+	
+	printf("	the interval is: %f\n", interval);
+	
+	// Get the system calendar
+	NSCalendar* sysCalendar = [NSCalendar currentCalendar];
+
+	// Create the NSDates
+	NSDate* date1 = [[NSDate alloc] init];
+	NSDate* date2 = [[NSDate alloc] initWithTimeInterval:interval sinceDate:date1]; 
+	
+	// Get conversion to months, days, hours, minutes
+	unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit;
+
+	NSDateComponents* conversionInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
+	
+	[date1 release];
+	[date2 release];
+
+	printf("	Exiting stringForTimeInterval!\n");
+	
+	return [NSString stringWithFormat:@"%d hours, %d minutes", [conversionInfo hour], [conversionInfo minute]];
+}

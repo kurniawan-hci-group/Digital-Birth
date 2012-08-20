@@ -15,11 +15,11 @@
 - (IBAction)gameSpeedSliderChanged:(id)sender;
 - (IBAction)startingDilationSliderChanged:(id)sender;
 
-@property (nonatomic) int gameSpeed;
+@property (readonly) int gameSpeed;
 @property (retain, nonatomic) IBOutlet UILabel *gameSpeedLabel;
 @property (retain, nonatomic) IBOutlet UILabel *gameSpeedExplanationLabel;
 
-@property (nonatomic) float startingDilation;
+@property (readonly) float startingDilation;
 @property (retain, nonatomic) IBOutlet UILabel *startingDilationLabel;
 
 @end

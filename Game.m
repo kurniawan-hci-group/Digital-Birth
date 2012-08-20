@@ -243,6 +243,16 @@ float CONTRACTION_TIMER_TICK;
 	return lady.watersReleased;
 }
 
+-(NSTimeInterval)getLaborDuration
+{
+	return lady.laborDuration;
+}
+
+-(NSDictionary*)getLaborStats
+{
+	return lady.laborStats;
+}
+
 -(void)dealloc
 {
 	[lady release];

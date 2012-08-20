@@ -123,8 +123,11 @@ NSString* laborStageString(laborStageType stage)
 // Getter method for laborDuration property.
 -(NSTimeInterval) laborDuration
 {
+//	return [[laborStats objectForKey:@"laborStartTime"] timeIntervalSinceNow] * -1;
 	return [laborStartTime timeIntervalSinceNow] * -1;
 }
+
+@synthesize laborStats;
 
 #pragma mark - helper methods
 
@@ -190,6 +193,10 @@ NSString* laborStageString(laborStageType stage)
 		
 		currentActions = [[NSMutableDictionary alloc] init];
 		ongoingActionTimers = [[NSMutableDictionary alloc] init];
+		
+		laborStats = [[NSMutableDictionary alloc] init];
+		[laborStats setObject:[NSDate date] forKey:@"laborStartTime"];
+		[laborStats setObject:[NSDate date] forKey:@"earlyLaborStartTime"];
 	}
 	return self;
 }
@@ -210,6 +217,7 @@ NSString* laborStageString(laborStageType stage)
 	printf("starting labor\n");	
 
 	laborStartTime = [NSDate date];
+	[laborStartTime retain];
 	
 	// Schedule the first contraction.
 	timeToNextContraction = 0;
@@ -219,6 +227,29 @@ NSString* laborStageString(laborStageType stage)
 -(void)endLabor
 {
 	[contractionTimer invalidate];
+	
+	for(NSString* actionName in currentActions)
+	{
+		// Parameters for analytics event logging.
+		NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+								actionName, @"action_name", 
+								@"Game ended", @"termination_reason", 
+								[NSNumber numberWithFloat:dilation], @"dilation", 
+								[NSNumber numberWithFloat:effacement], @"effacement", 
+								[NSNumber numberWithFloat:station], @"station", 
+								[NSNumber numberWithFloat:support], @"support", 
+								[NSNumber numberWithFloat:energy], @"energy", 
+								[NSNumber numberWithFloat:maxContractionStrength], @"contraction_strength", 
+								[NSNumber numberWithFloat:contractionFrequency], @"contraction_frequency", 
+								nil];
+		
+		NSString* actionEventName = [NSString stringWithFormat:@"Action_started_%s", [actionName UTF8String]];
+		[Flurry endTimedEvent:actionEventName withParameters:params];
+		
+		[(NSTimer*)[ongoingActionTimers objectForKey:actionName] invalidate];
+		[ongoingActionTimers removeObjectForKey:actionName];
+		[currentActions removeObjectForKey:actionName];		
+	}
 }
 
 // Selector for contractionTimer.
@@ -352,6 +383,8 @@ NSString* laborStageString(laborStageType stage)
 				contractionDuration = 60;
 				station++;
 				
+				[laborStats setObject:[NSDate date] forKey:@"activeLaborStartTime"];
+				
 				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
 				[Flurry logEvent:@"reachedActiveLabor" withParameters:params];
 			}
@@ -366,6 +399,8 @@ NSString* laborStageString(laborStageType stage)
 				contractionDuration = 105;
 				station++;
 				
+				[laborStats setObject:[NSDate date] forKey:@"lateActiveLaborStartTime"];
+				
 				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
 				[Flurry logEvent:@"reachedLateActiveLabor" withParameters:params];
 			}
@@ -379,6 +414,8 @@ NSString* laborStageString(laborStageType stage)
 				contractionFrequency *= 2.0/3.0;
 				contractionDuration = 105;
 				
+				[laborStats setObject:[NSDate date] forKey:@"transitionStartTime"];
+				
 				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
 				[Flurry logEvent:@"reachedTransition" withParameters:params];
 			}
@@ -391,6 +428,8 @@ NSString* laborStageString(laborStageType stage)
 				contractionDuration = 120;
 				station += (double) arc4random() / ARC4RANDOM_MAX;
 				
+				[laborStats setObject:[NSDate date] forKey:@"pushingStartTime"];
+				
 				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
 				[Flurry logEvent:@"reachedPushing" withParameters:params];
 			}
@@ -400,6 +439,8 @@ NSString* laborStageString(laborStageType stage)
 			{
 				laborStage = BABYBORN;
 				
+				[laborStats setObject:[NSDate date] forKey:@"hadBabyTime"];
+								
 				NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:([laborStartTime timeIntervalSinceNow] * -1)], @"timeSinceGameStart", nil];
 				[Flurry logEvent:@"hadBaby" withParameters:params];
 				
@@ -516,6 +557,22 @@ NSString* laborStageString(laborStageType stage)
 	{
 		[timer invalidate];
 		[currentActions removeObjectForKey:[effectsOfAction objectForKey:@"name"]];
+		
+		// Parameters for analytics event logging.
+		NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+								[effectsOfAction objectForKey:@"name"], @"action_name", 
+								@"Action duration expired", @"termination_reason", 
+								[NSNumber numberWithFloat:dilation], @"dilation", 
+								[NSNumber numberWithFloat:effacement], @"effacement", 
+								[NSNumber numberWithFloat:station], @"station", 
+								[NSNumber numberWithFloat:support], @"support", 
+								[NSNumber numberWithFloat:energy], @"energy", 
+								[NSNumber numberWithFloat:maxContractionStrength], @"contraction_strength", 
+								[NSNumber numberWithFloat:contractionFrequency], @"contraction_frequency", 
+								nil];
+		
+		NSString* actionEventName = [NSString stringWithFormat:@"Action_started_%s", [[effectsOfAction objectForKey:@"name"] UTF8String]];
+		[Flurry endTimedEvent:actionEventName withParameters:params];
 	}
 	else
 		// Update the number of ticks to the new (decremented) value.
@@ -524,6 +581,22 @@ NSString* laborStageString(laborStageType stage)
 	// If the action drains energy and we're already at 0 energy, stop the action.
 	if(energy == 0 && [[effectsOfAction objectForKey:@"energyEffect"] floatValue] < 0)
 	{
+		// Parameters for analytics event logging.
+		NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+								[effectsOfAction objectForKey:@"name"], @"action_name", 
+								@"Energy drained to zero", @"termination_reason", 
+								[NSNumber numberWithFloat:dilation], @"dilation", 
+								[NSNumber numberWithFloat:effacement], @"effacement", 
+								[NSNumber numberWithFloat:station], @"station", 
+								[NSNumber numberWithFloat:support], @"support", 
+								[NSNumber numberWithFloat:energy], @"energy", 
+								[NSNumber numberWithFloat:maxContractionStrength], @"contraction_strength", 
+								[NSNumber numberWithFloat:contractionFrequency], @"contraction_frequency", 
+								nil];
+		
+		NSString* actionEventName = [NSString stringWithFormat:@"Action_started_%s", [[effectsOfAction objectForKey:@"name"] UTF8String]];
+		[Flurry endTimedEvent:actionEventName withParameters:params];
+		
 		[timer invalidate];
 		[currentActions removeObjectForKey:[effectsOfAction objectForKey:@"name"]];
 	}
@@ -548,6 +621,22 @@ NSString* laborStageString(laborStageType stage)
 			[(NSTimer*)[ongoingActionTimers objectForKey:ongoingActionName] invalidate];
 			[ongoingActionTimers removeObjectForKey:ongoingActionName];
 			[currentActions removeObjectForKey:ongoingActionName];
+			
+			// Parameters for analytics event logging.
+			NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+									ongoingActionName, @"action_name", 
+									@"Canceled by new action", @"termination_reason", 
+									[NSNumber numberWithFloat:dilation], @"dilation", 
+									[NSNumber numberWithFloat:effacement], @"effacement", 
+									[NSNumber numberWithFloat:station], @"station", 
+									[NSNumber numberWithFloat:support], @"support", 
+									[NSNumber numberWithFloat:energy], @"energy", 
+									[NSNumber numberWithFloat:maxContractionStrength], @"contraction_strength", 
+									[NSNumber numberWithFloat:contractionFrequency], @"contraction_frequency", 
+									nil];
+			
+			NSString* actionEventName = [NSString stringWithFormat:@"Action_started_%s", [ongoingActionName UTF8String]];
+			[Flurry endTimedEvent:actionEventName withParameters:params];
 		}
 	}
 	
@@ -580,10 +669,25 @@ NSString* laborStageString(laborStageType stage)
 									 num_ticks, @"num_ticks",
 									 [action objectForKey:@"name"], @"name", nil];
 	
+	// Parameters for analytics event logging.
+	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:
+							[action objectForKey:@"name"], @"action_name", 
+							[NSNumber numberWithFloat:dilation], @"dilation", 
+							[NSNumber numberWithFloat:effacement], @"effacement", 
+							[NSNumber numberWithFloat:station], @"station", 
+							[NSNumber numberWithFloat:support], @"support", 
+							[NSNumber numberWithFloat:energy], @"energy", 
+							[NSNumber numberWithFloat:maxContractionStrength], @"contraction_strength", 
+							[NSNumber numberWithFloat:contractionFrequency], @"contraction_frequency", 
+							nil];
+	
 	// If only 1 tick, simply apply the action.
 	if([num_ticks intValue] == 1)
 	{
 		[self applyActionEffects:effectsOfAction];
+		
+		NSString* actionEventName = [NSString stringWithFormat:@"Action_performed_%s", [[action objectForKey:@"name"] UTF8String]];
+		[Flurry logEvent:actionEventName withParameters:params];
 	}
 	// If > 1 tick, generate an invocation with effectsOfAction and apply effects with a timer.
 	else
@@ -600,6 +704,9 @@ NSString* laborStageString(laborStageType stage)
 		// Add the action to currentActions.
 		[currentActions setObject:action forKey:[action objectForKey:@"name"]];
 		[ongoingActionTimers setObject:actionTickTimer forKey:[action objectForKey:@"name"]];
+		
+		NSString* actionEventName = [NSString stringWithFormat:@"Action_started_%s", [[action objectForKey:@"name"] UTF8String]];
+		[Flurry logEvent:actionEventName withParameters:params timed:YES];
 	}
 	
 	// *** SPECIAL CASES ***

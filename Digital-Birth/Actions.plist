@@ -1721,7 +1721,7 @@
 		<key>name</key>
 		<string>walk</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -1798,7 +1798,7 @@
 		<key>name</key>
 		<string>stand</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -1875,7 +1875,7 @@
 		<key>name</key>
 		<string>slowDance</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -1952,7 +1952,7 @@
 		<key>name</key>
 		<string>leanOnWall</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2029,7 +2029,7 @@
 		<key>name</key>
 		<string>rockingChair</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2110,15 +2110,10 @@
 		<key>tags</key>
 		<array>
 			<string>relax</string>
+			<string>position</string>
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -2183,7 +2178,7 @@
 		<key>name</key>
 		<string>sitOnBirthBall</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2260,19 +2255,13 @@
 		<key>name</key>
 		<string>lungeOnStair</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
 		</array>
 		<key>description</key>
 		<string></string>
-		<key>buttonImage</key>
-		<string>lightTouchMassage</string>
-		<key>buttonImageDisabled</key>
-		<string>lightTouchMassage_disabled</string>
-		<key>tooltipSound</key>
-		<string>lightTouchMassage</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
@@ -2337,7 +2326,7 @@
 		<key>name</key>
 		<string>kneel</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2414,7 +2403,7 @@
 		<key>name</key>
 		<string>squat</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2491,7 +2480,7 @@
 		<key>name</key>
 		<string>sit</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2568,7 +2557,7 @@
 		<key>name</key>
 		<string>lieOnSide</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2716,7 +2705,7 @@
 		<key>name</key>
 		<string>allFours</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2793,7 +2782,7 @@
 		<key>name</key>
 		<string>buttInAir</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>
@@ -2870,7 +2859,7 @@
 		<key>name</key>
 		<string>toilet</string>
 		<key>category</key>
-		<string>positions</string>
+		<string>position</string>
 		<key>tags</key>
 		<array>
 			<string>relax</string>

@@ -29,7 +29,7 @@
 @synthesize game;
 
 @synthesize gameOverScreen;
-@synthesize gameOverGradeDisplay;
+@synthesize gameSummaryView;
 @synthesize backgroundImageView;
 
 @synthesize buttonsPanelExpanded;
@@ -117,10 +117,10 @@
     [backgroundImageView release];
 	[contractionsViewHandle release];
 	[gameOverScreen release];
-	[gameOverGradeDisplay release];
 	[quitView release];
 	[supportDisplayTooltip release];
 	[copingDisplay release];
+	[gameSummaryView release];
 	[super dealloc];
 }
 
@@ -139,9 +139,6 @@
 		{
 			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i++]]];
 		}
-		printf("WE HAVE LOADED *** %d *** cooldown images\n", [cooldownImages count]);
-//		for(int i = 0; i < 32; i++)
-//			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i]]];
 		
 		// Create action buttons.
 		actionButtons = [[[NSMutableDictionary alloc] init] retain];
@@ -376,6 +373,14 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	momViewFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"xPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"yPos"] floatValue]);
 	momPicView.frame = momViewFrame;
 	
+	// Reposition the dilation display.
+	CGRect dilationFrame = dilationDisplayButton.frame;
+	dilationFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"dilationXPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"dilationYPos"] floatValue]);
+	dilationDisplayButton.frame = dilationFrame;
+	CGRect dilationPopupFrame = dilationLabelPopupView.frame;
+	dilationPopupFrame.origin = CGPointMake(dilationFrame.origin.x - 70, dilationFrame.origin.y + 9);
+	dilationLabelPopupView.frame = dilationPopupFrame;
+	
 	// *** SPECIAL CASES ***
 	if([game.getPosition isEqualToString:@"lieOnSide"])
 		backgroundImageView.image = [UIImage imageNamed:@"background_bed_down.png"];
@@ -401,33 +406,58 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 {
 	[displayTimer invalidate];
 	
-	// Display game over screen.	
+	// Generate game stats and summary info.
+	NSMutableDictionary* gameSummary;
 	char grade;
+	NSString* ladyReaction;
 	switch (game.playerScore)
 	{
 		case 99:
 			grade = 'A';
+			ladyReaction = @"You were great support. Thank you!";
 			break;
 		case 89:
 			grade = 'B';
+			ladyReaction = @"Overall, you were helpful.";
 			break;
 		case 79:
 			grade = 'C';
+			ladyReaction = @"Pay more attention to me.";
 			break;
 		case 69:
 			grade = 'D';
+			ladyReaction = @"Were you trying to make me mad? Because it worked.";
 			break;
 		case 50:
 			grade = 'F';
+			ladyReaction = @"You don't know me at all.";
 			break;
 		default:
 			break;
 	}
-	NSString* gradeDisplayString = [NSString stringWithFormat:@"Grade: %c", grade];
-	gameOverGradeDisplay.text = gradeDisplayString;
+	gameSummary = [[NSMutableDictionary alloc] init];
+	[gameSummary setObject:[NSString stringWithFormat:@"%c", grade] forKey:@"Grade"];
+	[gameSummary setObject:ladyReaction forKey:@"Reaction"];
+	NSString* stageDuration;
+	stageDuration = stringForTimeInterval(delegate.gameSpeed * game.getLaborDuration);
+	[gameSummary setObject:stageDuration forKey:@"laborDuration"];
+	if(game.hadBaby)
+	{
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"activeLaborStartTime"] timeIntervalSinceDate:[game.getLaborStats objectForKey:@"earlyLaborStartTime"]]));
+		[gameSummary setObject:stageDuration forKey:@"earlyLaborDuration"];
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"transitionStartTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"activeLaborStartTime"]]));
+		[gameSummary setObject:stageDuration forKey:@"activeLaborDuration"];
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"pushingStartTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"transitionStartTime"]]));
+		[gameSummary setObject:stageDuration forKey:@"transitionDuration"];
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"hadBabyTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"pushingStartTime"]]));
+		[gameSummary setObject:stageDuration forKey:@"pushingDuration"];
+	}
+	[gameSummary setObject:[NSNumber numberWithBool:game.hadBaby] forKey:@"hadBaby"];
+	gameSummaryView.gameSummary = gameSummary;	
 	
-	CGRect screenRect = [[UIScreen mainScreen] bounds];
-	gameOverScreen.frame = CGRectMake((screenRect.size.height / 2) - (gameOverScreen.frame.size.width / 2), (screenRect.size.width / 2) - (gameOverScreen.frame.size.height / 2) - 10, gameOverScreen.frame.size.width, gameOverScreen.frame.size.height);
+	// Display game over screen.	
+	[gameSummaryView display];	
+	gameOverScreen.frame = [[UIScreen mainScreen] bounds];
 	[self.view addSubview:gameOverScreen];	
 }
 
@@ -601,7 +631,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 		{
 			theButtonPanel = beTogetherButtonsView;
 		}
-		else if([buttonCategory isEqualToString:@"positions"])
+		else if([buttonCategory isEqualToString:@"position"])
 		{
 			theButtonPanel = positionsButtonsView;
 		}
@@ -635,7 +665,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	beTogetherButtonsView.frame = buttonsViewFrame;
 	beTogetherButtonsScrollView.contentSize = beTogetherButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(positionsButtonsView.frame.origin.x, positionsButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"positions"] count], positionsButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(positionsButtonsView.frame.origin.x, positionsButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"position"] count], positionsButtonsView.frame.size.height);
 	positionsButtonsView.frame = buttonsViewFrame;
 	positionsButtonsScrollView.contentSize = positionsButtonsView.frame.size;
 	
@@ -709,10 +739,10 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     [self setBackgroundImageView:nil];
 	[self setContractionsViewHandle:nil];
 	[self setGameOverScreen:nil];
-	[self setGameOverGradeDisplay:nil];
 	[self setQuitView:nil];
 	[self setSupportDisplayTooltip:nil];
 	[self setCopingDisplay:nil];
+	[self setGameSummaryView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view to relieve memory usage
 }
@@ -861,7 +891,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	{
 		button.enabled = NO;
 		button.onCooldown = YES;
-		[button setCooldown:[game getCooldown:button.name]];
+		[button setCooldown:([game getCooldown:button.name] * GAME_TIMER_TICK)];
 		
 		// Re-enable the button after the cooldown elapses.
 		NSTimeInterval cooldown = [game getCooldown:button.name];

@@ -15,6 +15,7 @@
 #import "DBSlidingWindowView.h"
 #import "DBEnergyView.h"
 #import "DBActionButton.h"
+#import "DBGameSummaryView.h"
 
 #define ACTION_BUTTON_SIZE		56
 #define ACTION_BUTTON_SPACING	 6
@@ -33,7 +34,7 @@ typedef enum
 
 @protocol GameViewDelegate <NSObject>
 
-
+@property (readonly) int gameSpeed;
 
 @end
 
@@ -60,7 +61,7 @@ typedef enum
 @property (nonatomic) float gameTimerTick;
 
 @property (retain, nonatomic) IBOutlet UIView *gameOverScreen;
-@property (retain, nonatomic) IBOutlet UILabel *gameOverGradeDisplay;
+@property (retain, nonatomic) IBOutlet DBGameSummaryView *gameSummaryView;
 - (IBAction)endGameToMainMenuButtonPressed;
 
 @property (retain, nonatomic) IBOutlet UIView *quitView;

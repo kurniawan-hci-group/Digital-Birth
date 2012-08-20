@@ -22,3 +22,6 @@ bool actionsShareTags(NSDictionary* actionOne, NSDictionary* actionTwo);
 
 // Is the action a position change?
 bool isPosition(NSDictionary* action);
+
+// Convert NSTimeInterval to NSString.
+NSString* stringForTimeInterval(NSTimeInterval interval);

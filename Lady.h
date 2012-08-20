@@ -83,6 +83,8 @@ typedef enum
 	// Ongoing actions!
 	NSMutableDictionary* currentActions;
 	NSMutableDictionary* ongoingActionTimers;
+	
+	NSMutableDictionary* laborStats;
 
 	NSDate* laborStartTime;
 }
@@ -113,6 +115,7 @@ typedef enum
 
 @property (nonatomic, readonly) NSDate* laborStartTime;
 @property (readonly) NSTimeInterval laborDuration;
+@property (nonatomic, readonly) NSDictionary* laborStats;
 
 -(void)startLabor;
 -(void)endLabor;
