@@ -78,6 +78,7 @@ typedef enum
 @property (retain, nonatomic) IBOutlet DBSlidingWindowView *supportDisplay;
 @property (retain, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
 @property (nonatomic, retain) IBOutlet DBEnergyView *energyDisplay;
+@property (retain, nonatomic) IBOutlet UIImageView *sleepIndicatorView;
 
 // The display area showing the mother.
 @property (retain, nonatomic) IBOutlet UIImageView *momPicView;

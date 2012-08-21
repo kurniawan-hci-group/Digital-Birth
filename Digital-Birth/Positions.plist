@@ -5,7 +5,9 @@
 	<key>walk</key>
 	<dict>
 		<key>type</key>
-		<string></string>
+		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -19,19 +21,23 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
-		<integer>0</integer>
+		<integer>270</integer>
 		<key>yPos</key>
-		<integer>0</integer>
+		<integer>10</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
-		<integer>141</integer>
+		<integer>96</integer>
 	</dict>
 	<key>leanOnWall</key>
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -45,6 +51,12 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -58,6 +70,12 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>266</integer>
 		<key>yPos</key>
@@ -71,6 +89,8 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>229</integer>
 		<key>yPos</key>
@@ -84,6 +104,8 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>266</integer>
 		<key>yPos</key>
@@ -97,6 +119,12 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -110,6 +138,8 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -123,6 +153,8 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -136,6 +168,12 @@
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>208</integer>
 		<key>yPos</key>
@@ -149,6 +187,12 @@
 	<dict>
 		<key>type</key>
 		<string>horizontal</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -162,6 +206,12 @@
 	<dict>
 		<key>type</key>
 		<string>horizontal</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -175,19 +225,23 @@
 	<dict>
 		<key>type</key>
 		<string>inverted</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
-		<integer>0</integer>
+		<integer>203</integer>
 		<key>yPos</key>
-		<integer>0</integer>
+		<integer>112</integer>
 		<key>dilationXPos</key>
-		<integer>254</integer>
+		<integer>313</integer>
 		<key>dilationYPos</key>
-		<integer>141</integer>
+		<integer>234</integer>
 	</dict>
 	<key>toilet</key>
 	<dict>
 		<key>type</key>
 		<string>upright</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -201,6 +255,8 @@
 	<dict>
 		<key>type</key>
 		<string>inverted</string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -214,6 +270,8 @@
 	<dict>
 		<key>type</key>
 		<string></string>
+		<key>canSleep</key>
+		<false/>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>
@@ -227,6 +285,27 @@
 	<dict>
 		<key>type</key>
 		<string></string>
+		<key>canSleep</key>
+		<false/>
+		<key>xPos</key>
+		<integer>0</integer>
+		<key>yPos</key>
+		<integer>0</integer>
+		<key>dilationXPos</key>
+		<integer>254</integer>
+		<key>dilationYPos</key>
+		<integer>141</integer>
+	</dict>
+	<key>ragDoll</key>
+	<dict>
+		<key>type</key>
+		<string>horizontal</string>
+		<key>canSleep</key>
+		<true/>
+		<key>ZxPos</key>
+		<integer>0</integer>
+		<key>ZyPos</key>
+		<integer>0</integer>
 		<key>xPos</key>
 		<integer>0</integer>
 		<key>yPos</key>

@@ -56,6 +56,7 @@ typedef enum
 	
 	float coping;
 	float energy;
+	bool sleeping;
 	float dilation;
 	NSString* position;
 
@@ -99,6 +100,7 @@ typedef enum
 
 @property (readonly) float coping;
 @property (readonly) float energy;
+@property (readonly) bool sleeping;
 @property (readonly) float dilation;
 @property (readonly) NSString* position;
 
@@ -116,6 +118,8 @@ typedef enum
 @property (nonatomic, readonly) NSDate* laborStartTime;
 @property (readonly) NSTimeInterval laborDuration;
 @property (nonatomic, readonly) NSDictionary* laborStats;
+
+-(void)setStartingDilation:(float)startingValue;
 
 -(void)startLabor;
 -(void)endLabor;

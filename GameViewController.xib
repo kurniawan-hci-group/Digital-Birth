@@ -47,7 +47,7 @@
 						<reference key="NSNextKeyView" ref="782518257"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<object class="NSCustomResource" key="IBUIImage" id="791729541">
+						<object class="NSCustomResource" key="IBUIImage" id="908362185">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">background_bed_up.png</string>
 						</object>
@@ -121,24 +121,24 @@
 					<object class="IBUIImageView" id="292289578">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{208, 123}, {141, 157}}</string>
+						<string key="NSFrame">{{203, 112}, {245, 182}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="876498671"/>
+						<reference key="NSNextKeyView"/>
 						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">squat_position.png</string>
+							<string key="NSResourceName">allFours_position.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="876498671">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{254, 141}, {60, 60}}</string>
+						<string key="NSFrame">{{313, 234}, {60, 60}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="20286181"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -175,7 +175,7 @@
 						<string key="NSFrame">{{24, 52}, {188, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="569228794"/>
+						<reference key="NSNextKeyView" ref="35608152"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAwLjk4MDM5NjMzNTEgMC43ODc1OTY5MDcAA</bytes>
@@ -237,7 +237,7 @@
 								<string key="NSFrame">{{10, 20}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="148187344"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="20286181"/>
+								<reference key="NSNextKeyView" ref="876498671"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -303,6 +303,16 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="148187344"/>
 						<float key="IBUIAlpha">0.5</float>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIImageView" id="35608152">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{223, 73}, {50, 50}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="569228794"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
@@ -795,7 +805,7 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="993709741">
+					<object class="IBUIImageView" id="286370231">
 						<reference key="NSNextResponder" ref="709272290"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{480, 300}</string>
@@ -804,7 +814,7 @@
 						<reference key="NSNextKeyView" ref="507916659"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUIImage" ref="791729541"/>
+						<reference key="IBUIImage" ref="908362185"/>
 					</object>
 					<object class="IBUILabel" id="507916659">
 						<reference key="NSNextResponder" ref="709272290"/>
@@ -812,7 +822,7 @@
 						<string key="NSFrame">{{128, 17}, {224, 34}}</string>
 						<reference key="NSSuperview" ref="709272290"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="330094167"/>
+						<reference key="NSNextKeyView" ref="342085122"/>
 						<reference key="IBUIBackgroundColor" ref="1035762453"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -873,7 +883,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIView" id="330094167">
+					<object class="IBUIView" id="342085122">
 						<reference key="NSNextResponder" ref="709272290"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 61}, {440, 167}}</string>
@@ -891,7 +901,7 @@
 				<string key="NSFrameSize">{480, 300}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="993709741"/>
+				<reference key="NSNextKeyView" ref="286370231"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -1276,9 +1286,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">gameSummaryView</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="330094167"/>
+						<reference key="destination" ref="342085122"/>
 					</object>
 					<int key="connectionID">389</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">sleepIndicatorView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="35608152"/>
+					</object>
+					<int key="connectionID">392</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -1388,10 +1406,11 @@
 							<reference ref="782518257"/>
 							<reference ref="718183915"/>
 							<reference ref="20286181"/>
-							<reference ref="876498671"/>
 							<reference ref="148187344"/>
 							<reference ref="909934951"/>
 							<reference ref="569228794"/>
+							<reference ref="35608152"/>
+							<reference ref="876498671"/>
 							<reference ref="292289578"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -1603,8 +1622,8 @@
 						<int key="objectID">255</int>
 						<reference key="object" ref="709272290"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="330094167"/>
-							<reference ref="993709741"/>
+							<reference ref="342085122"/>
+							<reference ref="286370231"/>
 							<reference ref="206945684"/>
 							<reference ref="507916659"/>
 						</array>
@@ -1667,14 +1686,19 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">388</int>
-						<reference key="object" ref="330094167"/>
+						<reference key="object" ref="342085122"/>
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="709272290"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">390</int>
-						<reference key="object" ref="993709741"/>
+						<reference key="object" ref="286370231"/>
 						<reference key="parent" ref="709272290"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">391</int>
+						<reference key="object" ref="35608152"/>
+						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
 			</object>
@@ -1722,6 +1746,7 @@
 				<string key="388.CustomClassName">DBGameSummaryView</string>
 				<string key="388.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="390.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="391.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="74.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="77.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1744,7 +1769,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">390</int>
+			<int key="maxID">392</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1894,6 +1919,7 @@
 						<string key="relaxActionsButton">UIButton</string>
 						<string key="relaxButtonsScrollView">UIScrollView</string>
 						<string key="relaxButtonsView">UIView</string>
+						<string key="sleepIndicatorView">UIImageView</string>
 						<string key="supportDisplay">DBSlidingWindowView</string>
 						<string key="supportDisplayTooltip">UILabel</string>
 						<string key="verbalCareActionsButton">UIButton</string>
@@ -2025,6 +2051,10 @@
 							<string key="name">relaxButtonsView</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="sleepIndicatorView">
+							<string key="name">sleepIndicatorView</string>
+							<string key="candidateClassName">UIImageView</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="supportDisplay">
 							<string key="name">supportDisplay</string>
 							<string key="candidateClassName">DBSlidingWindowView</string>
@@ -2060,6 +2090,7 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="ButtonBarHandle.png">{24, 84}</string>
 			<string key="ContractionMonitorHandle.png">{24, 260}</string>
+			<string key="allFours_position.png">{263, 197}</string>
 			<string key="background_bed_up.png">{480, 320}</string>
 			<string key="beTogether.png">{64, 64}</string>
 			<string key="beTogether_disabled.png">{64, 64}</string>
@@ -2070,7 +2101,6 @@
 			<string key="positions_disabled.png">{64, 64}</string>
 			<string key="relax.png">{64, 64}</string>
 			<string key="resume_restart_screen_background.png">{218, 192}</string>
-			<string key="squat_position.png">{145, 159}</string>
 			<string key="verbalCare.png">{64, 64}</string>
 			<string key="verbalCare_disabled.png">{64, 64}</string>
 		</dictionary>

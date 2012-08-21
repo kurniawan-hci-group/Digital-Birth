@@ -52,6 +52,12 @@ float CONTRACTION_TIMER_TICK;
 
 #pragma mark - Methods
 
+-(void)setStartingDilation:(float)dilation
+{
+	if(gameTimer == nil)
+		[lady setStartingDilation:dilation];
+}
+
 -(void)startGame
 {
 	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:(int) (1.0/GAME_TIMER_TICK)], @"gameSpeed", nil];
@@ -205,6 +211,11 @@ float CONTRACTION_TIMER_TICK;
 -(float)getEnergy
 {
 	return lady.energy;
+}
+
+-(bool)isSleeping
+{
+	return lady.sleeping;
 }
 
 -(int)getDilation

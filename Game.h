@@ -51,6 +51,7 @@ typedef enum
 @property (readonly, getter = getSupportWindow) float supportWindow;
 @property (readonly, getter = getCoping) int coping;
 @property (readonly, getter = getEnergy) float energy;
+@property (readonly, getter = isSleeping) bool sleeping;
 @property (readonly, getter = getDilation) int dilation;
 @property (readonly, getter = getPosition) NSString* position;
 @property (readonly, getter = getEffacement) float effacement;
@@ -60,6 +61,8 @@ typedef enum
 @property (readonly, getter = hadBaby) bool hadBaby;
 @property (readonly, getter = getLaborDuration) NSTimeInterval laborDuration;
 @property (readonly, getter = getLaborStats) NSDictionary* laborStats;
+
+-(void)setStartingDilation:(float)dilation;
 
 -(void)startGame;
 -(void)endGame;

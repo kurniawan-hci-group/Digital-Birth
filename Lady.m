@@ -85,6 +85,7 @@ NSString* laborStageString(laborStageType stage)
 
 @synthesize coping;
 @synthesize energy;
+@synthesize sleeping;
 @synthesize dilation;
 @synthesize position;
 
@@ -163,6 +164,7 @@ NSString* laborStageString(laborStageType stage)
 		
 		coping = MAX_COPING;
 		energy = MAX_ENERGY * (double) arc4random() / ARC4RANDOM_MAX;
+		sleeping = NO;
 		dilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
 		
 		// Load position list.
@@ -211,6 +213,12 @@ NSString* laborStageString(laborStageType stage)
 }
 
 #pragma mark - methods: other
+
+-(void)setStartingDilation:(float)startingValue
+{
+	if(contractionTimer == nil)
+		dilation = startingValue;
+}
 
 -(void)startLabor
 {
@@ -265,7 +273,7 @@ NSString* laborStageString(laborStageType stage)
 	// (Being in the same position for an extended period of time gets uncomfortable.)
 	if(contractionsWithoutPositionSwitch < 4 + arc4random() % 2)
 		contractionsWithoutPositionSwitch++;
-	else
+	else if(!sleeping)
 	{
 		// Change positions.
 		printf("It has been %d contractions without a position switch. Changing position.\n", contractionsWithoutPositionSwitch);
@@ -518,9 +526,41 @@ NSString* laborStageString(laborStageType stage)
 		station += 0.000005518315246 * self.contractionStrength;			
 	}
 
-	// Tick down (update) stats.
+	// Tick down (update) support.
 	support = MIN(MAX(support - MAX_SUPPORT * 0.001, 0), MAX_SUPPORT);
-	energy = MIN(MAX(energy - MAX_ENERGY * 0.001, 0), MAX_ENERGY);
+
+	// If awake, tick down energy; if asleep, regenerate energy.
+	if(!sleeping)
+		energy = MIN(MAX(energy - MAX_ENERGY * 0.001, 0), MAX_ENERGY);
+	else
+		energy = MIN(MAX(energy + MAX_ENERGY * 0.001, 0), MAX_ENERGY);
+		
+	// If tired and not having contraction, go to sleep.
+	if(!sleeping && !self.havingContraction && energy < MAX_ENERGY * 0.05)
+	{
+		sleeping = YES;
+		
+		printf("Going to sleep.\n");
+		
+		// If already in a comfortable sleeping position, stay there; 
+		// otherwise, lie on side (on the bed).
+		if([[[positionList objectForKey:position] objectForKey:@"canSleep"] boolValue] == NO)
+		{
+			NSDictionary* positionChangeAction = [delegate getAction:@"lieOnSide"];
+			[self applyAction:positionChangeAction];
+			printf("switching to position: %s\n", [position UTF8String]);
+			
+			contractionsWithoutPositionSwitch = 0;
+		}
+	}
+	// If having painful contraction, wake up!
+	// Also wake up if energy is full.
+	else if(sleeping && (self.contractionStrength / MAX_POSSIBLE_CONTRACTION_STRENGTH > 0.20 * [[factors objectForKey:@"painTolerance"] floatValue] || energy == MAX_ENERGY))
+	{
+		sleeping = NO;
+		
+		printf("Waking up.\n");
+	}
 	
 	// Decrease coping level if having contraction.
 	if(self.havingContraction)
@@ -612,6 +652,10 @@ NSString* laborStageString(laborStageType stage)
 		printf("failed to apply action.\n");
 		return false;
 	}
+	
+	// If we're sleeping, wake up.
+	if(sleeping)
+		sleeping = NO;
 	
 	// If there are any other actions with the same tags, cancel the other action.
 	for(NSString* ongoingActionName in currentActions)

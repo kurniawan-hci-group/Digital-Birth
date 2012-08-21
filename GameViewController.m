@@ -39,6 +39,7 @@
 @synthesize supportDisplay;
 @synthesize supportDisplayTooltip;
 @synthesize energyDisplay;
+@synthesize sleepIndicatorView;
 
 @synthesize momPicView;
 @synthesize dilationLabelPopupView;
@@ -121,6 +122,7 @@
 	[supportDisplayTooltip release];
 	[copingDisplay release];
 	[gameSummaryView release];
+	[sleepIndicatorView release];
 	[super dealloc];
 }
 
@@ -139,6 +141,15 @@
 		{
 			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i++]]];
 		}
+		
+		// Load "Z's" images for sleep indicator.
+		NSMutableArray* sleepingImages = [[NSMutableArray alloc] init];
+		int j = 0;
+		while([[NSFileManager defaultManager] fileExistsAtPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"sleep%d", j] ofType:@"png"]])
+		{
+			[sleepingImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", j++]]];
+		}
+		sleepIndicatorView.animationImages = sleepingImages;
 		
 		// Create action buttons.
 		actionButtons = [[[NSMutableDictionary alloc] init] retain];
@@ -174,6 +185,8 @@
 			glowing = NO;
 		}
 		
+		// Add self as listener for notification of app returning to foreground, 
+		// to display the "End game or Resume game?" screen.
 		if(&UIApplicationWillEnterForegroundNotification != nil)
 		{
 			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showResumeRestartScreen) name:UIApplicationWillEnterForegroundNotification object:nil];
@@ -347,6 +360,19 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 -(void) displayEnergy
 {
 	[energyDisplay setEnergyLevel:(float) [game getEnergy] / MAX_ENERGY];
+	
+	if(game.isSleeping)
+	{
+		CGRect sleepIndicatorViewFrame = sleepIndicatorView.frame;
+		sleepIndicatorViewFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"ZxPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"ZyPos"] floatValue]);
+		sleepIndicatorView.frame = sleepIndicatorViewFrame;
+
+		sleepIndicatorView.hidden = NO;
+	}
+	else
+	{
+		sleepIndicatorView.hidden = YES;
+	}
 }
 
 -(void) displayDilation
@@ -695,10 +721,12 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[momSwipedLeft setDirection:UISwipeGestureRecognizerDirectionRight];
 	[momPicView addGestureRecognizer:momSwipedLeft];
 	
-	// Possibly put this elsewhere, triggered from a "start game" button?
-
 	// Start the display refresh timer.
 	[self startDisplayTimer];
+	
+	// Set certain variables to values specified in main menu.
+	[game setStartingDilation:[[settings objectForKey:@"startingDilation"] floatValue]];
+	
 	// Start the game timer.	
 	[self.game startGame];
 	
@@ -743,6 +771,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setSupportDisplayTooltip:nil];
 	[self setCopingDisplay:nil];
 	[self setGameSummaryView:nil];
+	[self setSleepIndicatorView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view to relieve memory usage
 }
