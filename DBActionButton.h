@@ -5,6 +5,13 @@
 //  Created by Sandy Achmiz on 8/10/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+/*
+ DBActionButton is a custom control, a subclass of UIButton.
+ It extends UIButton to add a non-displayed object name, cooldown display
+ functionality, and a "tooltip sound".
+ 
+ In Digital Birth, DBActionButtons are used for all of the action buttons.
+ */
 
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>

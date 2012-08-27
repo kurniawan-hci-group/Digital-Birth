@@ -134,7 +134,7 @@
 		<key>dilationYPos</key>
 		<integer>228</integer>
 	</dict>
-	<key>lungeOnStair</key>
+	<key>lunge</key>
 	<dict>
 		<key>type</key>
 		<string>upright</string>

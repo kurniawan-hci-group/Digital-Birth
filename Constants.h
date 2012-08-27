@@ -2,6 +2,9 @@
 //  Constants.h
 //  Digital-Birth
 //
+/*
+ Maximums for a lot of the stats.
+ */
 
 #ifndef CONSTANTS_H
 #define CONSTANTS_H

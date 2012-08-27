@@ -2250,10 +2250,10 @@
 		<key>duration</key>
 		<integer>0</integer>
 	</dict>
-	<key>lungeOnStair</key>
+	<key>lunge</key>
 	<dict>
 		<key>name</key>
-		<string>lungeOnStair</string>
+		<string>lunge</string>
 		<key>category</key>
 		<string>position</string>
 		<key>tags</key>

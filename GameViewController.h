@@ -5,6 +5,10 @@
 //  Created by Sandy Achmiz on 7/2/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+/*
+ GameViewController contains all the views which make up the game UI.
+ It also owns a Game object (see Game.h for details).
+ */
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>

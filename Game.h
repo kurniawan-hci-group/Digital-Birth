@@ -5,6 +5,14 @@
 //  Created by User on 3/9/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
+/*
+ The game object. Game is basically an interface to the Lady object; additionally, 
+ it handles selection of actions from the action list (it also loads the action list).
+ 
+ The owning view controller (a GameViewController, in Digital Birth) passes to the
+ Game a message containing an action name as a string. The Game finds the action of 
+ that name in the action list, and tells the Lady to apply said action.
+ */
 
 #import <Foundation/Foundation.h>
 #import "Lady.h"
@@ -20,7 +28,7 @@ typedef enum
 
 -(void)contractionStarted;
 -(void)contractionEnded;
--(void) displayPosition;
+-(void)displayPosition;
 
 @end
 
@@ -70,6 +78,7 @@ typedef enum
 -(NSTimeInterval)getCooldown:(NSString*)actionName;
 -(bool)canPerformAction:(NSString*)actionName;
 
+// Delegate methods.
 -(NSDictionary*)getAction:(NSString*)actionName;
 -(void)contractionStarted;
 -(void)contractionEnded;

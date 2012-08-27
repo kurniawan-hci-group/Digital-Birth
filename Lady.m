@@ -13,6 +13,8 @@
 
 static NSDictionary* positionList;
 
+NSString* laborStageString(laborStageType stage);
+
 NSString* laborStageString(laborStageType stage)
 {
 	switch (stage) {
@@ -39,7 +41,7 @@ NSString* laborStageString(laborStageType stage)
 	}
 }
 
-#pragma mark - Stats class implementation
+//#pragma mark - Stats class implementation
 //
 //@implementation Stats
 //

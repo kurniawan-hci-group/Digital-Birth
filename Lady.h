@@ -5,6 +5,28 @@
 //  Created by User on 3/9/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
+/*
+ The Lady class represents the woman in labor, and is the main implementation 
+ of the data model of Digital Birth.
+ 
+ A Lady contains a Baby object; the Baby doesn't do anything interesting
+ (in this version).
+ 
+ A Lady contains a timer (on the main run loop), that fires with a frequency
+ specified by the game's game speed setting. On every tick of the timer, a number 
+ of internal stats are updated, labor stage transitions are checked for, and 
+ various other data model tasks are perfored. See the -(void)timerTick method
+ for details.
+ 
+ Another timer schedules contractions. When the timer fires, the 
+ -(void)startContraction: method is called; a Contraction is instantiated and 
+ added to the currentContractions array; and the next contraction is scheduled.
+ See Contraction.h for details.
+ 
+ The Lady class also has an API for applying player actions: the 
+ -(bool)eligibleForAction: and -(bool)applyAction: methods. See those
+ method descriptions for details.
+ */
 
 #import <Foundation/Foundation.h>
 #import "Baby.h"

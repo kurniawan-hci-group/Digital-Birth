@@ -10,7 +10,6 @@
 // "variance" is not the mathematical variance (squared deviation), but rather 
 // just the maximum variation, positive or negative, of the generated value
 // from the _mean_.
-
 int get_random_int_with_variance(int mean, int variance);
 float get_random_float_with_variance(float mean, float variance);
 
@@ -23,5 +22,5 @@ bool actionsShareTags(NSDictionary* actionOne, NSDictionary* actionTwo);
 // Is the action a position change?
 bool isPosition(NSDictionary* action);
 
-// Convert NSTimeInterval to NSString.
+// Convert NSTimeInterval to NSString ("x hours, y minutes").
 NSString* stringForTimeInterval(NSTimeInterval interval);
