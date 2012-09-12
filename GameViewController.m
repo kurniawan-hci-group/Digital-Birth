@@ -147,7 +147,7 @@
 		int j = 0;
 		while([[NSFileManager defaultManager] fileExistsAtPath:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"sleep%d", j] ofType:@"png"]])
 		{
-			[sleepingImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", j++]]];
+			[sleepingImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"sleep%d.png", j++]]];
 		}
 		sleepIndicatorView.animationImages = sleepingImages;
 		
