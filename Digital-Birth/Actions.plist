@@ -17,7 +17,7 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.1</real>
 			<key>ACTIVE</key>
 			<real>0.05</real>
 			<key>LATE_ACTIVE</key>
@@ -30,7 +30,7 @@
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.05</real>
+			<real>0.02</real>
 			<key>ACTIVE</key>
 			<integer>0</integer>
 			<key>LATE_ACTIVE</key>
@@ -122,7 +122,7 @@
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
@@ -165,7 +165,7 @@
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>
-			<real>0.02</real>
+			<real>0.03</real>
 			<key>TRANSITION</key>
 			<real>0.05</real>
 			<key>PUSHING</key>
@@ -174,15 +174,15 @@
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.01</real>
 		</dict>
 		<key>contractionStrengthEffect</key>
 		<dict>
@@ -193,7 +193,7 @@
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
@@ -213,7 +213,7 @@
 		<key>factorEffects</key>
 		<array/>
 		<key>cooldown</key>
-		<real>30</real>
+		<integer>30</integer>
 		<key>duration</key>
 		<real>0</real>
 	</dict>
@@ -232,28 +232,28 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.08</real>
 			<key>ACTIVE</key>
-			<real>0.02</real>
+			<real>0.08</real>
 			<key>LATE_ACTIVE</key>
-			<real>0.02</real>
+			<real>0.08</real>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<real>0.08</real>
 			<key>PUSHING</key>
 			<real>0.05</real>
 		</dict>
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<real>0.05</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.05</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.05</real>
 			<key>TRANSITION</key>
-			<integer>0</integer>
+			<real>0.05</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.05</real>
 		</dict>
 		<key>contractionStrengthEffect</key>
 		<dict>
@@ -264,7 +264,7 @@
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
@@ -284,9 +284,9 @@
 		<key>factorEffects</key>
 		<array/>
 		<key>cooldown</key>
-		<real>30</real>
+		<integer>100</integer>
 		<key>duration</key>
-		<real>0</real>
+		<integer>50</integer>
 	</dict>
 	<key>aromatherapy</key>
 	<dict>
@@ -303,61 +303,61 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>
-			<real>0.02</real>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<real>0.05</real>
+			<real>0.02</real>
 		</dict>
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<integer>0</integer>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.01</real>
 		</dict>
 		<key>contractionStrengthEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.02</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.01</real>
 		</dict>
 		<key>contractionFrequencyEffect</key>
 		<dict>
 			<key>EARLY</key>
 			<integer>0</integer>
 			<key>ACTIVE</key>
-			<string></string>
+			<string>0.01</string>
 			<key>LATE_ACTIVE</key>
-			<string></string>
+			<string>0.01</string>
 			<key>TRANSITION</key>
-			<string></string>
+			<string>0.01</string>
 			<key>PUSHING</key>
-			<string></string>
+			<string>0</string>
 		</dict>
 		<key>factorEffects</key>
 		<array/>
 		<key>cooldown</key>
-		<real>30</real>
+		<integer>30</integer>
 		<key>duration</key>
-		<real>0</real>
+		<integer>20</integer>
 	</dict>
 	<key>playMusic</key>
 	<dict>
@@ -374,20 +374,20 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.03</real>
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>
-			<real>0.02</real>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<real>0.05</real>
+			<real>0.01</real>
 		</dict>
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<integer>0</integer>
 			<key>ACTIVE</key>
 			<integer>0</integer>
 			<key>LATE_ACTIVE</key>
@@ -406,7 +406,7 @@
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
@@ -458,7 +458,7 @@
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<integer>0</integer>
 			<key>ACTIVE</key>
 			<integer>0</integer>
 			<key>LATE_ACTIVE</key>
@@ -471,15 +471,15 @@
 		<key>contractionStrengthEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.01</real>
 		</dict>
 		<key>contractionFrequencyEffect</key>
 		<dict>
@@ -662,44 +662,44 @@
 			<key>EARLY</key>
 			<integer>0</integer>
 			<key>ACTIVE</key>
-			<real>0.02</real>
+			<integer>0</integer>
 			<key>LATE_ACTIVE</key>
-			<real>0.02</real>
+			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
-			<real>0.05</real>
+			<integer>0</integer>
 		</dict>
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<real>0.1</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.05</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.02</real>
 			<key>TRANSITION</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.05</real>
 		</dict>
 		<key>contractionStrengthEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>-0.01</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>-0.001</real>
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
 		<key>contractionFrequencyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>-0.01</real>
 			<key>ACTIVE</key>
 			<string></string>
 			<key>LATE_ACTIVE</key>
