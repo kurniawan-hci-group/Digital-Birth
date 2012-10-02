@@ -513,11 +513,11 @@
 			<string>position</string>
 		</array>
 		<key>description</key>
-		<string></string>
+		<string>Take a shower</string>
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>0.02</real>
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>
@@ -530,26 +530,26 @@
 		<key>energyEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.07000000000000001</real>
+			<real>0.01</real>
 			<key>ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>LATE_ACTIVE</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>TRANSITION</key>
-			<integer>0</integer>
+			<real>0.01</real>
 			<key>PUSHING</key>
-			<integer>0</integer>
+			<real>0.01</real>
 		</dict>
 		<key>contractionStrengthEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<integer>0</integer>
+			<real>-0.01</real>
 			<key>ACTIVE</key>
 			<integer>0</integer>
 			<key>LATE_ACTIVE</key>
 			<integer>0</integer>
 			<key>TRANSITION</key>
-			<real>0.05</real>
+			<integer>0</integer>
 			<key>PUSHING</key>
 			<integer>0</integer>
 		</dict>
