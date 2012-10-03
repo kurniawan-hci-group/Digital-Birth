@@ -90,7 +90,7 @@
 		<key>supportEffect</key>
 		<dict>
 			<key>EARLY</key>
-			<real>0.5</real>
+			<real>0.05</real>
 			<key>ACTIVE</key>
 			<real>0.02</real>
 			<key>LATE_ACTIVE</key>

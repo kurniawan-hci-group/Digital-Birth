@@ -273,9 +273,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>0</integer>
+		<integer>229</integer>
 		<key>yPos</key>
-		<integer>0</integer>
+		<integer>40</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
