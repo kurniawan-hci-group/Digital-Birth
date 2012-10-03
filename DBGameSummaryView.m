@@ -50,7 +50,7 @@
 	
 	// Place total labor duration.
 	fieldLabel = [[UILabel alloc] init];
-	fieldLabel.text = @"Total labor duration: ";
+	fieldLabel.text = @"Your part in her labor: ";
 	fieldLabel.frame = CGRectMake(10, 30, 0, 0);
 	[fieldLabel sizeToFit];
 	[self addSubview:fieldLabel];
