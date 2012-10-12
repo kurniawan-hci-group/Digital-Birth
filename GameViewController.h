@@ -83,6 +83,13 @@ typedef enum
 @property (retain, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
 @property (nonatomic, retain) IBOutlet DBEnergyView *energyDisplay;
 @property (retain, nonatomic) IBOutlet UIImageView *sleepIndicatorView;
+@property (retain, nonatomic) IBOutlet UILabel *energyNumberLabel;
+@property (retain, nonatomic) IBOutlet UIButton *energyNumberButton;
+@property (retain, nonatomic) IBOutlet UIView *energyNumberPopupView;
+
+- (IBAction)energyNumberButtonPressed:(id)sender;
+- (void)fadeOutEnergyNumber;
+
 
 // The display area showing the mother.
 @property (retain, nonatomic) IBOutlet UIImageView *momPicView;

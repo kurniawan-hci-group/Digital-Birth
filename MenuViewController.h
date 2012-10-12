@@ -26,5 +26,7 @@
 
 @property (readonly) float startingDilation;
 @property (retain, nonatomic) IBOutlet UILabel *startingDilationLabel;
+@property (retain, nonatomic) IBOutlet UILabel *startingDilationEarlyLaborLabel;
+@property (retain, nonatomic) IBOutlet UILabel *startingDilationActiveLaborLabel;
 
 @end

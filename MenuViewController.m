@@ -19,6 +19,9 @@
 @synthesize startingDilation;
 @synthesize startingDilationLabel;
 
+@synthesize startingDilationEarlyLaborLabel;
+@synthesize startingDilationActiveLaborLabel;
+
 -(id)init
 {
 	if(self = [super init])
@@ -43,6 +46,8 @@
 	[gameSpeedLabel release];
 	[gameSpeedExplanationLabel release];
 	[startingDilationLabel release];
+    [startingDilationEarlyLaborLabel release];
+    [startingDilationActiveLaborLabel release];
 	[super dealloc];
 }
 
@@ -61,6 +66,14 @@
 {
 	NSString* startingDilationDisplayString = [NSString stringWithFormat:@"%i cm ", (int) startingDilation];
 	startingDilationLabel.text = startingDilationDisplayString;
+	if((int) startingDilation <= 3){
+		startingDilationEarlyLaborLabel.hidden = NO;
+		startingDilationActiveLaborLabel.hidden = YES;
+    }
+	else {
+		startingDilationEarlyLaborLabel.hidden = YES;
+		startingDilationActiveLaborLabel.hidden = NO;
+    }
 }
 
 #pragma mark - View lifecycle
@@ -77,6 +90,8 @@
 	[self setGameSpeedLabel:nil];
 	[self setGameSpeedExplanationLabel:nil];
 	[self setStartingDilationLabel:nil];
+    [self setStartingDilationEarlyLaborLabel:nil];
+    [self setStartingDilationActiveLaborLabel:nil];
     [super viewDidUnload];
 }
 

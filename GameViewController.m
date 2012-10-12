@@ -27,6 +27,7 @@
 }
 
 @synthesize game;
+@synthesize energyNumberLabel;
 
 @synthesize gameOverScreen;
 @synthesize gameSummaryView;
@@ -45,6 +46,8 @@
 @synthesize dilationLabelPopupView;
 @synthesize dilationDisplay;
 @synthesize dilationDisplayButton;
+
+@synthesize energyNumberPopupView;
 
 @synthesize buttonsView;
 @synthesize buttonsViewHandle;
@@ -114,6 +117,8 @@
 	[getHelpButtonsView release];
 	[dilationDisplayButton release];
 	[dilationLabelPopupView release];
+    [energyNumberLabel release];
+    [energyNumberPopupView release];
 	[contractionsGraphView release];
     [backgroundImageView release];
 	[contractionsViewHandle release];
@@ -123,6 +128,7 @@
 	[copingDisplay release];
 	[gameSummaryView release];
 	[sleepIndicatorView release];
+    [energyNumberLabel release];
 	[super dealloc];
 }
 
@@ -401,7 +407,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	// Reposition the dilation display.
 	CGRect dilationFrame = dilationDisplayButton.frame;
-	dilationFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"dilationXPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"dilationYPos"] floatValue]);
+//	dilationFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"dilationXPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"dilationYPos"] floatValue]);
 	dilationDisplayButton.frame = dilationFrame;
 	CGRect dilationPopupFrame = dilationLabelPopupView.frame;
 	dilationPopupFrame.origin = CGPointMake(dilationFrame.origin.x - 70, dilationFrame.origin.y + 9);
@@ -745,6 +751,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setSupportDisplay:nil];
 	[self setMomPicView:nil];
 	[self setDilationDisplay:nil];
+    [self setEnergyNumberLabel:nil];
 	[self setButtonsViewHandle:nil];
 	[self setContractionsView:nil];
 	[self setContractionsViewHandle:nil];
@@ -762,6 +769,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setGetHelpButtonsScrollView:nil];
 	[self setGetHelpButtonsView:nil];	
 	[self setDilationDisplayButton:nil];
+    [self setEnergyNumberButton:nil];
 	[self setDilationLabelPopupView:nil];
 	[self setContractionsGraphView:nil];
     [self setBackgroundImageView:nil];
@@ -772,6 +780,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setCopingDisplay:nil];
 	[self setGameSummaryView:nil];
 	[self setSleepIndicatorView:nil];
+    [self setEnergyNumberLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view to relieve memory usage
 }
@@ -865,6 +874,24 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
 	
 	dilationLabelPopupView.alpha = 0.0;
+	
+    [UIView commitAnimations];
+}
+
+- (IBAction)energyNumberButtonPressed:(id)sender
+{
+	energyNumberPopupView.alpha = 1.0;
+	
+	[self performSelector:@selector(fadeOutEnergyNumber) withObject:nil afterDelay:2.0];
+}
+
+- (void)fadeOutEnergyNumber
+{
+	[UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+	
+	energyNumberPopupView.alpha = 0.0;
 	
     [UIView commitAnimations];
 }

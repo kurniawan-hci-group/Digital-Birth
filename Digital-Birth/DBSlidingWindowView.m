@@ -147,9 +147,9 @@
 	
 	// Draw the marker indicating current actual support level.
 	[currentValuePath removeAllPoints];
-	[currentValuePath moveToPoint:CGPointMake(currentValue * self.frame.size.width, 9)];
-	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width - 3, 0)];
-	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width + 3, 0)];
+	[currentValuePath moveToPoint:CGPointMake(currentValue * self.frame.size.width, 10)];
+	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width - 4, 0)];
+	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width + 4, 0)];
 	[currentValuePath closePath];
 	[[UIColor blackColor] setFill];
 	[currentValuePath fill];
