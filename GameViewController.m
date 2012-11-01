@@ -645,10 +645,11 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 		// Normal image is ACTION_NAME.png; disabled image is ACTION_NAME_disabled.png.
  		NSString* imageName = [NSString stringWithFormat:@"%s.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
 		[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-		NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
-		[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
+		//NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
+		//[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
 		
-		printf("action name: %s; image name: %s; disabled image name: %s, button category: %s\n", [actionName UTF8String], [imageName UTF8String], [imageName_disabled UTF8String], [buttonCategory UTF8String]);
+		printf("action name: %s; image name: %s; button category: %s\n", [actionName UTF8String], [imageName UTF8String], [buttonCategory UTF8String]);
+		//printf("action name: %s; image name: %s; disabled image name: %s, button category: %s\n", [actionName UTF8String], [imageName UTF8String], [imageName_disabled UTF8String], [buttonCategory UTF8String]);
 		
 		UIView* theButtonPanel;
 		if([buttonCategory isEqualToString:@"relax"])

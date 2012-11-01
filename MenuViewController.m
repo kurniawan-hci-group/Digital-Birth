@@ -28,7 +28,8 @@
 	{
 		printf("Initializing menu controller.\n");
 		gameSpeed = 1;
-		startingDilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
+        startingDilation = 4;
+//		startingDilation = ((double) arc4random() / ARC4RANDOM_MAX) * 3;
 	}
 	return self;
 }

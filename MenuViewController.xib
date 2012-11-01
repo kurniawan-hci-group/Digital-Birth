@@ -183,7 +183,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<float key="IBUIValue">1</float>
 						<float key="IBUIMinValue">1</float>
-						<float key="IBUIMaxValue">20</float>
+						<float key="IBUIMaxValue">5</float>
 					</object>
 					<object class="IBUILabel" id="663959760">
 						<reference key="NSNextResponder" ref="191373211"/>

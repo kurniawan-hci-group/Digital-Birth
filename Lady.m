@@ -434,6 +434,7 @@ NSString* laborStageString(laborStageType stage)
 			if(dilation >= 10.0)
 			{
 				laborStage = PUSHING;
+				laborStageDuration = get_random_float_with_variance(3, 1) * 60 * 60; // 3 hours.
 				contractionFrequency *= 5.0/2.0;
 				contractionDuration = 120;
 				station += (double) arc4random() / ARC4RANDOM_MAX;
@@ -493,6 +494,7 @@ NSString* laborStageString(laborStageType stage)
 				//          (i.e. idealized curve with no discrete ticks)]
 				dilation += 0.000002617993878 * self.contractionStrength;
 				effacement += 0.15 / laborStageDuration;
+                break;
 			case LATE_ACTIVE:
 				// 2.0 / (80 [expected ctx count] * ((2 [integral from 0 to pi of sin(x)]
 				// * 105 [avg ctx duration] * 223 * [avg ctx str]) / pi))
@@ -500,18 +502,21 @@ NSString* laborStageString(laborStageType stage)
 				//          (i.e. idealized curve with no discrete ticks)]
 				dilation += 0.000001730794159 * self.contractionStrength;
 				effacement += 0.10 / laborStageDuration;
+                break;
 			case TRANSITION:
 				// 2.0 / (30 [expected ctx count] * ((2 [integral from 0 to pi of sin(x)]
 				// * 105 [avg ctx duration] * 255 * [avg ctx str]) / pi))
 				// * 1.032 [error margin of discrete integral from continuous integral
 				//          (i.e. idealized curve with no discrete ticks)]
 				dilation += 0.000004036257228 * self.contractionStrength;
+                effacement = 1;
+                break;
 			case PUSHING:
 			default:
 				break;
 		}
 		
-		printf("dilation: %f\n", dilation);
+		printf("dilation: %f; effacement: %f\n", dilation, effacement);
 	}
 
 	// If pushing (and thus already fully dilated), descend baby instead.
@@ -526,6 +531,7 @@ NSString* laborStageString(laborStageType stage)
 		// * 1.032 [error margin of discrete integral from continuous integral
 		//          (i.e. idealized curve with no discrete ticks)]
 		station += 0.000005518315246 * self.contractionStrength;			
+		printf("station: %f\n", station);
 	}
 
 	// Tick down (update) support.
