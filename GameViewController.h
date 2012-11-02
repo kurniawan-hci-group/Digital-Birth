@@ -105,10 +105,12 @@ typedef enum
 @property (retain, nonatomic) IBOutlet UIView *contractionsView;
 @property (retain, nonatomic) IBOutlet UILabel *contractionsDisplay;
 @property (retain, nonatomic) IBOutlet ContractionsGraphView *contractionsGraphView;
+- (IBAction)contractionsHandleSlide:(UIPanGestureRecognizer*)sender;
 
-@property (retain, nonatomic) IBOutlet UIImageView *contractionsViewHandle;
+// Using PanGesture
+/*@property (retain, nonatomic) IBOutlet UIImageView *contractionsViewHandle;
 - (IBAction)contractionsHandleSlideOut:(UIGestureRecognizer*)sender;
-- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer*)sender;
+- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer*)sender;*/
 
 - (void)toggleContractionsPanel:(BOOL) expand;
 @property bool contractionsPanelExpanded;
@@ -117,10 +119,7 @@ typedef enum
 
 // The primary button panel.
 @property (retain, nonatomic) IBOutlet UIView *buttonsView;
-
-@property (retain, nonatomic) IBOutlet UIImageView *buttonsViewHandle;
-- (IBAction)buttonHandleSlideOut:(UIGestureRecognizer*)sender;
-- (IBAction)buttonHandleSlideIn:(UIGestureRecognizer*)sender;
+- (IBAction)buttonHandleSlide:(UIGestureRecognizer*)sender;
 
 - (void)toggleButtonsPanel:(BOOL) expand;
 @property bool buttonsPanelExpanded;
