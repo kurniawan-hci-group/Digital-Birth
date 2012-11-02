@@ -553,7 +553,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self.view addSubview:quitView];
 	
 	// *** Add button panel. ***
-	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - 10, screenRect.size.width - statusBarFrame.size.width - 84, buttonsView.frame.size.width, buttonsView.frame.size.height);
+	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - 12, screenRect.size.width - statusBarFrame.size.width - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
 	[buttonsView setFrame:buttonsPanelPosition];
 	[self.view addSubview:buttonsView];
 	buttonsPanelExpanded = NO;
@@ -820,18 +820,26 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     {
         if(selectedView.frame.origin.x > 45 && buttonsPanelExpanded)
         {
-            printf("%f\n", selectedView.frame.origin.x);
             buttonsPanelExpanded = NO;
             [self toggleButtonsPanel:NO];
         }
         if(selectedView.frame.origin.x < 438 && !buttonsPanelExpanded)
         {
-            printf("%f\n", selectedView.frame.origin.x);
             buttonsPanelExpanded = YES;
             [self toggleButtonsPanel:YES];
         }
         
+        if(selectedView.frame.origin.x < 0)
+        {
+            [selectedView setCenter:CGPointMake(240, [selectedView center].y)];
+        }
+        if(selectedView.frame.origin.x > 470)
+        {
+            [selectedView setCenter:CGPointMake(708, [selectedView center].y)];
+        }
     }
+    printf("%f\n", selectedView.frame.origin.x);
+
 }
 
 - (IBAction)contractionsHandlePan:(UIPanGestureRecognizer *)sender
@@ -841,13 +849,12 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
     if ([sender state] == UIGestureRecognizerStateBegan || [sender state] == UIGestureRecognizerStateChanged) {
             printf("%f", selectedView.frame.origin.x);
         CGPoint translation = [sender translationInView:[selectedView superview]];
-        if(selectedView.frame.origin.x > -445 && selectedView.frame.origin.x < 1)
+        if(selectedView.frame.origin.x > -450 && selectedView.frame.origin.x < 1)
         {
             [selectedView setCenter:CGPointMake([selectedView center].x + translation.x, [selectedView center].y)];
             [sender setTranslation:CGPointZero inView:[selectedView superview]];
         }
     }
-    
     if ([sender state] == UIGestureRecognizerStateEnded)
     {
         if(selectedView.frame.origin.x > -410 && !contractionsPanelExpanded)
@@ -860,8 +867,15 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
             contractionsPanelExpanded = NO;
             [self toggleContractionsPanel:NO];
         }
-        printf("%f\n", selectedView.frame.origin.x);
         
+        if(selectedView.frame.origin.x < -445)
+        {
+            [selectedView setCenter:CGPointMake(-445, [selectedView center].y)];
+        }
+        if(selectedView.frame.origin.x > 0)
+        {
+            [selectedView setCenter:CGPointMake(240, [selectedView center].y)];
+        }
     }
 	
 }
