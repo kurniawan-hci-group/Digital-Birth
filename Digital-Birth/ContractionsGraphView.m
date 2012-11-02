@@ -27,7 +27,7 @@
 -(void) drawDataPoint:(CGFloat)value
 {
 	[graph applyTransform:CGAffineTransformMakeTranslation(-3, 0)];
-	[graph addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height - value)];
+	[graph addLineToPoint:CGPointMake(self.frame.size.width - 12, self.frame.size.height - value)];
 	
 	[self setNeedsDisplay];
 }

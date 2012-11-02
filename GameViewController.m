@@ -50,9 +50,7 @@
 @synthesize energyNumberPopupView;
 
 @synthesize buttonsView;
-@synthesize buttonsViewHandle;
 @synthesize contractionsView;
-@synthesize contractionsViewHandle;
 @synthesize contractionsDisplay;
 @synthesize contractionsGraphView;
 
@@ -90,7 +88,6 @@
 	[dilationDisplay release];
 
 	[buttonsView release];
-	[buttonsViewHandle release];
 
 	[relaxActionsButton release];
 	[breatheActionsButton release];
@@ -100,7 +97,6 @@
 	[getHelpActionsButton release];
 
 	[contractionsView release];
-	[contractionsViewHandle release];
 	
 	[contractionsDisplay release];
     [relaxButtonsScrollView release];
@@ -121,7 +117,7 @@
     [energyNumberPopupView release];
 	[contractionsGraphView release];
     [backgroundImageView release];
-	[contractionsViewHandle release];
+//	[contractionsViewHandle release];
 	[gameOverScreen release];
 	[quitView release];
 	[supportDisplayTooltip release];
@@ -245,7 +241,7 @@
     }
 	else
     {
-        buttonsFrame.origin.x = screenRect.size.height - buttonsViewHandle.frame.size.width;
+        buttonsFrame.origin.x = screenRect.size.height - 12;
 		
 //		[self toggleButtonSubPanel:relaxButtonsScrollView expand:NO];
 //		[self toggleButtonSubPanel:breatheButtonsScrollView expand:NO];
@@ -264,10 +260,8 @@
 	[UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.15];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-	
-//	CGRect screenRect = [[UIScreen mainScreen] bounds];
+    
     CGRect contractionsFrame = contractionsView.frame;
-	CGRect handleFrame = contractionsViewHandle.frame;
 	
 	if (expand)
 	{
@@ -275,7 +269,7 @@
     }
 	else
     {
-        contractionsFrame.origin.x = handleFrame.size.width - contractionsFrame.size.width;
+        contractionsFrame.origin.x = -contractionsFrame.size.width + 36;
     }
 	
     [contractionsView setFrame:contractionsFrame];
@@ -536,18 +530,15 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
 		
 	// *** Add contractions monitor panel. ***
-	CGRect contractionsPanelPosition = CGRectMake(contractionsViewHandle.frame.size.width - contractionsView.frame.size.width, (screenRect.size.width - contractionsView.frame.size.height - statusBarFrame.size.width) / 2, contractionsView.frame.size.width, contractionsView.frame.size.height);
+	CGRect contractionsPanelPosition = CGRectMake(36 - contractionsView.frame.size.width, (screenRect.size.width - contractionsView.frame.size.height - statusBarFrame.size.width) / 2, contractionsView.frame.size.width, contractionsView.frame.size.height);
 	[contractionsView setFrame:contractionsPanelPosition];
 	[self.view addSubview:contractionsView];
 	contractionsPanelExpanded = NO;
 	
 	// Add swipe gesture recognizers to contractions view handle.
-	UISwipeGestureRecognizer* ctxSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandleSlideOut:)];
-	[ctxSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-	[contractionsViewHandle addGestureRecognizer:ctxSwipeRight];
-	UISwipeGestureRecognizer* ctxSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandleSlideIn:)];
-	[ctxSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-	[contractionsViewHandle addGestureRecognizer:ctxSwipeLeft];
+    // Nah, let's use pan gestures! - Zak
+	UIPanGestureRecognizer* ctxPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandlePan:)];
+    [contractionsView addGestureRecognizer:ctxPan];
 	
 	// Add the contractions graph itself (a subview), to the monitor panel.
 	CGRect contractionsGraphPosition = CGRectMake(0, 0, contractionsGraphView.frame.size.width, contractionsGraphView.frame.size.height);
@@ -562,18 +553,15 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self.view addSubview:quitView];
 	
 	// *** Add button panel. ***
-	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - buttonsViewHandle.frame.size.width, screenRect.size.width - buttonsViewHandle.frame.size.height - statusBarFrame.size.width, buttonsView.frame.size.width, buttonsView.frame.size.height);
+	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - 10, screenRect.size.width - statusBarFrame.size.width - 84, buttonsView.frame.size.width, buttonsView.frame.size.height);
 	[buttonsView setFrame:buttonsPanelPosition];
 	[self.view addSubview:buttonsView];
 	buttonsPanelExpanded = NO;
 	
 	// Add swipe gesture recognizers to button view handle.
-	UISwipeGestureRecognizer* buttonHandleSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandleSlideOut:)];
-	[buttonHandleSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
-	[buttonsViewHandle addGestureRecognizer:buttonHandleSwipeLeft];
-	UISwipeGestureRecognizer* buttonHandleSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandleSlideIn:)];
-	[buttonHandleSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-	[buttonsViewHandle addGestureRecognizer:buttonHandleSwipeRight];	
+    // Nah, let's use pan gestures! - Zak
+	UIPanGestureRecognizer* buttonHandlePan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandlePan:)];
+	[buttonsView addGestureRecognizer:buttonHandlePan];
 	
 	// ** Add button sub-panels. **
 	
@@ -753,9 +741,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setMomPicView:nil];
 	[self setDilationDisplay:nil];
     [self setEnergyNumberLabel:nil];
-	[self setButtonsViewHandle:nil];
 	[self setContractionsView:nil];
-	[self setContractionsViewHandle:nil];
 	[self setContractionsDisplay:nil];
     [self setRelaxButtonsScrollView:nil];
 	[self setRelaxButtonsView:nil];
@@ -774,7 +760,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self setDilationLabelPopupView:nil];
 	[self setContractionsGraphView:nil];
     [self setBackgroundImageView:nil];
-	[self setContractionsViewHandle:nil];
+//	[self setContractionsViewHandle:nil];
 	[self setGameOverScreen:nil];
 	[self setQuitView:nil];
 	[self setSupportDisplayTooltip:nil];
@@ -805,29 +791,79 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self dismissModalViewControllerAnimated:YES];
 }
 
-- (IBAction)buttonHandleSlideOut:(UIGestureRecognizer *)sender
+- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
 {
-	[self toggleButtonsPanel:YES];
-	buttonsPanelExpanded = YES;
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        UIView *piece = gestureRecognizer.view;
+        CGPoint locationInView = [gestureRecognizer locationInView:piece];
+        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
+        
+        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
+        piece.center = locationInSuperview;
+    }
 }
 
-- (IBAction)buttonHandleSlideIn:(UIGestureRecognizer *)sender
+- (IBAction)buttonHandlePan:(UIPanGestureRecognizer *)sender
 {
-	[self toggleButtonsPanel:NO];
-	buttonsPanelExpanded = NO;
-	[self hideAllButtonSubPanels];	
+	UIView *selectedView = [sender view];
+    //[self adjustAnchorPointForGestureRecognizer:sender];
+    
+    if ([sender state] == UIGestureRecognizerStateBegan || [sender state] == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [sender translationInView:[selectedView superview]];
+        if(selectedView.frame.origin.x > -1 && selectedView.frame.origin.x < 474)
+        {
+            [selectedView setCenter:CGPointMake([selectedView center].x + translation.x, [selectedView center].y)];
+            [sender setTranslation:CGPointZero inView:[selectedView superview]];
+        }
+    }
+    if ([sender state] == UIGestureRecognizerStateEnded)
+    {
+        if(selectedView.frame.origin.x > 45 && buttonsPanelExpanded)
+        {
+            printf("%f\n", selectedView.frame.origin.x);
+            buttonsPanelExpanded = NO;
+            [self toggleButtonsPanel:NO];
+        }
+        if(selectedView.frame.origin.x < 438 && !buttonsPanelExpanded)
+        {
+            printf("%f\n", selectedView.frame.origin.x);
+            buttonsPanelExpanded = YES;
+            [self toggleButtonsPanel:YES];
+        }
+        
+    }
 }
 
-- (IBAction)contractionsHandleSlideOut:(UIGestureRecognizer *)sender
+- (IBAction)contractionsHandlePan:(UIPanGestureRecognizer *)sender
 {
-	[self toggleContractionsPanel:YES];
-	contractionsPanelExpanded = YES;	
-}
-
-- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer *)sender
-{
-	[self toggleContractionsPanel:NO];
-	contractionsPanelExpanded = NO;
+    UIView *selectedView = [sender view];
+    //[self adjustAnchorPointForGestureRecognizer:sender];
+    if ([sender state] == UIGestureRecognizerStateBegan || [sender state] == UIGestureRecognizerStateChanged) {
+            printf("%f", selectedView.frame.origin.x);
+        CGPoint translation = [sender translationInView:[selectedView superview]];
+        if(selectedView.frame.origin.x > -445 && selectedView.frame.origin.x < 1)
+        {
+            [selectedView setCenter:CGPointMake([selectedView center].x + translation.x, [selectedView center].y)];
+            [sender setTranslation:CGPointZero inView:[selectedView superview]];
+        }
+    }
+    
+    if ([sender state] == UIGestureRecognizerStateEnded)
+    {
+        if(selectedView.frame.origin.x > -410 && !contractionsPanelExpanded)
+        {
+            contractionsPanelExpanded = YES;
+            [self toggleContractionsPanel:YES];
+        }
+        if(selectedView.frame.origin.x < -45 && contractionsPanelExpanded)
+        {
+            contractionsPanelExpanded = NO;
+            [self toggleContractionsPanel:NO];
+        }
+        printf("%f\n", selectedView.frame.origin.x);
+        
+    }
+	
 }
 
 - (IBAction)relaxActionsButtonPressed:(id)sender
