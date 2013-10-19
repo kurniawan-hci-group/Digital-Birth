@@ -31,14 +31,10 @@
 		energyLevel = 0.0;
 		
 		emptyColor = [UIColor redColor];
-		[emptyColor retain];
 		fillColor = [UIColor greenColor];
-		[fillColor retain];
 		
 		emptyPath = [UIBezierPath bezierPath];
-		[emptyPath retain];
 		fillPath = [UIBezierPath bezierPath];
-		[fillPath retain];
 		
 		self.backgroundColor = [UIColor clearColor];
     }

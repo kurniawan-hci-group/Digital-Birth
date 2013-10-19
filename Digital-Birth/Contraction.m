@@ -79,10 +79,4 @@ static int total_strength = 0;
 	}
 }
 
--(void) dealloc
-{
-	[super dealloc];
-	[timer release];
-}
-
 @end

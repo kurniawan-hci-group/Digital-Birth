@@ -19,7 +19,7 @@
 
 @interface DBGameSummaryView : UIView
 
-@property (nonatomic, retain) NSDictionary* gameSummary;
+@property (nonatomic, strong) NSDictionary* gameSummary;
 
 -(void)display;
 

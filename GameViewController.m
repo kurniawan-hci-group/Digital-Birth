@@ -50,7 +50,9 @@
 @synthesize energyNumberPopupView;
 
 @synthesize buttonsView;
+@synthesize buttonsViewHandle;
 @synthesize contractionsView;
+@synthesize contractionsViewHandle;
 @synthesize contractionsDisplay;
 @synthesize contractionsGraphView;
 
@@ -75,58 +77,6 @@
 @synthesize getHelpButtonsView;
 
 #pragma mark - Memory Management
-- (void)dealloc
-{
-	[game release];
-	[actionButtons release];
-
-	[supportDisplay release];
-	[energyDisplay release];
-
-	[momPicView release];
-
-	[dilationDisplay release];
-
-	[buttonsView release];
-
-	[relaxActionsButton release];
-	[breatheActionsButton release];
-	[beTogetherActionsButton release];
-	[positionsActionsButton release];
-	[verbalCareActionsButton release];
-	[getHelpActionsButton release];
-
-	[contractionsView release];
-	
-	[contractionsDisplay release];
-    [relaxButtonsScrollView release];
-	[relaxButtonsView release];
-	[breatheButtonsScrollView release];
-	[breatheButtonsView release];
-	[beTogetherButtonsScrollView release];
-	[beTogetherButtonsView release];
-	[positionsButtonsScrollView release];
-	[positionsButtonsView release];
-	[verbalCareButtonsScrollView release];
-	[verbalCareButtonsView release];
-	[getHelpButtonsScrollView release];
-	[getHelpButtonsView release];
-	[dilationDisplayButton release];
-	[dilationLabelPopupView release];
-    [energyNumberLabel release];
-    [energyNumberPopupView release];
-	[contractionsGraphView release];
-    [backgroundImageView release];
-//	[contractionsViewHandle release];
-	[gameOverScreen release];
-	[quitView release];
-	[supportDisplayTooltip release];
-	[copingDisplay release];
-	[gameSummaryView release];
-	[sleepIndicatorView release];
-    [energyNumberLabel release];
-	[super dealloc];
-}
 
 -(id)init
 {
@@ -154,7 +104,7 @@
 		sleepIndicatorView.animationImages = sleepingImages;
 		
 		// Create action buttons.
-		actionButtons = [[[NSMutableDictionary alloc] init] retain];
+		actionButtons = [[NSMutableDictionary alloc] init];
 		for(NSString* actionName in game.actionList)
 		{
 			DBActionButton* button = [[DBActionButton alloc] init];
@@ -162,26 +112,24 @@
 			button.cooldownAnimationImages = cooldownImages;
 			[button addTarget:self action:@selector(actionButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 			[button addTarget:self action:@selector(actionButtonTouched:) forControlEvents:UIControlEventTouchDown];
-			[actionButtons setObject:button forKey:actionName];
+			actionButtons[actionName] = button;
 		}
 		
 		// Load position images.
 		NSString* positionListPath = [[NSBundle mainBundle] pathForResource:@"Positions" ofType:@"plist"];
-		positionList = [[NSMutableDictionary dictionaryWithContentsOfFile:positionListPath] retain];
+		positionList = [NSMutableDictionary dictionaryWithContentsOfFile:positionListPath];
 		for(NSString* positionName in positionList)
 		{
 			NSString* imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%s_position", [positionName UTF8String]] ofType:@"png"];
 			if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
 			{
 				UIImage* positionImage = [UIImage imageNamed:[NSString stringWithFormat:@"%s_position.png", [positionName UTF8String]]];
-				[[positionList objectForKey:positionName] setObject:positionImage forKey:@"image"];
+				positionList[positionName][@"image"] = positionImage;
 				
-				NSArray* glowImages = [NSArray arrayWithObjects: 
-									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
+				NSArray* glowImages = @[[UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
 									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow2.png", [positionName UTF8String]]], 
-									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]], 
-									   nil];
-				[[positionList objectForKey:positionName] setObject:glowImages forKey:@"glowAnimation"];
+									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]]];
+				positionList[positionName][@"glowAnimation"] = glowImages;
 			}
 			
 			glowing = NO;
@@ -238,11 +186,20 @@
     if (expand)
 	{
         buttonsFrame.origin.x = 0;
+		
+		// Flip the handle image, so the arrows face left.
+		buttonsViewHandle.transform = CGAffineTransformMake(-1, 0, 0, 1, 0, 0);
     }
 	else
     {
-        buttonsFrame.origin.x = screenRect.size.height - 12;
+		// Place the buttons view just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
+		buttonsFrame.origin.x = screenRect.size.height - (12 + buttonsViewHandle.frame.size.width + 1);
+
+		// Un-flip the handle image, so the arrows face right.
+		buttonsViewHandle.transform = CGAffineTransformMake(1, 0, 0, 1, 0, 0);
 		
+		// Hide whatever button sub-panel may be visible.
+		[self hideAllButtonSubPanels];
 //		[self toggleButtonSubPanel:relaxButtonsScrollView expand:NO];
 //		[self toggleButtonSubPanel:breatheButtonsScrollView expand:NO];
 //		[self toggleButtonSubPanel:beTogetherButtonsScrollView expand:NO];
@@ -262,14 +219,18 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     
     CGRect contractionsFrame = contractionsView.frame;
+	CGRect handleFrame = contractionsViewHandle.frame;
 	
 	if (expand)
 	{
         contractionsFrame.origin.x = 0;
+		contractionsViewHandle.transform = CGAffineTransformMake(-1, 0, 0, 1, 0, 0);
     }
 	else
     {
-        contractionsFrame.origin.x = -contractionsFrame.size.width + 36;
+		// Slide the contractions monitor just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
+        contractionsFrame.origin.x = (12 + handleFrame.size.width + 1) - contractionsFrame.size.width;
+		contractionsViewHandle.transform = CGAffineTransformMake(1, 0, 0, 1, 0, 0);
     }
 	
     [contractionsView setFrame:contractionsFrame];
@@ -326,7 +287,7 @@
 -(void) playSound: (NSString*)fName : (NSString*)ext
 {
 	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:fName withExtension:ext];
-	AudioServicesCreateSystemSoundID((CFURLRef) soundURL, &audioEffect);
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &audioEffect);
 
 	// Register a callback function, which will dispose of the system sound ID
 	// when the sound finishes playing. This allows us to use the same SystemSoundID
@@ -364,7 +325,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	if(game.isSleeping)
 	{
 		CGRect sleepIndicatorViewFrame = sleepIndicatorView.frame;
-		sleepIndicatorViewFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"ZxPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"ZyPos"] floatValue]);
+		sleepIndicatorViewFrame.origin = CGPointMake([positionList[game.getPosition][@"ZxPos"] floatValue], [positionList[game.getPosition][@"ZyPos"] floatValue]);
 		sleepIndicatorView.frame = sleepIndicatorViewFrame;
 
 		sleepIndicatorView.hidden = NO;
@@ -387,16 +348,16 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 {
 	// Change the picture of the woman based on her position.
 	if(!glowing)
-		momPicView.image = [[positionList objectForKey:game.getPosition] objectForKey:@"image"];
+		momPicView.image = positionList[game.getPosition][@"image"];
 	
 	// If we're currently having a contraction, display with glow instead.
 	else if(glowing)
-		momPicView.image = [[[positionList objectForKey:game.getPosition] objectForKey:@"glowAnimation"] objectAtIndex:2];
+		momPicView.image = positionList[game.getPosition][@"glowAnimation"][2];
 	
 	// Reposition the woman appropriately.
 	CGRect momViewFrame = momPicView.frame;
 	momViewFrame.size = momPicView.image.size;
-	momViewFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"xPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"yPos"] floatValue]);
+	momViewFrame.origin = CGPointMake([positionList[game.getPosition][@"xPos"] floatValue], [positionList[game.getPosition][@"yPos"] floatValue]);
 	momPicView.frame = momViewFrame;
 	
 	// Reposition the dilation display.
@@ -455,30 +416,29 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 			ladyReaction = @"Were you trying to make me mad? Because it worked.";
 			break;
 		case 50:
+		default:
 			grade = 'F';
 			ladyReaction = @"You don't know me at all.";
 			break;
-		default:
-			break;
 	}
 	gameSummary = [[NSMutableDictionary alloc] init];
-	[gameSummary setObject:[NSString stringWithFormat:@"%c", grade] forKey:@"Grade"];
-	[gameSummary setObject:ladyReaction forKey:@"Reaction"];
+	gameSummary[@"Grade"] = [NSString stringWithFormat:@"%c", grade];
+	gameSummary[@"Reaction"] = ladyReaction;
 	NSString* stageDuration;
 	stageDuration = stringForTimeInterval(delegate.gameSpeed * game.getLaborDuration);
-	[gameSummary setObject:stageDuration forKey:@"laborDuration"];
+	gameSummary[@"laborDuration"] = stageDuration;
 	if(game.hadBaby)
 	{
-		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"activeLaborStartTime"] timeIntervalSinceDate:[game.getLaborStats objectForKey:@"earlyLaborStartTime"]]));
-		[gameSummary setObject:stageDuration forKey:@"earlyLaborDuration"];
-		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"transitionStartTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"activeLaborStartTime"]]));
-		[gameSummary setObject:stageDuration forKey:@"activeLaborDuration"];
-		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"pushingStartTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"transitionStartTime"]]));
-		[gameSummary setObject:stageDuration forKey:@"transitionDuration"];
-		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([[game.getLaborStats objectForKey:@"hadBabyTime"] timeIntervalSinceDate: [game.getLaborStats objectForKey:@"pushingStartTime"]]));
-		[gameSummary setObject:stageDuration forKey:@"pushingDuration"];
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([(game.getLaborStats)[@"activeLaborStartTime"] timeIntervalSinceDate:(game.getLaborStats)[@"earlyLaborStartTime"]]));
+		gameSummary[@"earlyLaborDuration"] = stageDuration;
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([(game.getLaborStats)[@"transitionStartTime"] timeIntervalSinceDate: (game.getLaborStats)[@"activeLaborStartTime"]]));
+		gameSummary[@"activeLaborDuration"] = stageDuration;
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([(game.getLaborStats)[@"pushingStartTime"] timeIntervalSinceDate: (game.getLaborStats)[@"transitionStartTime"]]));
+		gameSummary[@"transitionDuration"] = stageDuration;
+		stageDuration = stringForTimeInterval(delegate.gameSpeed * ([(game.getLaborStats)[@"hadBabyTime"] timeIntervalSinceDate: (game.getLaborStats)[@"pushingStartTime"]]));
+		gameSummary[@"pushingDuration"] = stageDuration;
 	}
-	[gameSummary setObject:[NSNumber numberWithBool:game.hadBaby] forKey:@"hadBaby"];
+	gameSummary[@"hadBaby"] = @(game.hadBaby);
 	gameSummaryView.gameSummary = gameSummary;	
 	
 	// Display game over screen.	
@@ -502,9 +462,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	for(NSString* actionName in actionButtons)
 	{
 		if(![game canPerformAction:actionName])
-			((DBActionButton*)[actionButtons objectForKey:actionName]).enabled = NO;
-		else if (((DBActionButton*)[actionButtons objectForKey:actionName]).onCooldown == NO)
-			((DBActionButton*)[actionButtons objectForKey:actionName]).enabled = YES;
+			((DBActionButton*)actionButtons[actionName]).enabled = NO;
+		else if (((DBActionButton*)actionButtons[actionName]).onCooldown == NO)
+			((DBActionButton*)actionButtons[actionName]).enabled = YES;
 	}
 }
 
@@ -519,6 +479,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 {
 	// Get and display status (support, energy, coping, dilation, position).
 	[self displaySupport];
+	[supportDisplay clearTrail];
 	[self displayCoping];
 	[self displayEnergy];
 	[self displayDilation];
@@ -530,15 +491,23 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
 		
 	// *** Add contractions monitor panel. ***
-	CGRect contractionsPanelPosition = CGRectMake(36 - contractionsView.frame.size.width, (screenRect.size.width - contractionsView.frame.size.height - statusBarFrame.size.width) / 2, contractionsView.frame.size.width, contractionsView.frame.size.height);
+	// Place the contractions monitor just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
+	CGRect contractionsPanelPosition = CGRectMake((12 + contractionsViewHandle.frame.size.width + 1) - contractionsView.frame.size.width, (screenRect.size.width - contractionsView.frame.size.height - statusBarFrame.size.width) / 2, contractionsView.frame.size.width, contractionsView.frame.size.height);
 	[contractionsView setFrame:contractionsPanelPosition];
-	[self.view addSubview:contractionsView];
+//	[self.view addSubview:contractionsView]; // Simply uncomment this line to put the contraction monitor back in!
 	contractionsPanelExpanded = NO;
 	
 	// Add swipe gesture recognizers to contractions view handle.
     // Nah, let's use pan gestures! - Zak
-	UIPanGestureRecognizer* ctxPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandlePan:)];
-    [contractionsView addGestureRecognizer:ctxPan];
+//	UIPanGestureRecognizer* ctxPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandlePan:)];
+//    [contractionsView addGestureRecognizer:ctxPan];
+	// Why not use both...? - Sandy
+	UISwipeGestureRecognizer* ctxSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandleSlideOut:)];
+	[ctxSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+	[contractionsView addGestureRecognizer:ctxSwipeRight];
+	UISwipeGestureRecognizer* ctxSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(contractionsHandleSlideIn:)];
+	[ctxSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+	[contractionsView addGestureRecognizer:ctxSwipeLeft];
 	
 	// Add the contractions graph itself (a subview), to the monitor panel.
 	CGRect contractionsGraphPosition = CGRectMake(0, 0, contractionsGraphView.frame.size.width, contractionsGraphView.frame.size.height);
@@ -553,15 +522,23 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self.view addSubview:quitView];
 	
 	// *** Add button panel. ***
-	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - 12, screenRect.size.width - statusBarFrame.size.width - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
+	// Place the buttons view just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
+	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - (12 + buttonsViewHandle.frame.size.width + 1), screenRect.size.width - statusBarFrame.size.width - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
 	[buttonsView setFrame:buttonsPanelPosition];
 	[self.view addSubview:buttonsView];
 	buttonsPanelExpanded = NO;
 	
 	// Add swipe gesture recognizers to button view handle.
     // Nah, let's use pan gestures! - Zak
-	UIPanGestureRecognizer* buttonHandlePan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandlePan:)];
-	[buttonsView addGestureRecognizer:buttonHandlePan];
+//	UIPanGestureRecognizer* buttonHandlePan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandlePan:)];
+//	[buttonsView addGestureRecognizer:buttonHandlePan];
+	// Why not use both...? - Sandy
+	UISwipeGestureRecognizer* buttonHandleSwipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandleSlideOut:)];
+	[buttonHandleSwipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+	[buttonsView addGestureRecognizer:buttonHandleSwipeLeft];
+	UISwipeGestureRecognizer* buttonHandleSwipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(buttonHandleSlideIn:)];
+	[buttonHandleSwipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+	[buttonsView addGestureRecognizer:buttonHandleSwipeRight];
 	
 	// ** Add button sub-panels. **
 	
@@ -617,22 +594,22 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	NSMutableDictionary* buttonGroups = [[NSMutableDictionary alloc] initWithCapacity:6];
 	for(NSString* actionName in actionButtons)
 	{
-		NSString* buttonCategory = [[game.actionList objectForKey:actionName] objectForKey:@"category"];
+		NSString* buttonCategory = (game.actionList)[actionName][@"category"];
 
 		// If there's not already a button group for this category, make one, initializing it with the button.
 		// If there is, add the button to said group.
-		if(![buttonGroups objectForKey:buttonCategory])
-			[buttonGroups setObject:[NSMutableArray arrayWithObject:[actionButtons objectForKey:actionName]] forKey:buttonCategory];
+		if(!buttonGroups[buttonCategory])
+			buttonGroups[buttonCategory] = [NSMutableArray arrayWithObject:actionButtons[actionName]];
 		else
-			[(NSMutableArray*)[buttonGroups objectForKey:buttonCategory] addObject:[actionButtons objectForKey:actionName]];
+			[(NSMutableArray*)buttonGroups[buttonCategory] addObject:actionButtons[actionName]];
 		
 		// Load and set button sounds.
-		[(DBActionButton*)[actionButtons objectForKey:actionName] setTooltipSound:actionName];
+		[(DBActionButton*)actionButtons[actionName] setTooltipSound:actionName];
 		
 		// Load and set button images, for normal and disabled state.
 		// Normal image is ACTION_NAME.png; disabled image is ACTION_NAME_disabled.png.
- 		NSString* imageName = [NSString stringWithFormat:@"%s.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
-		[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+ 		NSString* imageName = [NSString stringWithFormat:@"%s.png", [(game.actionList)[actionName][@"name"] UTF8String]];
+		[(DBActionButton*)actionButtons[actionName] setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 		//NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
 		//[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
 		
@@ -665,36 +642,36 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 			theButtonPanel = getHelpButtonsView;
 		}
 		
-		CGRect buttonFrame = CGRectMake(ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * ([(NSMutableArray*)[buttonGroups objectForKey:buttonCategory] count] - 1), ACTION_BUTTON_SPACING, ACTION_BUTTON_SIZE, ACTION_BUTTON_SIZE);
-		((DBActionButton*)[actionButtons objectForKey:actionName]).frame = buttonFrame;
-		[theButtonPanel addSubview:[actionButtons objectForKey:actionName]];
+		CGRect buttonFrame = CGRectMake(ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * ([(NSMutableArray*)buttonGroups[buttonCategory] count] - 1), ACTION_BUTTON_SPACING, ACTION_BUTTON_SIZE, ACTION_BUTTON_SIZE);
+		((DBActionButton*)actionButtons[actionName]).frame = buttonFrame;
+		[theButtonPanel addSubview:actionButtons[actionName]];
 		
 	}
 	
 	// Set sizes of button sub-panel views according to number of buttons.
 	CGRect buttonsViewFrame;
 	
-	buttonsViewFrame = CGRectMake(relaxButtonsView.frame.origin.x, relaxButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"relax"] count], relaxButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(relaxButtonsView.frame.origin.x, relaxButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"relax"] count], relaxButtonsView.frame.size.height);
 	relaxButtonsView.frame = buttonsViewFrame;
 	relaxButtonsScrollView.contentSize = relaxButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(breatheButtonsView.frame.origin.x, breatheButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"breathe"] count], breatheButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(breatheButtonsView.frame.origin.x, breatheButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"breathe"] count], breatheButtonsView.frame.size.height);
 	breatheButtonsView.frame = buttonsViewFrame;
 	breatheButtonsScrollView.contentSize = breatheButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(beTogetherButtonsView.frame.origin.x, beTogetherButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"beTogether"] count], beTogetherButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(beTogetherButtonsView.frame.origin.x, beTogetherButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"beTogether"] count], beTogetherButtonsView.frame.size.height);
 	beTogetherButtonsView.frame = buttonsViewFrame;
 	beTogetherButtonsScrollView.contentSize = beTogetherButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(positionsButtonsView.frame.origin.x, positionsButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"position"] count], positionsButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(positionsButtonsView.frame.origin.x, positionsButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"position"] count], positionsButtonsView.frame.size.height);
 	positionsButtonsView.frame = buttonsViewFrame;
 	positionsButtonsScrollView.contentSize = positionsButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(verbalCareButtonsView.frame.origin.x, verbalCareButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"verbalCare"] count], verbalCareButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(verbalCareButtonsView.frame.origin.x, verbalCareButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"verbalCare"] count], verbalCareButtonsView.frame.size.height);
 	verbalCareButtonsView.frame = buttonsViewFrame;
 	verbalCareButtonsScrollView.contentSize = verbalCareButtonsView.frame.size;
 	
-	buttonsViewFrame = CGRectMake(getHelpButtonsView.frame.origin.x, getHelpButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)[buttonGroups objectForKey:@"help"] count], getHelpButtonsView.frame.size.height);
+	buttonsViewFrame = CGRectMake(getHelpButtonsView.frame.origin.x, getHelpButtonsView.frame.origin.y, ACTION_BUTTON_SPACING + (ACTION_BUTTON_SPACING + ACTION_BUTTON_SIZE) * [(NSMutableArray*)buttonGroups[@"help"] count], getHelpButtonsView.frame.size.height);
 	getHelpButtonsView.frame = buttonsViewFrame;
 	getHelpButtonsScrollView.contentSize = getHelpButtonsView.frame.size;
 	
@@ -720,56 +697,11 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self startDisplayTimer];
 	
 	// Set certain variables to values specified in main menu.
-	[game setStartingDilation:[[settings objectForKey:@"startingDilation"] floatValue]];
+	[game setStartingDilation:[settings[@"startingDilation"] floatValue]];
 	
 	// Start the game timer.	
 	[self.game startGame];
 	
-	[buttonGroups release];
-}
-
-- (void)viewDidUnload
-{
-	[self setGetHelpActionsButton:nil];
-	[self setVerbalCareActionsButton:nil];
-	[self setPositionsActionsButton:nil];
-	[self setBeTogetherActionsButton:nil];
-	[self setBreatheActionsButton:nil];
-	[self setRelaxActionsButton:nil];
-	[self setButtonsView:nil];
-	[self setSupportDisplay:nil];
-	[self setMomPicView:nil];
-	[self setDilationDisplay:nil];
-    [self setEnergyNumberLabel:nil];
-	[self setContractionsView:nil];
-	[self setContractionsDisplay:nil];
-    [self setRelaxButtonsScrollView:nil];
-	[self setRelaxButtonsView:nil];
-	[self setBreatheButtonsScrollView:nil];
-	[self setBreatheButtonsView:nil];
-	[self setBeTogetherButtonsScrollView:nil];
-	[self setBeTogetherButtonsView:nil];
-	[self setPositionsButtonsScrollView:nil];
-	[self setPositionsButtonsView:nil];
-	[self setVerbalCareButtonsScrollView:nil];
-	[self setVerbalCareButtonsView:nil];
-	[self setGetHelpButtonsScrollView:nil];
-	[self setGetHelpButtonsView:nil];	
-	[self setDilationDisplayButton:nil];
-    [self setEnergyNumberButton:nil];
-	[self setDilationLabelPopupView:nil];
-	[self setContractionsGraphView:nil];
-    [self setBackgroundImageView:nil];
-//	[self setContractionsViewHandle:nil];
-	[self setGameOverScreen:nil];
-	[self setQuitView:nil];
-	[self setSupportDisplayTooltip:nil];
-	[self setCopingDisplay:nil];
-	[self setGameSummaryView:nil];
-	[self setSleepIndicatorView:nil];
-    [self setEnergyNumberLabel:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view to relieve memory usage
 }
 
 #pragma mark - Action Methods
@@ -777,7 +709,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 - (IBAction)endGameToMainMenuButtonPressed
 {	
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)resumeButtonPressed
@@ -788,21 +720,21 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 - (IBAction)quitButtonPressed
 {
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
-{
-    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        UIView *piece = gestureRecognizer.view;
-        CGPoint locationInView = [gestureRecognizer locationInView:piece];
-        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
-        
-        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
-        piece.center = locationInSuperview;
-    }
-}
-
+//- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
+//{
+//    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+//        UIView *piece = gestureRecognizer.view;
+//        CGPoint locationInView = [gestureRecognizer locationInView:piece];
+//        CGPoint locationInSuperview = [gestureRecognizer locationInView:piece.superview];
+//        
+//        piece.layer.anchorPoint = CGPointMake(locationInView.x / piece.bounds.size.width, locationInView.y / piece.bounds.size.height);
+//        piece.center = locationInSuperview;
+//    }
+//}
+//
 - (IBAction)buttonHandlePan:(UIPanGestureRecognizer *)sender
 {
 	UIView *selectedView = [sender view];
@@ -846,8 +778,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 {
     UIView *selectedView = [sender view];
     //[self adjustAnchorPointForGestureRecognizer:sender];
-    if ([sender state] == UIGestureRecognizerStateBegan || [sender state] == UIGestureRecognizerStateChanged) {
-            printf("%f", selectedView.frame.origin.x);
+    if ([sender state] == UIGestureRecognizerStateBegan || [sender state] == UIGestureRecognizerStateChanged)
+    {
+        printf("%f", selectedView.frame.origin.x);
         CGPoint translation = [sender translationInView:[selectedView superview]];
         if(selectedView.frame.origin.x > -450 && selectedView.frame.origin.x < 1)
         {
@@ -878,6 +811,30 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
         }
     }
 	
+}
+
+- (IBAction)buttonHandleSlideOut:(UIGestureRecognizer*)sender
+{
+	[self toggleButtonsPanel:YES];
+	buttonsPanelExpanded = YES;
+}
+
+- (IBAction)buttonHandleSlideIn:(UIGestureRecognizer*)sender
+{
+	[self toggleButtonsPanel:NO];
+	buttonsPanelExpanded = NO;
+}
+
+- (IBAction)contractionsHandleSlideOut:(UIGestureRecognizer*)sender
+{
+	[self toggleContractionsPanel:YES];
+	contractionsPanelExpanded = YES;
+}
+
+- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer*)sender
+{
+	[self toggleContractionsPanel:NO];
+	contractionsPanelExpanded = NO;
 }
 
 - (IBAction)relaxActionsButtonPressed:(id)sender
@@ -967,7 +924,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 -(IBAction)momTummyRub:(UIGestureRecognizer *)sender
 {
-	[self actionButtonPressed:[actionButtons objectForKey:@"rubTummy"]];
+	[self actionButtonPressed:actionButtons[@"rubTummy"]];
 }
 
 #pragma mark - Button sub-panel actions
@@ -985,7 +942,8 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	NSInvocation* inv = [NSInvocation invocationWithMethodSignature:sig];
 	[inv setSelector:@selector(enableButtonNow:)];
 	[inv setTarget:self];
-	[inv setArgument:&button atIndex:2];
+	__unsafe_unretained DBActionButton* tempButton = button;
+	[inv setArgument:&tempButton atIndex:2];
 	NSTimer* enableTimer;
 	enableTimer = [NSTimer scheduledTimerWithTimeInterval:(cooldown * GAME_TIMER_TICK) invocation:inv repeats:NO];	
 }

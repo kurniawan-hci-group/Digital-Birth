@@ -41,9 +41,7 @@
 
 -(void)dealloc
 {
-	[name release];
 	AudioServicesDisposeSystemSoundID(tooltipSound);
-	[super dealloc];
 }
 
 //-(void)drawRect:(CGRect)rect
@@ -77,13 +75,13 @@
 -(void)setTooltipSound:(NSString*)soundName
 {
 	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:soundName withExtension:@"aif"];
-	AudioServicesCreateSystemSoundID((CFURLRef) soundURL, &tooltipSound);
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &tooltipSound);
 }
 
 -(void)setTooltipSound:(NSString*)soundName withExtension:(NSString*)ext
 {
 	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:soundName withExtension:ext];
-	AudioServicesCreateSystemSoundID((CFURLRef) soundURL, &tooltipSound);
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &tooltipSound);
 }
 
 -(void)playTooltipSound

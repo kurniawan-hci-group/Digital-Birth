@@ -44,7 +44,7 @@ typedef enum
 
 @interface GameViewController : UIViewController <GameDelegate>
 {
-	id <GameViewDelegate> delegate;
+	id <GameViewDelegate> __weak delegate;
 	
 	Game* game;
 	
@@ -60,57 +60,57 @@ typedef enum
 	SystemSoundID audioEffect;
 }
 
-@property (nonatomic, assign) id delegate;
-@property (nonatomic, retain) NSDictionary* settings;
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, strong) NSDictionary* settings;
 @property (nonatomic) float gameTimerTick;
 
-@property (retain, nonatomic) IBOutlet UIView *gameOverScreen;
-@property (retain, nonatomic) IBOutlet DBGameSummaryView *gameSummaryView;
+@property (strong, nonatomic) IBOutlet UIView *gameOverScreen;
+@property (strong, nonatomic) IBOutlet DBGameSummaryView *gameSummaryView;
 - (IBAction)endGameToMainMenuButtonPressed;
 
-@property (retain, nonatomic) IBOutlet UIView *quitView;
+@property (strong, nonatomic) IBOutlet UIView *quitView;
 - (IBAction)resumeButtonPressed;
 - (IBAction)quitButtonPressed;
 
 // Background image.
-@property (retain, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 #pragma mark - Displayed stats
 
-@property (retain, nonatomic) IBOutlet UIImageView *copingDisplay;
+@property (strong, nonatomic) IBOutlet UIImageView *copingDisplay;
 
-@property (retain, nonatomic) IBOutlet DBSlidingWindowView *supportDisplay;
-@property (retain, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
-@property (nonatomic, retain) IBOutlet DBEnergyView *energyDisplay;
-@property (retain, nonatomic) IBOutlet UIImageView *sleepIndicatorView;
-@property (retain, nonatomic) IBOutlet UILabel *energyNumberLabel;
-@property (retain, nonatomic) IBOutlet UIButton *energyNumberButton;
-@property (retain, nonatomic) IBOutlet UIView *energyNumberPopupView;
+@property (strong, nonatomic) IBOutlet DBSlidingWindowView *supportDisplay;
+@property (strong, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
+@property (nonatomic, strong) IBOutlet DBEnergyView *energyDisplay;
+@property (strong, nonatomic) IBOutlet UIImageView *sleepIndicatorView;
+@property (strong, nonatomic) IBOutlet UILabel *energyNumberLabel;
+@property (strong, nonatomic) IBOutlet UIButton *energyNumberButton;
+@property (strong, nonatomic) IBOutlet UIView *energyNumberPopupView;
 
 - (IBAction)energyNumberButtonPressed:(id)sender;
 - (void)fadeOutEnergyNumber;
 
 
 // The display area showing the mother.
-@property (retain, nonatomic) IBOutlet UIImageView *momPicView;
+@property (strong, nonatomic) IBOutlet UIImageView *momPicView;
 - (IBAction)momTummyRub:(UIGestureRecognizer*)sender;
-@property (retain, nonatomic) IBOutlet UIView *dilationLabelPopupView;
-@property (retain, nonatomic) IBOutlet UILabel *dilationDisplay;
-@property (retain, nonatomic) IBOutlet UIButton *dilationDisplayButton;
+@property (strong, nonatomic) IBOutlet UIView *dilationLabelPopupView;
+@property (strong, nonatomic) IBOutlet UILabel *dilationDisplay;
+@property (strong, nonatomic) IBOutlet UIButton *dilationDisplayButton;
 - (IBAction)dilationDisplayButtonPressed:(id)sender;
 - (void)fadeOutDilationDisplay;
 
 #pragma mark - Contraction monitor
 
-@property (retain, nonatomic) IBOutlet UIView *contractionsView;
-@property (retain, nonatomic) IBOutlet UILabel *contractionsDisplay;
-@property (retain, nonatomic) IBOutlet ContractionsGraphView *contractionsGraphView;
-- (IBAction)contractionsHandleSlide:(UIPanGestureRecognizer*)sender;
+@property (strong, nonatomic) IBOutlet UIView *contractionsView;
+@property (strong, nonatomic) IBOutlet UILabel *contractionsDisplay;
+@property (strong, nonatomic) IBOutlet ContractionsGraphView *contractionsGraphView;
 
-// Using PanGesture
-/*@property (retain, nonatomic) IBOutlet UIImageView *contractionsViewHandle;
+// For sliding the contractions monitor in and out:
+@property (retain, nonatomic) IBOutlet UIImageView *contractionsViewHandle;
+- (IBAction)contractionsHandlePan:(UIPanGestureRecognizer*)sender;
 - (IBAction)contractionsHandleSlideOut:(UIGestureRecognizer*)sender;
-- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer*)sender;*/
+- (IBAction)contractionsHandleSlideIn:(UIGestureRecognizer*)sender;
 
 - (void)toggleContractionsPanel:(BOOL) expand;
 @property bool contractionsPanelExpanded;
@@ -118,34 +118,39 @@ typedef enum
 #pragma mark - Button panels
 
 // The primary button panel.
-@property (retain, nonatomic) IBOutlet UIView *buttonsView;
-- (IBAction)buttonHandleSlide:(UIGestureRecognizer*)sender;
+@property (strong, nonatomic) IBOutlet UIView *buttonsView;
+
+// For sliding the buttons panel in and out:
+@property (nonatomic, strong) IBOutlet UIImageView *buttonsViewHandle;
+- (IBAction)buttonHandlePan:(UIGestureRecognizer*)sender;
+- (IBAction)buttonHandleSlideOut:(UIGestureRecognizer*)sender;
+- (IBAction)buttonHandleSlideIn:(UIGestureRecognizer*)sender;
 
 - (void)toggleButtonsPanel:(BOOL) expand;
 @property bool buttonsPanelExpanded;
 
 // Buttons on the primary button panel.
-@property (retain, nonatomic) IBOutlet UIButton *relaxActionsButton;
-@property (retain, nonatomic) IBOutlet UIButton *breatheActionsButton;
-@property (retain, nonatomic) IBOutlet UIButton *beTogetherActionsButton;
-@property (retain, nonatomic) IBOutlet UIButton *positionsActionsButton;
-@property (retain, nonatomic) IBOutlet UIButton *verbalCareActionsButton;
-@property (retain, nonatomic) IBOutlet UIButton *getHelpActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *relaxActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *breatheActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *beTogetherActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *positionsActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *verbalCareActionsButton;
+@property (strong, nonatomic) IBOutlet UIButton *getHelpActionsButton;
 
 // Scroll views holding the button sub-panels for each category of action, 
 // and the button sub-panels themselves.
-@property (retain, nonatomic) IBOutlet UIScrollView *relaxButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *relaxButtonsView;
-@property (retain, nonatomic) IBOutlet UIScrollView *breatheButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *breatheButtonsView;
-@property (retain, nonatomic) IBOutlet UIScrollView *beTogetherButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *beTogetherButtonsView;
-@property (retain, nonatomic) IBOutlet UIScrollView *positionsButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *positionsButtonsView;
-@property (retain, nonatomic) IBOutlet UIScrollView *verbalCareButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *verbalCareButtonsView;
-@property (retain, nonatomic) IBOutlet UIScrollView *getHelpButtonsScrollView;
-@property (retain, nonatomic) IBOutlet UIView *getHelpButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *relaxButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *relaxButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *breatheButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *breatheButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *beTogetherButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *beTogetherButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *positionsButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *positionsButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *verbalCareButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *verbalCareButtonsView;
+@property (strong, nonatomic) IBOutlet UIScrollView *getHelpButtonsScrollView;
+@property (strong, nonatomic) IBOutlet UIView *getHelpButtonsView;
 
 // Actions for buttons on the main panel.
 - (IBAction)relaxActionsButtonPressed:(id)sender;
@@ -163,9 +168,9 @@ typedef enum
 - (void) hideAllButtonSubPanels;
 
 void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData);
--(void) playSound: (NSString *)fName: (NSString *)ext;
+-(void) playSound: (NSString*)fName : (NSString*)ext;
 
-@property (nonatomic, retain) Game* game;
+@property (nonatomic, strong) Game* game;
 
 -(void)startDisplayTimer;
 -(void)displayTimerTick:(NSTimer*)timer;

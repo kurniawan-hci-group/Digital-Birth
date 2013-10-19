@@ -15,7 +15,7 @@
  A Lady contains a timer (on the main run loop), that fires with a frequency
  specified by the game's game speed setting. On every tick of the timer, a number 
  of internal stats are updated, labor stage transitions are checked for, and 
- various other data model tasks are perfored. See the -(void)timerTick method
+ various other data model tasks are performed. See the -(void)timerTick method
  for details.
  
  Another timer schedules contractions. When the timer fires, the 
@@ -68,7 +68,7 @@ typedef enum
 
 @interface Lady : NSObject
 {
-	id <LadyDelegate> delegate;
+	id <LadyDelegate> __weak delegate;
 	
 	Baby* baby;
 
@@ -112,7 +112,7 @@ typedef enum
 	NSDate* laborStartTime;
 }
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, weak) id delegate;
 
 @property (nonatomic, readonly) Baby *baby;
 

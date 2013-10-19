@@ -27,8 +27,8 @@
 	bool onCooldown;
 }
 
-@property (nonatomic, retain) NSArray* cooldownAnimationImages;
-@property (nonatomic, retain) NSString* name;
+@property (nonatomic, strong) NSArray* cooldownAnimationImages;
+@property (nonatomic, strong) NSString* name;
 @property bool onCooldown;
 
 -(void)playTooltipSound;

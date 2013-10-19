@@ -9,6 +9,34 @@
 #import "DBSlidingWindowView.h"
 
 @implementation DBSlidingWindowView
+{
+	float				targetNumber;
+	float				windowWidth;
+	float				currentValue;
+
+	NSInteger			numPreviousValues;
+	NSMutableArray*		previousValues;
+		
+	UIColor*			colorOutsideWindow;
+	UIColor*			colorInsideWindow;
+	
+	UIBezierPath*		outsideWindowPath;
+	CGRect				insideWindowRect;
+	UIBezierPath*		insideWindowPath;
+	UIBezierPath*		targetNumberPath;
+	UIBezierPath*		currentValuePath;
+	UIBezierPath*		previousValuePath;
+//	NSMutableArray*		previousValuePaths;
+	
+	bool				useGradient;
+	CGGradientRef		outsideWindowGradient;
+	CGGradientRef		insideWindowGradient;
+	
+	UIImageView*		leftBracket;
+	UIImageView*		rightBracket;
+	UIImageView*		targetIndicator;
+	UIImageView*		valueIndicator;
+}
 
 #pragma mark - Accessors
 
@@ -41,8 +69,20 @@
 
 -(void)setCurrentValue:(float)value
 {
+	if(previousValues.count >= numPreviousValues)
+		[previousValues removeLastObject];
+	
+	[previousValues insertObject:@(currentValue) atIndex:0];
+	
 	currentValue = value;
 	[self setNeedsDisplay];
+}
+
+@synthesize drawTrail;
+
+-(void)clearTrail
+{
+	[previousValues removeAllObjects];
 }
 
 @synthesize colorOutsideWindow;
@@ -61,22 +101,26 @@
 		windowWidth = 0.1;
 		currentValue = targetNumber;
 		
+		drawTrail = YES;
+		numPreviousValues = 100;
+		previousValues = [NSMutableArray arrayWithCapacity:numPreviousValues];
+		previousValues[0] = @(currentValue);
+		
 		colorInsideWindow = [UIColor greenColor];
-		[colorInsideWindow retain];
 		colorOutsideWindow = [UIColor redColor];
-		[colorOutsideWindow retain];
 		
 		outsideWindowPath = [UIBezierPath bezierPath];
-		[outsideWindowPath retain];
 		insideWindowPath = [UIBezierPath bezierPath];
-		[insideWindowPath retain];
 		targetNumberPath = [UIBezierPath bezierPath];
-		[targetNumberPath retain];
 		currentValuePath = [UIBezierPath bezierPath];
-		[currentValuePath retain];
+		previousValuePath = [UIBezierPath bezierPath];
+		
+//		previousValuePaths = [NSMutableArray arrayWithCapacity:numPreviousValues];
+//		for(int i = 0; i < numPreviousValues; i++)
+//			previousValuePaths[i] = [UIBezierPath bezierPath];
 		
 		self.backgroundColor = [UIColor clearColor];
-		useGradient = NO;
+		useGradient = YES;
 	}
 	return self;
 }
@@ -87,73 +131,50 @@
 {
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
+	// Create the gradients, if necessary.
 	if(useGradient)
 	{
 		size_t num_locations = 3;
 		CGFloat locations[3] = { 0.0, 0.5, 1.0 };
 		CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-		CGFloat components[12] = { 0.0, 0.0, 0.0, 1.0,
-			0.0, 0.0, 0.0, 0.0,
-			0.0, 0.0, 0.0, 1.0 };
+		CGFloat components[12] =
+			{ 0.0, 0.0, 0.0, 1.0,
+			  0.0, 0.0, 0.0, 1.0,
+			  0.0, 0.0, 0.0, 1.0 };
 		
-	//	[colorOutsideWindow getRed:&components[4] green:&components[5] blue:&components[6] alpha:&components[7]];
 		const CGFloat* outsideColorComponents = CGColorGetComponents(colorOutsideWindow.CGColor);
-		components[4] = outsideColorComponents[0];
-		components[5] = outsideColorComponents[1];
-		components[6] = outsideColorComponents[2];
-		components[7] = outsideColorComponents[3];
+		components[ 0] = outsideColorComponents[0] / 4;
+		components[ 1] = outsideColorComponents[1] / 4;
+		components[ 2] = outsideColorComponents[2] / 4;
+		components[ 3] = outsideColorComponents[3];
+		components[ 4] = outsideColorComponents[0];
+		components[ 5] = outsideColorComponents[1];
+		components[ 6] = outsideColorComponents[2];
+		components[ 7] = outsideColorComponents[3];
+		components[ 8] = outsideColorComponents[0] / 4;
+		components[ 9] = outsideColorComponents[1] / 4;
+		components[10] = outsideColorComponents[2] / 4;
+		components[11] = outsideColorComponents[3];
 		outsideWindowGradient = CGGradientCreateWithColorComponents (colorSpace, components,locations, num_locations);
 		
-	//	[colorInsideWindow getRed:&components[4] green:&components[5] blue:&components[6] alpha:&components[7]];
 		const CGFloat* insideColorComponents = CGColorGetComponents(colorInsideWindow.CGColor);
-		components[4] = insideColorComponents[0];
-		components[5] = insideColorComponents[1];
-		components[6] = insideColorComponents[2];
-		components[7] = insideColorComponents[3];
+		components[ 0] = insideColorComponents[0] / 4;
+		components[ 1] = insideColorComponents[1] / 4;
+		components[ 2] = insideColorComponents[2] / 4;
+		components[ 3] = insideColorComponents[3];
+		components[ 4] = insideColorComponents[0];
+		components[ 5] = insideColorComponents[1];
+		components[ 6] = insideColorComponents[2];
+		components[ 7] = insideColorComponents[3];
+		components[ 8] = insideColorComponents[0] / 4;
+		components[ 9] = insideColorComponents[1] / 4;
+		components[10] = insideColorComponents[2] / 4;
+		components[11] = insideColorComponents[3];
 		insideWindowGradient = CGGradientCreateWithColorComponents (colorSpace, components,locations, num_locations);
 	}
 	
 	// Draw the part of the support display that's outside the "desired support" window.
-	[outsideWindowPath removeAllPoints];
-	[outsideWindowPath moveToPoint:CGPointMake(0, 10)];
-	[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, 10)];
-	[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
-	[outsideWindowPath addLineToPoint:CGPointMake(0, self.frame.size.height)];
-	[outsideWindowPath closePath];
-	[colorOutsideWindow setFill];
-	[outsideWindowPath fill];
 	
-	// Draw the part of the support display that's inside the "desired support" window.
-	insideWindowRect.origin.x = self.frame.size.width * (targetNumber - windowWidth);
-	insideWindowRect.origin.y = 10;
-	insideWindowRect.size.width = self.frame.size.width * windowWidth * 2;
-	insideWindowRect.size.height = self.frame.size.height - 10;
-	
-	[insideWindowPath removeAllPoints];
-	[insideWindowPath moveToPoint:insideWindowRect.origin];
-	[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, 10)];
-	[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, self.frame.size.height)];
-	[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x, self.frame.size.height)];
-	[insideWindowPath closePath];
-	[colorInsideWindow setFill];
-	[insideWindowPath fill];
-	
-	// Draw the line indicating optimal support level.
-	[targetNumberPath removeAllPoints];
-	[targetNumberPath moveToPoint:CGPointMake(targetNumber * self.frame.size.width, 10)];
-	[targetNumberPath addLineToPoint:CGPointMake(targetNumber * self.frame.size.width, self.frame.size.height)];
-	[[UIColor blackColor] setStroke];
-	[targetNumberPath stroke];
-	
-	// Draw the marker indicating current actual support level.
-	[currentValuePath removeAllPoints];
-	[currentValuePath moveToPoint:CGPointMake(currentValue * self.frame.size.width, 10)];
-	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width - 4, 0)];
-	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width + 4, 0)];
-	[currentValuePath closePath];
-	[[UIColor blackColor] setFill];
-	[currentValuePath fill];
-
 	if(useGradient)
 	{
 		CGPoint myStartPoint, myEndPoint;
@@ -163,6 +184,110 @@
 		myEndPoint.y = self.frame.size.height;
 		CGContextDrawLinearGradient (context, outsideWindowGradient, myStartPoint, myEndPoint, 0);
 	}
+	else
+	{
+		[outsideWindowPath removeAllPoints];
+		[outsideWindowPath moveToPoint:CGPointMake(0, 10)];
+		[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, 10)];
+		[outsideWindowPath addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
+		[outsideWindowPath addLineToPoint:CGPointMake(0, self.frame.size.height)];
+		[outsideWindowPath closePath];
+		[colorOutsideWindow setFill];
+		[outsideWindowPath fill];
+	}
+	
+	// Draw the part of the support display that's inside the "desired support" window.
+	
+	insideWindowRect.origin.x = self.frame.size.width * (targetNumber - windowWidth);
+	insideWindowRect.origin.y = 10;
+	insideWindowRect.size.width = self.frame.size.width * windowWidth * 2;
+	insideWindowRect.size.height = self.frame.size.height - 10;
+	
+	if(useGradient)
+	{
+		CGContextSaveGState(context);
+
+		[insideWindowPath removeAllPoints];
+		[insideWindowPath moveToPoint:insideWindowRect.origin];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, 10)];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, self.frame.size.height)];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x, self.frame.size.height)];
+		[insideWindowPath closePath];
+		CGContextAddPath(context, insideWindowPath.CGPath);
+		CGContextClip(context);
+
+		CGPoint myStartPoint, myEndPoint;
+		myStartPoint.x = insideWindowRect.origin.x;
+		myStartPoint.y = 10.0;
+		myEndPoint.x = insideWindowRect.origin.x;
+		myEndPoint.y = self.frame.size.height;
+		CGContextDrawLinearGradient (context, insideWindowGradient, myStartPoint, myEndPoint, 0);
+		
+		CGContextRestoreGState(context);
+	}
+	else
+	{
+		[insideWindowPath removeAllPoints];
+		[insideWindowPath moveToPoint:insideWindowRect.origin];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, 10)];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x + insideWindowRect.size.width, self.frame.size.height)];
+		[insideWindowPath addLineToPoint:CGPointMake(insideWindowRect.origin.x, self.frame.size.height)];
+		[insideWindowPath closePath];
+		[colorInsideWindow setFill];
+		[insideWindowPath fill];
+	}
+	
+	// Draw the line indicating optimal support level.
+	[targetNumberPath removeAllPoints];
+	[targetNumberPath moveToPoint:CGPointMake(targetNumber * self.frame.size.width, 10)];
+	[targetNumberPath addLineToPoint:CGPointMake(targetNumber * self.frame.size.width, self.frame.size.height)];
+	[[UIColor blackColor] setStroke];
+	[targetNumberPath stroke];
+	
+	// Draw the "trail" (the markers indicating previous support levels).
+	if(drawTrail)
+	{
+//		[previousValuePaths makeObjectsPerformSelector:@selector(removeAllPoints)];
+//		
+//		for(int i = 0; i < previousValues.count; i++)
+//		{
+//			[previousValuePaths[i] moveToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width, 10)];
+//			[previousValuePaths[i] addLineToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width - 4, 0)];
+//			[previousValuePaths[i] addLineToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width + 4, 0)];
+//			[previousValuePaths[i] closePath];
+//			
+//			CGFloat opacity = (1.0 / (i + 2));
+//			NSLog(@"opacity of trail: %f", opacity);
+//			[[UIColor colorWithWhite:0.3 alpha:opacity] setFill];
+//			
+//			[previousValuePaths[i] fill];
+//		}
+
+		for(int i = 0; i < previousValues.count; i++)
+		{
+			[previousValuePath removeAllPoints];
+			
+			[previousValuePath moveToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width, 10)];
+			[previousValuePath addLineToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width - 4, 0)];
+			[previousValuePath addLineToPoint:CGPointMake([previousValues[i] floatValue] * self.frame.size.width + 4, 0)];
+			[previousValuePath closePath];
+			
+			CGFloat opacity = (1.0 / (i + 2));
+			NSLog(@"opacity of trail: %f", opacity);
+			[[UIColor colorWithWhite:0.3 alpha:opacity] setFill];
+			
+			[previousValuePath fill];
+		}
+	}
+	
+	// Draw the marker indicating current actual support level.
+	[currentValuePath removeAllPoints];
+	[currentValuePath moveToPoint:CGPointMake(currentValue * self.frame.size.width, 10)];
+	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width - 4, 0)];
+	[currentValuePath addLineToPoint:CGPointMake(currentValue * self.frame.size.width + 4, 0)];
+	[currentValuePath closePath];
+	[[UIColor blackColor] setFill];
+	[currentValuePath fill];
 	
 	// Draw a black rectangle around the edges.
 	CGColorRef black = [UIColor blackColor].CGColor;

@@ -21,12 +21,13 @@
 - (IBAction)startingDilationSliderChanged:(id)sender;
 
 @property (readonly) int gameSpeed;
-@property (retain, nonatomic) IBOutlet UILabel *gameSpeedLabel;
-@property (retain, nonatomic) IBOutlet UILabel *gameSpeedExplanationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *gameSpeedLabel;
+@property (strong, nonatomic) IBOutlet UILabel *gameSpeedExplanationLabel;
 
 @property (readonly) float startingDilation;
-@property (retain, nonatomic) IBOutlet UILabel *startingDilationLabel;
-@property (retain, nonatomic) IBOutlet UILabel *startingDilationEarlyLaborLabel;
-@property (retain, nonatomic) IBOutlet UILabel *startingDilationActiveLaborLabel;
+@property (strong, nonatomic) IBOutlet UILabel *startingDilationLabel;
+@property (strong, nonatomic) IBOutlet UILabel *startingDilationEarlyLaborLabel;
+@property (strong, nonatomic) IBOutlet UILabel *startingDilationActiveLaborLabel;
+@property (strong, nonatomic) IBOutlet UILabel *startingDilationExplanationLabel;
 
 @end

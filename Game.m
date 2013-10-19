@@ -35,9 +35,6 @@ float CONTRACTION_TIMER_TICK;
 		lady.delegate = self;
 		gameStatus = IN_PROGRESS;
 		
-//		GAME_TIMER_TICK = .01;
-//		CONTRACTION_TIMER_TICK = .01;
-		
 		// Load the action list.
 		NSString* actionListPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
 		actionList = [NSDictionary dictionaryWithContentsOfFile:actionListPath];
@@ -45,7 +42,6 @@ float CONTRACTION_TIMER_TICK;
 			printf("Action list loaded successfully.\n");
 		else
 			printf("Could not load action list!\n");
-		[actionList retain];
 	}
 	return self;
 }
@@ -60,7 +56,7 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)startGame
 {
-	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:(int) (1.0/GAME_TIMER_TICK)], @"gameSpeed", nil];
+	NSDictionary* params = @{@"gameSpeed": @((int) (1.0/GAME_TIMER_TICK))};
 	[Flurry logEvent:@"Game_started" withParameters:params timed:YES];
 	
 	gameTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_TIMER_TICK target:self selector:@selector(gameTimerTick:) userInfo:nil repeats:YES];
@@ -70,7 +66,7 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)endGame
 {
-	NSDictionary* params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:lady.laborDuration], @"laborDuration", nil];
+	NSDictionary* params = @{@"laborDuration": @(lady.laborDuration)};
 	[Flurry endTimedEvent:@"Game_started" withParameters:params];
 }
 
@@ -120,10 +116,10 @@ float CONTRACTION_TIMER_TICK;
 
 -(bool)performAction:(NSString*)actionName
 {
-	if([actionList objectForKey:actionName])
+	if(actionList[actionName])
 	{
 		printf("attempting to perform action: %s\n", [actionName UTF8String]);
-		if([lady applyAction:[actionList objectForKey:actionName]])
+		if([lady applyAction:actionList[actionName]])
 			return true;
 		else
 		{
@@ -140,22 +136,19 @@ float CONTRACTION_TIMER_TICK;
 
 -(NSTimeInterval)getCooldown:(NSString*)actionName
 {
-	return (NSTimeInterval) [[[actionList objectForKey:actionName] objectForKey:@"cooldown"] floatValue];
+	return (NSTimeInterval) [actionList[actionName][@"cooldown"] floatValue];
 }
 
 -(bool)canPerformAction:(NSString*)actionName
 {
-	if(![lady eligibleForAction:[actionList objectForKey:actionName]])
-		return false;
-	
-	return true;
+	return [lady eligibleForAction:actionList[actionName]];
 }
 
 #pragma mark - Delegate methods
 
 -(NSDictionary*)getAction:(NSString*)actionName
 {
-	return [actionList objectForKey:actionName];
+	return actionList[actionName];
 }
 
 -(void)contractionStarted
@@ -166,6 +159,7 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)contractionEnded
 {
+	// Pass along to the delegate (the view controller) that a contraction has ended.
 	[delegate contractionEnded];
 }
 
@@ -177,7 +171,7 @@ float CONTRACTION_TIMER_TICK;
 
 #pragma mark - Accessors
 
--(int)getBabyHR
+-(int)getBabyHeartRate
 {
 	return lady.baby.heartRate;
 }
@@ -264,11 +258,5 @@ float CONTRACTION_TIMER_TICK;
 	return lady.laborStats;
 }
 
--(void)dealloc
-{
-	[lady release];
-	[actionList release];
-	[super dealloc];
-}
 
 @end

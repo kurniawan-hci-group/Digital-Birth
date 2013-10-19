@@ -34,7 +34,7 @@
 
 @property (nonatomic) float energyLevel;
 
-@property (nonatomic, retain) UIColor* fillColor;
-@property (nonatomic, retain) UIColor* emptyColor;
+@property (nonatomic, strong) UIColor* fillColor;
+@property (nonatomic, strong) UIColor* emptyColor;
 
 @end

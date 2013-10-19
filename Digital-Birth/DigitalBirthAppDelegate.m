@@ -20,20 +20,13 @@ void uncaughtExceptionHandler(NSException *exception)
 //@synthesize gameViewController;
 //@synthesize game;
 
--(void)dealloc
-{
-	[window release];
-//	[gameViewController release];
-//	[game release];
-    [super dealloc];
-}
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 	[Flurry startSession:@"9PVJFKFSD4KYRFH4BW8M"];
 	
-	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];
 	
 //	GameViewController* gameViewController = [[GameViewController alloc] init];
@@ -41,7 +34,6 @@ void uncaughtExceptionHandler(NSException *exception)
 //	[gameViewController release];
 	MenuViewController* menuViewController = [[MenuViewController alloc] init];
 	window.rootViewController = menuViewController;
-	[menuViewController release];
 	
     [self.window makeKeyAndVisible];
 	

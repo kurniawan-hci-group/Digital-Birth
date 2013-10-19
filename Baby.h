@@ -16,14 +16,8 @@
 
 
 @interface Baby : NSObject
-{
-	int heartRate;
-//	bool inDistress;
-}
 
 @property int heartRate;
-//@property bool inDistress;
-
--(bool) inDistress;
+@property (readonly) bool inDistress;
 
 @end

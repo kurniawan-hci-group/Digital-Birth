@@ -36,14 +36,14 @@
 	
 	// Place grade.
 	fieldContents = [[UILabel alloc] init];
-	fieldContents.text = [gameSummary objectForKey:@"Grade"];
+	fieldContents.text = gameSummary[@"Grade"];
 	fieldContents.frame = CGRectMake(10 + fieldLabel.frame.size.width, 5, 0, 0);
 	[fieldContents sizeToFit];
 	[self addSubview:fieldContents];
 	
 	// Place reaction.
 	fieldContents = [[UILabel alloc] init];
-	fieldContents.text = [NSString stringWithFormat:@"\"%s\"", [[gameSummary objectForKey:@"Reaction"] UTF8String]];
+	fieldContents.text = [NSString stringWithFormat:@"\"%s\"", [gameSummary[@"Reaction"] UTF8String]];
 	fieldContents.frame = CGRectMake(100, 5, 0, 0);
 	[fieldContents sizeToFit];
 	[self addSubview:fieldContents];
@@ -56,13 +56,13 @@
 	[self addSubview:fieldLabel];
 	
 	fieldContents = [[UILabel alloc] init];
-	fieldContents.text = [gameSummary objectForKey:@"laborDuration"];
+	fieldContents.text = gameSummary[@"laborDuration"];
 	fieldContents.frame = CGRectMake(180, 30, 0, 0);
 	[fieldContents sizeToFit];
 	[self addSubview:fieldContents];
 
 	// If we had the baby, place duration stats for each stage.
-	if([[gameSummary objectForKey:@"hadBaby"] boolValue])
+	if([gameSummary[@"hadBaby"] boolValue])
 	{
 		fieldLabel = [[UILabel alloc] init];
 		fieldLabel.text = @"Early labor duration: ";
@@ -71,7 +71,7 @@
 		[self addSubview:fieldLabel];
 		
 		fieldContents = [[UILabel alloc] init];
-		fieldContents.text = [gameSummary objectForKey:@"earlyLaborDuration"];
+		fieldContents.text = gameSummary[@"earlyLaborDuration"];
 		fieldContents.frame = CGRectMake(180, 55, 0, 0);
 		[fieldContents sizeToFit];
 		[self addSubview:fieldContents];
@@ -83,7 +83,7 @@
 		[self addSubview:fieldLabel];
 		
 		fieldContents = [[UILabel alloc] init];
-		fieldContents.text = [gameSummary objectForKey:@"activeLaborDuration"];
+		fieldContents.text = gameSummary[@"activeLaborDuration"];
 		fieldContents.frame = CGRectMake(180, 80, 0, 0);
 		[fieldContents sizeToFit];
 		[self addSubview:fieldContents];
@@ -95,7 +95,7 @@
 		[self addSubview:fieldLabel];
 		
 		fieldContents = [[UILabel alloc] init];
-		fieldContents.text = [gameSummary objectForKey:@"transitionDuration"];
+		fieldContents.text = gameSummary[@"transitionDuration"];
 		fieldContents.frame = CGRectMake(180, 115, 0, 0);
 		[fieldContents sizeToFit];
 		[self addSubview:fieldContents];
@@ -107,7 +107,7 @@
 		[self addSubview:fieldLabel];
 		
 		fieldContents = [[UILabel alloc] init];
-		fieldContents.text = [gameSummary objectForKey:@"pushingDuration"];
+		fieldContents.text = gameSummary[@"pushingDuration"];
 		fieldContents.frame = CGRectMake(180, 140, 0, 0);
 		[fieldContents sizeToFit];
 		[self addSubview:fieldContents];

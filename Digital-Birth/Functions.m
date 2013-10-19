@@ -43,9 +43,9 @@ CGRect rectFor1PxStroke(CGRect rect)
 
 bool actionsShareTags(NSDictionary* actionOne, NSDictionary* actionTwo)
 {
-	for(NSString* tagOne in [actionOne objectForKey:@"tags"])
+	for(NSString* tagOne in actionOne[@"tags"])
 	{
-		for(NSString* tagTwo in [actionTwo objectForKey:@"tags"])
+		for(NSString* tagTwo in actionTwo[@"tags"])
 		{
 			if([tagOne isEqualToString:tagTwo])
 				return true;
@@ -57,10 +57,10 @@ bool actionsShareTags(NSDictionary* actionOne, NSDictionary* actionTwo)
 
 bool isPosition(NSDictionary* action)
 {
-	if([[action objectForKey:@"category"] isEqualToString:@"position"])
+	if([action[@"category"] isEqualToString:@"position"])
 		return true;
 	
-	for(NSString* tag in [action objectForKey:@"tags"])
+	for(NSString* tag in action[@"tags"])
 		if([tag isEqualToString:@"position"])
 		   return true;
 	
@@ -85,8 +85,6 @@ NSString* stringForTimeInterval(NSTimeInterval interval)
 
 	NSDateComponents* conversionInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
 	
-	[date1 release];
-	[date2 release];
 
 	printf("	Exiting stringForTimeInterval!\n");
 	

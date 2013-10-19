@@ -19,7 +19,6 @@
 		graph = [UIBezierPath bezierPath];
 		[graph moveToPoint:CGPointMake(0, self.frame.size.height)];
 		[graph addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
-		[graph retain];
     }
 	return self;
 }

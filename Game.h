@@ -34,7 +34,7 @@ typedef enum
 
 @interface Game : NSObject <LadyDelegate>
 {
-	id <GameDelegate> delegate;
+	id <GameDelegate> __weak delegate;
 	
 	Lady* lady;
 	NSDictionary* actionList;
@@ -45,14 +45,14 @@ typedef enum
 	NSTimer* gameTimer;
 }
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, weak) id delegate;
 
 @property (readonly) gameStatusType gameStatus;
 @property (readonly) int playerScore;
 
 @property (readonly) NSDictionary* actionList;
 
-@property (readonly, getter = getBabyHR) int babyHR;
+@property (readonly, getter = getBabyHeartRate) int babyHeartRate;
 @property (readonly, getter = babyIsDistressed) bool babyIsDistressed;
 @property (readonly, getter = getSupport) float support;
 @property (readonly, getter = getDesiredSupport) float desiredSupport;
