@@ -554,6 +554,15 @@ NSString* laborStageString(laborStageType stage)
 	float copingAdjustmentFactor = (supportWindow - ABS(support - desiredSupport)) / supportWindow;
 	coping = MAX(MIN(coping + 0.001 * MAX_COPING * copingAdjustmentFactor, MAX_COPING), 0);
 	
+	static int previousCoping = MAX_COPING;
+	printf("previous coping: %d\n", previousCoping);
+	if(((int) floor(coping + 0.5)) != previousCoping)
+	{
+		printf("coping changed, requesting display\n");
+		[delegate copingChanged];
+	}
+	previousCoping = (int) floor(coping + 0.5);
+	
 	// Adjust desired support based on coping.
 	desiredSupport = MIN([factors[@"initialDesiredSupport"] floatValue] * MAX_SUPPORT * (2.0 - (coping / (float) MAX_COPING)), MAX_SUPPORT);
 	

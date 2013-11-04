@@ -9,11 +9,21 @@
 #import "GameViewController.h"
 #import "Constants.h"
 
+static NSDictionary* tooltipList;
+
+@interface GameViewController()
+{
+	NSMutableDictionary* tooltips; // Stores any currently spawned tooltips for all views. Keyed on view.
+}
+
+@end
+
 @implementation GameViewController
 @synthesize quitView;
 
 @synthesize delegate;
 @synthesize settings;
+@synthesize showTooltips;
 
 // Accessors for gameTimerTick property.
 -(void)setGameTimerTick:(float)tick
@@ -86,6 +96,17 @@
 		game = [[Game alloc] init];
 		game.delegate = self;
 		
+		// Create dictionary to hold spawned tooltips (so as not to spawn a tooltip if it's already spawned).
+		tooltips = [NSMutableDictionary dictionary];
+		
+		// Load tooltips for all game elements.
+		NSString* tooltipListPath = [[NSBundle mainBundle] pathForResource:@"Tooltips" ofType:@"plist"];
+		tooltipList = [NSDictionary dictionaryWithContentsOfFile:tooltipListPath];
+		if(tooltipList)
+			printf("Tooltip list loaded successfully.\n");
+		else
+			printf("Could not load tooltip list!\n");
+
 		// Load button cooldown images.
 		NSMutableArray* cooldownImages = [[NSMutableArray alloc] init];
 		int i = 0;
@@ -105,7 +126,7 @@
 		
 		// Create action buttons.
 		actionButtons = [[NSMutableDictionary alloc] init];
-		for(NSString* actionName in game.actionList)
+		for(NSString* actionName in [Game actionList])
 		{
 			DBActionButton* button = [[DBActionButton alloc] init];
 			button.name = actionName;
@@ -303,6 +324,16 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	AudioServicesDisposeSystemSoundID(soundID);
 }
 
+-(void)showTooltipForView:(UIView*)view byViewName:(NSString*)name withTag:(NSString*)tag
+{
+	
+}
+
+-(DBTooltipView*) spawnTooltipAtPosition:(CGPoint)position direction:(NSInteger)direction offset:(CGFloat)offset withText:(NSString*)text
+{
+	return [[DBTooltipView alloc] init]; // PLACEHOLDER.
+}
+
 #pragma mark - Display refresh timer
 
 -(void) displaySupport
@@ -314,8 +345,26 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 -(void) displayCoping
 {
+	// Unhide the thought bubble with the coping scale image.
+	[copingDisplay show];
+	
+	// Change the coping scale image based on coping value.
 	NSString* copingImageName = [NSString stringWithFormat:@"coping%i.png", game.getCoping];
 	[copingDisplay setImage:[UIImage imageNamed:copingImageName]];
+	
+	// Reposition the thought bubble appropriately relative to the woman's current position.
+	CGRect copingFrame = copingDisplay.frame;
+	copingFrame.origin = CGPointMake([positionList[game.getPosition][@"copingXPos"] floatValue], [positionList[game.getPosition][@"copingYPos"] floatValue]);
+	copingDisplay.frame = copingFrame;
+	
+	// Flip the thought bubble horizontally or vertically, if necessary.
+	copingDisplay.flipHorizontal = [positionList[game.getPosition][@"copingFlipHorizontal"] boolValue];
+	copingDisplay.flipVertical = [positionList[game.getPosition][@"copingFlipVertical"] boolValue];
+}
+
+-(void)pulseCoping
+{
+	[copingDisplay pulse:10];
 }
 
 -(void) displayEnergy
@@ -361,12 +410,12 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	momPicView.frame = momViewFrame;
 	
 	// Reposition the dilation display.
-	CGRect dilationFrame = dilationDisplayButton.frame;
-//	dilationFrame.origin = CGPointMake([[[positionList objectForKey:game.getPosition] objectForKey:@"dilationXPos"] floatValue], [[[positionList objectForKey:game.getPosition] objectForKey:@"dilationYPos"] floatValue]);
-	dilationDisplayButton.frame = dilationFrame;
-	CGRect dilationPopupFrame = dilationLabelPopupView.frame;
-	dilationPopupFrame.origin = CGPointMake(dilationFrame.origin.x - 70, dilationFrame.origin.y + 9);
-	dilationLabelPopupView.frame = dilationPopupFrame;
+//	CGRect dilationFrame = dilationDisplayButton.frame;
+//	dilationFrame.origin = CGPointMake([positionList[game.getPosition][@"dilationXPos"] floatValue], [positionList [game.getPosition][@"dilationYPos"] floatValue]);
+//	dilationDisplayButton.frame = dilationFrame;
+//	CGRect dilationPopupFrame = dilationLabelPopupView.frame;
+//	dilationPopupFrame.origin = CGPointMake(dilationFrame.origin.x - 70, dilationFrame.origin.y + 9);
+//	dilationLabelPopupView.frame = dilationPopupFrame;
 	
 	// *** SPECIAL CASES ***
 	if([game.getPosition isEqualToString:@"lieOnSide"])
@@ -447,14 +496,14 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self.view addSubview:gameOverScreen];	
 }
 
--(void)displayTimerTick:(NSTimer *)timer
+-(void)displayTimerTick:(NSTimer*)timer
 {
 	if(game.gameStatus != IN_PROGRESS)
 		[self endGame];
 	
 	[self displaySupport];
 	[self displayEnergy];
-	[self displayCoping];
+//	[self displayCoping];
 	[self displayDilation];
 //	[self displayPosition];
 	[self displayContractionStrength];
@@ -477,6 +526,12 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 - (void)viewDidLoad
 {
+	// Configure coping display.
+	copingDisplay.autoFadeOut = YES;
+	copingDisplay.fadeOutDelay = 2.0;
+	copingDisplay.fadeOutDuration = 1.0;
+	copingDisplay.visibleAlpha = 0.75;
+	
 	// Get and display status (support, energy, coping, dilation, position).
 	[self displaySupport];
 	[supportDisplay clearTrail];
@@ -594,7 +649,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	NSMutableDictionary* buttonGroups = [[NSMutableDictionary alloc] initWithCapacity:6];
 	for(NSString* actionName in actionButtons)
 	{
-		NSString* buttonCategory = (game.actionList)[actionName][@"category"];
+		NSString* buttonCategory = [Game actionList][actionName][@"category"];
 
 		// If there's not already a button group for this category, make one, initializing it with the button.
 		// If there is, add the button to said group.
@@ -608,9 +663,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 		
 		// Load and set button images, for normal and disabled state.
 		// Normal image is ACTION_NAME.png; disabled image is ACTION_NAME_disabled.png.
- 		NSString* imageName = [NSString stringWithFormat:@"%s.png", [(game.actionList)[actionName][@"name"] UTF8String]];
+ 		NSString* imageName = [NSString stringWithFormat:@"%s.png", [[Game actionList][actionName][@"name"] UTF8String]];
 		[(DBActionButton*)actionButtons[actionName] setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-		//NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[[game.actionList objectForKey:actionName] objectForKey:@"name"] UTF8String]];
+		//NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[Game actionList][actionName][@"name"] UTF8String]];
 		//[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
 		
 		printf("action name: %s; image name: %s; button category: %s\n", [actionName UTF8String], [imageName UTF8String], [buttonCategory UTF8String]);
@@ -692,6 +747,10 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	UISwipeGestureRecognizer* momSwipedLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(momTummyRub:)];
 	[momSwipedLeft setDirection:UISwipeGestureRecognizerDirectionRight];
 	[momPicView addGestureRecognizer:momSwipedLeft];
+	
+	// Add tap gesture recognizer to mom view (to bring up thought bubble with coping display).
+	UITapGestureRecognizer* momTapped = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showCopingDisplay)];
+	[momPicView addGestureRecognizer:momTapped];
 	
 	// Start the display refresh timer.
 	[self startDisplayTimer];
@@ -925,6 +984,11 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 -(IBAction)momTummyRub:(UIGestureRecognizer *)sender
 {
 	[self actionButtonPressed:actionButtons[@"rubTummy"]];
+}
+
+-(IBAction)showCopingDisplay
+{
+	[copingDisplay show];
 }
 
 #pragma mark - Button sub-panel actions

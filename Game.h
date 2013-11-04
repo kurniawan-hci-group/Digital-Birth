@@ -29,6 +29,7 @@ typedef enum
 -(void)contractionStarted;
 -(void)contractionEnded;
 -(void)displayPosition;
+-(void)pulseCoping;
 
 @end
 
@@ -37,7 +38,7 @@ typedef enum
 	id <GameDelegate> __weak delegate;
 	
 	Lady* lady;
-	NSDictionary* actionList;
+//	NSDictionary* actionList;
 	
 	gameStatusType gameStatus;
 	int playerScore;
@@ -50,7 +51,7 @@ typedef enum
 @property (readonly) gameStatusType gameStatus;
 @property (readonly) int playerScore;
 
-@property (readonly) NSDictionary* actionList;
+//@property (readonly) NSDictionary* actionList;
 
 @property (readonly, getter = getBabyHeartRate) int babyHeartRate;
 @property (readonly, getter = babyIsDistressed) bool babyIsDistressed;
@@ -74,6 +75,7 @@ typedef enum
 
 -(void)startGame;
 -(void)endGame;
++(NSDictionary*)actionList;
 -(bool)performAction:(NSString*)actionName;
 -(NSTimeInterval)getCooldown:(NSString*)actionName;
 -(bool)canPerformAction:(NSString*)actionName;
@@ -83,5 +85,6 @@ typedef enum
 -(void)contractionStarted;
 -(void)contractionEnded;
 -(void)positionChanged;
+-(void)copingChanged;
 
 @end

@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "Flurry.h"
 
-//static NSDictionary* actionList;
+static NSDictionary* actionList;
 
 float GAME_TIMER_TICK;
 float CONTRACTION_TIMER_TICK;
@@ -23,7 +23,7 @@ float CONTRACTION_TIMER_TICK;
 @synthesize gameStatus;
 @synthesize playerScore;
 
-@synthesize actionList;
+//@synthesize actionList;
 
 #pragma mark - Object lifetime
 
@@ -36,12 +36,7 @@ float CONTRACTION_TIMER_TICK;
 		gameStatus = IN_PROGRESS;
 		
 		// Load the action list.
-		NSString* actionListPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
-		actionList = [NSDictionary dictionaryWithContentsOfFile:actionListPath];
-		if(actionList)
-			printf("Action list loaded successfully.\n");
-		else
-			printf("Could not load action list!\n");
+		actionList = [Game actionList];
 	}
 	return self;
 }
@@ -68,6 +63,25 @@ float CONTRACTION_TIMER_TICK;
 {
 	NSDictionary* params = @{@"laborDuration": @(lady.laborDuration)};
 	[Flurry endTimedEvent:@"Game_started" withParameters:params];
+}
+
++(NSDictionary*)loadActionList
+{
+	NSString* actionListPath = [[NSBundle mainBundle] pathForResource:@"Actions" ofType:@"plist"];
+	actionList = [NSDictionary dictionaryWithContentsOfFile:actionListPath];
+	if(actionList)
+		printf("Action list loaded successfully.\n");
+	else
+		printf("Could not load action list!\n");
+	return actionList;
+}
+
++(NSDictionary*)actionList
+{
+	if(actionList == nil)
+		[Game loadActionList];
+	
+	return actionList;
 }
 
 -(void)gameTimerTick:(NSTimer*)timer
@@ -169,6 +183,14 @@ float CONTRACTION_TIMER_TICK;
 	[delegate displayPosition];
 }
 
+-(void)copingChanged
+{
+	printf("coping changed, requesting VC to display it...\n");
+	
+	// Instruct the delegate (the view controller) to show, and pulse, the coping scale display.
+	[delegate pulseCoping];
+}
+
 #pragma mark - Accessors
 
 -(int)getBabyHeartRate
@@ -257,6 +279,5 @@ float CONTRACTION_TIMER_TICK;
 {
 	return lady.laborStats;
 }
-
 
 @end

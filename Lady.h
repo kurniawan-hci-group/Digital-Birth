@@ -63,6 +63,7 @@ typedef enum
 -(void)contractionStarted;
 -(void)contractionEnded;
 -(void)positionChanged;
+-(void)copingChanged;
 
 @end
 

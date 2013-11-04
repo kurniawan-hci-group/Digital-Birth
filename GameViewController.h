@@ -18,8 +18,10 @@
 #import "ContractionsGraphView.h"
 #import "DBSlidingWindowView.h"
 #import "DBEnergyView.h"
+#import "DBCopingDisplay.h"
 #import "DBActionButton.h"
 #import "DBGameSummaryView.h"
+#import "DBTooltipView.h"
 
 #define ACTION_BUTTON_SIZE		56
 #define ACTION_BUTTON_SPACING	 6
@@ -62,6 +64,7 @@ typedef enum
 
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, strong) NSDictionary* settings;
+@property bool showTooltips;
 @property (nonatomic) float gameTimerTick;
 
 @property (strong, nonatomic) IBOutlet UIView *gameOverScreen;
@@ -77,8 +80,7 @@ typedef enum
 
 #pragma mark - Displayed stats
 
-@property (strong, nonatomic) IBOutlet UIImageView *copingDisplay;
-
+@property (strong, nonatomic) IBOutlet DBCopingDisplay *copingDisplay;
 @property (strong, nonatomic) IBOutlet DBSlidingWindowView *supportDisplay;
 @property (strong, nonatomic) IBOutlet UILabel *supportDisplayTooltip;
 @property (nonatomic, strong) IBOutlet DBEnergyView *energyDisplay;
@@ -178,5 +180,6 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData);
 -(void)contractionStarted;
 -(void)contractionEnded;
 -(void)displayPosition;
+-(void)pulseCoping;
 
 @end

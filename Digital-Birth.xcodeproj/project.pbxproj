@@ -173,6 +173,9 @@
 		86A242D715C8D11A00813518 /* verbalCare.png in Resources */ = {isa = PBXBuildFile; fileRef = 86A242BB15C8D11A00813518 /* verbalCare.png */; };
 		86A242D915C8D11A00813518 /* walk.png in Resources */ = {isa = PBXBuildFile; fileRef = 86A242BD15C8D11A00813518 /* walk.png */; };
 		86A242E115C8D34E00813518 /* remindOfBaby.png in Resources */ = {isa = PBXBuildFile; fileRef = 86A242DF15C8D34D00813518 /* remindOfBaby.png */; };
+		86B64B1B181BA2BB00337DAE /* DBCopingDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B64B1A181BA2BB00337DAE /* DBCopingDisplay.m */; };
+		86B64B1E181BAC3000337DAE /* DBTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B64B1D181BAC2F00337DAE /* DBTooltipView.m */; };
+		86B64B20181BB05800337DAE /* Tooltips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86B64B1F181BB05800337DAE /* Tooltips.plist */; };
 		86B9415F15E0979D00A036FD /* DBGameSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B9415E15E0979D00A036FD /* DBGameSummaryView.m */; };
 		86B9416915E3276400A036FD /* allFours_position_glow1.png in Resources */ = {isa = PBXBuildFile; fileRef = 86B9416115E3276300A036FD /* allFours_position_glow1.png */; };
 		86B9416A15E3276400A036FD /* allFours_position_glow2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86B9416215E3276300A036FD /* allFours_position_glow2.png */; };
@@ -247,6 +250,7 @@
 		86D4495C15B38D5900B642B1 /* rhythmicBreathing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D4495215B38D5900B642B1 /* rhythmicBreathing.png */; };
 		86D4495D15B38D5900B642B1 /* visualization.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D4495315B38D5900B642B1 /* visualization.png */; };
 		86DE8CA715B753E300E239B0 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE8CA615B753E300E239B0 /* Functions.m */; };
+		86E2975518263368004DCA42 /* thought_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E2975418263368004DCA42 /* thought_bubble.png */; };
 		86FB268917FFD19E00D3DF68 /* libFlurry_4.2.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FB268817FFD19E00D3DF68 /* libFlurry_4.2.4.a */; };
 		86FB268D17FFD25200D3DF68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FB268C17FFD25100D3DF68 /* Security.framework */; };
 		86FB268F18009D9F00D3DF68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86FB268E18009D9F00D3DF68 /* Default-568h@2x.png */; };
@@ -471,6 +475,11 @@
 		86A242BB15C8D11A00813518 /* verbalCare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = verbalCare.png; sourceTree = "<group>"; };
 		86A242BD15C8D11A00813518 /* walk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walk.png; sourceTree = "<group>"; };
 		86A242DF15C8D34D00813518 /* remindOfBaby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindOfBaby.png; sourceTree = "<group>"; };
+		86B64B19181BA2BB00337DAE /* DBCopingDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBCopingDisplay.h; sourceTree = "<group>"; };
+		86B64B1A181BA2BB00337DAE /* DBCopingDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBCopingDisplay.m; sourceTree = "<group>"; };
+		86B64B1C181BAC2F00337DAE /* DBTooltipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTooltipView.h; sourceTree = "<group>"; };
+		86B64B1D181BAC2F00337DAE /* DBTooltipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTooltipView.m; sourceTree = "<group>"; };
+		86B64B1F181BB05800337DAE /* Tooltips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tooltips.plist; sourceTree = "<group>"; };
 		86B9415D15E0979D00A036FD /* DBGameSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGameSummaryView.h; sourceTree = SOURCE_ROOT; };
 		86B9415E15E0979D00A036FD /* DBGameSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGameSummaryView.m; sourceTree = SOURCE_ROOT; };
 		86B9416115E3276300A036FD /* allFours_position_glow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = allFours_position_glow1.png; sourceTree = "<group>"; };
@@ -550,6 +559,7 @@
 		86D4495315B38D5900B642B1 /* visualization.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visualization.png; sourceTree = "<group>"; };
 		86DE8CA415B753B400E239B0 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		86DE8CA615B753E300E239B0 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		86E2975418263368004DCA42 /* thought_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thought_bubble.png; sourceTree = "<group>"; };
 		86FB268717FFD19E00D3DF68 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		86FB268817FFD19E00D3DF68 /* libFlurry_4.2.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.4.a; sourceTree = "<group>"; };
 		86FB268C17FFD25100D3DF68 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -699,6 +709,7 @@
 				860623BB15A2622B008C6100 /* InfoPlist.strings */,
 				860623BE15A2622B008C6100 /* main.m */,
 				860623C015A2622B008C6100 /* Digital-Birth-Prefix.pch */,
+				86B64B1F181BB05800337DAE /* Tooltips.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -753,12 +764,16 @@
 				86D4494815AF6EEF00B642B1 /* ContractionsGraphView.m */,
 				86CFDD7515C5E4A600EDADC0 /* DBEnergyView.h */,
 				86CFDD7615C5E4A600EDADC0 /* DBEnergyView.m */,
+				86B64B19181BA2BB00337DAE /* DBCopingDisplay.h */,
+				86B64B1A181BA2BB00337DAE /* DBCopingDisplay.m */,
 				865D1CD115D5B35900D4C087 /* DBActionButton.h */,
 				865D1CD215D5B35900D4C087 /* DBActionButton.m */,
 				866F29B415BA5B4900198DA2 /* DBSlidingWindowView.h */,
 				866F29B515BA5B4900198DA2 /* DBSlidingWindowView.m */,
 				86B9415D15E0979D00A036FD /* DBGameSummaryView.h */,
 				86B9415E15E0979D00A036FD /* DBGameSummaryView.m */,
+				86B64B1C181BAC2F00337DAE /* DBTooltipView.h */,
+				86B64B1D181BAC2F00337DAE /* DBTooltipView.m */,
 			);
 			name = "View Classes";
 			sourceTree = "<group>";
@@ -849,6 +864,7 @@
 		868A262915D3220E00230B56 /* Coping Images */ = {
 			isa = PBXGroup;
 			children = (
+				86E2975418263368004DCA42 /* thought_bubble.png */,
 				868A262A15D3222300230B56 /* coping0.png */,
 				865D1CBC15D4EFE200D4C087 /* coping1.png */,
 				865D1CBD15D4EFE200D4C087 /* coping2.png */,
@@ -1377,6 +1393,8 @@
 				3173611D162DF62400AD88D5 /* tryToSleep.png in Resources */,
 				3173611F162DFCEF00AD88D5 /* snuggle.aif in Resources */,
 				86FB268F18009D9F00D3DF68 /* Default-568h@2x.png in Resources */,
+				86B64B20181BB05800337DAE /* Tooltips.plist in Resources */,
+				86E2975518263368004DCA42 /* thought_bubble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1401,6 +1419,8 @@
 				86A242A015C848A700813518 /* MenuViewController.m in Sources */,
 				865D1CD315D5B35A00D4C087 /* DBActionButton.m in Sources */,
 				86B9415F15E0979D00A036FD /* DBGameSummaryView.m in Sources */,
+				86B64B1B181BA2BB00337DAE /* DBCopingDisplay.m in Sources */,
+				86B64B1E181BAC3000337DAE /* DBTooltipView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,6 +1497,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Said Achmiz (64JF784U66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Said Achmiz (64JF784U66)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Digital-Birth/Digital-Birth-Prefix.pch";
 				INFOPLIST_FILE = "Digital-Birth/Digital-Birth-Info.plist";
@@ -1486,6 +1508,8 @@
 					"\"$(SRCROOT)/Digital-Birth/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1495,6 +1519,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Said Achmiz (64JF784U66)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Said Achmiz (64JF784U66)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Digital-Birth/Digital-Birth-Prefix.pch";
 				INFOPLIST_FILE = "Digital-Birth/Digital-Birth-Info.plist";
@@ -1504,6 +1530,8 @@
 					"\"$(SRCROOT)/Digital-Birth/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

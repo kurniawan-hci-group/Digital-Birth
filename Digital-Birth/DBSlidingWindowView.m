@@ -273,7 +273,7 @@
 			[previousValuePath closePath];
 			
 			CGFloat opacity = (1.0 / (i + 2));
-			NSLog(@"opacity of trail: %f", opacity);
+//			NSLog(@"opacity of trail: %f", opacity);
 			[[UIColor colorWithWhite:0.3 alpha:opacity] setFill];
 			
 			[previousValuePath fill];
