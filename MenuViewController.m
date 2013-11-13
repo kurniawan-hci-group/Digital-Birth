@@ -22,6 +22,8 @@
 @synthesize startingDilationActiveLaborLabel;
 @synthesize startingDilationExplanationLabel;
 
+@synthesize tooltipsToggleSwitch;
+
 -(id)init
 {
 	if(self = [super init])
@@ -101,6 +103,7 @@
 	GameViewController* gameViewController = [[GameViewController alloc] init];
 	gameViewController.delegate = self;
 	gameViewController.settings = settings;
+	gameViewController.showTooltips = tooltipsToggleSwitch.on;
 	gameViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	gameViewController.gameTimerTick = 1.0 / (float) gameSpeed;
 	

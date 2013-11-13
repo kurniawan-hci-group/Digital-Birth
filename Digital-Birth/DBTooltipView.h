@@ -10,4 +10,10 @@
 
 @interface DBTooltipView : UIView
 
+@property (nonatomic, strong) NSString* text;
+@property (nonatomic, strong) NSString* tag;
+
+-(void)show;
+-(void)hide;
+
 @end

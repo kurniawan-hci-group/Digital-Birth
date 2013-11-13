@@ -30,4 +30,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *startingDilationActiveLaborLabel;
 @property (strong, nonatomic) IBOutlet UILabel *startingDilationExplanationLabel;
 
+@property (strong, nonatomic) IBOutlet UISwitch *tooltipsToggleSwitch;
+
 @end

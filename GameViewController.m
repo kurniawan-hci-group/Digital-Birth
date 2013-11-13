@@ -9,11 +9,11 @@
 #import "GameViewController.h"
 #import "Constants.h"
 
-static NSDictionary* tooltipList;
+static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip text and positioning info) for all tooltips.
 
 @interface GameViewController()
 {
-	NSMutableDictionary* tooltips; // Stores any currently spawned tooltips for all views. Keyed on view.
+	NSMutableDictionary* tooltips; // Stores any currently spawned tooltips for all views. Keyed on view name.
 }
 
 @end
@@ -305,28 +305,54 @@ static NSDictionary* tooltipList;
 	}
 }
 
--(void) playSound: (NSString*)fName : (NSString*)ext
+//-(void) playSound: (NSString*)fName : (NSString*)ext
+//{
+//	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:fName withExtension:ext];
+//	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &audioEffect);
+//
+//	// Register a callback function, which will dispose of the system sound ID
+//	// when the sound finishes playing. This allows us to use the same SystemSoundID
+//	// variable for all the button sounds, without having to declare one variable
+//	// for each sound, while still preventing memory/sound ID leaks.
+//	AudioServicesAddSystemSoundCompletion(audioEffect, NULL, NULL, buttonSoundAudioCallback, NULL);
+//
+//	AudioServicesPlayAlertSound(audioEffect);
+//}
+//
+//void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
+//{
+//	AudioServicesDisposeSystemSoundID(soundID);
+//}
+
+-(void)setTooltipForView:(UIView*)view byViewName:(NSString*)name withTag:(NSString*)tag
 {
-	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:fName withExtension:ext];
-	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &audioEffect);
-
-	// Register a callback function, which will dispose of the system sound ID
-	// when the sound finishes playing. This allows us to use the same SystemSoundID
-	// variable for all the button sounds, without having to declare one variable
-	// for each sound, while still preventing memory/sound ID leaks.
-	AudioServicesAddSystemSoundCompletion(audioEffect, NULL, NULL, buttonSoundAudioCallback, NULL);
-
-	AudioServicesPlayAlertSound(audioEffect);
-}
-
-void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
-{
-	AudioServicesDisposeSystemSoundID(soundID);
+	
 }
 
 -(void)showTooltipForView:(UIView*)view byViewName:(NSString*)name withTag:(NSString*)tag
 {
+	if(tooltips[name] != nil && [((DBTooltipView*)tooltips[name]).tag isEqualToString:tag])
+	{
+		[tooltips[name] show];
+	}
+	else
+	{
+		NSLog(@"Creating tooltip for %@", name);
+		
+		// Get tooltip specification from tooltips dictionary.
+		// NEXT 4 LINES IS PLACEHOLDER CODE!
+		CGPoint position;
+		NSInteger direction;
+		CGFloat offset;
+		NSString* text;
+		
+		// Create the tooltip.
+		tooltips[name] = [self spawnTooltipAtPosition:position direction:direction offset:offset withText:text];
+		[self.view addSubview:tooltips[name]];
+		[tooltips[name] show];
+	}
 	
+	NSLog(@"Showing tooltip for %@", name);
 }
 
 -(DBTooltipView*) spawnTooltipAtPosition:(CGPoint)position direction:(NSInteger)direction offset:(CGFloat)offset withText:(NSString*)text
@@ -1030,8 +1056,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 -(void)actionButtonTouched:(DBActionButton*)button
 {
-//	[self playSound:button.name:@"aif"];
 	[button playTooltipSound];
+	
+	[self showTooltipForView:button byViewName:[NSString stringWithFormat:@"%@Button", button.name]  withTag:@"default"];
 }
 
 #pragma mark - Delegate methods
