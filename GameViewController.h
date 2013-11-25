@@ -64,7 +64,6 @@ typedef enum
 
 @property (nonatomic, weak) id delegate;
 @property (nonatomic, strong) NSDictionary* settings;
-@property bool showTooltips;
 @property (nonatomic) float gameTimerTick;
 
 @property (strong, nonatomic) IBOutlet UIView *gameOverScreen;
@@ -170,7 +169,6 @@ typedef enum
 - (void) hideAllButtonSubPanels;
 
 void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData);
--(void) playSound: (NSString*)fName : (NSString*)ext;
 
 @property (nonatomic, strong) Game* game;
 

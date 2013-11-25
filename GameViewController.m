@@ -23,7 +23,6 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 
 @synthesize delegate;
 @synthesize settings;
-@synthesize showTooltips;
 
 // Accessors for gameTimerTick property.
 -(void)setGameTimerTick:(float)tick
@@ -99,7 +98,7 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 		// Create dictionary to hold spawned tooltips (so as not to spawn a tooltip if it's already spawned).
 		tooltips = [NSMutableDictionary dictionary];
 		
-		// Load tooltips for all game elements.
+		// Load tooltip specifications for all game elements.
 		NSString* tooltipListPath = [[NSBundle mainBundle] pathForResource:@"Tooltips" ofType:@"plist"];
 		tooltipList = [NSDictionary dictionaryWithContentsOfFile:tooltipListPath];
 		if(tooltipList)
@@ -334,30 +333,129 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	if(tooltips[name] != nil && [((DBTooltipView*)tooltips[name]).tag isEqualToString:tag])
 	{
 		[tooltips[name] show];
+		if([settings[@"autoFadeTooltips"] boolValue] == YES)
+			[self performSelector:@selector(fadeOutTooltip:) withObject:tooltips[name] afterDelay:[settings[@"autoFadeTooltipsDelay"] floatValue]];
 	}
 	else
 	{
 		NSLog(@"Creating tooltip for %@", name);
 		
-		// Get tooltip specification from tooltips dictionary.
-		// NEXT 4 LINES IS PLACEHOLDER CODE!
-		CGPoint position;
-		NSInteger direction;
-		CGFloat offset;
-		NSString* text;
+		NSMutableDictionary* tooltipSpec;
 		
-		// Create the tooltip.
-		tooltips[name] = [self spawnTooltipAtPosition:position direction:direction offset:offset withText:text];
+		// Determine which tooltip specification to use:
+		// 1. If there's nothing at all for that view name, show no tooltip.
+		// 2. If there's no specific tooltip spec for that tag under that name, use the default for that name.
+		// 3. If it exists, use the specific tooltip for that tag under that name.
+		if(tooltipList[name] == nil || (tooltipList[name][tag] == nil && tooltipList[name][@"default"] == nil))
+		{
+			NSLog(@"Using global default spec for this tooltip.");
+			tooltipSpec = [tooltipList[@"default"] mutableCopy];
+			tooltipSpec[@"text"] = name;
+		}
+		else if (tooltipList[name][tag] == nil)
+		{
+			NSLog(@"Using this view's default spec for this tooltip.");
+			tooltipSpec = [tooltipList[name][@"default"] mutableCopy];
+		}
+		else
+		{
+			NSLog(@"Using spec for this view and tag.");
+			tooltipSpec = [tooltipList[name][tag] mutableCopy];
+		}
+		
+		// Get the tooltip spec fields from the spec.
+		CGPoint position;
+		if(tooltipSpec[@"position"] == nil)
+		{
+			CGPoint viewFrameOrigin = [view convertPoint:view.bounds.origin toView:self.view];
+			position = viewFrameOrigin;			
+		}
+		else
+		{
+			position.x = [tooltipSpec[@"position"][@"x"] floatValue];
+			position.y = [tooltipSpec[@"position"][@"y"] floatValue];
+		}
+		NSInteger direction = [tooltipSpec[@"direction"] integerValue];
+		CGFloat offset = [tooltipSpec[@"offset"] floatValue];
+		NSString* text = tooltipSpec[@"text"];
+		
+		// Create and add the tooltip.
+		tooltips[name] = [self spawnTooltipAtPosition:position direction:direction offset:offset withText:text andTag:tag];
 		[self.view addSubview:tooltips[name]];
+		
+		// Show the tooltip.
 		[tooltips[name] show];
+		if([settings[@"autoFadeTooltips"] boolValue] == YES)
+			[self performSelector:@selector(fadeOutTooltip:) withObject:tooltips[name] afterDelay:[settings[@"autoFadeTooltipsDelay"] floatValue]];
 	}
 	
 	NSLog(@"Showing tooltip for %@", name);
 }
 
--(DBTooltipView*) spawnTooltipAtPosition:(CGPoint)position direction:(NSInteger)direction offset:(CGFloat)offset withText:(NSString*)text
+-(DBTooltipView*) spawnTooltipAtPosition:(CGPoint)position direction:(NSInteger)direction offset:(CGFloat)offset withText:(NSString*)text andTag:(NSString*)tag
 {
-	return [[DBTooltipView alloc] init]; // PLACEHOLDER.
+	// Create tooltip view.
+	DBTooltipView* tooltip = [[DBTooltipView alloc] init];
+
+	// Configure tooltip.
+	tooltip.text = text;
+	tooltip.tag = tag;
+	
+	// Configure tooltip position.
+	CGRect frame = tooltip.frame;
+	frame.origin = position;
+	
+	// Square root of 2 to get axial (x,y) distances for 45-degree directions.
+	CGFloat diag_factor = sqrtf(2.0);
+	
+	// Move origin in the appropriate direction (0 = 12:00, 1 = 1:30, ..., 7 = 10:30)
+	// (or in other words, 0 = N, 1 = NE, ..., 7 = NW) by the offset.
+	switch (direction)
+	{
+		case 0:
+			frame.origin.y -= offset;
+			break;
+			
+		case 1:
+			frame.origin.x += offset / diag_factor;
+			frame.origin.y -= offset / diag_factor;
+			break;
+			
+		case 2:
+			frame.origin.x += offset;
+			break;
+			
+		case 3:
+			frame.origin.x += offset / diag_factor;
+			frame.origin.y += offset / diag_factor;
+			break;
+			
+		case 4:
+			frame.origin.y += offset;
+			break;
+			
+		case 5:
+			frame.origin.x -= offset / diag_factor;
+			frame.origin.y += offset / diag_factor;
+			break;
+			
+		case 6:
+			frame.origin.x -= offset;
+			break;
+			
+		case 7:
+			frame.origin.x -= offset / diag_factor;
+			frame.origin.y -= offset / diag_factor;
+			break;
+			
+		default:
+			break;
+	}
+	
+	// Set modified frame.
+	tooltip.frame = frame;
+
+	return tooltip;
 }
 
 #pragma mark - Display refresh timer
@@ -1058,7 +1156,8 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 {
 	[button playTooltipSound];
 	
-	[self showTooltipForView:button byViewName:[NSString stringWithFormat:@"%@Button", button.name]  withTag:@"default"];
+	if([settings[@"showTooltips"] boolValue] == YES)
+		[self showTooltipForView:button byViewName:[NSString stringWithFormat:@"%@Button", button.name]  withTag:@"default"];
 }
 
 #pragma mark - Delegate methods
