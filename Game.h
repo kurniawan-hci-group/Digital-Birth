@@ -68,6 +68,7 @@ typedef enum
 @property (readonly, getter = getContractionStrength) int contractionStrength;
 @property (readonly, getter = watersReleased) bool watersReleased;
 @property (readonly, getter = hadBaby) bool hadBaby;
+@property (readonly, getter = getLaborStage) laborStageType laborStage;
 @property (readonly, getter = getLaborDuration) NSTimeInterval laborDuration;
 @property (readonly, getter = getLaborStats) NSDictionary* laborStats;
 

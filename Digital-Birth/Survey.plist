@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>surveyURL</key>
+	<string>https://www.surveymonkey.com/s/DigitalBirth</string>
+	<key>emailSubject</key>
+	<string>Digital Birth survey</string>
+	<key>emailBody</key>
+	<string>Hello!
+
+Thank you for helping us improve Digital Birth. Please click the following link to fill out our survey: 
+</string>
+</dict>
+</plist>

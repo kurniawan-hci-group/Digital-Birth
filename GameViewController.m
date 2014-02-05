@@ -8,8 +8,12 @@
 
 #import "GameViewController.h"
 #import "Constants.h"
+#import "SurveyViewController.h"
 
 static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip text and positioning info) for all tooltips.
+
+static NSDictionary* nurseHelpGrid; // Stores the grid of help text / audio IDs for each combination of factors.
+static NSDictionary* nurseHelpContent; // Stores the help content (text only; audio is stored in individual audio files).
 
 @interface GameViewController()
 {
@@ -40,6 +44,11 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 
 @synthesize gameOverScreen;
 @synthesize gameSummaryView;
+
+@synthesize nurseHelpView;
+@synthesize nurseHelpTextView;
+@synthesize nurseHelpImageView;
+
 @synthesize backgroundImageView;
 
 @synthesize buttonsPanelExpanded;
@@ -105,6 +114,26 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 			printf("Tooltip list loaded successfully.\n");
 		else
 			printf("Could not load tooltip list!\n");
+		
+		// Load nurse help grid.
+		NSString* nurseHelpGridPath = [[NSBundle mainBundle] pathForResource:@"NurseHelpGrid" ofType:@"plist"];
+		nurseHelpGrid = [NSDictionary dictionaryWithContentsOfFile:nurseHelpGridPath];
+		if(nurseHelpGrid)
+			printf("Nurse help grid loaded successfully.\n");
+		else
+			printf("Could not load nurse help grid!");
+		
+		NSLog(@"%@", nurseHelpGrid);
+		
+		// Load nurse help text content.
+		NSString* nurseHelpContentPath = [[NSBundle mainBundle] pathForResource:@"NurseHelpContent" ofType:@"strings"];
+		nurseHelpContent = [NSDictionary dictionaryWithContentsOfFile:nurseHelpContentPath];
+		if(nurseHelpContent)
+			printf("Nurse help content loaded successfully.\n");
+		else
+			printf("Could not load nurse help content!");
+		
+		NSLog(@"%@", nurseHelpContent);
 
 		// Load button cooldown images.
 		NSMutableArray* cooldownImages = [[NSMutableArray alloc] init];
@@ -304,24 +333,29 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	}
 }
 
-//-(void) playSound: (NSString*)fName : (NSString*)ext
-//{
-//	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:fName withExtension:ext];
-//	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &audioEffect);
-//
-//	// Register a callback function, which will dispose of the system sound ID
-//	// when the sound finishes playing. This allows us to use the same SystemSoundID
-//	// variable for all the button sounds, without having to declare one variable
-//	// for each sound, while still preventing memory/sound ID leaks.
-//	AudioServicesAddSystemSoundCompletion(audioEffect, NULL, NULL, buttonSoundAudioCallback, NULL);
-//
-//	AudioServicesPlayAlertSound(audioEffect);
-//}
-//
-//void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
-//{
-//	AudioServicesDisposeSystemSoundID(soundID);
-//}
+-(void) playSound: (NSString*)fName : (NSString*)ext
+{
+	NSURL* soundURL = [[NSBundle mainBundle] URLForResource:fName withExtension:ext];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef) soundURL, &audioEffect);
+
+	// Register a callback function, which will dispose of the system sound ID
+	// when the sound finishes playing. This allows us to use the same SystemSoundID
+	// variable for all the sounds, without having to declare one variable
+	// for each sound, while still preventing memory/sound ID leaks.
+	AudioServicesAddSystemSoundCompletion(audioEffect, NULL, NULL, buttonSoundAudioCallback, NULL);
+
+	AudioServicesPlayAlertSound(audioEffect);
+}
+
+-(void)stopSound
+{
+	AudioServicesDisposeSystemSoundID(audioEffect);
+}
+
+void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
+{
+	AudioServicesDisposeSystemSoundID(soundID);
+}
 
 -(void)setTooltipForView:(UIView*)view byViewName:(NSString*)name withTag:(NSString*)tag
 {
@@ -456,6 +490,94 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	tooltip.frame = frame;
 
 	return tooltip;
+}
+
+-(NSString*)stringifyLaborStage:(laborStageType)stage
+{
+	switch (stage)
+	{
+		case EARLY:
+			return @"EARLY";
+			break;
+			
+		case ACTIVE:
+			return @"ACTIVE";
+			break;
+			
+		case LATE_ACTIVE:
+			return @"LATE_ACTIVE";
+			break;
+			
+		case TRANSITION:
+			return @"TRANSITION";
+			break;
+			
+		case PUSHING:
+			return @"PUSHING";
+			break;
+			
+		case BABYBORN:
+			return @"BABYBORN";
+			break;
+			
+		default:
+			break;
+	}
+}
+
+-(void)showNurseHelpWindow
+{
+	// Check for conditions: labor stage, coping, support, energy, position.
+	
+	// Get the string describing the current labor stage.
+	NSString* laborStage = laborStageString(game.getLaborStage);
+	
+	// Coping indicates which of 6 intervals it is (0, 1-2, 3-4, 5-6, 7-8, 9-10).
+	NSString* coping = [NSString stringWithFormat:@"%d", (game.getCoping + 1) / 2];
+
+	// Support can be too low, too high, or just right..
+	NSString* supportLevel;
+	if(game.getSupport < game.getDesiredSupport - game.getSupportWindow)
+		supportLevel = @"TOO_LOW";
+	else if(game.getSupport > game.getDesiredSupport + game.getSupportWindow)
+		supportLevel = @"TOO_HIGH";
+	else
+		supportLevel = @"JUST_RIGHT";
+	
+	// Energy can be asleep, low, or normal.
+	NSString* energyLevel;
+	if(game.isSleeping == YES)
+		energyLevel = @"ASLEEP";
+	else if(game.getEnergy <= 0.15)
+		energyLevel = @"LOW";
+	else
+		energyLevel = @"NORMAL";
+	
+	// Get the current position.
+	NSString* position = game.getPosition;
+	
+	NSLog(@"%@ %@ %@ %@", laborStage, coping, supportLevel, energyLevel);
+	
+	// Get the available help content indices for the current combinations of factors.
+	NSArray* availableHelpContentIndices = nurseHelpGrid[laborStage][coping][supportLevel][energyLevel];
+	
+	NSLog(@"%d help content indices available", availableHelpContentIndices.count);
+	
+	// Randomly determine which help string to use.
+	NSString* helpStringIndex = availableHelpContentIndices[arc4random() % availableHelpContentIndices.count];
+	
+	// Load the text for that help string index.
+	nurseHelpTextView.text = nurseHelpContent[helpStringIndex];
+	
+	// Get the audio file name for that help string index.
+	NSString* helpAudioClipFileName = [NSString stringWithFormat:@"nurseHelp%@", helpStringIndex];
+	NSLog(@"%@", helpAudioClipFileName);
+	
+	// Show the help window.
+	nurseHelpView.hidden = NO;
+	
+	// Play the audio file for that help string index.
+	[self playSound:helpAudioClipFileName:@"aif"];
 }
 
 #pragma mark - Display refresh timer
@@ -700,6 +822,10 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	quitView.frame = CGRectMake((screenRect.size.height / 2) - (quitView.frame.size.width / 2), (screenRect.size.width / 2) - (quitView.frame.size.height / 2) - 10, quitView.frame.size.width, quitView.frame.size.height);
 	[self.view addSubview:quitView];
 	
+	// *** Add the "help from nurse" box. ***
+	nurseHelpView.frame = CGRectMake(14, 68, nurseHelpView.frame.size.width, nurseHelpView.frame.size.height);
+	[self.view addSubview:nurseHelpView];
+	
 	// *** Add button panel. ***
 	// Place the buttons view just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
 	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - (12 + buttonsViewHandle.frame.size.width + 1), screenRect.size.width - statusBarFrame.size.width - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
@@ -895,6 +1021,16 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)surveyButtonPressed
+{
+	NSLog(@"Survey button pressed");
+	
+	SurveyViewController* surveyViewController = [[SurveyViewController alloc] init];
+	surveyViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+	
+	[self presentViewController:surveyViewController animated:YES completion:nil];
+}
+
 - (IBAction)resumeButtonPressed
 {
 	quitView.hidden = YES;
@@ -904,6 +1040,12 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 {
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(IBAction)nurseHelpCloseButtonPressed
+{
+	[self stopSound];
+	nurseHelpView.hidden = YES;
 }
 
 //- (void)adjustAnchorPointForGestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
@@ -1046,9 +1188,21 @@ static NSDictionary* tooltipList; // Stores all tooltip specifications (tooltip 
 	[self toggleButtonSubPanel:verbalCareButton];
 }
 
-- (IBAction)getHelpActionsButtonPressed:(id)sender
+//- (IBAction)getHelpActionsButtonPressed:(id)sender
+//{
+//	[self toggleButtonSubPanel:getHelpButton];
+//}
+
+- (IBAction)getHelpButtonPressed:(id)sender
 {
-	[self toggleButtonSubPanel:getHelpButton];
+	NSLog(@"Help button pressed.");
+	
+	// If we're currently displaying a help window, do nothing.
+	if(nurseHelpView.hidden == NO)
+		return;
+	
+	// Otherwise, display a help window.
+	[self showNurseHelpWindow];
 }
 
 - (IBAction)dilationDisplayButtonPressed:(id)sender

@@ -69,10 +69,16 @@ typedef enum
 @property (strong, nonatomic) IBOutlet UIView *gameOverScreen;
 @property (strong, nonatomic) IBOutlet DBGameSummaryView *gameSummaryView;
 - (IBAction)endGameToMainMenuButtonPressed;
+- (IBAction)surveyButtonPressed;
 
 @property (strong, nonatomic) IBOutlet UIView *quitView;
 - (IBAction)resumeButtonPressed;
 - (IBAction)quitButtonPressed;
+
+@property (strong, nonatomic) IBOutlet UIView* nurseHelpView;
+@property (strong, nonatomic) IBOutlet UITextView* nurseHelpTextView;
+@property (strong, nonatomic) IBOutlet UIImageView* nurseHelpImageView;
+-(IBAction)nurseHelpCloseButtonPressed;
 
 // Background image.
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -159,7 +165,8 @@ typedef enum
 - (IBAction)beTogetherActionsButtonPressed:(id)sender;
 - (IBAction)positionsActionButtonPressed:(id)sender;
 - (IBAction)verbalCareActionsButtonPressed:(id)sender;
-- (IBAction)getHelpActionsButtonPressed:(id)sender;
+//- (IBAction)getHelpActionsButtonPressed:(id)sender;
+- (IBAction)getHelpButtonPressed:(id)sender;
 
 #pragma mark - Sub-panel button actions
 -(void)actionButtonPressed:(DBActionButton*)button;

@@ -270,6 +270,11 @@ float CONTRACTION_TIMER_TICK;
 	return lady.watersReleased;
 }
 
+-(laborStageType)getLaborStage
+{
+	return lady.laborStage;
+}
+
 -(NSTimeInterval)getLaborDuration
 {
 	return lady.laborDuration;

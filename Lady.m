@@ -13,8 +13,6 @@
 
 static NSDictionary* positionList;
 
-NSString* laborStageString(laborStageType stage);
-
 NSString* laborStageString(laborStageType stage)
 {
 	switch (stage)

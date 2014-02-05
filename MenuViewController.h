@@ -19,6 +19,7 @@
 - (IBAction)newGameButtonPressed;
 - (IBAction)gameSpeedSliderChanged:(id)sender;
 - (IBAction)startingDilationSliderChanged:(id)sender;
+- (IBAction)aboutDigitalBirthButtonPressed:(id)sender;
 
 @property (readonly) int gameSpeed;
 @property (strong, nonatomic) IBOutlet UILabel *gameSpeedLabel;

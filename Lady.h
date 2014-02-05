@@ -42,6 +42,8 @@ typedef enum
 	BABYBORN
 } laborStageType;
 
+NSString* laborStageString(laborStageType stage);
+
 //@interface Stats : NSObject
 //{
 //	// Initial stats ("factors") — these influence how the woman responds to various actions

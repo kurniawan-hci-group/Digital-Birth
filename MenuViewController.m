@@ -8,6 +8,7 @@
 
 #import "MenuViewController.h"
 #import "GameViewController.h"
+#import "AboutViewController.h"
 #import "Constants.h"
 
 @implementation MenuViewController
@@ -124,6 +125,16 @@
 {
 	startingDilation = [(UISlider*)sender value];
 	[self displayStartingDilation];
+}
+
+- (IBAction)aboutDigitalBirthButtonPressed:(id)sender
+{
+	NSLog(@"Survey button pressed");
+	
+	AboutViewController* aboutViewController = [[AboutViewController alloc] init];
+	aboutViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+	
+	[self presentViewController:aboutViewController animated:YES completion:nil];
 }
 
 @end
