@@ -10,11 +10,14 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>9</string>
+					<string>6</string>
+					<string>2</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
@@ -25,29 +28,36 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>9</string>
+					<string>2</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>9</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -58,11 +68,12 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
@@ -73,15 +84,19 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>2</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
@@ -92,10 +107,12 @@
 				</array>
 				<key>LOW</key>
 				<array>
+					<string>6</string>
 					<string>10</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>6</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -106,14 +123,18 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>6</string>
+					<string>2</string>
+					<string>1</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -121,29 +142,38 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>6</string>
+					<string>2</string>
+					<string>1</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -154,14 +184,18 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>6</string>
+					<string>2</string>
+					<string>1</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -169,29 +203,38 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>6</string>
+					<string>2</string>
+					<string>1</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -202,14 +245,18 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -217,30 +264,39 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -250,14 +306,18 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>1</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -265,30 +325,41 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -301,14 +372,20 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -316,29 +393,43 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>3</string>
+					<string>6</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -349,14 +440,21 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 					<string>10</string>
 				</array>
 			</dict>
@@ -364,30 +462,39 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 		</dict>
@@ -397,45 +504,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -445,45 +573,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -493,45 +642,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -541,45 +711,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -592,45 +783,67 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>6</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -640,45 +853,60 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 		</dict>
@@ -688,45 +916,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -736,45 +985,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>3</string>
+					<string>8</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -784,45 +1054,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -832,45 +1123,66 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>2</string>
+					<string>3</string>
+					<string>7</string>
 				</array>
 			</dict>
 		</dict>
@@ -883,45 +1195,67 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>5</string>
+					<string>6</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>2</string>
+					<string>5</string>
+					<string>6</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -931,45 +1265,69 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -979,45 +1337,69 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -1027,45 +1409,69 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -1075,45 +1481,69 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -1123,45 +1553,69 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>7</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>5</string>
+					<string>6</string>
+					<string>9</string>
+					<string>11</string>
 				</array>
 			</dict>
 		</dict>
@@ -1174,45 +1628,72 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -1222,45 +1703,72 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>4</string>
+					<string>6</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -1270,45 +1778,90 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -1318,45 +1871,90 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -1366,45 +1964,90 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>
@@ -1414,45 +2057,90 @@
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>TOO_HIGH</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 			<key>JUST_RIGHT</key>
 			<dict>
 				<key>ASLEEP</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>LOW</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 				<key>NORMAL</key>
 				<array>
-					<string>10</string>
+					<string>1</string>
+					<string>4</string>
+					<string>6</string>
+					<string>7</string>
+					<string>8</string>
+					<string>9</string>
 				</array>
 			</dict>
 		</dict>

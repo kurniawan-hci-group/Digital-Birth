@@ -553,7 +553,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	else
 		energyLevel = @"NORMAL";
 	
-	// Get the current position.
+	// Get the current position. -- CURRENTLY UNUSED --
 	NSString* position = game.getPosition;
 	
 	NSLog(@"%@ %@ %@ %@", laborStage, coping, supportLevel, energyLevel);

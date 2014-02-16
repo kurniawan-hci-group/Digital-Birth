@@ -32,9 +32,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>270</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>10</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -109,9 +109,9 @@
 		<key>ZyPos</key>
 		<integer>0</integer>
 		<key>xPos</key>
-		<integer>266</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>56</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -132,9 +132,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>229</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>13</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -155,9 +155,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>266</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>56</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -228,9 +228,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>229</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>40</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -255,9 +255,9 @@
 		<key>ZyPos</key>
 		<integer>0</integer>
 		<key>xPos</key>
-		<integer>208</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>123</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
@@ -332,9 +332,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>203</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>112</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>313</integer>
 		<key>dilationYPos</key>
@@ -401,9 +401,9 @@
 		<key>canSleep</key>
 		<false/>
 		<key>xPos</key>
-		<integer>229</integer>
+		<integer>0</integer>
 		<key>yPos</key>
-		<integer>40</integer>
+		<integer>0</integer>
 		<key>dilationXPos</key>
 		<integer>254</integer>
 		<key>dilationYPos</key>
