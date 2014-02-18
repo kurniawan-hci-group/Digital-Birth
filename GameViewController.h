@@ -100,6 +100,7 @@ typedef enum
 
 // The display area showing the mother.
 @property (strong, nonatomic) IBOutlet UIImageView *momPicView;
+@property (strong, nonatomic) IBOutlet UIImageView *momPicGlowView;
 - (IBAction)momTummyRub:(UIGestureRecognizer*)sender;
 @property (strong, nonatomic) IBOutlet UIView *dilationLabelPopupView;
 @property (strong, nonatomic) IBOutlet UILabel *dilationDisplay;

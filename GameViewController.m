@@ -61,6 +61,7 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 @synthesize sleepIndicatorView;
 
 @synthesize momPicView;
+@synthesize momPicGlowView;
 @synthesize dilationLabelPopupView;
 @synthesize dilationDisplay;
 @synthesize dilationDisplayButton;
@@ -123,7 +124,7 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 		else
 			printf("Could not load nurse help grid!");
 		
-		NSLog(@"%@", nurseHelpGrid);
+//		NSLog(@"%@", nurseHelpGrid);
 		
 		// Load nurse help text content.
 		NSString* nurseHelpContentPath = [[NSBundle mainBundle] pathForResource:@"NurseHelpContent" ofType:@"strings"];
@@ -133,7 +134,7 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 		else
 			printf("Could not load nurse help content!");
 		
-		NSLog(@"%@", nurseHelpContent);
+//		NSLog(@"%@", nurseHelpContent);
 
 		// Load button cooldown images.
 		NSMutableArray* cooldownImages = [[NSMutableArray alloc] init];
@@ -143,6 +144,8 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 			[cooldownImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"cooldown%d.png", i++]]];
 		}
 		
+		NSLog(@"Loaded button cooldown images.");
+		
 		// Load "Z's" images for sleep indicator.
 		NSMutableArray* sleepingImages = [[NSMutableArray alloc] init];
 		int j = 0;
@@ -151,6 +154,8 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 			[sleepingImages addObject:[UIImage imageNamed:[NSString stringWithFormat:@"sleep%d.png", j++]]];
 		}
 		sleepIndicatorView.animationImages = sleepingImages;
+		
+		NSLog(@"Loaded Z's cooldown images.");
 		
 		// Create action buttons.
 		actionButtons = [[NSMutableDictionary alloc] init];
@@ -164,27 +169,34 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 			actionButtons[actionName] = button;
 		}
 		
+		NSLog(@"Created action buttons.");
+		
 		// Load position images.
 		NSString* positionListPath = [[NSBundle mainBundle] pathForResource:@"Positions" ofType:@"plist"];
 		positionList = [NSMutableDictionary dictionaryWithContentsOfFile:positionListPath];
 		for(NSString* positionName in positionList)
 		{
-			NSString* imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%s_position", [positionName UTF8String]] ofType:@"png"];
+			NSLog(@"Loading image for position %@...", positionName);
+			
+			NSString* imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_position", positionName] ofType:@"png"];
 			if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
 			{
 				UIImage* positionImage = [UIImage imageNamed:[NSString stringWithFormat:@"%s_position.png", [positionName UTF8String]]];
 				positionList[positionName][@"image"] = positionImage;
 				
-				NSArray* glowImages = @[[UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
-									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow2.png", [positionName UTF8String]]], 
-									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]]];
-				positionList[positionName][@"glowAnimation"] = glowImages;
+//				NSArray* glowImages = @[[UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
+//									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow2.png", [positionName UTF8String]]], 
+//									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]]];
+				UIImage* glowImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_position_glow.png", positionName]];
+				positionList[positionName][@"glowAnimation"] = glowImage;
 			}
 			
 			glowing = NO;
 		}
 		
-		// Add self as listener for notification of app returning to foreground, 
+		NSLog(@"Loaded position images.");
+		
+		// Add self as listener for notification of app returning to foreground,
 		// to display the "End game or Resume game?" screen.
 		if(&UIApplicationWillEnterForegroundNotification != nil)
 		{
@@ -642,18 +654,28 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 -(void) displayPosition
 {
 	// Change the picture of the woman based on her position.
-	if(!glowing)
-		momPicView.image = positionList[game.getPosition][@"image"];
+	momPicView.image = positionList[game.getPosition][@"image"];
 	
-	// If we're currently having a contraction, display with glow instead.
-	else if(glowing)
-		momPicView.image = positionList[game.getPosition][@"glowAnimation"][2];
-	
-	// Reposition the woman appropriately.
-	CGRect momViewFrame = momPicView.frame;
-	momViewFrame.size = momPicView.image.size;
-	momViewFrame.origin = CGPointMake([positionList[game.getPosition][@"xPos"] floatValue], [positionList[game.getPosition][@"yPos"] floatValue]);
-	momPicView.frame = momViewFrame;
+	// If we're currently having a contraction, display the glow.
+	if(glowing)
+	{
+		momPicGlowView.image = positionList[game.getPosition][@"glowAnimation"];
+		momPicGlowView.hidden = NO;
+		[UIView animateWithDuration:1.0 delay:0.0 options:(UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse) animations:^{
+			CGFloat glowIntensity = game.getContractionStrength / MAX_POSSIBLE_CONTRACTION_STRENGTH;
+			momPicGlowView.alpha = 0.5 + 0.5 * glowIntensity;
+		} completion:nil];
+	}
+	else
+	{
+		momPicGlowView.hidden = YES;
+	}
+
+	// Reposition the woman appropriately. -- NO LONGER NECESSARY --
+//	CGRect momViewFrame = momPicView.frame;
+//	momViewFrame.size = momPicView.image.size;
+//	momViewFrame.origin = CGPointMake([positionList[game.getPosition][@"xPos"] floatValue], [positionList[game.getPosition][@"yPos"] floatValue]);
+//	momPicView.frame = momViewFrame;
 	
 	// Reposition the dilation display.
 //	CGRect dilationFrame = dilationDisplayButton.frame;
@@ -918,7 +940,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 		//NSString* imageName_disabled = [NSString stringWithFormat:@"%s_disabled.png", [[Game actionList][actionName][@"name"] UTF8String]];
 		//[(DBActionButton*)[actionButtons objectForKey:actionName] setBackgroundImage:[UIImage imageNamed:imageName_disabled] forState:UIControlStateDisabled];
 		
-		printf("action name: %s; image name: %s; button category: %s\n", [actionName UTF8String], [imageName UTF8String], [buttonCategory UTF8String]);
+//		printf("action name: %s; image name: %s; button category: %s\n", [actionName UTF8String], [imageName UTF8String], [buttonCategory UTF8String]);
 		//printf("action name: %s; image name: %s; disabled image name: %s, button category: %s\n", [actionName UTF8String], [imageName UTF8String], [imageName_disabled UTF8String], [buttonCategory UTF8String]);
 		
 		UIView* theButtonPanel;
