@@ -15,16 +15,27 @@
 
 - (IBAction)sendEmailButtonPressed:(id)sender;
 - (IBAction)doSurveyNowButtonPressed:(id)sender;
+- (IBAction)backToGame:(id)sender;
+
+@property IBOutlet UIWebView* webView;
+@property (strong, nonatomic) IBOutlet UIButton *backToGameButton;
 
 @end
 
 @implementation SurveyViewController
 
+@synthesize webView;
+@synthesize backToGameButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self)
+	{
+		if(&UIApplicationWillEnterForegroundNotification != nil)
+		{
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToGame:) name:UIApplicationWillEnterForegroundNotification object:nil];
+		}
     }
     return self;
 }
@@ -67,7 +78,14 @@
 
 - (IBAction)doSurveyNowButtonPressed:(id)sender
 {
+//	webView.frame = self.view.bounds;
+//	webView.scalesPageToFit = YES;
+//	
+//	[self.view addSubview:webView];
+//	
+//	[webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:surveyInfo[@"surveyURL"]]]];
 	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:surveyInfo[@"surveyURL"]]];
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
@@ -83,6 +101,14 @@
 		NSLog(@"Reminder email NOT sent.");
 	}
 	
+	[self dismissViewControllerAnimated:YES completion:^{
+		backToGameButton.hidden = NO;
+	} ];
+}
+
+-(IBAction)backToGame:(id)sender
+{
+	NSLog(@"Returning to game...");
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

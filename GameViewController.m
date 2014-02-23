@@ -200,17 +200,26 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 		// to display the "End game or Resume game?" screen.
 		if(&UIApplicationWillEnterForegroundNotification != nil)
 		{
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showResumeRestartScreen) name:UIApplicationWillEnterForegroundNotification object:nil];
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(returnedFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
 		}
 	}
 	return self;
 }
 
 #pragma mark - Helper Methods
--(void)showResumeRestartScreen
+-(void)returnedFromBackground
 {
 	printf("returned from background!\n");
-	quitView.hidden = NO;
+	
+	if(game.gameStatus == IN_PROGRESS)
+	{
+		quitView.hidden = NO;
+	}
+	else
+	{
+		self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 -(void)toggleButtonSubPanel:(UIScrollView*)panel expand:(BOOL)expand
@@ -760,7 +769,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	// Display game over screen.	
 	[gameSummaryView display];	
-	gameOverScreen.frame = [[UIScreen mainScreen] bounds];
+	gameOverScreen.frame = self.view.bounds;
 	[self.view addSubview:gameOverScreen];	
 }
 
@@ -1032,7 +1041,6 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	// Start the game timer.	
 	[self.game startGame];
-	
 }
 
 #pragma mark - Action Methods

@@ -157,6 +157,7 @@
 		8660E05418B32257003268FF /* stand_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 8660E05018B32257003268FF /* stand_position.png */; };
 		8660E05518B32257003268FF /* toilet_position_glow.png in Resources */ = {isa = PBXBuildFile; fileRef = 8660E05118B32257003268FF /* toilet_position_glow.png */; };
 		8660E05618B32257003268FF /* toilet_position.png in Resources */ = {isa = PBXBuildFile; fileRef = 8660E05218B32257003268FF /* toilet_position.png */; };
+		8660E05818B33CA0003268FF /* background_bed_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 8660E05718B33CA0003268FF /* background_bed_up.png */; };
 		866F29B615BA5B4900198DA2 /* DBSlidingWindowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 866F29B515BA5B4900198DA2 /* DBSlidingWindowView.m */; };
 		868A261B15CA46F500230B56 /* Factors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 868A261A15CA46F500230B56 /* Factors.plist */; };
 		868A262215CB29E900230B56 /* QuitBoxHandle.png in Resources */ = {isa = PBXBuildFile; fileRef = 868A262115CB29E900230B56 /* QuitBoxHandle.png */; };
@@ -187,7 +188,6 @@
 		86B64B1E181BAC3000337DAE /* DBTooltipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B64B1D181BAC2F00337DAE /* DBTooltipView.m */; };
 		86B64B20181BB05800337DAE /* Tooltips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 86B64B1F181BB05800337DAE /* Tooltips.plist */; };
 		86B9415F15E0979D00A036FD /* DBGameSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 86B9415E15E0979D00A036FD /* DBGameSummaryView.m */; };
-		86BC51EC15D9B7C8007B24F3 /* background_bed_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BC51EA15D9B7C8007B24F3 /* background_bed_up.png */; };
 		86BC520615DC905C007B24F3 /* resume_restart_screen_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BC520515DC905B007B24F3 /* resume_restart_screen_background.png */; };
 		86BD9CA518A1C393001A6146 /* SurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BD9CA318A1C393001A6146 /* SurveyViewController.m */; };
 		86BD9CA618A1C393001A6146 /* SurveyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86BD9CA418A1C393001A6146 /* SurveyViewController.xib */; };
@@ -441,6 +441,7 @@
 		8660E05018B32257003268FF /* stand_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stand_position.png; sourceTree = "<group>"; };
 		8660E05118B32257003268FF /* toilet_position_glow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet_position_glow.png; sourceTree = "<group>"; };
 		8660E05218B32257003268FF /* toilet_position.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet_position.png; sourceTree = "<group>"; };
+		8660E05718B33CA0003268FF /* background_bed_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_bed_up.png; sourceTree = "<group>"; };
 		866F29B415BA5B4900198DA2 /* DBSlidingWindowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBSlidingWindowView.h; sourceTree = "<group>"; };
 		866F29B515BA5B4900198DA2 /* DBSlidingWindowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBSlidingWindowView.m; sourceTree = "<group>"; };
 		868A261A15CA46F500230B56 /* Factors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Factors.plist; sourceTree = "<group>"; };
@@ -476,7 +477,6 @@
 		86B64B1F181BB05800337DAE /* Tooltips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tooltips.plist; sourceTree = "<group>"; };
 		86B9415D15E0979D00A036FD /* DBGameSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGameSummaryView.h; sourceTree = SOURCE_ROOT; };
 		86B9415E15E0979D00A036FD /* DBGameSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGameSummaryView.m; sourceTree = SOURCE_ROOT; };
-		86BC51EA15D9B7C8007B24F3 /* background_bed_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_bed_up.png; sourceTree = "<group>"; };
 		86BC520515DC905B007B24F3 /* resume_restart_screen_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_restart_screen_background.png; sourceTree = "<group>"; };
 		86BD9CA218A1C393001A6146 /* SurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
 		86BD9CA318A1C393001A6146 /* SurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyViewController.m; sourceTree = "<group>"; };
@@ -874,10 +874,10 @@
 		86D4492015ABE26500B642B1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8660E05718B33CA0003268FF /* background_bed_up.png */,
+				86BD9CB618A1CE99001A6146 /* background_bed_down.png */,
 				3155BAB815F16D1700D54620 /* Sleep Images */,
 				86FE20E815DF2C89009333F7 /* Button Cooldown Images */,
-				86BC51EA15D9B7C8007B24F3 /* background_bed_up.png */,
-				86BD9CB618A1CE99001A6146 /* background_bed_down.png */,
 				865D1CD415D5E21200D4C087 /* Position Images */,
 				868A262915D3220E00230B56 /* Coping Images */,
 				868A262715D30F4F00230B56 /* victory_screen_background.png */,
@@ -1174,7 +1174,6 @@
 				865D1CCE15D4EFE200D4C087 /* coping9.png in Resources */,
 				865D1CCF15D4EFE200D4C087 /* coping10.png in Resources */,
 				8660E01218B1D62B003268FF /* sitBackwardsOnChair_position.png in Resources */,
-				86BC51EC15D9B7C8007B24F3 /* background_bed_up.png in Resources */,
 				8660E01A18B31139003268FF /* squat_positon_glow.png in Resources */,
 				86BC520615DC905C007B24F3 /* resume_restart_screen_background.png in Resources */,
 				86FE210915DF2CA8009333F7 /* cooldown0.png in Resources */,
@@ -1324,6 +1323,7 @@
 				86FB268F18009D9F00D3DF68 /* Default-568h@2x.png in Resources */,
 				86B64B20181BB05800337DAE /* Tooltips.plist in Resources */,
 				86E2975518263368004DCA42 /* thought_bubble.png in Resources */,
+				8660E05818B33CA0003268FF /* background_bed_up.png in Resources */,
 				86C17DA5189224D500C55A39 /* NurseHelpGrid.plist in Resources */,
 				8660E04618B321CE003268FF /* allFours_position.png in Resources */,
 				86C17DA7189224E600C55A39 /* NurseHelpContent.strings in Resources */,
