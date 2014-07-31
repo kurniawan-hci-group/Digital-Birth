@@ -22,6 +22,7 @@
 #import "DBActionButton.h"
 #import "DBGameSummaryView.h"
 #import "DBTooltipView.h"
+#import "DBBirthView.h"
 
 #define ACTION_BUTTON_SIZE		56
 #define ACTION_BUTTON_SPACING	 6
@@ -68,8 +69,10 @@ typedef enum
 
 @property (strong, nonatomic) IBOutlet UIView *gameOverScreen;
 @property (strong, nonatomic) IBOutlet DBGameSummaryView *gameSummaryView;
+@property (strong, nonatomic) IBOutlet UIButton *seeBirthButton;
 - (IBAction)endGameToMainMenuButtonPressed;
 - (IBAction)surveyButtonPressed;
+- (IBAction)seeBirthButtonPressed;
 
 @property (strong, nonatomic) IBOutlet UIView *quitView;
 - (IBAction)resumeButtonPressed;
@@ -79,6 +82,8 @@ typedef enum
 @property (strong, nonatomic) IBOutlet UITextView* nurseHelpTextView;
 @property (strong, nonatomic) IBOutlet UIImageView* nurseHelpImageView;
 -(IBAction)nurseHelpCloseButtonPressed;
+
+@property (strong, nonatomic) IBOutlet DBBirthView* birthView;
 
 // Background image.
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;

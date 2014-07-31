@@ -11,6 +11,7 @@
                 <outlet property="beTogetherActionsButton" destination="96" id="102"/>
                 <outlet property="beTogetherButtonsScrollView" destination="166" id="167"/>
                 <outlet property="beTogetherButtonsView" destination="168" id="177"/>
+                <outlet property="birthView" destination="tpZ-ZJ-WMd" id="JtD-RL-T7C"/>
                 <outlet property="breatheActionsButton" destination="95" id="101"/>
                 <outlet property="breatheButtonsScrollView" destination="154" id="155"/>
                 <outlet property="breatheButtonsView" destination="156" id="165"/>
@@ -43,6 +44,7 @@
                 <outlet property="relaxActionsButton" destination="89" id="100"/>
                 <outlet property="relaxButtonsScrollView" destination="129" id="131"/>
                 <outlet property="relaxButtonsView" destination="144" id="153"/>
+                <outlet property="seeBirthButton" destination="DQS-Ms-xtj" id="FdO-JI-yVL"/>
                 <outlet property="sleepIndicatorView" destination="391" id="392"/>
                 <outlet property="supportDisplay" destination="230" id="231"/>
                 <outlet property="supportDisplayTooltip" destination="375" id="376"/>
@@ -246,7 +248,7 @@
                     <rect key="frame" x="407" y="7" width="66" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                    <state key="normal" title="Help">
+                    <state key="normal" backgroundImage="help.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -389,6 +391,17 @@
                         <action selector="surveyButtonPressed" destination="-1" eventType="touchUpInside" id="422"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DQS-Ms-xtj">
+                    <rect key="frame" x="64" y="243" width="129" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="SEE BIRTH">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="seeBirthButtonPressed" destination="-1" eventType="touchUpInside" id="jmU-JW-hfl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
@@ -428,7 +441,7 @@
             <rect key="frame" x="0.0" y="0.0" width="256" height="128"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="407">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="RN_icon_help_screen.png" id="407">
                     <rect key="frame" x="0.0" y="0.0" width="96" height="128"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -459,16 +472,24 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="tpZ-ZJ-WMd" customClass="DBBirthView">
+            <rect key="frame" x="0.0" y="0.0" width="568" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="ButtonBarHandle.png" width="24" height="80"/>
         <image name="ContractionMonitorHandle.png" width="12" height="260"/>
+        <image name="RN_icon_help_screen.png" width="192" height="256"/>
         <image name="background_bed_down.png" width="1136" height="600"/>
         <image name="background_bed_up.png" width="1136" height="600"/>
         <image name="beTogether.png" width="64" height="64"/>
         <image name="breathe.png" width="64" height="64"/>
         <image name="closeButton.png" width="88" height="88"/>
         <image name="dilation0.png" width="70" height="70"/>
+        <image name="help.png" width="128" height="128"/>
         <image name="lieOnSide_position.png" width="1136" height="600"/>
         <image name="positions.png" width="64" height="64"/>
         <image name="relax.png" width="64" height="64"/>

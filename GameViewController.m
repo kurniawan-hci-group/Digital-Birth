@@ -44,10 +44,13 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 
 @synthesize gameOverScreen;
 @synthesize gameSummaryView;
+@synthesize seeBirthButton;
 
 @synthesize nurseHelpView;
 @synthesize nurseHelpTextView;
 @synthesize nurseHelpImageView;
+
+@synthesize birthView;
 
 @synthesize backgroundImageView;
 
@@ -178,15 +181,18 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 		{
 			NSLog(@"Loading image for position %@...", positionName);
 			
+			// Load the position image, if the image file exists.
 			NSString* imagePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_position", positionName] ofType:@"png"];
 			if([[NSFileManager defaultManager] fileExistsAtPath:imagePath])
 			{
-				UIImage* positionImage = [UIImage imageNamed:[NSString stringWithFormat:@"%s_position.png", [positionName UTF8String]]];
+				UIImage* positionImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_position.png", positionName]];
 				positionList[positionName][@"image"] = positionImage;
-				
-//				NSArray* glowImages = @[[UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow1.png", [positionName UTF8String]]], 
-//									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow2.png", [positionName UTF8String]]], 
-//									   [UIImage imageNamed:[NSString stringWithFormat:@"%s_position_glow3.png", [positionName UTF8String]]]];
+			}
+			
+			// Load this position's glow image, if the glow image file exists.
+			NSString* imageGlowPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_position_glow", positionName] ofType:@"png"];
+			if([[NSFileManager defaultManager] fileExistsAtPath:imageGlowPath])
+			{
 				UIImage* glowImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_position_glow.png", positionName]];
 				positionList[positionName][@"glowAnimation"] = glowImage;
 			}
@@ -765,7 +771,11 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 		gameSummary[@"pushingDuration"] = stageDuration;
 	}
 	gameSummary[@"hadBaby"] = @(game.hadBaby);
-	gameSummaryView.gameSummary = gameSummary;	
+	gameSummaryView.gameSummary = gameSummary;
+	
+	// If we had a baby, unhide the "see birth" button.
+	if(game.hadBaby || !game.hadBaby)
+		seeBirthButton.hidden = NO;
 	
 	// Display game over screen.	
 	[gameSummaryView display];	
@@ -1041,6 +1051,8 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	// Start the game timer.	
 	[self.game startGame];
+	
+	[self endGame];
 }
 
 #pragma mark - Action Methods
@@ -1049,6 +1061,13 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 {	
 	self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)seeBirthButtonPressed
+{
+	birthView.frame = self.view.bounds;
+	[self.view addSubview:birthView];
+	[birthView startBirth];
 }
 
 - (IBAction)surveyButtonPressed
