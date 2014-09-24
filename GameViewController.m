@@ -774,8 +774,9 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	gameSummaryView.gameSummary = gameSummary;
 	
 	// If we had a baby, unhide the "see birth" button.
-	if(game.hadBaby || !game.hadBaby)
-		seeBirthButton.hidden = NO;
+	// FEATURE NOT YET IMPLEMENTED
+//	if(game.hadBaby || !game.hadBaby)
+//		seeBirthButton.hidden = NO;
 	
 	// Display game over screen.	
 	[gameSummaryView display];	
@@ -1052,7 +1053,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	// Start the game timer.	
 	[self.game startGame];
 	
-	[self endGame];
+//	[self endGame];
 }
 
 #pragma mark - Action Methods
