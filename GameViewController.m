@@ -637,6 +637,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 
 -(void)pulseCoping
 {
+	[self displayCoping];
 	[copingDisplay pulse:10];
 }
 
