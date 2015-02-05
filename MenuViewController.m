@@ -52,9 +52,10 @@
 	NSString* gameSpeedDisplayString = [NSString stringWithFormat:@"%ix ", gameSpeed];
 	gameSpeedLabel.text = gameSpeedDisplayString;
 	
-	if(gameSpeed == 1)
-		gameSpeedExplanationLabel.hidden = NO;
-	else
+	// With the 100x speedup (see the newGameButtonPressed: method), "real time is not really a thing...
+//	if(gameSpeed == 1)
+//		gameSpeedExplanationLabel.hidden = NO;
+//	else
 		gameSpeedExplanationLabel.hidden = YES;
 }
 
@@ -110,7 +111,9 @@
 	gameViewController.delegate = self;
 	gameViewController.settings = settings;
 	gameViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	gameViewController.gameTimerTick = 1.0 / (float) gameSpeed;
+	// The actual game speedup value we want is 100x the value reported by the slider;
+	// this is so that we can have appropriate granularity (100x, 200x, or 300x).
+	gameViewController.gameTimerTick = 1.0 / ((float) gameSpeed * 100);
 	
 	[self presentViewController:gameViewController animated:YES completion:nil];
 }

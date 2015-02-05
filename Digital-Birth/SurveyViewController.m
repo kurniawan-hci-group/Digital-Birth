@@ -16,9 +16,11 @@
 - (IBAction)sendEmailButtonPressed:(id)sender;
 - (IBAction)doSurveyNowButtonPressed:(id)sender;
 - (IBAction)backToGame:(id)sender;
+- (IBAction)okayButtonPressed:(id)sender;
 
 @property IBOutlet UIWebView* webView;
 @property (strong, nonatomic) IBOutlet UIButton *backToGameButton;
+@property (strong, nonatomic) IBOutlet UIView *emailErrorView;
 
 @end
 
@@ -26,6 +28,7 @@
 
 @synthesize webView;
 @synthesize backToGameButton;
+@synthesize emailErrorView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,8 +74,12 @@
 		[controller setMessageBody:emailBody isHTML:NO];
 		if (controller)
 			[self presentViewController:controller animated:YES completion:nil];
-	} else {
-		// Handle the error
+	}
+	else
+	{
+		NSLog(@"We can't send mail for some reason");
+		
+		emailErrorView.hidden = NO;
 	}
 }
 
@@ -110,6 +117,11 @@
 {
 	NSLog(@"Returning to game...");
 	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)okayButtonPressed:(id)sender
+{
+	emailErrorView.hidden = YES;
 }
 
 @end
