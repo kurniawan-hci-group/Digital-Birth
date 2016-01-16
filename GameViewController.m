@@ -236,11 +236,11 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 	
     if (expand)
 	{
-        panelFrame.origin.x = screenRect.size.height - panelFrame.size.width;
+        panelFrame.origin.x = screenRect.size.width - panelFrame.size.width;
     }
 	else
     {
-        panelFrame.origin.x = screenRect.size.height;
+        panelFrame.origin.x = screenRect.size.width;
     }
 	
     [panel setFrame:panelFrame];
@@ -859,7 +859,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	[self displayContractionStrength];
 	
 	// *** Add "restart/resume?" box. ***
-	quitView.frame = CGRectMake((screenRect.size.height / 2) - (quitView.frame.size.width / 2), (screenRect.size.width / 2) - (quitView.frame.size.height / 2) - 10, quitView.frame.size.width, quitView.frame.size.height);
+	quitView.frame = CGRectMake((screenRect.size.width / 2) - (quitView.frame.size.width / 2), (screenRect.size.height / 2) - (quitView.frame.size.height / 2) - 10, quitView.frame.size.width, quitView.frame.size.height);
 	[self.view addSubview:quitView];
 	
 	// *** Add the "help from nurse" box. ***
@@ -888,7 +888,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	// ** Add button sub-panels. **
 	
 	// Add relaxation buttons sub-panel.
-	CGRect relaxButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - relaxButtonsScrollView.frame.size.height - statusBarFrame.size.width, relaxButtonsScrollView.frame.size.width, relaxButtonsScrollView.frame.size.height);
+	CGRect relaxButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - relaxButtonsScrollView.frame.size.height - statusBarFrame.size.width, relaxButtonsScrollView.frame.size.width, relaxButtonsScrollView.frame.size.height);
 	[relaxButtonsScrollView setFrame:relaxButtonsScrollViewPosition];
 	[self.view addSubview:relaxButtonsScrollView];
 	relaxButtonsScrollView.hidden = YES;
@@ -896,7 +896,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 //	relaxButtonsScrollView.contentSize = relaxButtonsView.frame.size;
 	
 	// Add breathing buttons sub-panel.
-	CGRect breatheButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - breatheButtonsScrollView.frame.size.height - statusBarFrame.size.width, breatheButtonsScrollView.frame.size.width, breatheButtonsScrollView.frame.size.height);
+	CGRect breatheButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - breatheButtonsScrollView.frame.size.height - statusBarFrame.size.width, breatheButtonsScrollView.frame.size.width, breatheButtonsScrollView.frame.size.height);
 	[breatheButtonsScrollView setFrame:breatheButtonsScrollViewPosition];
 	[self.view addSubview:breatheButtonsScrollView];
 	breatheButtonsScrollView.hidden = YES;
@@ -904,7 +904,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	breatheButtonsScrollView.contentSize = breatheButtonsView.frame.size;
 	
 	// Add "be together" buttons sub-panel.
-	CGRect beTogetherButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - beTogetherButtonsScrollView.frame.size.height - statusBarFrame.size.width, beTogetherButtonsScrollView.frame.size.width, beTogetherButtonsScrollView.frame.size.height);
+	CGRect beTogetherButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - beTogetherButtonsScrollView.frame.size.height - statusBarFrame.size.width, beTogetherButtonsScrollView.frame.size.width, beTogetherButtonsScrollView.frame.size.height);
 	[beTogetherButtonsScrollView setFrame:beTogetherButtonsScrollViewPosition];
 	[self.view addSubview:beTogetherButtonsScrollView];
 	beTogetherButtonsScrollView.hidden = YES;
@@ -912,7 +912,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	beTogetherButtonsScrollView.contentSize = beTogetherButtonsView.frame.size;
 	
 	// Add positions buttons sub-panel.
-	CGRect positionsButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - positionsButtonsScrollView.frame.size.height - statusBarFrame.size.width, positionsButtonsScrollView.frame.size.width, positionsButtonsScrollView.frame.size.height);
+	CGRect positionsButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - positionsButtonsScrollView.frame.size.height - statusBarFrame.size.width, positionsButtonsScrollView.frame.size.width, positionsButtonsScrollView.frame.size.height);
 	[positionsButtonsScrollView setFrame:positionsButtonsScrollViewPosition];
 	[self.view addSubview:positionsButtonsScrollView];
 	positionsButtonsScrollView.hidden = YES;
@@ -920,7 +920,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	positionsButtonsScrollView.contentSize = positionsButtonsView.frame.size;
 	
 	// Add "verbal care" buttons sub-panel.
-	CGRect verbalCareButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - verbalCareButtonsScrollView.frame.size.height - statusBarFrame.size.width, verbalCareButtonsScrollView.frame.size.width, verbalCareButtonsScrollView.frame.size.height);
+	CGRect verbalCareButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - verbalCareButtonsScrollView.frame.size.height - statusBarFrame.size.width, verbalCareButtonsScrollView.frame.size.width, verbalCareButtonsScrollView.frame.size.height);
 	[verbalCareButtonsScrollView setFrame:verbalCareButtonsScrollViewPosition];
 	[self.view addSubview:verbalCareButtonsScrollView];
 	verbalCareButtonsScrollView.hidden = YES;
@@ -928,7 +928,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	verbalCareButtonsScrollView.contentSize = verbalCareButtonsView.frame.size;
 	
 	// Add "get help" buttons sub-panel.
-	CGRect getHelpButtonsScrollViewPosition = CGRectMake(0, screenRect.size.width - buttonsView.frame.size.height - getHelpButtonsScrollView.frame.size.height - statusBarFrame.size.width, getHelpButtonsScrollView.frame.size.width, getHelpButtonsScrollView.frame.size.height);
+	CGRect getHelpButtonsScrollViewPosition = CGRectMake(0, screenRect.size.height - buttonsView.frame.size.height - getHelpButtonsScrollView.frame.size.height - statusBarFrame.size.width, getHelpButtonsScrollView.frame.size.width, getHelpButtonsScrollView.frame.size.height);
 	[getHelpButtonsScrollView setFrame:getHelpButtonsScrollViewPosition];
 	[self.view addSubview:getHelpButtonsScrollView];
 	getHelpButtonsScrollView.hidden = YES;

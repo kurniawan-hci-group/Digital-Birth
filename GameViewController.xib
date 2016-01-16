@@ -377,7 +377,7 @@
         </view>
         <view contentMode="scaleToFill" id="255">
             <rect key="frame" x="0.0" y="0.0" width="568" height="300"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background_bed_up.png" id="390">
                     <rect key="frame" x="0.0" y="0.0" width="568" height="300"/>
