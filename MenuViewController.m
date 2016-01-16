@@ -75,7 +75,7 @@
 		startingDilationActiveLaborLabel.hidden = NO;
     }
 	
-	if(startingDilation > 3.0 && startingDilation < 5.0)
+	if(floor(startingDilation) == 4)
 		startingDilationExplanationLabel.hidden = NO;
 	else
 		startingDilationExplanationLabel.hidden = YES;

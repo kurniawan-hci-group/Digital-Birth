@@ -35,10 +35,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
 	{
-		if(&UIApplicationWillEnterForegroundNotification != nil)
-		{
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToGame:) name:UIApplicationWillEnterForegroundNotification object:nil];
-		}
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(backToGame:) name:UIApplicationWillEnterForegroundNotification object:nil];
     }
     return self;
 }

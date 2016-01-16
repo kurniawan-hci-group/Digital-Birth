@@ -114,7 +114,7 @@ NSString* laborStageString(laborStageType stage)
 -(NSString*)getRandomPosition
 {
 	NSArray* allPositions = [positionList allKeys];
-	int num_positions = [allPositions count];
+	NSUInteger num_positions = [allPositions count];
 	return allPositions[(arc4random() % num_positions)];
 }
 

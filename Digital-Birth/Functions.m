@@ -81,12 +81,12 @@ NSString* stringForTimeInterval(NSTimeInterval interval)
 	NSDate* date2 = [[NSDate alloc] initWithTimeInterval:interval sinceDate:date1]; 
 	
 	// Get conversion to months, days, hours, minutes
-	unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit;
+	unsigned int unitFlags = NSCalendarUnitHour | NSCalendarUnitMinute;
 
 	NSDateComponents* conversionInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
 	
 
 	printf("	Exiting stringForTimeInterval!\n");
 	
-	return [NSString stringWithFormat:@"%d hours, %d minutes", [conversionInfo hour], [conversionInfo minute]];
+	return [NSString stringWithFormat:@"%ld hours, %ld minutes", (long) [conversionInfo hour], (long)[conversionInfo minute]];
 }

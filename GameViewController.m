@@ -204,10 +204,7 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 		
 		// Add self as listener for notification of app returning to foreground,
 		// to display the "End game or Resume game?" screen.
-		if(&UIApplicationWillEnterForegroundNotification != nil)
-		{
-			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(returnedFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
-		}
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(returnedFromBackground) name:UIApplicationWillEnterForegroundNotification object:nil];
 	}
 	return self;
 }
@@ -269,7 +266,7 @@ static NSDictionary* nurseHelpContent; // Stores the help content (text only; au
 	else
     {
 		// Place the buttons view just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
-		buttonsFrame.origin.x = screenRect.size.height - (12 + buttonsViewHandle.frame.size.width + 1);
+		buttonsFrame.origin.x = screenRect.size.width - (12 + buttonsViewHandle.frame.size.width + 1);
 
 		// Un-flip the handle image, so the arrows face right.
 		buttonsViewHandle.transform = CGAffineTransformMake(1, 0, 0, 1, 0, 0);
@@ -588,7 +585,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	// Get the available help content indices for the current combinations of factors.
 	NSArray* availableHelpContentIndices = nurseHelpGrid[laborStage][coping][supportLevel][energyLevel];
 	
-	NSLog(@"%d help content indices available", availableHelpContentIndices.count);
+	NSLog(@"%lu help content indices available", (unsigned long) availableHelpContentIndices.count);
 	
 	// Randomly determine which help string to use.
 	NSString* helpStringIndex = availableHelpContentIndices[arc4random() % availableHelpContentIndices.count];
@@ -871,7 +868,7 @@ void buttonSoundAudioCallback(SystemSoundID soundID, void *clientData)
 	
 	// *** Add button panel. ***
 	// Place the buttons view just far enough off screen so that the visible part of the handle is visible, and the invisible part of the handle, and then 1 more pixel, to make it look pretty.
-	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.height - (12 + buttonsViewHandle.frame.size.width + 1), screenRect.size.width - statusBarFrame.size.width - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
+	CGRect buttonsPanelPosition = CGRectMake(screenRect.size.width - (12 + buttonsViewHandle.frame.size.width + 1), screenRect.size.height - statusBarFrame.size.height - 80, buttonsView.frame.size.width, buttonsView.frame.size.height);
 	[buttonsView setFrame:buttonsPanelPosition];
 	[self.view addSubview:buttonsView];
 	buttonsPanelExpanded = NO;
