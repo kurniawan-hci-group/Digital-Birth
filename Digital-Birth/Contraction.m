@@ -13,7 +13,7 @@ static int total_strength = 0;
 
 @implementation Contraction
 
-@synthesize strength;
+@synthesize ctxStrength;
 
 -(bool)isActive
 	{ return active; }
@@ -22,7 +22,7 @@ static int total_strength = 0;
 {
 	if(self = [super init])
 	{
-		strength = 0;
+		ctxStrength = 0;
 		maxStrength = 10;
 		totalDuration = 1.0;
 		elapsedDuration = 0.0;
@@ -36,7 +36,7 @@ static int total_strength = 0;
 {
 	if(self = [super init])
 	{
-		strength = 0;
+		ctxStrength = 0;
 		maxStrength = max;
 		totalDuration = duration;
 		elapsedDuration = 0.0;
@@ -61,18 +61,18 @@ static int total_strength = 0;
 
 -(void)contractionTick:(NSTimer*)timer
 {
-	total_strength += strength;
+	total_strength += ctxStrength;
 	
-	strength = sin(M_PI * elapsedDuration / totalDuration) * maxStrength;
+	ctxStrength = sin(M_PI * elapsedDuration / totalDuration) * maxStrength;
 	elapsedDuration += 1.0;
 	
-	if(strength > maxStrength)
+	if(ctxStrength > maxStrength)
 	{
-		strength = maxStrength;
+		ctxStrength = maxStrength;
 	}
-	else if(strength < 0)
+	else if(ctxStrength < 0)
 	{
-		strength = 0;
+		ctxStrength = 0;
 		[self end];
 		
 		printf("total strength of this ctx: %d\n", total_strength);

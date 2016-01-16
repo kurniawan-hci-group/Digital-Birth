@@ -7,11 +7,11 @@
 //
 
 #import "DigitalBirthAppDelegate.h"
-#import "Flurry.h"
+//#import "Flurry.h"
 
 void uncaughtExceptionHandler(NSException *exception)
 {
-	[Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
+//	[Flurry logError:@"Uncaught" message:@"Crash!" exception:exception];
 }
 
 @implementation DigitalBirthAppDelegate
@@ -24,7 +24,7 @@ void uncaughtExceptionHandler(NSException *exception)
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
-	[Flurry startSession:@"9PVJFKFSD4KYRFH4BW8M"];
+//	[Flurry startSession:@"9PVJFKFSD4KYRFH4BW8M"];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	self.window.backgroundColor = [UIColor whiteColor];

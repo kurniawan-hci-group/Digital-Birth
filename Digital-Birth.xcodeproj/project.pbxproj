@@ -248,7 +248,6 @@
 		86D4495D15B38D5900B642B1 /* visualization.png in Resources */ = {isa = PBXBuildFile; fileRef = 86D4495315B38D5900B642B1 /* visualization.png */; };
 		86DE8CA715B753E300E239B0 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 86DE8CA615B753E300E239B0 /* Functions.m */; };
 		86E2975518263368004DCA42 /* thought_bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E2975418263368004DCA42 /* thought_bubble.png */; };
-		86FB268917FFD19E00D3DF68 /* libFlurry_4.2.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FB268817FFD19E00D3DF68 /* libFlurry_4.2.4.a */; };
 		86FB268D17FFD25200D3DF68 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86FB268C17FFD25100D3DF68 /* Security.framework */; };
 		86FB268F18009D9F00D3DF68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 86FB268E18009D9F00D3DF68 /* Default-568h@2x.png */; };
 		86FE210915DF2CA8009333F7 /* cooldown0.png in Resources */ = {isa = PBXBuildFile; fileRef = 86FE20E915DF2CA8009333F7 /* cooldown0.png */; };
@@ -549,8 +548,6 @@
 		86DE8CA415B753B400E239B0 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		86DE8CA615B753E300E239B0 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
 		86E2975418263368004DCA42 /* thought_bubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thought_bubble.png; sourceTree = "<group>"; };
-		86FB268717FFD19E00D3DF68 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		86FB268817FFD19E00D3DF68 /* libFlurry_4.2.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.4.a; sourceTree = "<group>"; };
 		86FB268C17FFD25100D3DF68 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		86FB268E18009D9F00D3DF68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		86FE20E915DF2CA8009333F7 /* cooldown0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cooldown0.png; sourceTree = "<group>"; };
@@ -600,7 +597,6 @@
 				860623B315A2622B008C6100 /* UIKit.framework in Frameworks */,
 				860623B515A2622B008C6100 /* Foundation.framework in Frameworks */,
 				860623B715A2622B008C6100 /* CoreGraphics.framework in Frameworks */,
-				86FB268917FFD19E00D3DF68 /* libFlurry_4.2.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,7 +665,6 @@
 		860623B815A2622B008C6100 /* Digital-Birth */ = {
 			isa = PBXGroup;
 			children = (
-				86FB268617FFD19E00D3DF68 /* Flurry */,
 				864B1EED1808E6B60050D854 /* View Classes */,
 				860623EF15A26E69008C6100 /* View Controllers */,
 				860623EE15A26E50008C6100 /* Data Model */,
@@ -1030,15 +1025,6 @@
 				3118C71E161B737A008AEDFB /* walk.aif */,
 			);
 			name = "Icon Names";
-			sourceTree = "<group>";
-		};
-		86FB268617FFD19E00D3DF68 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				86FB268717FFD19E00D3DF68 /* Flurry.h */,
-				86FB268817FFD19E00D3DF68 /* libFlurry_4.2.4.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		86FE20E815DF2C89009333F7 /* Button Cooldown Images */ = {

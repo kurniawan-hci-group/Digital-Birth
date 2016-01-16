@@ -21,7 +21,7 @@
 
 @interface Contraction : NSObject
 {
-	int strength;
+	int ctxStrength;
 	int maxStrength;
 	float elapsedDuration;
 	float totalDuration;
@@ -31,7 +31,7 @@
 	NSTimer* timer;
 }
 
-@property (readonly) int strength;
+@property (readonly) int ctxStrength;
 @property (readonly, getter = isActive) bool active;
 
 -(id)initWithMax:(int)max andDuration:(float)duration;

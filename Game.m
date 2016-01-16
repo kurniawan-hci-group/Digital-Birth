@@ -9,7 +9,7 @@
 #import "Game.h"
 #import "Lady.h"
 #import "Constants.h"
-#import "Flurry.h"
+//#import "Flurry.h"
 
 static NSDictionary* actionList;
 
@@ -51,8 +51,8 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)startGame
 {
-	NSDictionary* params = @{@"gameSpeed": @((int) (1.0/GAME_TIMER_TICK))};
-	[Flurry logEvent:@"Game_started" withParameters:params timed:YES];
+//	NSDictionary* params = @{@"gameSpeed": @((int) (1.0/GAME_TIMER_TICK))};
+//	[Flurry logEvent:@"Game_started" withParameters:params timed:YES];
 	
 	gameTimer = [NSTimer scheduledTimerWithTimeInterval:GAME_TIMER_TICK target:self selector:@selector(gameTimerTick:) userInfo:nil repeats:YES];
 	
@@ -61,8 +61,8 @@ float CONTRACTION_TIMER_TICK;
 
 -(void)endGame
 {
-	NSDictionary* params = @{@"laborDuration": @(lady.laborDuration)};
-	[Flurry endTimedEvent:@"Game_started" withParameters:params];
+//	NSDictionary* params = @{@"laborDuration": @(lady.laborDuration)};
+//	[Flurry endTimedEvent:@"Game_started" withParameters:params];
 }
 
 +(NSDictionary*)loadActionList
